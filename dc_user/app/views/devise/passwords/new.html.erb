@@ -1,0 +1,38 @@
+<div class="box">
+	<div class="in_box first">
+		<h1 class="icon"><%= finelineIcon(:icon => 42, :color => finestyler('headline_icon_color'), :size => finestyler('headline_icon_size'), :blur => finestyler('headline_icon_blur')) %><%= t('Forgot_your_password') %></h1>
+
+	</div>
+</div>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+
+<div class="box">
+	<div class="in_box">
+		<%= strange_devise_error_messages! %>
+			<table class="login">
+				<tr>
+					<th><%= f.label :email, t("email") %></th>
+					<td><%= f.text_field :email %></td>
+				</tr>
+			</table>
+	</div>
+</div>
+
+<div class="box">
+	<div class="in_box">
+		<%= f.submit t("Send_me_reset_password_instructions") %>
+		<div class="big_button_spacer"><%= t('or') %></div>
+		<%= link_to t('back'), :back, :class => 'big_button' %>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<% end %>
+
+<div class="box">
+	<div class="in_box">
+		<%= render :partial => "devise/shared/links" %>
+		<div class="clearfix"></div>
+	</div>
+</div>

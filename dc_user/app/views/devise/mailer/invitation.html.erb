@@ -1,0 +1,8 @@
+<p><%= t('hallo_user') %> <%= @resource.email %>!</p>
+
+<p><%= t('Someone_has_invited_you_to') %><%= root_url %><%= t('you_can_accept_it_through_the_link_below') %></p>
+
+<p><%= link_to t('Accept_invitation'), accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+
+<p><%= t("If_you_don_t_want_to_accept_the_invitation_please_ignore_this_email") %><br />
+<%= t("Your_account_won_t_be_created_until_you_access_the_link_above_and_set_your_password") %></p>

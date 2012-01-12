@@ -1,0 +1,15 @@
+<% if @tlayout %>
+	<% @tlayout.all_elements.each do |e| %>
+		<% if e.styles.count > 0 %>
+			#<%= e.cms_ident %> {
+				
+				
+			<% e.styles.each do |s| %>
+				<%= s.the_style %>
+			<% end %>
+			
+			
+			}
+		<% end %>
+	<% end %>
+<% end %>

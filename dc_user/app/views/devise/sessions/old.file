@@ -1,0 +1,45 @@
+<div class="box">
+	<div class="in_box first">
+		<h1><%= t("Sign_in") %></h1>
+	</div>
+</div>
+
+<div class="box">
+	<div class="in_box">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+<table class="login">
+  <tr>
+	<th><%= f.label :email, t("email") %></th>
+	<td><%= f.text_field :email %></td>
+  </tr>
+  <tr>
+	<th><%= f.label :password, t("password") %></th>
+	<td><%= f.password_field :password %></td>
+  </tr>
+<% if devise_mapping.rememberable? -%>
+  <tr>
+	<th></th>
+	<td><%= f.check_box :remember_me %>&nbsp;&nbsp;&nbsp;<%= f.label :remember_me, t("remember_me") %></td>
+  </tr>
+ <% end -%>
+  <tr>
+	<th></th>
+	<td><%= f.submit t("Sign_in_button") %><div class="clearfix"></div></td>
+  </tr>
+  <tr>
+	<th></th>
+	<td></td>
+  </tr>
+  <tr>
+	<th></th>
+	<td><%= render :partial => "devise/shared/links" %></td>
+  </tr>
+</table>
+
+<% end %>
+
+	</div>
+</div>
+
+≤

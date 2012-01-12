@@ -1,0 +1,22 @@
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path("../lib", __FILE__)
+require "<%= @strange_file %>/version"
+
+Gem::Specification.new do |s|
+  s.name        = "<%= @strange_file %>"
+  s.version     = <%= @strange_class %>::VERSION
+  s.platform    = Gem::Platform::RUBY
+  #	s.authors     = ["your_name"]
+  #	s.email       = ["your_email"]
+  #	s.homepage    = "http://your_domain.com"
+  #	s.summary     = %q{theme summary}
+  #	s.description = %q{theme description}
+
+  s.rubyforge_project = "<%= @strange_file %>"
+
+  s.files        = Dir['app/**/*', 'App_Themes/**/*', 'config/**/*', 'lib/**/*', 'public/**/*', 'README.md']
+  s.require_path = 'lib'
+  s.requirements << 'none'
+  
+  s.add_dependency('strangecms',  ">= <%= Strangecms.version %>")
+end

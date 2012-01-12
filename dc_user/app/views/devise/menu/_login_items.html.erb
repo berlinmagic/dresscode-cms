@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+
+<div id="login_area">
+	<%= t('hallo_user') %>  
+	<% if current_user.vorname %>
+		<%= current_user.vorname %>  <%= current_user.name %> 
+	<% else %>
+		<%= current_user.anrede %>  <%= current_user.name %> 
+	<% end %>&nbsp;&nbsp;&nbsp;
+</div>
+
+<%= link_to( t('logout'), destroy_user_session_path, :id => "finelineLogout") %>
+
+<% end %>
+
+

@@ -1,0 +1,12 @@
+<div class="ex_widget">
+	<p>Kontent</p>
+	<% if data.twidget && data.twidget.name %>
+		<% if data.twidget.name == 'Text' %>
+			<div id="<%= data.cms_ident %>" class="dc_editor-region" data-type="editable">
+    			<%= raw( data.text_content || '&nbsp;' ) %>
+			</div>
+		<% else %>
+			<%= data.twidget.name %>
+		<% end %>
+	<% end %>
+</div>

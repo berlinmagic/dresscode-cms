@@ -1,0 +1,53 @@
+<% this_class = '' %>
+<% if data.tlayout %>
+	<% this_class += "main_row" %>
+<% else %>
+	<% this_class += "inna_container" %>
+<% end %>
+
+<% this_class += " grid_row container_#{data.columns.to_s}" if data.element_type == 'grid_row' %>
+<% this_class += " grid_cell grid_#{data.columns.to_s}" if data.element_type == 'grid_cell' %>
+
+<% this_childs = [] %>
+
+<% this_childs << 'tag' if data.respond_to?(:element_childs) %>
+<% this_childs << 'widget' if data.respond_to?(:content_childs) %>
+<% this_childs << 'class' if data.respond_to?(:style_classes) %>
+<% this_childs << 'style' if data.respond_to?(:styles) %>
+
+<% this_thing = 'Element' if data.class.to_s == 'Telement' %>
+
+<% this_element = 'div' %>
+<% if data.respond_to?(:tag) %>
+	<% if data.tag %>
+		<% this_element = data.tag %>
+	<% end %>
+<% end %>
+
+<%= cms_tag( 
+	data, 
+	:class => this_class, 
+	:element => this_element, 
+	:id => data.cms_ident.to_s,
+	:data => {
+		:stuff => "dcO#{data.class.to_s.tableize}O#{data.id}",
+		:para => this_childs.join(' '),
+		:thing => this_thing
+		}
+) do %>
+	
+	<div class="element_head"><%= data.tag.to_s + ' - ' if data.respond_to?(:tag) %><%= this_thing %><%= ' - ' + data.name if data.name %></div>
+	<div class="clearfix"></div>
+	<% if data.respond_to?(:element_childs) %>
+		<% data.element_childs.each do |t| %>
+			<%= render 'xchange/tag', :data => t %>
+		<% end %>
+	<% end %>
+	<% if data.respond_to?(:content_childs) %>
+		<% data.content_childs.each do |e| %>
+			<%= render 'xchange/widget', :data => e %>
+		<% end %>
+	<% end %>
+	<div class="clearfix"></div>
+	
+<% end %>

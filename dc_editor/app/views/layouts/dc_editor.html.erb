@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <title>DcEditor Editor</title>
+    <%= stylesheet_link_tag    "/dc/dc_styles/dc_editor" %>
+
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js' %>
+	<script>window.jQuery || document.write('<script src="/dc/dynamic_script/lib/jquery"><\/script>')</script>
+	
+	<%= javascript_include_tag "/dc/dynamic_script/ujs" %>
+	
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js' %>
+	
+	
+	<%= javascript_include_tag "/dc/dc_script/dc_editor" %>
+  </head>
+  <body>
+    <% if Rails.application.config.respond_to?(:dc_editor_config) %>
+      <%= javascript_tag("jQuery.extend(DcEditor.config, #{Rails.application.config.dc_editor_config});") %>
+    <% end -%>
+
+    <script type="text/javascript">
+      var saveUrl = null;
+      var options = {
+        saveStyle: 'form',  // 'form', or 'json' (default json)
+        saveMethod: null, // 'POST', or 'PUT', (create, vs. update -- default POST)
+        visible: null     // if the interface should start visible or not (default true)
+      };
+      new DcEditor.PageEditor(saveUrl, options);
+    </script>
+  </body>
+</html>

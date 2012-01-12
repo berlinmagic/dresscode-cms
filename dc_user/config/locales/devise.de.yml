@@ -1,0 +1,42 @@
+de:
+  errors:
+    messages:
+      not_found: "nicht gefunden"
+      already_confirmed: "wurde bereits bestätigt"
+      not_locked: "war nicht gespert"
+      not_saved:
+        one: "1 Fehler verhindert, das %{resource} gespeichert werden kann:"
+        other: "%{count} Fehler verhindern, das %{resource} gespeichert werden kann:"
+
+  devise:
+    failure:
+      unauthenticated: 'Sie müssen sich Anmelden oder Registrieren!'
+      unconfirmed: 'Sie müssen Ihr Konto bestätigen um fortfahren zu können.'
+      locked: 'Ihr Konto ist gesperrt.'
+      invalid: 'E-Mail oder Passwort Falsch!'
+      invalid_token: 'Falscher Sicherheits-Schlüssel.'
+      timeout: 'Ihre Anmeldung ist aus Sicherheitsgründen abgelaufen, bitte melden Sie sich erneut an.'
+      inactive: 'Ihr Konto wurde bis jetzt noch nicht aktiviert.'
+    sessions:
+      signed_in: 'Sie haben sich erfolgreich angemeldet.'
+      signed_out: 'Sie wurden erfolgreich abgemeldet.'
+    passwords:
+      send_instructions: 'Sie werden in kürze eine E-Mail erhalten, diese ermöglicht Ihnen ein neues Passwort zu erstellen.'
+      updated: 'Ihr Passwort wurde erfolgreich geändert. Sie sind jetzt angemeldet.'
+    confirmations:
+      send_instructions: 'Sie werden in kürze eine E-Mail erhalten, bitte nutzen Sie den enthaltenen Link um Ihr Konto zu aktivieren.'
+      confirmed: 'Ihr Konto wurde bestätigt. Sie sind jetzt angemeldet.'
+    registrations:
+      signed_up: 'Sie haben sich erfolgreich registriert. Eine Bestätigungs-Mail wurde an Ihre E-Mail-Adresse gesendet.'
+      updated: 'Sie haben Ihr Konto erfolgreich aktualisiert.'
+      destroyed: 'Auf Wiedersehen! Ihr Konto wurde gelöscht. .. trotzdem hoffen wir Sie bald wieder zu sehen.'
+    unlocks:
+      send_instructions: 'Sie werden in kürze eine E-Mail erhalten, diese ermöglicht Ihnen Ihr Konto zu entsperren.'
+      unlocked: 'Ihr Konto wurde erfolgreich entsperrt. Sie sind jetzt angemeldet.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Benutzerkonto-Bestätigungs Anweisungen'
+      reset_password_instructions:
+        subject: 'Anweisungen zur Passwort-Änderung'
+      unlock_instructions:
+        subject: 'Anweisungen zur Benutzerkonto-Entsperrung'

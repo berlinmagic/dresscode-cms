@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="de"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="de"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="de"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><%= content_for?(:title) ? yield(:title) : "Suitup-2" %></title>
+	<%= stylesheet_link_tag    "/dc/dynamic_styles" %>
+	<%= csrf_meta_tags %>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	
+	<!--
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	-->
+	
+	<%#= javascript_include_tag '/javascripts/modernizr-2.0.6.min.js' %>
+	<%= javascript_include_tag "/dc/dynamic_script/lib/modernizr" %>
+	
+	
+	
+	
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js' %>
+	<script>window.jQuery || document.write('<script src="/dc/dynamic_script/lib/jquery"><\/script>')</script>
+	
+	<%= javascript_include_tag "/dc/dynamic_script/view" %>
+	
+	<%= javascript_include_tag "/dc/dynamic_script/ujs" %>
+		
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js' %>
+	
+	<%= javascript_include_tag "/dc/dynamic_script/edit" %>
+	
+	<%= yield(:head) %>
+</head>
+<body>
+	
+	
+<% if current_user %>
+<style>
+#main_content { padding: 0;}
+</style>
+
+<div id="system_content">
+	<div id="main_content">
+		<%= hook :site_headline %>
+		<div id="dialog_box"></div>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
+		<%= content_tag :h1, yield(:title) if show_title? %>
+		
+		<%= yield %>
+		
+	</div>
+</div>
+<div id="system_sidebar">
+	<div id="system_side_nav">
+		<%= render 'xchange/system_sidebar' %>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div id="system_footer">
+	<nav id="system_foot_nav">
+		<%= render 'xchange/system_footer' %>
+	</nav>
+</div>
+
+<% else %>
+<style>
+html{ overflow-y:scroll;}
+#main_content { padding: 0;}
+</style>
+<%= hook :site_headline %>
+
+	<div id="dialog_box"></div>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
+		<%= content_tag :h1, yield(:title) if show_title? %>
+		
+		<%= yield %>
+	</div>
+	
+<% end %>
+
+<script> // Change UA-XXXXX-X to be your site's ID
+	window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+	Modernizr.load({
+		load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+	});
+</script>
+<!--[if lt IE 7 ]>
+  <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+  <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->
+</body>
+</html>

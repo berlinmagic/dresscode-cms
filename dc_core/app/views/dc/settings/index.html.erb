@@ -1,0 +1,129 @@
+<div class="admin_box">
+	<h1 class="icon"><%= t('dc.prefs') %></h1>
+
+	<div class="admin_in_box">
+		
+
+		<div class="work_box">
+			<div class="in_box white" id="settings_in_box">
+				
+				<p><em>Hier eine kleine Übersicht der momentanen Einstellungen, ändern können Sie diese über das Menü auf der rechten Seite.</em></p>
+				<br/>
+				<table class="settings">
+					<tr>
+						<th colspan="2" class="u_kat"><%= t('strange_preferences.site_settings')%></th>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.site_name') %></th>
+						<td>
+							<% if DC::Config[:site_name] && DC::Config[:site_name] != "fineline-CMS" && DC::Config[:site_name] != "" %>
+								<strong><%= DC::Config[:site_name] %></strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.site_url') %></th>
+						<td>
+							<% if DC::Config[:site_url] && DC::Config[:site_url] != "2strange.net" && DC::Config[:site_url] != "" %>
+								<strong><%= DC::Config[:site_url] %></strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2" class="u_kat"><%= t('strange_preferences.google_settings')%></th>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.analytics_key') %></th>
+						<td>
+							<% if DC::Config[:analytics_key] && DC::Config[:analytics_key] != "UA-XXXXX-X" && DC::Config[:analytics_key] != "" %>
+								<strong>O.K.</strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.g_maps_key') %></th>
+						<td>
+							<% if DC::Config[:g_maps_key] && DC::Config[:g_maps_key] != "UA-XXXXX-X" && DC::Config[:g_maps_key] != "" %>
+								<strong>O.K.</strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2" class="u_kat">Social-Einstellungen</th>
+					</tr>
+					<tr>
+						<th>FaceBook App-ID</th>
+						<td>
+							<% if DC::Config[:facebook_app_id] && DC::Config[:facebook_app_id] != "UA-XXXXX-X" && DC::Config[:facebook_app_id] != "" %>
+								<strong><%= DC::Config[:facebook_app_id] %></strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2" class="u_kat"><%= t('strange_preferences.owner_settings')%></th>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.stange_owner_firma') %></th>
+						<td>
+							<% if DC::Config[:stange_owner_firma] && DC::Config[:stange_owner_firma] != "Firma" && DC::Config[:stange_owner_firma] != "" %>
+								<strong><%= DC::Config[:stange_owner_firma] %></strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.stange_owner_name') %></th>
+						<td>
+							<% if DC::Config[:stange_owner_name] && DC::Config[:stange_owner_name] != "Name" && DC::Config[:stange_owner_name] != "" %>
+								<strong><%= DC::Config[:stange_owner_name] %></strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th><%= t('strange_preferences.stange_owner_vorname') %></th>
+						<td>
+							<% if DC::Config[:stange_owner_vorname] && DC::Config[:stange_owner_vorname] != "Vorname" && DC::Config[:stange_owner_vorname] != "" %>
+								<strong><%= DC::Config[:stange_owner_vorname] %></strong>
+							<% else %>
+								<span class="panic">Achtung, nicht vergeben!</span>
+							<% end %>
+						</td>
+					</tr>
+
+				</table>
+				
+			</div>
+		</div>
+		<div class="box">
+				<div class="trenn_linie"></div>
+		</div>
+		<% if current_user && site_master %>
+		<div class="box">
+			<div class="in_box">
+				<div class="fl_box_350">
+					<%#= link_to ' ! reload Stylez ! ', expire_finestyles_path, :class => 'big_submit_button' %>
+					<%#= link_to ' ! reload Scriptz ! ', expire_finescripts_path, :class => 'big_submit_button' %>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<% end %>
+		
+	</div>
+</div>
+
+<%= render 'sidebar' %>

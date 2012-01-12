@@ -1,0 +1,5 @@
+<p><%= t("Welcome") %> <%= @resource.email %>!</p>
+
+<p><%= t("You_can_confirm_your_account_through_the_link_below") %>:</p>
+
+<p><%= link_to t('Confirm_my_account'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

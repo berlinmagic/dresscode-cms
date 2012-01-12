@@ -1,0 +1,51 @@
+<div id="login_box">
+	
+	<div class="box">
+		<div class="in_box first">
+			<h1 class="icon">DressCode Login</h1>
+		</div>
+	</div>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+	<div class="box">
+		<div class="in_box">
+			<table class="login">
+				<tr>
+					<th><%= f.label :email, t("email") %></th>
+					<td><%= f.text_field :email, :class => 'w230' %></td>
+				</tr>
+				<tr>
+					<th><%= f.label :password, t("password") %></th>
+					<td><%= f.password_field :password, :class => 'w230' %></td>
+				</tr>
+				<% if devise_mapping.rememberable? -%>
+					<tr>
+						<th></th>
+						<td><%= f.check_box :remember_me %>&nbsp;&nbsp;&nbsp;<%= f.label :remember_me, t("remember_me") %></td>
+					</tr>
+				<% end -%>
+				<tr>
+					<th></th>
+					<td>
+						<%= f.submit t("Sign_in_button") %>
+						<%= link_to t('back'), :back, :class => 'big_button' %>
+						<div class="clearfix"></div>
+					</td>
+				</tr>
+				<tr class="more_set">
+					<th></th>
+					<td><br/>
+						<%= render :partial => "devise/shared/links" %>
+						<div class="clearfix"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+<% end %>
+
+
+</div>

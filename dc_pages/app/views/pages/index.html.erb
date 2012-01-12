@@ -1,0 +1,22 @@
+<% title "Pages" %>
+
+<table class="system_table">
+  <tr>
+    <th>Name</th>
+
+	<th class="actions"></th>
+  </tr>
+  <% for page in @pages %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(page)%>">
+      <td><%= page.name %></td>
+
+      <td class="actions"><%= raw the_std_actions( page ) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Page", new_page_path, :class => 'LightBox' %></p>
+
+<% content_for :sidebar do %>
+	<%= render 'pages/sidebar' %>
+<% end %>
