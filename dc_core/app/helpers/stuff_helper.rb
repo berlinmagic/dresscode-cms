@@ -1,3 +1,4 @@
+# encoding: utf-8
 module StuffHelper
   
   def the_std_actions( objekt, view='index' )

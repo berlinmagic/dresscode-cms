@@ -8,6 +8,11 @@ class DcCoreHooks < HookSupport::HookListener
   insert_after :site_headline do
     "<h1>Hallo vom Hook !</h1><br/>"
   end
-  
+  insert_after :site_headline do
+    "<h1>Hallo vom Hook !</h1><br/>"
+  end
+  insert_after :site_headline do
+    "<h1>Hallo vom Hook !</h1><br/>"
+  end
   
 end

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PagesController < ApplicationController
   
   before_filter :authorized_admin, :except => [:show_seite, :render_seiten_error, :render_this_site]
