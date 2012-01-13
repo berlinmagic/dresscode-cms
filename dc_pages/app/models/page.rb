@@ -71,7 +71,7 @@ class Page < ActiveRecord::Base
   
   
   # =====> F I L T E R <======================================================== #
-  before_validation   :felder_fuellen, :make_position
+  before_validation   :set_the_field_values
   
   # =====> F U N C T I O N s <======================================================== #
   def link
@@ -98,30 +98,17 @@ class Page < ActiveRecord::Base
   end
   
   # =====> P R I V A T E - F U N C T I O N s <======================================================== #
-  private
-    
-    def make_position
-      unless new_record?
-        return unless prev_position = Page.find(self.id).position
-        unless self.position.nil?
-          if prev_position > self.position
-            Page.update_all("position = position + 1", ["? <= position AND position < ?", self.position, prev_position])
-          elsif prev_position < self.position
-            Page.update_all("position = position - 1", ["? < position AND position <= ?", prev_position,  self.position])
-          end
-        end
-      end
+private
+  
+  def set_the_field_values
+    self.name         =   self.name.strip
+    self.title        =   self.name.titleize          unless  self.use_title
+    self.headline     =   self.name.titleize          unless  self.headline_type == 'headline'
+    unless ( self.site_type == 'system' ) && self.system_name && ( self.system_name == 'start' )
+      self.slug         =   self.name.to_url
     end
-    
-    def felder_fuellen
-      self.name         =   self.name.strip
-      self.title        =   self.name.titleize          unless  self.use_title
-      self.headline     =   self.name.titleize          unless  self.headline_type == 'headline'
-      unless ( self.site_type == 'system' ) && self.system_name && ( self.system_name == 'start' )
-        self.slug         =   self.name.to_url
-      end
-      self.std_slug     =   self.name.to_url
-    end
+    self.std_slug     =   self.name.to_url
+  end
   
 end
 
