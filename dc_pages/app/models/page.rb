@@ -75,7 +75,6 @@ class Page < ActiveRecord::Base
   
   # =====> F U N C T I O N s <======================================================== #
   def link
-    # => slug_link(self.name)
     if self.fowarding_site && self.external_link && !self.external_link.blank?
       self.external_link
     elsif self.spread_site
@@ -104,9 +103,11 @@ private
     self.name         =   self.name.strip
     self.title        =   self.name.titleize          unless  self.use_title
     self.headline     =   self.name.titleize          unless  self.headline_type == 'headline'
+    # empty slug ('/') for start-page ... maybe replace with start-option & root_to page with start-option
     unless ( self.site_type == 'system' ) && self.system_name && ( self.system_name == 'start' )
       self.slug         =   self.name.to_url
     end
+    # 'real'-slug ('/start') for start-page ... maybe replace with start-option & root_to page with start-option
     self.std_slug     =   self.name.to_url
   end
   
