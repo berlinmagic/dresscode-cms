@@ -6,16 +6,16 @@ class Category < ActiveRecord::Base
   
   default_scope :order => "name ASC"
   
-  before_validation :felder_fuellen
+  before_validation :set_the_field_values
   
   validates :name, :presence => true, :uniqueness => true
   validates :slug, :uniqueness => true
   
   private
 
-    def felder_fuellen
+    def set_the_field_values
       self.name         = self.name.strip.downcase.titleize if self.name
-      self.firstletter  = self.name.strip[0..0].upcase
+      self.firstletter  = self.name.strip[0..0].upcase # saves time in views maybe will be moved in helper
       self.slug         = self.name.to_url
     end
   

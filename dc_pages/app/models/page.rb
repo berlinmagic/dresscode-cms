@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Page < ActiveRecord::Base
   
+  # Pages .. every visible Site should use a Page
+  
   def initialize(*args)
     super(*args)
     last_page = Page.last
@@ -27,8 +29,15 @@ class Page < ActiveRecord::Base
   
   
   # =====> A S S O Z I A T I O N S <======================================================== #
-  has_many      :abschnitte,      :dependent => :destroy
-  accepts_nested_attributes_for   :abschnitte,              :allow_destroy => true
+  has_many :page_rows, :foreign_key => "page_id", :dependent => :destroy
+  has_many :page_cells, :through => :page_rows
+  has_many :page_contents, :through => :page_cells
+  
+  accepts_nested_attributes_for   :page_rows,  :allow_destroy => true
+  
+  
+  #has_many      :abschnitte,      :dependent => :destroy
+  #accepts_nested_attributes_for   :abschnitte,              :allow_destroy => true
   
   has_many      :sub_sites,       :class_name => 'Page',   :foreign_key => :parent_site_id
   belongs_to    :parent_site,     :class_name => 'Page',   :foreign_key => :parent_site_id
