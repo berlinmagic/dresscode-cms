@@ -1,6 +1,6 @@
 class CreatePages < ActiveRecord::Migration
   
-  def self.up
+  def up
     create_table :pages do |t|
       t.string        :name                                     # => Name der Seite & Link-name
       
@@ -28,7 +28,7 @@ class CreatePages < ActiveRecord::Migration
       t.boolean       :fowarding_site,   :default => false       # => Seite ist eine Weiterleitung
       t.string        :external_link,   :default => ''          # => Url der weiterleitung wenn Aktiv
       
-      t.references    :tlayout                                  # => wird noch nicht verwendet
+      # t.references    :tlayout                                  # => wird noch nicht verwendet
       
       t.boolean       :in_main_nav,     :default => true       # => Seite im Header Anzeigen ?
       t.boolean       :in_system_nav,   :default => false        # => Seite im Haupt-/Subnavigation Anzeigen ?
@@ -54,7 +54,7 @@ class CreatePages < ActiveRecord::Migration
       t.integer       :last_author_id                            # => Wer hat die Seite zuletzt geändert
       
       
-      t.text          :text_content               # => Uebergangsloesung fuer Inhalt
+      # => t.text          :text_content                             # => Uebergangsloesung fuer Inhalt
       
       t.timestamps
     end
@@ -66,14 +66,45 @@ class CreatePages < ActiveRecord::Migration
     add_index :pages, :position
     add_index :pages, :parent_site_id
     add_index :pages, :main_site_id
-    add_index :pages, :tlayout_id
+    # => add_index :pages, :tlayout_id
     
     
+    create_table :page_rows do |t|
+      t.string   :dc_uid,              :default => ""
+      
+      t.references :page
+      t.timestamps
+    end
+    add_index :page_rows, :dc_uid, :unique => true
+    add_index :page_rows, :page_id
+    
+    
+    create_table :page_cells do |t|
+      t.string   :dc_uid,              :default => ""
+      
+      t.references :page_row
+      t.timestamps
+    end
+    add_index :page_cells, :dc_uid, :unique => true
+    add_index :page_cells, :page_row_id
+    
+    
+    create_table :page_contents do |t|
+      t.string   :dc_uid,              :default => ""
+      
+      t.references :page_cell
+      t.timestamps
+    end
+    add_index :page_contents, :dc_uid, :unique => true
+    add_index :page_contents, :page_cell_id
     
   end
 
-  def self.down
+  def down
     drop_table :pages
+    drop_table :page_rows
+    drop_table :page_cells
+    drop_table :page_contents
   end
   
   
