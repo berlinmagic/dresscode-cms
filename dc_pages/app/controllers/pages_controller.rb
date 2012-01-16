@@ -27,7 +27,7 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
-    render :layout => 'dynamic', :template => 'pages/edit'
+    render :layout => 'dc', :template => 'pages/edit'
   end
 
   def update

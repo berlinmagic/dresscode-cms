@@ -20,12 +20,7 @@
 		
 		<br/>
 		<br/>
-		
-		<%= f.label :tlayout, "Layout:" %><br/>
-		<%= f.select :tlayout_id, 
-				options_for_select( 
-					Tlayout.all.map { |c| [c.name, c.id.to_i] }, @page.tlayout_id )  %>
-		
+
 		<br/>
 		<br/>
 		<br/>
