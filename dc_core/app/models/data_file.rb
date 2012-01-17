@@ -1,7 +1,6 @@
 # encoding: utf-8
 class DataFile < ActiveRecord::Base
-  
-  # DataFile is the place for all (uploaded-) Data
+  # DataFile is the place for all (uploaded-)Files .. mostly for images but also every other file-type
   
   has_many :attachments,  :dependent => :destroy
   has_many :targets,      :through => :attachments

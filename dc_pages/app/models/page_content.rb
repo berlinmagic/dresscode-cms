@@ -12,6 +12,8 @@ class PageContent < ActiveRecord::Base
   # =====> S C O P E S <======================================================== #
   scope :dcid, lambda { |uid| where("cms_ident = ?", uid) }
   
+  default_scope :order => "position ASC"
+  
   
   # =====> A S S O Z I A T I O N S <======================================================== #
   belongs_to :page_cell, :class_name => "PageCell", :foreign_key => "page_cell_id"

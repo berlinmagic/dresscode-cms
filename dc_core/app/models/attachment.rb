@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Attachment < ActiveRecord::Base
   
-  # Attachment is the polymorphic association for Data-Model
+  # Attachment is the polymorphic association for DataFile
   
   # =>  Associations:     <============================================================================= #
   belongs_to :data_file
@@ -17,9 +17,9 @@ class Attachment < ActiveRecord::Base
 
     def kill_doubles
       Attachment.where( 
-          :data_file_id => self.datei_id, 
-          :target_id => self.target_id, 
-          :target_type => self.target_type 
+          :data_file_id   => self.data_file_id, 
+          :target_id      => self.target_id, 
+          :target_type    => self.target_type 
       ).each do |duble|
         duble.destroy
       end

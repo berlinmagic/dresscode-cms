@@ -35,10 +35,6 @@ class Page < ActiveRecord::Base
   
   accepts_nested_attributes_for   :page_rows,  :allow_destroy => true
   
-  
-  #has_many      :abschnitte,      :dependent => :destroy
-  #accepts_nested_attributes_for   :abschnitte,              :allow_destroy => true
-  
   has_many      :sub_sites,       :class_name => 'Page',   :foreign_key => :parent_site_id
   belongs_to    :parent_site,     :class_name => 'Page',   :foreign_key => :parent_site_id
   belongs_to    :main_site,       :class_name => 'Page',   :foreign_key => :main_site_id
@@ -48,8 +44,6 @@ class Page < ActiveRecord::Base
   belongs_to    :last_author,      :class_name => 'User',    :foreign_key => :last_author_id
   
   # => belongs_to    :tlayout,         :class_name => 'Tlayout',    :foreign_key => :tlayout_id
-  
-  
   # => acts_as_list
   
   
@@ -81,6 +75,8 @@ class Page < ActiveRecord::Base
   
   # =====> F I L T E R <======================================================== #
   before_validation   :set_the_field_values
+  after_save :relaunch_slug_listener
+  
   
   # =====> F U N C T I O N s <======================================================== #
   def link
@@ -105,9 +101,20 @@ class Page < ActiveRecord::Base
     end
   end
   
+  def the_headline
+    if self.headline_type == 'headline'
+      !self.headline.blank? ? self.headline : self.name.titleize
+    elsif self.headline_type == 'name'
+      self.name.titleize
+    else
+      false
+    end
+  end
+  
   # =====> P R I V A T E - F U N C T I O N s <======================================================== #
 private
   
+  # Fill in all needed and system stuff
   def set_the_field_values
     self.name         =   self.name.strip
     self.title        =   self.name.titleize          unless  self.use_title
@@ -118,7 +125,50 @@ private
     end
     # 'real'-slug ('/start') for start-page ... maybe replace with start-option & root_to page with start-option
     self.std_slug     =   self.name.to_url
+    
+    parent_site_check
+    sub_sites_check
   end
+  
+  # Check if Parent-Site present and update slug entries
+  def parent_site_check
+    if self.parent_site
+      self.full_slug      =   "#{ self.parent_site.full_slug }#{ self.std_slug }"
+      self.site_level     =   self.parent_site.site_level + 1
+      self.main_site_id   =   !self.parent_site.main_site_id.blank? ? self.parent_site.main_site_id : self.parent_site.id
+    else
+      self.full_slug      =   self.std_slug
+      self.site_level     =   0
+      self.main_site_id   =   nil
+    end
+  end
+  
+  # Check for Sub-Sites if present update the slugs of all of them
+  def sub_sites_check
+    if self.sub_sites.count > 0
+      update_sub_sites( self )
+    end
+  end
+  
+  # Function to update slugs of sub-sites 
+  def update_sub_sites( site )
+    site.sub_sites.each do |the_sub_site|
+      the_sub_site.full_slug      = "#{ site.full_slug }#{ the_sub_site.std_slug }"
+      the_sub_site.site_level     = site.site_level + 1
+      the_sub_site.main_site_id   = site.main_site_id
+      the_sub_site.save!
+      if the_sub_site.sub_sites.count > 0
+        update_sub_sites( the_sub_site )
+      end
+    end
+  end
+  
+  # Function to relaunch the app .. needed to restart the dynamic-routes
+  def relaunch_slug_listener
+    DcPagePass.new
+    # => StrangeNewsRouterPass.new
+    FileUtils.touch "#{Rails.root}/tmp/restart.txt"
+  end 
   
 end
 

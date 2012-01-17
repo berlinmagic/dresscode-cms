@@ -10,6 +10,8 @@ class CreateDcLists < ActiveRecord::Migration
     end
     add_index :tags, :name,     :unique => true
     add_index :tags, :slug,     :unique => true
+    add_index :tags, :firstletter
+    
     
     create_table :taggings do |t|
       t.references  :target, :polymorphic => true
@@ -17,6 +19,8 @@ class CreateDcLists < ActiveRecord::Migration
       t.timestamps
     end
     add_index :taggings, [:target_type, :target_id]
+    add_index :taggings, :tag
+    
     
     
     create_table :categories do |t|
@@ -30,6 +34,8 @@ class CreateDcLists < ActiveRecord::Migration
     end
     add_index :categories, :name,     :unique => true
     add_index :categories, :slug,     :unique => true
+    add_index :categories, :firstletter
+    
     
     create_table :categorizes do |t|
       t.references  :target, :polymorphic => true
@@ -39,30 +45,8 @@ class CreateDcLists < ActiveRecord::Migration
       t.timestamps
     end
     add_index :categorizes, [:target_type, :target_id]
-    
-    
-    create_table :values do |t|
-      t.string      :name
-      t.text        :content
-      t.string      :param_value
-      t.string      :style
-      t.integer     :position
-      t.references  :value_list
-      t.timestamps
-    end
-    add_index :values, :value_list_id
-    
-    create_table :value_lists do |t|
-      t.string      :name
-      t.text        :description
-      t.string      :param_name
-      t.string      :style
-      t.string      :type
-      t.boolean     :system_stuff,          :default => false
-      t.timestamps
-    end
-    add_index :value_lists, :name,     :unique => true
-    
+    add_index :categorizes, :category
+
     
     
   end
@@ -70,17 +54,18 @@ class CreateDcLists < ActiveRecord::Migration
   def self.down
     remove_index  :tags,            :name
     remove_index  :tags,            :slug
+    remove_index  :tags,            :firstletter
+    remove_index  :taggings,        [:target_type, :target_id]
+    remove_index  :taggings,        :tag
     remove_index  :categories,      :name
     remove_index  :categories,      :slug
+    remove_index  :categories,      :firstletter
     remove_index  :categorizes,     [:target_type, :target_id]
-    remove_index  :values,          :value_list_id
-    remove_index  :value_lists,     :name
+    remove_index  :categorizes,     :category
     drop_table    :tags
     drop_table    :taggings
     drop_table    :categories
     drop_table    :categorizes
-    drop_table    :value_lists
-    drop_table    :values
   end
   
   

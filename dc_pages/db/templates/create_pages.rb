@@ -70,33 +70,39 @@ class CreatePages < ActiveRecord::Migration
     
     
     create_table :page_rows do |t|
-      t.string   :dc_uid,              :default => ""
+      t.string        :dc_uid,              :default => ""
+      t.integer       :position                                 # => Sortierung
       
-      t.references :page
+      t.references    :page
       t.timestamps
     end
     add_index :page_rows, :dc_uid, :unique => true
     add_index :page_rows, :page_id
+    add_index :page_rows, :position
     
     
     create_table :page_cells do |t|
-      t.string   :dc_uid,              :default => ""
+      t.string        :dc_uid,              :default => ""
+      t.integer       :position                                 # => Sortierung
       
-      t.references :page_row
+      t.references    :page_row
       t.timestamps
     end
     add_index :page_cells, :dc_uid, :unique => true
     add_index :page_cells, :page_row_id
+    add_index :page_cells, :position
     
     
     create_table :page_contents do |t|
-      t.string   :dc_uid,              :default => ""
+      t.string        :dc_uid,              :default => ""
+      t.integer       :position                                 # => Sortierung
       
-      t.references :page_cell
+      t.references    :page_cell
       t.timestamps
     end
     add_index :page_contents, :dc_uid, :unique => true
     add_index :page_contents, :page_cell_id
+    add_index :page_contents, :position
     
   end
 
