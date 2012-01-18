@@ -3,14 +3,17 @@
 	<h2>Core - Preferences</h2>
 	<br/>
 	<h3>CMS options</h3>
-	instanz: <%= DC::Config.instance.preference_definitions['site_name'].type %>
+	instanz: <%= DC::Config.instance.preference_definitions['site_name'].da_type %>
+	
+	<%# instanz_model = DC::Config.instance %>
 	<br/>
 	<br/>
-	<table>
+	<table style="width: 100%">
 	<% DC::Config[].each do |key, value| %>
 		<tr>
 			<th><%= key %></th>
-			<td><%= value %></td>
+			<td><%= DC::Config.instance.preference_definitions[key].da_type %></td>
+			<th><%= value %></th>
 		</tr>
 	<% end %>
 	</table>

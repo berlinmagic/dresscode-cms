@@ -26,6 +26,10 @@ module DC
       def default_value
         @column.default
       end
+      
+      def da_type
+        @column.type
+      end
 
       # Typecasts the value based on the type of preference that was defined
       def type_cast(value)
