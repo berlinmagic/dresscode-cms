@@ -22,7 +22,7 @@
 	<% if admin_check %>
 		<%= link_to current_user.email, '#', :id => 'user_button' %>
 		<div class="sub_user_foot_box">
-			<%= link_to 'Abmelden', '/users/sign_out', :class => 'sub_foot' %>
+			<%= link_to 'Abmelden', '/dc/logout', :class => 'sub_foot' %>
 		</div>
 	<% end %>
 </div>

@@ -1,0 +1,3 @@
+/* DressCode-JS-Pipe ... <%= controller.action_name %><%= ' :: ' + @script if !@script.blank? %> ... compiled: <%= Time.now %> */
+<%= raw( js_minify( "#{ yield }" ) ) %>
+<%#= yield %>

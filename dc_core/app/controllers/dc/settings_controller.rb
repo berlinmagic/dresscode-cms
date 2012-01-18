@@ -41,21 +41,7 @@ class Dc::SettingsController < Dc::BaseController
     if @setting_names.include?(@name)
       @u_aktiv = @name
       respond_to do |format|
-        if @name == 'stylez'
-            @pref = params[:pref]
-            @thing = params[:thing] if params[:thing]
-            @area = params[:area] if params[:area]
-            @group = params[:group] if params[:group]
-            @preview = params[:preview] if params[:preview]
-            Strangecms::Stylez::Config.set(params[:preferences])
-            @ok_go = true
-            expire_page	'/system/finestyle.css'
-            expire_page	'/system/admin_finestyle.css'
-            expire_page	'/system/editor_finestyle.css'
-            flash.now[:notice] = I18n.t('strange_preferences.settings_updated')
-            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
-            format.js { render :template => "dc/settings/#{@name}_script" }
-        else
+        
           if Strangecms::Config.set(params[:preferences])
             Strangecms::Preferences::MailSettings.init if (@name == 'mail') || (@name == 'cms')
             if (@name == 'optik')
@@ -73,7 +59,9 @@ class Dc::SettingsController < Dc::BaseController
           else
             format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.updated_error') }
           end
-        end
+        
+        
+        
       end
     else
       flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
@@ -83,7 +71,7 @@ class Dc::SettingsController < Dc::BaseController
   
   def load_strange_setting_names
     # @setting_names = ["cms", "account", "kontakt", "mail", "optik", "user"]
-    @setting_names = ["cms", "account", "mail", "optik", "stylez", "user"]
+    @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
     @aktivio = 'settings'
   end
   

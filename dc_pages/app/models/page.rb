@@ -111,6 +111,10 @@ class Page < ActiveRecord::Base
     end
   end
   
+  def sidebars
+    false
+  end
+  
   # =====> P R I V A T E - F U N C T I O N s <======================================================== #
 private
   

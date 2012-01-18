@@ -1,5 +1,5 @@
 # encoding: utf-8
-class PagesController < ApplicationController
+class Dc::PagesController < ApplicationController
   
   before_filter :authorized_admin, :except => [:show_seite, :render_seiten_error, :render_this_site]
   
@@ -87,6 +87,29 @@ class PagesController < ApplicationController
       else
         render_seiten_error
       end
+  end
+  
+  def show_editable_page
+    this_slug = params[:full_slug].to_s.to_slash
+    @page = Page.find_by_full_slug(this_slug) || Page.find_by_slug(this_slug) || false
+    if @page
+      @title = @page.title
+      @headline = @page.headline
+      render_this_site
+    else
+      render_seiten_error
+    end
+  end
+  
+  def show_editable_root
+    @page = Page.where(:system_name => 'start').first
+    if @page
+      @title = @page.title
+      @headline = @page.headline
+      render_this_site
+    else
+      render_seiten_error
+    end
   end
   
   def render_seiten_error

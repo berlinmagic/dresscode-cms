@@ -1,28 +1,25 @@
-# encoding: utf-8
-## => inspired by Spree  (  https://github.com/spree/spree  &  http://spreecommerce.com/  )  ... thanks a lot !!!
-class CoreConfiguration < Configuration
-  
-  # => Core-Constants
-  
-  
-  
-# ####################################################################################################
-  ### ===   CMS options   ============================================= ###
-  preference :site_name,          :string,      :default => 'DressCode-CMS'
-  preference :site_url,           :string,      :default => 'dressedcode-cms.com'
-  # Use Yui-Compressor
-  preference :compress_stylez,    :boolean,     :default => false
-  preference :compress_scriptz,   :boolean,     :default => false
-  # BackUp-Settings
-  preference :make_backups,       :boolean,     :default => true
-  preference :show_backups,       :boolean,     :default => false
-  # Theme
-  preference :theme,              :string,      :default => 'default'
-  # Safety / Login-Strategy
-  preference :invite_only_site,   :boolean,     :default => 'false'
-  ### =================================================================================== ###
-  
-  
+<div style="margin: 20px 20%">
+	
+	<h2>Core - Preferences</h2>
+	<br/>
+	<h3>CMS options</h3>
+	site_name: <%= DC::Config[:site_name] %><br/>
+	site_url:  <%= DC::Config[:site_url] %><br/>
+	<br/>
+	compress_stylez:  <%= DC::Config[:compress_stylez] %><br/>
+	compress_scriptz:  <%= DC::Config[:compress_scriptz] %><br/>
+	<br/>
+	make_backups:  <%= DC::Config[:make_backups] %><br/>
+	show_backups:  <%= DC::Config[:show_backups] %><br/>
+	<br/>
+	theme:  <%= DC::Config[:theme] %><br/>
+	invite_only_site:  <%= DC::Config[:invite_only_site] %><br/>
+	<br/>
+	
+	theme:  <%= DC::Config[:theme] %><br/>
+	invite_only_site:  <%= DC::Config[:invite_only_site] %><br/>
+	<br/>
+
 # ####################################################################################################
   ### ===   Title options   ============================================= ###
   preference :always_put_site_name_in_title,  :boolean,     :default => true
@@ -151,6 +148,5 @@ class CoreConfiguration < Configuration
   preference :production_mode,    :boolean,     :default => false
   preference :dev_mode_ttl,       :integer,     :default => 30
   ### =================================================================================== ###
-  
-  
-end
+	
+</div>

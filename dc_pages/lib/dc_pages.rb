@@ -7,6 +7,7 @@
   require 'dc_pages/version'
   
   require 'routes/dc_page_pass'
+  require 'routes/dc_edit_page_pass'
   
   # => require 'strange_sites_help'
   # => require 'strange_sites_modul'

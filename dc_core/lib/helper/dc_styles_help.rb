@@ -146,22 +146,23 @@ module DcStylesHelp
 
     def css_minify(css)
       compressor = YUI::CssCompressor.new
-      # => if DC::Config[:compress_stylez]
-      # =>   this_css = compressor.compress(css)
-      # => else
-      # =>   this_css = css
-      # => end
-      this_css = compressor.compress(css)
+      if DC::Config[:compress_stylez]
+        this_css = compressor.compress(css)
+      else
+        this_css = css
+      end
+      # => this_css = compressor.compress(css)
       this_css
     end
     
     def js_minify(js)
       compressor = YUI::JavaScriptCompressor.new(:optimize => true, :preserve_semicolons => false, :munge => true)
-      if DC::Config[:compress_scriptz]
-        this_js = compressor.compress(js)
-      else
-        this_js = js
-      end
+      # => if DC::Config[:compress_scriptz]
+      # =>   this_js = compressor.compress(js)
+      # => else
+      # =>   this_js = js
+      # => end
+      this_js = compressor.compress(js)
       this_js
     end
     

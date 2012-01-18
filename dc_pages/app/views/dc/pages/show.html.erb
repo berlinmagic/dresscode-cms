@@ -1,0 +1,11 @@
+<% title "Page" %>
+
+<p id="notice"><%= notice %></p>
+
+<%= raw @page.text_content %>
+<div class="clearfix"></div>
+
+
+<% content_for :sidebar do %>
+	<%= render 'dc/pages/sidebar' %>
+<% end %>

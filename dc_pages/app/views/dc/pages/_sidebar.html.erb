@@ -1,0 +1,16 @@
+<% Page.all.each do |p| %>
+	<%= link_to raw("<strong>#{p.name}</strong>"), dc_page_path(p), :class => "#{ 'aktiv' if @page && @page == p }" %>
+<% end %>
+
+<br/>
+<br/>
+<br/>
+
+<% if @page %>
+	<%= link_to 'Seite bearbeiten', edit_dc_page_path(@page) %>
+	<br/>
+	<br/>
+	<br/>
+<% end %>
+
+<%= link_to 'neue Seite', new_dc_page_path, :class => 'LightBox' %>

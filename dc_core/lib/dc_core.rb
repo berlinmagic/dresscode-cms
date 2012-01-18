@@ -23,7 +23,9 @@
   require 'dc/preference_access'
   
   # => Config-File (DC::Config[])
-  require 'dc/config'
+  require 'dc/configuration/config'
+  # => Config-File (DC::Stylez::Config[])
+  require 'dc/configuration/stylez/config'
   
   
   # => Load some Helper
@@ -45,3 +47,8 @@
   require 'dc_core/railtie'
   
   # look also in dc_core/config/intializers/*.rb
+  
+  
+  require 'rack/dc_cache'
+  
+  

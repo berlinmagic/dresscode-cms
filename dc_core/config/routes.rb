@@ -29,5 +29,13 @@ Rails.application.routes.draw do
     
   end
   
+  namespace :pipe do
+    
+    match '/script/library/:script.:format' => "scriptz#library"
+    match '/script/dc_libs.:format' => "scriptz#dc_js"
+    
+    
+  end
+  
   
 end
