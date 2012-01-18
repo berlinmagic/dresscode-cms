@@ -1,0 +1,35 @@
+<% title "Layout :: #{@tlayout.name}", false %>
+<%= content_tag(:h2, @tlayout.name) %>
+<p><strong><%= @tlayout.raster.name if @tlayout.raster %></strong></p>
+<p><%= @tlayout.description.blank? ? raw("&nbsp;") : @tlayout.description %></p>
+<div class="absolute_actions">
+	<%= raw the_actions( @tlayout, "show" ) %>
+	<br/><br/>
+	<%= link_to 'Raster ausblenden', '#', :id => "raster_trigger" %>
+	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	<%= link_to "Text-Editor", "/editor" + request.path, :id => "Mercury_edit_link", 
+			:data => { :save_url => mercury_update_dc_tlayout_path(@tlayout) } %>
+	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	<%= link_to '+ Element', new_dc_tlayout_telement_path(@tlayout), :class => 'LightBox', :title => 'Neues Element anlegen' %>
+</div>
+<div class="clearfix"></div>
+
+<%= stylesheet_link_tag "/dc/get_raster/style_#{@tlayout.raster.id}" if @tlayout.raster %>
+<%= stylesheet_link_tag "/dc/template_styles/tl_#{@tlayout.id}" %>
+<div id="layout_content">
+	<br/>
+	<div class="clearfix"></div>
+	<% @tlayout.telements.each do |row| %>
+		
+		<%= render 'dynamic/xchange/tag', :data => row %>
+
+	<% end %>
+	<div class="clearfix"></div>
+	<br/>
+</div>
+
+<% content_for :sidebar do %>
+	<%= render 'dc/tlayouts/sidebar' %>
+<% end %>
+
+<h3><span id="request_area"></span></h3>

@@ -1,0 +1,12 @@
+<% nav = [] %>
+<% Page.all.each do |p| %>
+	<% nav << "#{link_to p.name, p.link}" %>
+<% end %>
+<nav class="system_nav">
+	<%= raw nav.join('&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;')%>
+	
+	<% unless current_user %>
+		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<%= link_to 'Anmelden', '/dc/login' %>
+	<% end %>
+</nav>

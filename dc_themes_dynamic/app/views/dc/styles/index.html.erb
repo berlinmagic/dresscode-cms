@@ -1,0 +1,23 @@
+<% title "Styles" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>The Style</th>
+    <th>Target Type</th>
+    <th>Target</th>
+  </tr>
+  <% for style in @styles %>
+    <tr>
+      <td><%= style.name %></td>
+      <td><%= style.the_style %></td>
+      <td><%= style.target_type %></td>
+      <td><%= style.target_id %></td>
+      <td><%= link_to "Show", [:dc, style] %></td>
+      <td><%= link_to "Edit", edit_dc_style_path(style) %></td>
+      <td><%= link_to "Destroy", [:dc, style], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Style", new_dc_style_path %></p>

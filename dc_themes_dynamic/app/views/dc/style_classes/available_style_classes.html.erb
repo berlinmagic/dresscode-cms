@@ -1,0 +1,20 @@
+<% data ||= @data %>
+<% available_style_classes ||= @available_style_classes %>
+
+
+<div class="Toolz_LB">
+
+<h5 class="icon">verfügbare CD-Classen</h5>
+<br/>
+<div>
+	<div id="tag_form_available_tags">
+		<%= render 'dc/style_classes/a_class', :data => data, :available_style_classes => available_style_classes %>
+	</div>
+
+	<div class="clearfix"></div>
+	<br/>
+			
+</div>
+
+
+</div>

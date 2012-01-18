@@ -1,0 +1,24 @@
+<% title "Style Class" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @style_class.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @style_class.description %>
+</p>
+<p>
+  <strong>The Group:</strong>
+  <%= @style_class.the_group %>
+</p>
+<p>
+  <strong>The Style:</strong>
+  <%= @style_class.the_style %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_style_class_path(@style_class) %> |
+  <%= link_to "Destroy", [:dc, @style_class], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_style_classes_path %>
+</p>

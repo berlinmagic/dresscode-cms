@@ -1,0 +1,50 @@
+<% this_class = '' %>
+
+
+<% this_class += " container_#{data.columns.to_s}" if data.element_type == 'grid_row' %>
+<% this_class += " grid_#{data.columns.to_s}" if data.element_type == 'grid_cell' %>
+
+<% this_childs = [] %>
+
+<% this_childs << 'tag' if data.respond_to?(:element_childs) %>
+<% this_childs << 'widget' if data.respond_to?(:content_childs) %>
+<% this_childs << 'class' if data.respond_to?(:style_classes) %>
+
+<% this_thing = 'Element' if data.class.to_s == 'Telement' %>
+
+<% this_element = 'div' %>
+<% if data.respond_to?(:tag) %>
+	<% if data.tag %>
+		<% this_element = data.tag %>
+	<% end %>
+<% end %>
+
+<%= view_tag( 
+	data, 
+	:class => this_class, 
+	:element => this_element, 
+	:id => data.cms_ident.to_s,
+	:data => {
+		:stuff => "#{data.class.to_s.tableize}0#{data.id}",
+		:thing => this_thing
+		}
+) do %>
+	<% @need_spacer = true %>
+	<% if data.respond_to?(:element_childs) %>
+		<% data.element_childs.each do |t| %>
+			<%= render 'dynamic/tag', :data => t %>
+			<% @need_spacer = false %>
+		<% end %>
+	<% end %>
+	<% if data.respond_to?(:content_childs) %>
+		<% data.content_childs.each do |e| %>
+			<%= render 'dynamic/widget', :data => e %>
+			<% @need_spacer = false %>
+		<% end %>
+	<% end %>
+	<% if @need_spacer %>
+		&nbsp;<br/>
+	<% end %>
+	<div class="clearfix"></div>
+	
+<% end %>

@@ -1,0 +1,138 @@
+<div class="LB_Box">
+	<%#= javascript_include_tag '/assets/telements' %>
+	<%= form_for([:dc, @data, @telement]) do |f| %>
+	  	<%= f.error_messages %>
+		<% this_columns = 	@telement.columns || 1 %>
+		<% this_position = 	@telement.position || 1 %>
+		<% this_tag = 	@telement.tag_list_id || 1 %>
+		<% this_type = 	@telement.element_type || "box" %>
+		<% this_unit = 	@telement.w_unit || "percent" %>
+		<% this_width = @telement.this_width || "100" %>
+		<div class="field">
+			<div class="fl_box_110">
+				<%= f.label :element_type %>
+			</div>
+			<div class="fl_box_210">
+				<%= f.select :element_type, 
+						options_for_select( Telement::TYPES.map { |c| [t("element_types.#{c}"), c]}, this_type)  %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<% if @data %>
+			<% if @objekt_type == 'Tlayout' %>
+				<%= f.hidden_field :tlayout_id, :value => @objekt_id  %>
+				<% this_position = (@data.telements.count + 1) %>
+				<% the_columns = @data.raster.columns %>
+				<% the_column_width = @data.raster.column_width %>
+				<% the_gutter_width = @data.raster.gutter_width %>
+				<% the_conten_width = @data.raster.content_width %>
+				<% the_full_width = @data.raster.full_width %>
+				<div class="field" id="spalten_box">
+					<div class="fl_box_110">
+						<%= f.label :spalten %>
+					</div>
+					<div class="fl_box_210">
+						<select id="telement_spalten" name="telement[spalten]">
+							<option value="0">später anlegen</option>
+							<option value="1">1 Spalte</option>
+							<% [2,3,4,5,6,7,8,9,10,11,12].each do |x| %>
+								<% if @data.raster.columns.modulo(x) == 0 %>
+									<option value="<%= x %>"><%= x %> Spalten</option>
+								<% end %>
+							<% end %>
+						</select>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			<% elsif @objekt_type == 'Telement' %>
+				<%= f.hidden_field :telement_id, :value => @objekt_id  %>
+				<% this_position = (@data.element_childs.count + 1) %>
+				<% the_column_width = @data.master_layout.raster.column_width %>
+				<% the_gutter_width = @data.master_layout.raster.gutter_width %>
+				<% the_conten_width = @data.master_layout.raster.content_width %>
+				<% the_full_width = @data.master_layout.raster.full_width %>
+				
+				<% the_columns = @data.master_layout.raster.columns %>
+				
+				<div class="field" id="spalten_box">
+					<div class="fl_box_110">
+						<%= f.label :spalten %>
+					</div>
+					<div class="fl_box_210">
+						<select id="telement_spalten" name="telement[spalten]">
+							<option value="0">später anlegen</option>
+							<option value="1">1 Spalte</option>
+							<% [2,3,4,5,6,7,8,9,10,11,12].each do |x| %>
+								<% if @data.master_layout.raster.columns.modulo(x) == 0 %>
+									<option value="<%= x %>"><%= x %> Spalten</option>
+								<% end %>
+							<% end %>
+						</select>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			<% end %>
+		<% end %>
+		<%= f.hidden_field :position, :value => this_position  %>
+		<div class="field" id="name_box" data-columns="<%= the_columns %>" data-column-width="<%= the_column_width %>" data-gutter-width="<%= the_gutter_width %>" data-content-width="<%= the_conten_width %>" data-full-width="<%= the_full_width %>">
+			<div class="fl_box_110">
+				<%= f.label :name %>
+			</div>
+			<div class="fl_box_210">
+				<%= f.text_field :name %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="field" id="tag_list_box">
+			<div class="fl_box_110">
+				<%= f.label :tag_list %>
+			</div>
+			<div class="fl_box_210">
+				<%= f.select :tag_list_id, options_for_select( TagList.is_tag.map { |c| [raw("#{c.name}&nbsp;&ndash;&nbsp;&lt;#{c.tag}&gt;"), c.id]}, this_tag)  %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="field" id="columns_box">
+			<div class="fl_box_110">
+				<%= f.label :columns, "Spalten" %>
+			</div>
+			<div class="fl_box_210">
+				<%= f.number_field :columns, :value => this_columns %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="field" id="this_width_box">
+			<div class="fl_box_110">
+				<%= f.label :this_width, "Breite" %>
+			</div>
+			<div class="fl_box_210">
+				<%= f.number_field :this_width, :value => this_width %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="field" id="w_unit_box">
+			<div class="fl_box_110">
+				<%= f.label :w_unit, "Einheit" %>
+			</div>
+			<div class="fl_box_210">
+				<%= f.select :w_unit, 
+						options_for_select( Telement::UNITS.map { |c| [t("element_units.#{c}"), c]}, this_unit)  %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<br/>
+		<div class="actions">
+			<div class="fl_box_110">
+				&nbsp;
+			</div>
+			<div class="fl_box_210">
+				<%= f.submit 'erstellen' %><%= link_to "zurück", :back, :class => 'big_button' %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+	<% end %>
+</div>
+

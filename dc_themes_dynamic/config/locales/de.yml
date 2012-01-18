@@ -1,0 +1,24 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  raster_types:
+      fixed: "Gridsystem 'fixed'"
+      float: "Gridsystem 'float'"
+      free: "Freies Template (kein Grid)"
+  element_types:
+      grid_row: "Grid-Behälter"
+      grid_cell: "Grid-Box"
+      box: "Box"
+      area: "Bereich"
+      tag: "freier Tag"
+  element_count:
+      multi: "Mehrfach-Verwendbar"
+      one: "Einmalig"
+  tag_types:
+      tag: "Tag"
+      html_attr: "Tag-Attribut"
+      data_attr: "Data-Attribut"
+  element_units:
+      pixel: "Pixel"
+      percent: "Prozent"

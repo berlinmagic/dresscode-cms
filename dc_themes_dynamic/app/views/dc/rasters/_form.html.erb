@@ -1,0 +1,142 @@
+<div class="LB_Box">
+
+<%= form_for([:dc, @raster]) do |f| %>
+
+	<%= f.error_messages %>
+	
+	<% this_column_width 	= 	@raster.column_width || 60 %>
+	<% this_gutter_width 	= 	@raster.gutter_width || 20 %>
+	<% this_columns 		= 	@raster.columns || 12 %>
+	<% this_content_width 	= 	@raster.column_width || 940 %>
+	<% this_full_width 		= 	@raster.column_width || 960 %>
+	
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :name %>
+		</div>
+		<div class="fl_box_170">
+			<%= f.text_field :name %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!--
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :description %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.text_area :description, :size => '10x5' %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	-->
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :raster_type %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.select(
+				:raster_type, 
+				options_for_select(
+					Raster::RASTER_TYPES.map{ |r| [t("raster_types.#{r}"), r] } 
+				) ) %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field" id="cwidth_box">
+		<div class="fl_box_110">
+			<%= f.label :content_width %>
+		</div>
+		<div class="fl_box_150">
+			<%= f.text_field :content_width, :value => this_content_width %>
+		</div>
+		<div class="fl_box_110" id="content_width_unit">
+			Pixel
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field" id="c_box">
+		<div class="fl_box_110">
+			<%= f.label :columns %>
+		</div>
+		<div class="fl_box_150">
+			<%= f.text_field :columns, :value => this_columns %>
+		</div>
+		<div class="fl_box_110">
+			Pixel
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field" id="c_width_box">
+		<div class="fl_box_110">
+			<%= f.label :column_width %>
+		</div>
+		<div class="fl_box_150">
+			<%= f.text_field :column_width, :value => this_column_width %>
+		</div>
+		<div class="fl_box_110">
+			Pixel
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field" id="g_width_box">
+		<div class="fl_box_110">
+			<%= f.label :gutter_width %>
+		</div>
+		<div class="fl_box_150">
+			<%= f.text_field :gutter_width, :value => this_gutter_width %>
+		</div>
+		<div class="fl_box_110">
+			Pixel
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	
+	<div class="field" id="cwidth_table">
+		<div class="fl_box_110">
+			Inhalt | Voll
+		</div>
+		<div class="fl_box_150">
+			<span id="content_width_out"><%= this_content_width %></span>
+			&nbsp;|&nbsp;
+			<span id="full_width_out"><%= this_full_width %></span>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	
+	
+	<div class="field" id="fwidth_box">
+		<div class="fl_box_110">
+			<%= f.label :full_width %>
+		</div>
+		<div class="fl_box_150">
+			<%= f.text_field :full_width, :value => this_full_width %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	
+	
+	<br/>
+	
+	<div class="actions">
+		<div class="fl_box_110">
+			&nbsp;
+		</div>
+		<div class="fl_box_150">
+			<%= f.submit %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<div class="clearfix"></div>
+
+<% end %>
+</div>
+
+

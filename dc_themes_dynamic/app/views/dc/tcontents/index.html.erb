@@ -1,0 +1,36 @@
+<% title "Tcontents" %>
+
+<table class="system_table">
+  <tr>
+    <th>Name</th>
+    <th>Cms Ident</th>
+    <th>Position</th>
+    <th>Columns</th>
+    <th>Tlayout</th>
+    <th>Telement</th>
+    <th>This Layout</th>
+    <th>Twidget</th>
+    <th>Text Content</th>
+    <th>This Width</th>
+    <th>W Unit</th>
+	<th class="actions"></th>
+  </tr>
+  <% for tcontent in @tcontents %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(tcontent)%>">
+      <td><%= tcontent.name %></td>
+      <td><%= tcontent.cms_ident %></td>
+      <td><%= tcontent.position %></td>
+      <td><%= tcontent.columns %></td>
+      <td><%= tcontent.tlayout %></td>
+      <td><%= tcontent.telement %></td>
+      <td><%= tcontent.this_layout %></td>
+      <td><%= tcontent.twidget %></td>
+      <td><%= tcontent.text_content %></td>
+      <td><%= tcontent.this_width %></td>
+      <td><%= tcontent.w_unit %></td>
+      <td class="actions"><%= raw the_actions( tcontent ) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Tcontent", new_dc_tcontent_path %></p>

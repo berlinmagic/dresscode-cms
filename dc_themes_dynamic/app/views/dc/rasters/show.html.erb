@@ -1,0 +1,66 @@
+<% title "Raster", false %>
+
+<p>
+  <strong><%= @raster.name %> :</strong>
+&nbsp;&mdash;&nbsp;
+  <strong><%= @raster.columns %></strong> Spalten
+&nbsp;&mdash;&nbsp;
+  <strong>Spalten-Breite:</strong>
+  <%= @raster.column_width %> Pixel
+&nbsp;&mdash;&nbsp;
+  <strong>Abstand:</strong>
+  <%= @raster.gutter_width %> Pixel
+</p>
+<p>
+  <strong>Inhalt:</strong>
+  <%= @raster.content_width %> Pixel
+&nbsp;&mdash;&nbsp;
+  <strong>Seite:</strong>
+  <%= @raster.full_width %> Pixel
+&nbsp;&mdash;&nbsp;
+  <strong>Raster Type:</strong>
+  <%= @raster.raster_type %>
+</p>
+<p>
+  <%= @raster.description %>
+</p>
+
+<div class="absolute_actions">
+	<%= raw the_actions( @raster, "show" ) %>
+</div>
+
+<% gwidth = @raster.gutter_width %>
+<% cwidth = @raster.column_width + gwidth %>
+
+<%= stylesheet_link_tag "/dc/get_raster/style_#{@raster.id}" %>
+
+
+<div id="example_wrapper">
+	<div class="example_row container_<%= @raster.columns %>">
+		<% @raster.columns.times do |t| %>
+			<div class="example_cell grid_1">1</div>
+		<% end %>
+		<div class="clearfix"></div>
+	</div>
+	<% @raster.columns.times do |t| %>
+		<div class="example_row container_<%= @raster.columns %>">
+			<div class="example_cell grid_<%= t + 1 %>">
+				<% this = t + 1 -%>
+				<strong><%= this %></strong><br/><%= this * cwidth - gwidth %> px
+			</div>
+			<% if ( t + 1 ) < @raster.columns %>
+				<div class="example_cell grid_<%= @raster.columns - t - 1 %>">
+					<% this = @raster.columns - t - 1 -%>
+					<strong><%= this %></strong><br/><%= this * cwidth - gwidth %> px
+				</div>
+			<% end %>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+</div>
+
+
+
+<% content_for :sidebar do %>
+	<%= render 'dc/rasters/sidebar' %>
+<% end %>

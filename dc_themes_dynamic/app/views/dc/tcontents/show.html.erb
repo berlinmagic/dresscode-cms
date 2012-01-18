@@ -1,0 +1,52 @@
+<% title "Tcontent" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tcontent.name %>
+</p>
+<p>
+  <strong>Cms Ident:</strong>
+  <%= @tcontent.cms_ident %>
+</p>
+<p>
+  <strong>Position:</strong>
+  <%= @tcontent.position %>
+</p>
+<p>
+  <strong>Columns:</strong>
+  <%= @tcontent.columns %>
+</p>
+<p>
+  <strong>Tlayout:</strong>
+  <%= @tcontent.tlayout %>
+</p>
+<p>
+  <strong>Telement:</strong>
+  <%= @tcontent.telement %>
+</p>
+<p>
+  <strong>This Layout:</strong>
+  <%= @tcontent.this_layout %>
+</p>
+<p>
+  <strong>Twidget:</strong>
+  <%= @tcontent.twidget %>
+</p>
+<p>
+  <strong>Text Content:</strong>
+  <%= @tcontent.text_content %>
+</p>
+<p>
+  <strong>This Width:</strong>
+  <%= @tcontent.this_width %>
+</p>
+<p>
+  <strong>W Unit:</strong>
+  <%= @tcontent.w_unit %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_tcontent_path(@tcontent) %> |
+  <%= link_to "Destroy", [:dc, @tcontent], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_tcontents_path %>
+</p>

@@ -1,0 +1,24 @@
+<% title "Twidget" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @twidget.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @twidget.description %>
+</p>
+<p>
+  <strong>Widget Count:</strong>
+  <%= @twidget.widget_count %>
+</p>
+<p>
+  <strong>Widget Layout:</strong>
+  <%= @twidget.widget_layout %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_twidget_path(@twidget) %> |
+  <%= link_to "Destroy", [:dc, @twidget], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_twidgets_path %>
+</p>

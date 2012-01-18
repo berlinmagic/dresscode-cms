@@ -1,0 +1,25 @@
+<%# title "Layouts" %>
+
+<table class="system_table">
+  <tr>
+    <th>Name</th>
+    <th>Beschreibung</th>
+    <th>Raster</th>
+	<th class="actions"></th>
+  </tr>
+  <% for tlayout in @tlayouts %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(tlayout)%>">
+      <td><%= link_to tlayout.name, [:dc, tlayout] %></td>
+      <td><%= tlayout.description %></td>
+      <td><%= tlayout.raster.name %></td>
+      <td class="actions"><%= raw the_actions( tlayout ) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Tlayout", new_dc_tlayout_path, :class => 'LightBox', :title => 'Neues Layout anlegen'  %></p>
+
+
+<% content_for :sidebar do %>
+	<%= render 'dc/tlayouts/sidebar' %>
+<% end %>

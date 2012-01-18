@@ -1,0 +1,28 @@
+<% title "Telements" %>
+
+<table class="system_table">
+  <tr>
+    <th>Name</th>
+    <th>Cms Ident</th>
+    <th>Position</th>
+    <th>Columns</th>
+    <th>Element Type</th>
+    <th>Element Level</th>
+
+	<th class="actions"></th>
+  </tr>
+  <% for telement in @telements %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(telement)%>">
+      <td><%= telement.name %></td>
+      <td><%= telement.cms_ident %></td>
+      <td><%= telement.position %></td>
+      <td><%= telement.columns %></td>
+      <td><%= telement.element_type %></td>
+      <td><%= telement.element_level %></td>
+
+      <td class="actions"><%= raw the_actions( telement ) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Telement", new_dc_telement_path, :class => 'LightBox' %></p>

@@ -1,0 +1,24 @@
+<% title "Tag Assignment" %>
+
+<p>
+  <strong>The Tag:</strong>
+  <%= @tag_assignment.the_tag %>
+</p>
+<p>
+  <strong>The Data:</strong>
+  <%= @tag_assignment.the_data %>
+</p>
+<p>
+  <strong>Needed:</strong>
+  <%= @tag_assignment.needed %>
+</p>
+<p>
+  <strong>Has Value:</strong>
+  <%= @tag_assignment.has_value %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_tag_assignment_path(@tag_assignment) %> |
+  <%= link_to "Destroy", [:dc, @tag_assignment], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_tag_assignments_path %>
+</p>

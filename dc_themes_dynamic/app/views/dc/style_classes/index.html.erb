@@ -1,0 +1,23 @@
+<% title "Style Classes" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>The Group</th>
+    <th>The Style</th>
+  </tr>
+  <% for style_class in @style_classes %>
+    <tr>
+      <td><%= style_class.name %></td>
+      <td><%= style_class.description %></td>
+      <td><%= style_class.the_group %></td>
+      <td><%= style_class.the_style %></td>
+      <td><%= link_to "Show", [:dc, style_class] %></td>
+      <td><%= link_to "Edit", edit_dc_style_class_path(style_class) %></td>
+      <td><%= link_to "Destroy", [:dc, style_class], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Style Class", new_dc_style_class_path %></p>

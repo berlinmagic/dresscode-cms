@@ -1,0 +1,20 @@
+<%= form_for [:dc, @tag_assignment] do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :the_tag %><br />
+    <%= f.number_field :the_tag %>
+  </p>
+  <p>
+    <%= f.label :the_data %><br />
+    <%= f.number_field :the_data %>
+  </p>
+  <p>
+    <%= f.label :needed %><br />
+    <%= f.check_box :needed %>
+  </p>
+  <p>
+    <%= f.label :has_value %><br />
+    <%= f.check_box :has_value %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

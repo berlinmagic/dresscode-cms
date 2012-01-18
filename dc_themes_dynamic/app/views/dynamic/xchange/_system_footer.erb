@@ -1,0 +1,56 @@
+<div class="foot_box">
+	<%= link_to 'Layout', dc_tlayouts_path, 
+		:class => "foot_box #{'aktiv' if controller.controller_name == 'tlayouts'}",
+		:title => 'Templates'  %>
+	<div class="sub_foot_box">
+		<% Tlayout.all.each do |l| %>
+			<%= link_to l.name, [:dc, l], :class => 'sub_foot' %>
+		<% end %>
+	</div>
+</div>
+
+
+<div class="foot_box">
+<%= link_to 'Raster', dc_rasters_path, 
+		:class => "foot_box #{'aktiv' if controller.controller_name == 'rasters'}",
+		:title => 'Raster'  %>
+	<div class="sub_foot_box">
+		<% Raster.all.each do |r| %>
+			<%= link_to r.name, [:dc, r], :class => 'sub_foot' %>
+		<% end %>
+	</div>
+</div>
+
+<div class="foot_box">
+	<%= link_to 'Tag', dc_tag_lists_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'tag_lists'}",
+			:title => 'Tag´s' %>
+</div>
+
+<div class="foot_box">
+	<%= link_to 'Widget', dc_twidgets_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'twidgets'}",
+			:title => 'Template-Widgets' %>
+</div>
+
+<div class="foot_box">
+	<%= link_to 'Page', pages_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'pages'}",
+			:title => 'Seiten' %>
+	<div class="sub_foot_box">
+		<% Page.all.each do |p| %>
+			<%= link_to raw("<strong>#{p.name}</strong>&nbsp;&nbsp;&nbsp;(#{p.tlayout.name})"), p, :class => 'sub_foot' %>
+		<% end %>
+	</div>
+</div>
+
+
+
+<div id="user_foot">
+	<% if admin_check %>
+		<%= link_to current_user.email, '#', :id => 'user_button' %>
+		<div class="sub_user_foot_box">
+			<%= link_to 'Abmelden', '/users/sign_out', :class => 'sub_foot' %>
+		</div>
+	<% end %>
+</div>

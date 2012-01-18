@@ -1,0 +1,24 @@
+<% title "Style" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @style.name %>
+</p>
+<p>
+  <strong>The Style:</strong>
+  <%= @style.the_style %>
+</p>
+<p>
+  <strong>Target Type:</strong>
+  <%= @style.target_type %>
+</p>
+<p>
+  <strong>Target:</strong>
+  <%= @style.target_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_style_path(@style) %> |
+  <%= link_to "Destroy", [:dc, @style], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_styles_path %>
+</p>

@@ -1,0 +1,37 @@
+<% title "Rasters" %>
+
+<table class="system_table">
+  <tr>
+    <th>Name</th>
+    <th>Columns</th>
+    <th>Spalten-Breite</th>
+    <th>Abstand</th>
+    <th>Inhalt</th>
+    <th>Seite</th>
+    <th>Typ</th>
+	<th class="actions"></th>
+  </tr>
+  <% for raster in @rasters %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(raster)%>">
+      <td><%= link_to raster.name, [:dc, raster] %></td>
+      <td><%= raster.columns %></td>
+      <td><%= raster.column_width %></td>
+      <td><%= raster.gutter_width %></td>
+      <td><%= raster.content_width %></td>
+      <td><%= raster.full_width %></td>
+      <td><%= raster.raster_type %></td>
+      <td class="actions"><%= raw the_actions( raster ) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Raster", new_dc_raster_path, :class => 'LightBox'  %></p>
+
+
+
+
+<% content_for :sidebar do %>
+	<%= render 'dc/rasters/sidebar' %>
+<% end %>
+
+

@@ -1,0 +1,33 @@
+/* <%= @raster.name %> */
+<% columns = @raster.columns %>
+
+body { min-width: <%= @raster.full_width %>px; }
+
+.container_<%= columns %> {
+	margin-left: auto;
+	margin-right: auto;
+	width: <%= @raster.full_width %>px;
+}
+
+
+<% columns.times do |t| %>
+.grid_<%= t + 1 %><%= ',' if (t + 1) < columns %>
+<% end %>
+{
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: <%= @raster.gutter_width / 2 %>px;
+	margin-right: <%= @raster.gutter_width / 2 %>px;
+}
+
+<% wt = @raster.gutter_width + @raster.column_width %>
+
+<% columns.times do |t| %>
+<% this_count = t + 1 %> 
+.container_<%= @raster.columns %> .grid_<%= this_count %> { width: <%= wt * this_count - @raster.gutter_width %>px; }
+<% end %>
+
+
+
+

@@ -1,0 +1,13 @@
+<% title "Telement" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @telement.name %>
+</p>
+
+
+<p>
+  <%= link_to "Edit", edit_dc_telement_path(@telement) %> |
+  <%= link_to "Destroy", [:dc, @telement], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_telements_path %>
+</p>

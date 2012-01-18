@@ -1,0 +1,22 @@
+<% title "Twidgets" %>
+
+<table class="system_table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Widget Count</th>
+    <th>Widget Layout</th>
+	<th class="actions"></th>
+  </tr>
+  <% for twidget in @twidgets %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(twidget)%>">
+      <td><%= twidget.name %></td>
+      <td><%= twidget.description %></td>
+      <td><%= twidget.widget_count %></td>
+      <td><%= twidget.widget_layout %></td>
+      <td class="actions"><%= raw the_actions( twidget ) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Twidget", new_dc_twidget_path, :class => 'LightBox' %></p>

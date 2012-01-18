@@ -1,0 +1,5 @@
+<div class="view_widget">
+	<% if data.twidget && data.twidget.widget_layout %>
+		<%= render "dynamic/partials/#{ data.twidget.widget_layout }", :data => data, :widget => data.twidget %>
+	<% end %>
+</div>

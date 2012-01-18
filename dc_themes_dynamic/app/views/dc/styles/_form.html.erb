@@ -1,0 +1,43 @@
+<div class="LB_Box">
+<%= form_for [:dc, @data, @style] do |f| %>
+  <%= f.error_messages %>
+	
+	<% if @data %>
+		<%= f.hidden_field :target_type, :value => @objekt_type %>
+		<%= f.hidden_field :target_id, :value => @objekt_id %>
+	<% end %>
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :name %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.text_field :name %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :the_style %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.text_area :the_style %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<br/>
+	
+	<div class="actions">
+		<div class="fl_box_110">
+			&nbsp;
+		</div>
+		<div class="fl_box_150">
+			<%= f.submit %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+<% end %>
+</div>

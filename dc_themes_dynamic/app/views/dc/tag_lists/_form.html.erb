@@ -1,0 +1,71 @@
+<div class="LB_Box">
+	<%= form_for([:dc, @data, @tag_list]) do |f| %>
+		
+	<%= f.error_messages %>
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :name %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.text_field :name %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :tag %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.text_field :tag %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :description %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.text_area :description, :rows => 5 %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="field">
+		<div class="fl_box_110">
+			 <%= f.label :tag_type %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.select(:tag_type, options_for_select(TagList::TYPES.map{ |c| [t("tag_types.#{c}"), c] }) ) %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="field">
+		<div class="fl_box_110">
+			 <%= f.label :tag_counter %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.select(:tag_counter, options_for_select(TagList::COUNT.map{ |c| [t("element_count.#{c}"), c] }) ) %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="field">
+		<div class="fl_box_110">
+			 <%= f.label :system_stuff %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.check_box :system_stuff %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<br/>
+	<div class="actions">
+		<div class="fl_box_110">
+			&nbsp;
+		</div>
+		<div class="fl_box_210">
+			<%= f.submit %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<% end %>
+</div>
+

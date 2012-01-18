@@ -1,0 +1,8 @@
+<% data ||= @data %>
+<% available_style_classes ||= @available_style_classes %>
+
+<% available_style_classes.each do |sc| %>
+	
+<%= link_to sc.name, "/dc/#{data.class.to_s.tableize}/#{data.id}/style_classes/#{sc.id}/select_style_class", :remote => true %>
+		
+<% end %>

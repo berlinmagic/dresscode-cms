@@ -1,0 +1,28 @@
+<% title "Tag List" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tag_list.name %>
+</p>
+<p>
+  <strong>Tag:</strong>
+  <%= @tag_list.tag %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @tag_list.description %>
+</p>
+<p>
+  <strong>Tag Type:</strong>
+  <%= @tag_list.tag_type %>
+</p>
+<p>
+  <strong>System Stuff:</strong>
+  <%= @tag_list.system_stuff %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_tag_list_path(@tag_list) %> |
+  <%= link_to "Destroy", [:dc, @tag_list], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_tag_lists_path %>
+</p>

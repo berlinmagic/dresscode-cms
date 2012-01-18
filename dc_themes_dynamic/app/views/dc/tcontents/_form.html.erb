@@ -1,0 +1,57 @@
+<div class="LB_Box">
+<%= form_for([:dc, @data, @tcontent]) do |f| %>
+	<%= f.error_messages %>
+	<% if @data %>
+		<% master_layout = @data.master_layout %>
+		<%= f.hidden_field :this_value, :value => master_layout.id %>
+		<% if @objekt_type == 'Tlayout' %>
+			<%= f.hidden_field :tlayout_id, :value => @data.id %>
+		<% elsif @objekt_type == 'Telement' %>
+			<%= f.hidden_field :telement_id, :value => @data.id %>
+		<% end %>
+	<% end %>
+	<div class="field">
+		<div class="fl_box_150">
+			<%= f.label :twidget, 'Widget' %>
+		</div>
+		<div class="fl_box_210">
+			<select id="tcontent_twidget_id" name="tcontent[twidget_id]">
+				<% Twidget.all.each do |w| %>
+					<% if w.widget_count == 'one' %>
+						<% @is_used = false %>
+						<%  @data.master_layout.all_contents.each do |c| %>
+							<% @is_used = true if c.twidget_id == w.id %>
+						<% end %>
+						<% unless @is_used %>
+							<option value="<%= w.id %>"> <%= w.name %> </option>
+						<% end %>
+					<% else %>
+						<option value="<%= w.id %>"> <%= w.name %> </option>
+					<% end %>
+				<% end %>
+			</select>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="field">
+		<div class="fl_box_150">
+			<%= f.label :name, 'zusätzlicher Name:' %>
+		</div>
+		<div class="fl_box_210">
+			<%= f.text_field :name %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<br/>
+	<div class="actions">
+		<div class="fl_box_150">
+			&nbsp;
+		</div>
+		<div class="fl_box_150">
+			<%= f.submit %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<% end %>
+</div>
+

@@ -1,0 +1,13 @@
+<% if @rasters %>
+	<% for raster in @rasters %>
+		<%= link_to raster.name, dc_raster_path(raster) %>
+	<% end %>
+<% else %>
+	<% Raster.all.each do |r| %>
+		<%= link_to r.name, dc_raster_path(r), 
+		 	:class => "#{'aktiv' if @raster && @raster == r}"%>
+	<% end %>
+<% end %>
+<br/>
+<br/>
+<%= link_to 'neues Raster', new_dc_raster_path, :class => 'LightBox' %>

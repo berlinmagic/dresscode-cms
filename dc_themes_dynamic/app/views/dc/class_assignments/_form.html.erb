@@ -1,0 +1,16 @@
+<%= form_for [:dc, @class_assignment] do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :style_class %><br />
+    <%= f.text_field :style_class %>
+  </p>
+  <p>
+    <%= f.label :target_type %><br />
+    <%= f.text_field :target_type %>
+  </p>
+  <p>
+    <%= f.label :target_id %><br />
+    <%= f.number_field :target_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

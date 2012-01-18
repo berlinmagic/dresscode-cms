@@ -1,0 +1,20 @@
+<% title "Class Assignment" %>
+
+<p>
+  <strong>Style Class:</strong>
+  <%= @class_assignment.style_class %>
+</p>
+<p>
+  <strong>Target Type:</strong>
+  <%= @class_assignment.target_type %>
+</p>
+<p>
+  <strong>Target:</strong>
+  <%= @class_assignment.target_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dc_class_assignment_path(@class_assignment) %> |
+  <%= link_to "Destroy", [:dc, @class_assignment], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dc_class_assignments_path %>
+</p>
