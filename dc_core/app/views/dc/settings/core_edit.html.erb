@@ -7,14 +7,14 @@
 	<h2>Core - Preferences</h2>
 	<br/>
 	<h3>CMS options</h3>
-	site_name: <%= DC::Config[:site_name] %><br/>
+	site_name: <%= text_field_tag('preferences[site_name]', DC::Config[:site_name], :size => 50 )%><br/>
 	site_url:  <%= DC::Config[:site_url] %><br/>
 	<br/>
 	compress_stylez:  <%= DC::Config[:compress_stylez] %><br/>
 	compress_scriptz:  <%= DC::Config[:compress_scriptz] %><br/>
 	<br/>
-	make_backups:  <%= DC::Config[:make_backups] %><br/>
-	show_backups:  <%= DC::Config[:show_backups] %><br/>
+	make_backups:  <%= dc_bool_tag('make_backups') %><br/>
+	show_backups:  <%= dc_bool_tag('show_backups') %><br/>
 	<br/>
 	theme:  <%= DC::Config[:theme] %><br/>
 	invite_only_site:  <%= DC::Config[:invite_only_site] %><br/>
@@ -23,6 +23,7 @@
 	theme:  <%= DC::Config[:theme] %><br/>
 	invite_only_site:  <%= DC::Config[:invite_only_site] %><br/>
 	<br/>
+	<%= submit_tag %>
 
 # ####################################################################################################
   ### ===   Title options   ============================================= ###
@@ -152,5 +153,5 @@
   preference :production_mode,    :boolean,     :default => false
   preference :dev_mode_ttl,       :integer,     :default => 30
   ### =================================================================================== ###
-	
+<% end %>	
 </div>

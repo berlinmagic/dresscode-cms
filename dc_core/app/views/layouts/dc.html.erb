@@ -49,6 +49,9 @@
 <% if current_user %>
 <style>
 #main_content { padding: 0;}
+.on_off_schalter { width: 114px; height:26px; display:block; position:relative; background: transparent url('/images/strange_on_off_regler_k.png') no-repeat; border: solid 1px #aaa; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; overflow: hidden; cursor: pointer;}
+.on_off_schalter.an { background-position: 0px 0px; }
+.on_off_schalter.aus { background-position: -76px 0px; }
 </style>
 
 <div id="system_content">

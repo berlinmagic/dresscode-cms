@@ -3,6 +3,18 @@
 	<h2>Core - Preferences</h2>
 	<br/>
 	<h3>CMS options</h3>
+	instanz: <%= DC::Config.instance.preference_definitions['site_name'].type %>
+	<br/>
+	<br/>
+	<table>
+	<% DC::Config[].each do |key, value| %>
+		<tr>
+			<th><%= key %></th>
+			<td><%= value %></td>
+		</tr>
+	<% end %>
+	</table>
+	
 	site_name: <%= DC::Config[:site_name] %><br/>
 	site_url:  <%= DC::Config[:site_url] %><br/>
 	<br/>
