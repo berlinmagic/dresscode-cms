@@ -14,7 +14,8 @@ class Dc::SettingsController < Dc::BaseController
       if @name == 'user'
         @owners = User.where(:group_id => 1)
       end
-      render "dc/settings/#{@name}"
+      # => render "dc/settings/#{@name}"
+      render "dc/settings/show"
     else
       flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
       render :index
@@ -28,7 +29,8 @@ class Dc::SettingsController < Dc::BaseController
     @name = params[:name] || params[:id]
     if @setting_names.include?(@name)
       @u_aktiv = @name
-      render :template => "dc/settings/#{@name}_edit"
+      # => render :template => "dc/settings/#{@name}_edit"
+      render :template => "dc/settings/edit"
     else
       flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
       render :index
@@ -41,13 +43,19 @@ class Dc::SettingsController < Dc::BaseController
     if @setting_names.include?(@name)
       @u_aktiv = @name
       respond_to do |format|
-        
+        unless @name == 'core'
+          if "DC::#{@name.classify}".constantize::Config.set(params[:preferences])
+            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
+          else
+            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.updated_error') }
+          end
+        else
           if DC::Config.set(params[:preferences])
             format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
           else
             format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.updated_error') }
           end
-        
+        end
         
         
       end
@@ -59,7 +67,8 @@ class Dc::SettingsController < Dc::BaseController
   
   def load_strange_setting_names
     # @setting_names = ["cms", "account", "kontakt", "mail", "optik", "user"]
-    @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
+    # => @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
+    @setting_names = ["core", "stylez", "user"]
     @aktivio = 'settings'
   end
   

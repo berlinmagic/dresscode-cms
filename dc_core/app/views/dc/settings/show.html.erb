@@ -1,0 +1,37 @@
+<div style="margin: 20px 20%">
+	
+	<h2>Core - Preferences</h2>
+	<br/>
+	<h3>CMS options</h3>
+	
+	<%#= DC::Config.instance.preference_definitions['site_name'].da_type %>
+	<%# instanz_model = DC::Config.instance %>
+	<% if @name && @name == 'core' %>
+		Instanz: <strong><%= DC::Config.instance.class.to_s %></strong>
+		<br/>
+		<table style="width: 100%">
+		<% DC::Config[].each do |key, value| %>
+			<tr>
+				<th><%= key.titleize %></th>
+				<td><%= DC::Config.instance.preference_definitions[key].da_type %></td>
+				<th><%= value %></th>
+			</tr>
+		<% end %>
+		</table>
+		<br/>
+	<% else %>
+		Instanz: <strong><%= "DC::#{@name.classify}".constantize::Config.instance.class.to_s %></strong>
+		<br/>
+		<table style="width: 100%">
+		<% "DC::#{@name.classify}".constantize::Config[].each do |key, value| %>
+			<tr>
+				<th><%= key.titleize %></th>
+				<td><%= "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key].da_type %></td>
+				<th><%= value %></th>
+			</tr>
+		<% end %>
+		</table>
+		<br/>
+	<% end %>
+	
+</div>

@@ -2,6 +2,18 @@
 
 <div class="side_box">
 	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
+		<%= link_to "Auto", dc_settings_path %>
+	</div>
+	<ul class='sidebar'>
+		<li><%= link_to 'Core', dc_settings_path+ '/core', :class => "#{'aktiv' if @name && @name == 'core'}" %></li>
+		<li><%= link_to 'Core', dc_settings_path+ '/user', :class => "#{'aktiv' if @name && @name == 'user'}" %></li>
+		<li><%= link_to 'Core', dc_settings_path+ '/style', :class => "#{'aktiv' if @name && @name == 'style'}" %></li>
+	</ul>
+</div>
+
+
+<div class="side_box">
+	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
 		<%= link_to t('dc.prefs'), dc_settings_path %>
 	</div>
 	<ul class='sidebar'>

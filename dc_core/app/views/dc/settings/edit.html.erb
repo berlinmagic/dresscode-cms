@@ -1,0 +1,54 @@
+<div style="margin: 20px 20%">
+<%= form_tag(dc_setting_path(@name), :method => :put) do -%>
+	<%= hidden_field_tag('name', @name, :size => 50 ) %>
+	
+	<h2>Edit - <%= @name.titleize %> - Preferences</h2>
+	<br/>
+	<% if @name && @name == 'core' %>
+		<table>
+			<% DC::Config[].each do |key, value| %>
+				<tr>
+					<th><%= key %>: </th>
+					<td>
+						<% pref_type = DC::Config.instance.preference_definitions[key].da_type.to_s %>
+						<% unless key == 'logo_datei' %>
+							<% if pref_type == 'boolean' %>
+								<%= dc_bool_tag( key ) %>
+							<% elsif pref_type == 'string' %>
+								<%= text_field_tag("preferences[#{key}]", DC::Config[ key ], :size => 50 )%>
+							<% elsif pref_type == 'integer' %>
+								<%= text_field_tag("preferences[#{key}]", DC::Config[ key ], :size => 20 )%>
+							<% end %>
+						<% else %>
+							Link folgt
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<table>
+			<% "DC::#{@name.classify}".constantize::Config[].each do |key, value| %>
+				<tr>
+					<th><%= key %>: </th>
+					<td>
+						<% pref_type = "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key].da_type.to_s %>
+						<% if pref_type == 'boolean' %>
+							<%= dc_bool_tag( key ) %>
+						<% elsif pref_type == 'string' %>
+							<%= text_field_tag("preferences[#{key}]", "DC::#{@name.classify}".constantize::Config[ key ], :size => 50 )%>
+						<% elsif pref_type == 'integer' %>
+							<%= text_field_tag("preferences[#{key}]", "DC::#{@name.classify}".constantize::Config[ key ], :size => 20 )%>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+	
+	<br/>
+	<%= submit_tag %>
+	<br/><br/>
+
+<% end %>	
+</div>
