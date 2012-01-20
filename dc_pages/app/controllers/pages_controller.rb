@@ -1,5 +1,5 @@
 # encoding: utf-8
-class PagesController < ApplicationController
+class PagesController < BaseController
   
   before_filter :authorized_admin, :except => [:show_seite, :render_seiten_error, :render_this_site]
   
@@ -98,7 +98,7 @@ class PagesController < ApplicationController
     if @page.is_deleted?
       render_seiten_error
     else
-      render :layout => 'dc', :template => 'pages/show'
+      render :layout => themed_path('dc'), :template => 'pages/show'
     end
   end
   

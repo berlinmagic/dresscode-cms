@@ -1,6 +1,5 @@
-   
-
-
+# encoding: utf-8
+# ick hätt´s jern in utf, dankeschön. ähh .. müßte klappen # => litle joke, to force utf-8 encoding
 
 grids = Raster.create!([
   
@@ -116,3 +115,5 @@ content_elemente = Tcontent.create!([
       { :twidget_id => 3, :telement_id => foota_box2.id, :this_layout_id => 1 },
       { :twidget_id => 5, :telement_id => foota_box3.id, :this_layout_id => 1 }
   ])
+
+

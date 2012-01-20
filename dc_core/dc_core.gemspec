@@ -34,6 +34,6 @@ Gem::Specification.new do |s|
   
   
   
-  s.add_dependency( 'dc_hook_support',            '~> 0.0.1' )
+  # => s.add_dependency( 'dc_hook_support',            '~> 0.0.1' ) .. now included again
   
 end

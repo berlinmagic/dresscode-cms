@@ -10,24 +10,18 @@ module DcLists
       
       def build_seed_data
         Dir.glob( File.join(File.expand_path("#{DcLists::Engine.root}/db/system_data", __FILE__), "*.*") ) do |file|
-          if File.exist?("#{Rails.root}/db/seeds.rb")
-            puts("Info:: erweitere System-Seed ..")
-            append_to_file "#{Rails.root}/db/seeds.rb",  File.read( "#{DcLists::Engine.root}/db/system_data/#{File.basename(file.to_s)}"  )
-          else
-            puts("Info:: erstelle System-Seed .. ")
-            create_file "#{Rails.root}/db/seeds.rb",  File.read(  "#{DcLists::Engine.root}/db/system_data/#{File.basename(file.to_s)}" )
+          puts("DcLists:: Seed system_data")
+          open("#{Rails.root}/db/seeds.rb", 'a') do |f|
+            f.puts File.read( "#{DcLists::Engine.root}/db/system_data/#{File.basename(file.to_s)}"  ).to_utf
           end
         end
       end
       
       def build_sample_data
         Dir.glob( File.join(File.expand_path("#{DcLists::Engine.root}/db/sample_data", __FILE__), "*.*") ) do |file|
-          if File.exist?("#{Rails.root}/db/sample_seeds.rb")
-            puts("Info:: erweitere Sample-Seed ..")
-            append_to_file "#{Rails.root}/db/sample_seeds.rb",  File.read( "#{DcLists::Engine.root}/db/sample_data/#{File.basename(file.to_s)}" )
-          else
-            puts("Info:: erstelle Sample-Seed ..")
-            create_file "#{Rails.root}/db/sample_seeds.rb",  File.read( "#{DcLists::Engine.root}/db/sample_data/#{File.basename(file.to_s)}" )
+          puts("DcLists:: Seed sample_data")
+          open("#{Rails.root}/db/sample_seeds.rb", 'a') do |f|
+            f.puts File.read( "#{DcLists::Engine.root}/db/sample_data/#{File.basename(file.to_s)}" ).to_utf
           end
         end
       end

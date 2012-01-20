@@ -8,6 +8,8 @@ class Dc::PipeController < ApplicationController
   caches_page :dynamic_script
   caches_page :template_style
   
+  layout false
+  
   def dynamic_style
       @style4 = params[:to_style] if params[:to_style]
       respond_to do |format|

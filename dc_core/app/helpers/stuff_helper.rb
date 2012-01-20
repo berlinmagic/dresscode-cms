@@ -1,6 +1,7 @@
 # encoding: utf-8
 module StuffHelper
   
+  
   def the_std_actions( objekt, view='index' )
     action = []
     trenner = "&nbsp;&nbsp;&#10072;&nbsp;&nbsp;"
@@ -69,6 +70,10 @@ module StuffHelper
 
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
+  end
+  
+  def piped_js_lib(*args)
+    raw( javascript_include_tag("/pipe/script/library/#{ args.join('_') }") )
   end
   
   

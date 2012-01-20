@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'rails/generators/migration'
-module Strangecms
+module Dresscode
   module Generators
     class UpdateGenerator < Rails::Generators::Base
       include Rails::Generators::Migration
@@ -21,7 +21,7 @@ module Strangecms
       end
 
       def update_core
-        Strangecms::CmsModul::FineModul.fine_modules.each do |modul|
+        DC::ModuleSupport::CmsModule.modules.each do |modul|
           if modul.updatable?
               generate("#{modul.gem_name}:update") if modul.core?
           end
@@ -29,7 +29,7 @@ module Strangecms
       end
       
       def update_fine_modules
-        Strangecms::CmsModul::FineModul.fine_modules.each do |modul|
+        DC::ModuleSupport::CmsModule.modules.each do |modul|
           if modul.updatable?
               generate("#{modul.gem_name}:update") unless modul.core?
           end
@@ -37,7 +37,7 @@ module Strangecms
       end
       
       def update_development_db
-        if yes?("fineline - Development-DB erstellen?")
+        if yes?("dresscode - Development-DB erstellen?")
           puts("INFO: update DB-Migration")
           rake("db:migrate")
         end

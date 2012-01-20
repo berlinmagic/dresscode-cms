@@ -1,0 +1,56 @@
+#system_content { display:block; float: left; overflow-x: hidden; overflow-y: scroll; }
+
+#system_content #main_content { padding: 10px; position:relative; }
+
+
+
+
+/* S I D E B A R */
+#system_sidebar { background: #ccc; display:block; float: left;}
+#system_sidebar #system_side_nav { padding: 5px;}
+#system_sidebar #system_side_nav a { 
+	padding: 5px; border: solid 1px #000; display: block; margin: 0 0 5px; 
+	-khtml-border-radius: 	 3px;
+	-webkit-border-radius: 	 3px;
+	-moz-border-radius: 	 3px;
+	-o-border-radius: 		 3px;
+	-ms-border-radius: 		 3px;
+	border-radius: 			 3px;
+	text-decoration: none; font-weight:bold;
+	}
+#system_sidebar #system_side_nav a.aktiv{
+	color: red;
+}
+#system_sidebar #system_side_nav a.sub_nav { margin: 0 10px 5px;}
+
+
+/* F O O T E R */
+#system_footer { margin:0; padding:0; <%= vertical_gradient( '#111111', '#333333' ) %> display:block; }
+#system_footer #system_foot_nav { margin:0; padding:0; color: #fff;}
+#system_footer #system_foot_nav div.foot_box { display: inline-block; padding: 6px 5px 0; position:relative;}
+#system_footer #system_foot_nav a.foot_box, #system_footer #system_foot_nav .foot_box a.in_foot_box
+{ 	
+	-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
+	-moz-border-radius: 	 3px;		-o-border-radius: 		 3px;
+	-ms-border-radius: 		 3px;		border-radius: 			 3px; 
+	background: #111; display: inline-block; padding: 1px 15px; border: 0; margin: 0; 
+	border: solid 1px #666; vertical-align: top; text-align: center; line-height: 48px; 
+	text-decoration:none; font-weight:bold; font-size: 16px; color: #666; 
+}
+
+#system_footer #system_foot_nav a.foot_box.aktiv,  #system_footer #system_foot_nav .foot_box a.in_foot_box.aktiv 
+{ background: #333; color: #999; }
+
+
+#system_footer #system_foot_nav .foot_box .sub_foot_box { 
+		position: absolute; bottom: 55px; left:4px; display: block; width: 200px; padding: 3px; 
+		background: #f3f2f2; border: solid 1px #ccc; display: none;
+		-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
+		-moz-border-radius: 	 3px;		-o-border-radius: 		 3px;
+		-ms-border-radius: 		 3px;		border-radius: 			 3px;
+		 }
+#system_footer #system_foot_nav .foot_box:hover .sub_foot_box { display: block;}
+
+
+#system_footer #system_foot_nav .foot_box .sub_foot_box a { display: block; padding: 10px; color: #333;}
+#system_footer #system_foot_nav .foot_box .sub_foot_box a:hover { background: #fff; color: #360;}

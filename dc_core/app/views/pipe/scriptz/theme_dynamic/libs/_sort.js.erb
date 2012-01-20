@@ -1,0 +1,97 @@
+$(function() {
+	
+$('#element_sort_toggle.off').live('click', function(event){
+	event.preventDefault();
+	$(this).removeClass('off').addClass('on').html('Fertig');
+  	$("#layout_content").sortable({
+      cursor: "move",
+	  items: '.main_row',
+	  placeholder: 'platzhalter mrow',
+      update: function(){
+        $.ajax({
+          type: 'post', 
+          data: 'authenticity_token='+AUTH_TOKEN+'&'+'sort='+$('#layout_content').sortable('toArray'), 
+          dataType: 'script',
+          complete: function(request){
+            $('#layout_content').effect('highlight');
+			$('#request_area').html( $('#layout_content').sortable('toArray').join(', ') );
+          },
+          url: "/dc/tlayouts/reorder_zeilen"
+        })
+      }
+	}).disableSelection();
+	$(".grid_row").each(function(){
+		$(this).sortable({
+      	  cursor: "move",
+		  items: '.grid_cell',
+	      update: function(){
+	        $.ajax({
+	          type: 'post', 
+	          data: 'authenticity_token='+AUTH_TOKEN+'&'+'sort='+$(this).sortable('toArray'), 
+	          dataType: 'script',
+	          complete: function(request){
+	            $(this).effect('highlight');
+				$('#request_area').html( $('.grid_row').sortable('toArray').join(', ') );
+	          },
+	          url: "/dc/tlayouts/reorder_zeilen"
+	        })
+	      }
+		});  /* .disableSelection(); */
+	});
+});
+
+$('#element_sort_toggle.on').live('click', function(event){
+	
+	event.preventDefault();
+	
+	$(this).removeClass('on').addClass('off').html('Sortieren');
+
+  	$("#layout_content").sortable('disable');
+
+	
+	$(".grid_row").each(function(){
+		$(this).sortable('disable');
+	});
+	
+});
+
+		
+});
+
+
+/* 
+
+function sort(){
+     $("#sortable").sortable({
+       placeholder: 'ui-state-highlight'
+     });
+   }
+
+   function reset(){
+     $("#sortable").sortable('disable');
+   }
+
+   $('#sort').bind('click',sort);
+   $('#confirm').bind('click',reset);
+
+...
+
+Before:
+
+  $(container).sortable({
+    distance: 5,
+    axis:"y",
+    "connectWith", '#story>.iteration_frame>.iteration_container.allowdrop'
+    cancel: 'div.disabled,div.opened,div.plan_table_message'
+  });
+
+After:
+
+  $(container).sortable({
+    distance: 5,
+    axis:"y",
+    cancel: 'div.disabled,div.opened,div.plan_table_message'
+  }).sortable( "option", "connectWith", '#story>.iteration_frame>.iteration_container.allowdrop' );
+  // For whatever reason setting this option AFTER initialization saves us 4X the time!!
+
+*/

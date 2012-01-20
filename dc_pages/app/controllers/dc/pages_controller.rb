@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Dc::PagesController < ApplicationController
+class Dc::PagesController < Dc::BaseController
   
   before_filter :authorized_admin, :except => [:show_seite, :render_seiten_error, :render_this_site]
   
@@ -9,7 +9,6 @@ class Dc::PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
-    render :layout => 'dc', :template => 'pages/show'
   end
 
   def new
@@ -27,7 +26,7 @@ class Dc::PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
-    render :layout => 'dc', :template => 'pages/edit'
+    render :layout => themed_path('dc'), :template => 'dc/pages/edit'
   end
 
   def update
@@ -121,7 +120,7 @@ class Dc::PagesController < ApplicationController
     if @page.is_deleted?
       render_seiten_error
     else
-      render :layout => 'dc', :template => 'pages/show'
+      render :layout => themed_path('dc'), :template => 'dc/pages/show'
     end
   end
   

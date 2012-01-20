@@ -34,7 +34,7 @@ class Theme<%= class_name %>Initializer
         	  begin
         	    logger.info "INFO: Loading <%= class_name %> - Theme - Settings"
         	
-        	    Strangecms::Stylez::Config.set(
+        	    DC::Stylez::Config.set(
 
 						### F O N T Z :
 						:front_body_font_family 	=> 'Trebuchet',

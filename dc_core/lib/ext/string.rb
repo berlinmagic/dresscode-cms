@@ -1,4 +1,5 @@
 # encoding: utf-8
+# => require 'iconv'
 String.class_eval do
   def is_integer?
     begin
@@ -20,6 +21,11 @@ String.class_eval do
   
   def to_slash
     "#{self}".strip.index('/') == 0 ? "#{self}".strip : '/' + "#{self}".strip
+  end
+  
+  def to_utf
+    # => ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', self + ' ')[0..-2]
+    self.encode("UTF-8").force_encoding("UTF-8")
   end
   
   def to_anker

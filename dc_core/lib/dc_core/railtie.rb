@@ -4,7 +4,14 @@ module DcCore
     
     config.autoload_paths += %W(#{config.root}/lib)
     
-    # TODO - register state monitor observer?
+    initializer "static cache" do |app|
+      if DC::Config[:cache_statics]
+          Rails.application.middleware.insert_after Dragonfly::Middleware, Rack::DcStaticCache, 
+                        :urls => ["/images", "/App_Themes"], 
+                        :duration => DC::Config[:production_mode] ? DC::Config[:statics_ttl].to_i : DC::Config[:dev_mode_ttl].to_i, 
+                        :root => "public"
+      end
+    end
 
     def self.activate
       
@@ -12,21 +19,15 @@ module DcCore
         Rails.env.production? ? require(c) : load(c)
       end
       
-      attr_accessor :configuration
-
-      # Call this method to modify defaults in your initailizers.
-      #
-      #   Lacquer.configure do |config|
-      #     config.varnish_servers << { :host => '0.0.0.0', :port => 6082, :timeout => 5 }
-      #   end
-      def configure
-        self.configuration ||= Configuration.new
-        yield(configuration)
+      HookSupport::HookListener.subclasses.each do |hook_class|
+        HookSupport::Hook.add_listener(hook_class)
       end
-    
+      
+      
     end
 
     config.to_prepare &method(:activate).to_proc
-
+    
+    
   end
 end

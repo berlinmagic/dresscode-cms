@@ -20,7 +20,7 @@ module DcThemesDynamic
 end
 module ActionDispatch::Routing
   class Mapper #:nodoc:
-    include DcThemesDynamic::Routes
+    include DcThemesDynamic::StyleClassRoutes
   end
 end
 

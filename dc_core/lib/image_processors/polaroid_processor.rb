@@ -6,7 +6,7 @@ module Dragonfly
       include Dragonfly::Configurable 
       configurable_attr :use_filesystem, true 
       def go_polaroid(temp_object, opts={}) 
-        text    =   opts[:text]   ||  'fineline-CMS'
+        text    =   opts[:text]   ||  'dresscode-CMS'
         color   =   opts[:color]  ||  336699
         width   =   opts[:width]  ||  150
         height  =   opts[:height] ||  50

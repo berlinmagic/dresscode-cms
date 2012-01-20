@@ -1,5 +1,5 @@
 # encoding: utf-8
-class <%= class_name %>Hooks < Strangecms::ThemeSupport::HookListener
+class <%= class_name %>Hooks < HookSupport::HookListener
 	
 	# => your_hooks
 	

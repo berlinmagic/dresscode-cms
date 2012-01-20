@@ -13,7 +13,7 @@
 		<% DC::Config[].each do |key, value| %>
 			<tr>
 				<th><%= key.titleize %></th>
-				<td><%= DC::Config.instance.preference_definitions[key].da_type %></td>
+				<td><%= DC::Config.instance.preference_definitions[key].da_type if DC::Config.instance.preference_definitions[key] %></td>
 				<th><%= value %></th>
 			</tr>
 		<% end %>
@@ -26,7 +26,7 @@
 		<% "DC::#{@name.classify}".constantize::Config[].each do |key, value| %>
 			<tr>
 				<th><%= key.titleize %></th>
-				<td><%= "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key].da_type %></td>
+				<td><%= "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key].da_type if "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key] %></td>
 				<th><%= value %></th>
 			</tr>
 		<% end %>
@@ -35,3 +35,5 @@
 	<% end %>
 	
 </div>
+
+<%= render 'sidebar' %>

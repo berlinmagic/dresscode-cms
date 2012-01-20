@@ -1,6 +1,6 @@
 require 'rails/generators'
 
-module Strangecms
+module Dresscode
   module Generators
     class ThemeGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("../../templates", __FILE__)
@@ -74,26 +74,26 @@ module Strangecms
       def create_full_theme
         if yes?("Alle relevanten Dateien in neuen Theme-Ordner spiegeln?")
           puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeSites::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
                 )
           puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeSites::Engine.config.root}", "public"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}") 
                 )
           puts("StrangeCore:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeCore::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
                 )
           puts("StrangeUser:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeUser::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
                 )
-          Strangecms::CmsModul::FineModul.fine_modules.each do |modul|
+          DC::ModuleSupport::CmsModule.modules.each do |modul|
             unless modul.core?
                 copy_modul_data( modul.modul_name )
             end
@@ -106,26 +106,26 @@ module Strangecms
           empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline"
           empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline/views"
           puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeSites::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
                 )
           puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeSites::Engine.config.root}", "public"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline") 
                 )
           puts("StrangeCore:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeCore::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
                 )
           puts("StrangeUser:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeUser::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
                 )
-          Strangecms::CmsModul::FineModul.fine_modules.each do |modul|
+          DC::ModuleSupport::CmsModule.modules.each do |modul|
             unless modul.core?
                 copy_modul_fineline_data( modul.modul_name )
             end
@@ -138,26 +138,26 @@ module Strangecms
           empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/default"
           empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/default/views"
           puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeSites::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
                 )
           puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeSites::Engine.config.root}", "public"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default") 
                 )
           puts("StrangeCore:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeCore::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
                 )
           puts("StrangeUser:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{StrangeUser::Engine.config.root}", "app", "views"), 
                 File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
                 )
-          Strangecms::CmsModul::FineModul.fine_modules.each do |modul|
+          DC::ModuleSupport::CmsModule.modules.each do |modul|
             unless modul.core?
                 copy_modul_default_data( modul.modul_name )
             end
@@ -169,12 +169,12 @@ module Strangecms
       
       def copy_modul_data( modul )
         puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-        Strangecms::FileUtilz.mirror_files( 
+        DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
               File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
               )
         puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-        Strangecms::FileUtilz.mirror_files( 
+        DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "public"), 
               File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}")
               )
@@ -182,12 +182,12 @@ module Strangecms
       
       def copy_modul_default_data( modul )
         puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-        Strangecms::FileUtilz.mirror_files( 
+        DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
               File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
               )
         puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-        Strangecms::FileUtilz.mirror_files( 
+        DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "public"), 
               File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default")
               )
@@ -195,12 +195,12 @@ module Strangecms
       
       def copy_modul_fineline_data( modul )
         puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-        Strangecms::FileUtilz.mirror_files( 
+        DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
               File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
               )
         puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-        Strangecms::FileUtilz.mirror_files( 
+        DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "public"), 
               File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline")
               )

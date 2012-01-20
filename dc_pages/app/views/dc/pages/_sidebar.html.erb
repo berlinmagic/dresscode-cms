@@ -1,5 +1,5 @@
 <% Page.all.each do |p| %>
-	<%= link_to raw("<strong>#{p.name}</strong>"), dc_page_path(p), :class => "#{ 'aktiv' if @page && @page == p }" %>
+	<%= link_to raw("x<strong>#{p.name}</strong>"), dcr_page_path(p), :class => "#{ 'aktiv' if @page && @page == p }" %>
 <% end %>
 
 <br/>

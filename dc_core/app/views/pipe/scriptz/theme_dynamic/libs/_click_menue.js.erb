@@ -1,0 +1,12 @@
+jQuery(function($) {
+		
+		$('.tl_element').each( function(){
+			$(this).contextMenu('context-menu-'+$(this).attr('id'), { 
+				disable_native_context_menu: true, 
+				showMenu: function(element) { element.addClass('green'); },
+				hideMenu: function(element) { element.removeClass('green'); },
+				cms_element: true
+			});
+		});
+		
+});

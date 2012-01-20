@@ -26,10 +26,7 @@ module DC
             
             Time.zone = "#{ DC::Config[:time_zone].to_s }"
             
-            # => Rails.application.config.middleware.use Rack::DcStaticCache, 
-            # =>   :urls => ["/images", "/App_Themes"], 
-            # =>   :duration => DC::Config[:production_mode] ? DC::Config[:puclics_ttl] : DC::Config[:dev_mode_ttl],
-            # =>   :root => "public"
+            
             
           rescue
             logger.error "========================================================================="

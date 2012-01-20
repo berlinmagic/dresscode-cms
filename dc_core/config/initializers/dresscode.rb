@@ -10,3 +10,5 @@
 
   # Initialize Mail-settings
   DC::Setters::MailSetter.init
+  
+  #Rails.application.middleware.insert_after Dragonfly::Middleware, Rack::DcStaticCache, :urls => ["/images", "/App_Themes"], :duration => 42, :root => "public"

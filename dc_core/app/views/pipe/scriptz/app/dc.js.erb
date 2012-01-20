@@ -1,0 +1,14 @@
+<%= raw( "#{ render 'pipe/scriptz/plugins/cbox' }" ) %>
+<%= raw( "#{ render 'pipe/scriptz/plugins/jalert' }" ) %>
+<%= raw( "#{ render 'pipe/scriptz/dc/forms/dc_switch' }" ) %>
+
+jQuery(function($) {
+	
+	$('#user_button').live('click', function(){
+		$('.sub_user_foot_box').fadeToggle();
+	});
+	
+	$("a[rel='LightBox']").colorbox();
+	$("a.LightBox").colorbox();
+	
+});

@@ -1,0 +1,8 @@
+<% if DC::Config[:analytics_key] && (DC::Config[:analytics_key] != "UA-XXXXX-X") %>
+<script>
+	window._gaq = [['_setAccount','<%= DC::Config[:analytics_key] %>'],['_trackPageview'],['_trackPageLoadTime']];
+	Modernizr.load({
+		load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+	});
+</script>
+<% end %>

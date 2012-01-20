@@ -6,16 +6,24 @@ module DcThemesStatic
     include DcThemesStatic::CommonMethods
     include DcThemesStatic::UrlHelpers
     
-    caches_page :stylesheets
-    caches_page :javascripts
-    caches_page :images
+    # => caches_page :stylesheets
+    # => caches_page :javascripts
+    # => caches_page :images
     
     def stylesheets
-      render_asset asset_path_for(params[:asset], 'stylesheets', params[:theme]), defaulft_asset_path_for(params[:asset], 'stylesheets'), app_asset_path_for(params[:asset], 'stylesheets'), mime_type_from(params[:asset])
+      render_asset( 
+          asset_path_for(params[:asset], 'stylesheets', params[:theme]),
+          defaulft_asset_path_for(params[:asset], 'stylesheets'),
+          app_asset_path_for(params[:asset], 'stylesheets'), mime_type_from(params[:asset])
+          )
     end
     
     def javascripts
-      render_asset asset_path_for(params[:asset], 'javascripts', params[:theme]), defaulft_asset_path_for(params[:asset], 'javascripts'), app_asset_path_for(params[:asset], 'javascripts'), mime_type_from(params[:asset])  
+      render_asset( 
+          asset_path_for(params[:asset], 'javascripts', params[:theme]),
+          defaulft_asset_path_for(params[:asset], 'javascripts'),
+          app_asset_path_for(params[:asset], 'javascripts'), mime_type_from(params[:asset])
+          )
     end
     
     def images
@@ -37,11 +45,9 @@ module DcThemesStatic
     end
     
     def app_javascript
-      #render_app_asset app_asset_path_for(params[:asset], 'javascripts'), mime_type_from(params[:asset])
+      # check if request comes from fck-editor
       if params[:InstanceName]
-        # => render request.host+request.fullpath.to_s
         send_file request.fullpath
-        # => send_data File.read(Rails.root+'/public/'+request.fullpath), :disposition => 'inline', :type => mime_type
       else
         send_file params[:asset], :type => mime_type.to_s
         # => send_data File.read(asset), :disposition => 'inline', :type => mime_type
@@ -71,14 +77,7 @@ module DcThemesStatic
     # =>  NEW:    safes Production-Bild-Error
     def render_app_asset(asset, mime_type)
       if File.exists?(asset)
-        if params[:InstanceName]
-          render :template => Rails.root+'/public/'+request.fullpath.to_s
-          # => send_file request.fullpath, :type => mime_type.to_s
-          # => send_data File.read(Rails.root+'/public/'+request.fullpath), :disposition => 'inline', :type => mime_type
-        else
-          send_file asset, :type => mime_type.to_s, :x_sendfile => true
-          # => send_data File.read(asset), :disposition => 'inline', :type => mime_type
-        end
+        send_with_instanz_check(asset, mime_type.to_s)
       else
         render :text => 'not found', :status => 404
       end
@@ -86,39 +85,30 @@ module DcThemesStatic
     
     def render_asset(asset, default, app, mime_type)
       if File.exists?(asset)
-        send_file asset, :type => mime_type.to_s, :x_sendfile => true
-        # => send_data File.read(asset), :disposition => 'inline', :type => mime_type
+        send_the_theme_file(asset, mime_type)
       elsif File.exists?(default)
-        send_file default, :type => mime_type.to_s, :x_sendfile => true
-        # => send_data File.read(default), :disposition => 'inline', :type => mime_type
+        send_the_theme_file(default, mime_type)
       elsif File.exists?(app)
-        send_file app, :type => mime_type.to_s, :x_sendfile => true
-        # => send_data File.read(app), :disposition => 'inline', :type => mime_type
+        send_the_theme_file(app, mime_type)
       else
+        logger.info asset + "  .. not found !!!"
+        logger.info default + "  .. not found !!!"
+        logger.info app + "  .. not found !!!"
         render :text => 'not found', :status => 404
       end
     end
     
     def render_this_asset(asset, default, app, mime_type)
       if File.exists?(asset)
-        if params[:InstanceName]
-          render :template => Rails.root+'/public/'+request.fullpath.to_s
-        else
-          send_file asset, :type => mime_type.to_s, :x_sendfile => true
-        end
+        send_with_instanz_check(asset, mime_type.to_s)
       elsif File.exists?(default)
-        if params[:InstanceName]
-          render :template => Rails.root+'/public/'+request.fullpath.to_s
-        else
-          send_file default, :type => mime_type.to_s, :x_sendfile => true
-        end
+        send_with_instanz_check(default, mime_type.to_s)
       elsif File.exists?(app)
-        if params[:InstanceName]
-          render :template => Rails.root+'/public/'+request.fullpath.to_s
-        else
-          send_file app, :type => mime_type.to_s, :x_sendfile => true
-        end
+        send_with_instanz_check(app, mime_type.to_s)
       else
+        logger.info asset + "  .. not found !!!"
+        logger.info default + "  .. not found !!!"
+        logger.info app + "  .. not found !!!"
         render :text => 'not found', :status => 404
       end
     end
@@ -135,5 +125,26 @@ module DcThemesStatic
         "image/#{extension}"
       end
     end
+    
+    def send_with_instanz_check(file, mime_type)
+      if params[:InstanceName]
+        render :template => Rails.root+'/public/'+request.fullpath.to_s
+      else
+        send_the_theme_file(file, mime_type)
+      end
+    end
+    
+    def send_the_theme_file(file, mime_type)
+      ### Sends the file, header will be overiden by DcStaticCache
+      respond_with_etag( [ file, params[:theme] ] ) do
+        send_file(    file, 
+                      :type => mime_type.to_s, 
+                      :x_sendfile => true 
+                  )
+      end
+      # => send_data File.read(app), :disposition => 'inline', :type => mime_type
+      # => send_file request.fullpath, :type => mime_type.to_s
+    end
+    
   end
 end

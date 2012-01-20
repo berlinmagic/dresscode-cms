@@ -1,0 +1,28 @@
+
+<div class="foot_box">
+	<%= link_to 'Page', dcr_pages_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'pages'}",
+			:title => 'Seiten' %>
+	<div class="sub_foot_box">
+		<% Page.all.each do |p| %>
+			<%= link_to raw("<strong>#{p.name}</strong>"), [:dcr, p], :class => 'sub_foot' %>
+		<% end %>
+	</div>
+</div>
+
+<div class="foot_box">
+	<%= link_to 'Settings', dcr_settings_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'settings'}",
+			:title => 'settings' %>
+</div>
+
+
+
+<div id="user_foot">
+	<% if admin_check %>
+		<%= link_to current_user.email, '#', :id => 'user_button' %>
+		<div class="sub_user_foot_box">
+			<%= link_to 'Abmelden', '/dc/logout', :class => 'sub_foot' %>
+		</div>
+	<% end %>
+</div>

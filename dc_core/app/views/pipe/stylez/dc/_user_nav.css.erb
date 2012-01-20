@@ -1,0 +1,32 @@
+#user_foot { float:right; font-size: 12px; width: 250px; text-align:center; padding: 20px 0 0; position: relative; }
+
+#user_foot .sub_user_foot_box { 
+	position: absolute; bottom: 33px; left:20px; display: block; width: 200px; padding: 10px 0; 
+	<%= vertical_gradient( '#111111', '#333333' ) %> border: solid 1px #666; display: none;
+		-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
+		-moz-border-radius: 	 3px;		-o-border-radius: 		 3px;
+		-ms-border-radius: 		 3px;		border-radius: 			 3px;
+	 }
+#user_foot .sub_user_foot_box a { color: #999; background: transparent; display: block; padding: 3px 20px;
+	text-decoration: none; }
+#user_foot .sub_user_foot_box a:hover { <%= vertical_gradient( '#0099cc', '#006699' ) %> color: #fff; <%= text_shadow('1px 1px 1px #000') %> }
+
+#user_button { 
+	padding: 0 10px; margin: 0; 
+	<%= all_border_radius( '15px' ) %> 
+	color: #aaa; background: transparent; 
+	border: solid 1px #000;
+	display: inline-block; text-decoration: none; font-size: 10px; font-weight: normal; line-height: 20px;
+	<%= text_shadow('1px 1px 1px #000') %> 
+	<%= box_shadow('1px 1px 1px 0 #666') %> 
+	}
+#user_button:after {
+   content:"";
+   float:right;
+   width:16px;
+   height:20px;
+   margin:0 0 0 3px;
+   background: transparent url('/images/icons/ecke.png') right center no-repeat; }
+
+
+#user_button:hover { <%= vertical_gradient( '#0099cc', '#006699' ) %> color: #fff; <%= text_shadow('1px 1px 1px #000') %> }

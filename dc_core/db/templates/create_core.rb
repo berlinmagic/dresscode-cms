@@ -51,9 +51,8 @@ class CreateCore < ActiveRecord::Migration
       t.integer     :position
       t.timestamps
     end
-    add_index :attachments, :target_type
-    add_index :attachments, :target_id
-    add_index :attachments, :data_file
+    add_index :attachments, [:target_type, :target_id]
+    add_index :attachments, :data_file_id
     add_index :attachments, :position
     
   end

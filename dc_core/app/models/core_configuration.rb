@@ -18,6 +18,9 @@ class CoreConfiguration < Configuration
   preference :show_backups,       :boolean,     :default => false
   # Theme
   preference :theme,              :string,      :default => 'default'
+  preference :theme_type,         :string,      :default => 'static'  # => dynamic | static ... define the theme-engine
+  # pretty namespace (use /var/ insted of /dc/)
+  preference :pretty_namespace,   :string,      :default => 'cms'
   # Safety / Login-Strategy
   preference :invite_only_site,   :boolean,     :default => 'false'
   ### =================================================================================== ###
@@ -143,13 +146,24 @@ class CoreConfiguration < Configuration
   preference :cache_method,       :string,      :default => CACHE_TYPES[0]
   preference :varnish_enabled,    :boolean,     :default => false
   preference :etags_enabled,      :boolean,     :default => false
+  preference :cache_statics,      :boolean,     :default => false
   # Cache Times
-  preference :js_library_ttl,     :integer,     :default => 3600
-  preference :app_theme_ttl,      :integer,     :default => 3600
-  preference :puclics_ttl,        :integer,     :default => 3600
+  preference :stylez_ttl,         :integer,     :default => 3600 # => 1 our
+  preference :scriptz_ttl,        :integer,     :default => 3600 # => 1 our
+  preference :statics_ttl,        :integer,     :default => 604800 # => 1 week
+  preference :library_ttl,        :integer,     :default => 604800 # => 1 week
+  preference :pages_ttl,          :integer,     :default => 3600 # => 1 our
+  preference :dynamic_ttl,        :integer,     :default => 300 # => 5 minutes
   # Dev-Mod & Times
   preference :production_mode,    :boolean,     :default => false
-  preference :dev_mode_ttl,       :integer,     :default => 30
+  preference :dev_mode_ttl,       :integer,     :default => 42
+  # Freshness - Timestamps
+  preference :stylez_fresh,       :string,      :default => 'version: 0.0.1'
+  preference :scriptz_fresh,      :string,      :default => 'version: 0.0.1'
+  preference :statics_fresh,      :string,      :default => 'version: 0.0.1'
+  preference :library_fresh,      :string,      :default => 'version: 0.0.1'
+  preference :pages_fresh,        :string,      :default => 'version: 0.0.1'
+  preference :dynamic_fresh,      :string,      :default => 'version: 0.0.1'
   ### =================================================================================== ###
   
   

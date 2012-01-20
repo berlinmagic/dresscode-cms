@@ -43,7 +43,8 @@ class Page < ActiveRecord::Base
   belongs_to    :author,           :class_name => 'User',    :foreign_key => :author_id
   belongs_to    :last_author,      :class_name => 'User',    :foreign_key => :last_author_id
   
-  # => belongs_to    :tlayout,         :class_name => 'Tlayout',    :foreign_key => :tlayout_id
+  # only needed by dynamic themes
+  belongs_to    :tlayout,         :class_name => 'Tlayout',    :foreign_key => :tlayout_id
   # => acts_as_list
   
   

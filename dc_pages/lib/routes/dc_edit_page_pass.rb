@@ -17,8 +17,11 @@ class DcEditPagePass
         return false if request.fullpath.start_with?('/backups/')
         
         repue = request.fullpath.to_s.gsub(/\/dc\/page/, '').to_slash
-        
         return true if @passthru.include?( repue )
+        
+        repue = request.fullpath.to_s.gsub("/#{DC::Config[:pretty_namespace].to_s.downcase}/page/", '').to_slash
+        return true if @passthru.include?( repue )
+        
         # => !request.fullpath.start_with?('/auth/')
         false
     end

@@ -1,0 +1,47 @@
+/********	jQuery - Alerts 	*****************************************************/
+
+#popup_container { font-family: Arial, sans-serif; font-size: 13px; color: #444;
+	min-width: 300px; /* Dialog will be no smaller than this */
+	max-width: 600px; /* Dialog will wrap after this width */
+	border: solid 1px #369;
+	padding: 5px 30px;
+	<%= all_border_radius( '5px' ) %>
+	background: #f3f3f3;
+	<%= box_shadow( '0px 0px 15px 25px rgba(0,0,0,.5)' ) %> }
+#popup_title {
+	color: #336699; font-style: italic; font-weight: bold; font-size: 15px;
+	text-align: left;
+	line-height: 25px;
+	border-bottom: solid 1px #ccc;
+	cursor: default;
+	padding: 5px 20px;
+	margin: 0em;
+	margin: 0;}
+#popup_message { padding: 20px 5px 20px 65px; margin: 10px 20px;
+	background: transparent left center no-repeat url(/images/icons/info.png); }
+#popup_content {
+	border-top: solid 1px #fff;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+	font-size: 15px; }
+#popup_ok { display: inline-block;  padding: 7px 20px 8px;  margin: 5px 5px 5px 0;
+		border: solid 1px #3e5d0b; 
+		<%= all_border_radius( '5px' ) %>
+		color: #fff; font-weight: bold; font-size: 15px; 
+		<%= text_shadow( '0px 0px 2px #3e5d0b' ) %>
+		<%= vertical_gradient( '#4070ac', '#2a568e' ) %> }
+#popup_ok:hover { <%= vertical_gradient( '#606c88', '#3f4c6b' ) %>  }
+#popup_cancel { display: inline-block; padding: 7px 20px 7px; margin: 5px 5px 5px 5px; color: #444; font-weight: bold; font-size: 15px;
+		border: solid 1px #777; 
+		<%= all_border_radius( '5px' ) %>
+		<%= vertical_gradient( '#f3f3f3', '#8fa8b5' ) %>  }
+#popup_cancel:hover { color: #fff; <%= background_gradient( 'vertikal', 0 => '#b5bdc8', 36 => '#828c95', 100 => '#28343b' ) %> }
+
+#popup_content.alert #popup_message { background-image: url(/images/icons/info.png); }
+#popup_content.confirm #popup_message { background-image: url(/images/icons/warning.png); }
+#popup_content.prompt #popup_message { background-image: url(/images/icons/help.png); }
+
+
+#popup_panel { text-align: center; margin:0; padding: 10px 0 10px; border-top: solid 1px #ccc; }
+#popup_prompt { margin: .5em 0em; }

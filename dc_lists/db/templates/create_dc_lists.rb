@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateDcLists < ActiveRecord::Migration
   
   def self.up
@@ -19,7 +20,7 @@ class CreateDcLists < ActiveRecord::Migration
       t.timestamps
     end
     add_index :taggings, [:target_type, :target_id]
-    add_index :taggings, :tag
+    add_index :taggings, :tag_id
     
     
     
@@ -45,7 +46,7 @@ class CreateDcLists < ActiveRecord::Migration
       t.timestamps
     end
     add_index :categorizes, [:target_type, :target_id]
-    add_index :categorizes, :category
+    add_index :categorizes, :category_id
 
     
     
@@ -56,12 +57,12 @@ class CreateDcLists < ActiveRecord::Migration
     remove_index  :tags,            :slug
     remove_index  :tags,            :firstletter
     remove_index  :taggings,        [:target_type, :target_id]
-    remove_index  :taggings,        :tag
+    remove_index  :taggings,        :tag_id
     remove_index  :categories,      :name
     remove_index  :categories,      :slug
     remove_index  :categories,      :firstletter
     remove_index  :categorizes,     [:target_type, :target_id]
-    remove_index  :categorizes,     :category
+    remove_index  :categorizes,     :category_id
     drop_table    :tags
     drop_table    :taggings
     drop_table    :categories

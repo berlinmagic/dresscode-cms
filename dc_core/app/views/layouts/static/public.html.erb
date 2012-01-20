@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="de"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="de"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="de"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de"> <!--<![endif]-->
+<head>
+	<%= render "shared/site_parts/meta" %>
+	<%= render "shared/site_parts/csrf" %>
+	
+	<%= stylesheet_link_tag "/pipe/styles/public/#{ DC::Config[:theme] }" %>
+	
+	<%= javascript_include_tag "/pipe/script/library/modernizr206" %>
+	
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js' %>
+	<script>window.jQuery || document.write('<script src="/pipe/script/library/jquery"><\/script>')</script>
+	
+	<%= piped_js_lib('ujs') %>
+		
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js' %>
+	
+	<%= javascript_include_tag "/pipe/script/public/#{ DC::Config[:theme] }" %>
+	
+	<%= yield(:head) %>
+</head>
+<body>
+	
+	<%= render 'static/layouts/page_layout' %>
+	
+<%= render "shared/site_parts/analytics" %>
+<%= render "shared/site_parts/chromeframe" %>
+</body>
+</html>

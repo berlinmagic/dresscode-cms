@@ -16,7 +16,7 @@ module DC
         end
 
         # Returns all the listerners instances.
-        def cms_modules
+        def modules
           # => @@fine_modules ||= @@fine_module_classes.uniq.collect {|listener| listener.instance}
           DC::ModuleSupport::Listener.subclasses.each do |theme_class|
             theme_class

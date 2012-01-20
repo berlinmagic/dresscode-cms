@@ -9,16 +9,91 @@
 	<br/>
 	<br/>
 	<table style="width: 100%">
-	<% DC::Config[].each do |key, value| %>
 		<tr>
-			<th><%= key.titleize %></th>
-			<td><%= DC::Config.instance.preference_definitions[key].da_type %></td>
-			<th><%= value %></th>
+			<th>Seitenname:</th>
+			<td> </td>
+			<th><%= DC::Config[:site_name] %></th>
 		</tr>
-	<% end %>
+		<tr>
+			<th>compress_stylez:</th>
+			<td> </td>
+			<th><%= DC::Config[:compress_stylez] %></th>
+		</tr>
+		<tr>
+			<th>compress_scriptz</th>
+			<td> </td>
+			<th><%= DC::Config[:compress_scriptz] %></th>
+		</tr>
+		<tr>
+			<th>theme</th>
+			<td> </td>
+			<th><%= DC::Config[:theme] %></th>
+		</tr>
+		<tr>
+			<th>theme_type</th>
+			<td> </td>
+			<th><%= DC::Config[:theme_type] %></th>
+		</tr>
+		<tr>
+			<th>pretty_namespace</th>
+			<td> </td>
+			<th><%= DC::Config[:pretty_namespace] %></th>
+		</tr>
+		<tr>
+			<td colspan="3"><h4>Cache</h4></td>
+		</tr>
+		<tr>
+			<th>cache_method:</th>
+			<td> </td>
+			<th><%= DC::Config[:cache_method] %></th>
+		</tr>
+		<tr>
+			<th>cache_statics:</th>
+			<td> </td>
+			<th><%= DC::Config[:cache_statics] %></th>
+		</tr>
+		<tr>
+			<th>etags_enabled:</th>
+			<td> </td>
+			<th><%= DC::Config[:etags_enabled] %></th>
+		</tr>
+		<tr>
+			<th>production_mode</th>
+			<td> </td>
+			<th><%= DC::Config[:production_mode] %></th>
+		</tr>
+		<tr>
+			<th>dev_mode_ttl</th>
+			<td> </td>
+			<th><%= DC::Config[:dev_mode_ttl] %></th>
+		</tr>
+		<tr>
+			<th>library_ttl</th>
+			<td> </td>
+			<th><%= DC::Config[:library_ttl] %></th>
+		</tr>
+		<tr>
+			<th>statics_ttl</th>
+			<td> </td>
+			<th><%= DC::Config[:statics_ttl] %></th>
+		</tr>
+		<tr>
+			<th>stylez_ttl</th>
+			<td> </td>
+			<th><%= DC::Config[:stylez_ttl] %></th>
+		</tr>
+		<tr>
+			<th>scriptz_ttl</th>
+			<td> </td>
+			<th><%= DC::Config[:scriptz_ttl] %></th>
+		</tr>
+		<tr>
+			<th>pages_ttl</th>
+			<td> </td>
+			<th><%= DC::Config[:pages_ttl] %></th>
+		</tr>
 	</table>
-
-	<br/>
-
 	
 </div>
+
+<%= render 'sidebar' %>

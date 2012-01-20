@@ -1,11 +1,10 @@
 # encoding: utf-8
 class Dc::BaseController < ApplicationController
   
-  layout proc { |controller| controller.request.xhr? ? false : 'dc' }
+  layout proc { |controller| controller.request.xhr? ? false : themed_path('dc') }
   
-  # => include GlobalBase
+  include GlobalBase
   
-  helper :all
   
   before_filter :authorized_admin
   

@@ -11,7 +11,7 @@ module DcThemesStatic
       
       def add_themes_for_rails_routes
         puts("INFO: erstelle Theme-Route")
-        route "dresscode_themes"
+        route "dresscode_static_themes"
       end
       
       
@@ -56,7 +56,7 @@ module DcThemesStatic
       
       def create_modul_themes
         
-        DC::ModuleSupport::Listener.modules.each do |modul|
+        DC::ModuleSupport::CmsModule.modules.each do |modul|
           unless modul.core?
               if modul.mirror_views?
                 make_modul_views( modul.modul_name )
@@ -90,17 +90,17 @@ module DcThemesStatic
         
         def make_modul_theme(modul)
           puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
                 File.join("#{DcThemesStatic.config.themes_path}", "default", "views") 
                 )
           puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{modul.constantize::Engine.config.root}", "public"), 
                 File.join("#{DcThemesStatic.config.themes_path}", 'default')
                 )
           puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in App public-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{modul.classify.constantize::Engine.config.root}", "/public"), 
                 File.join("#{Rails.root}", 'public')
                 )
@@ -108,7 +108,7 @@ module DcThemesStatic
         
         def make_modul_views(modul)
           puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
                 File.join("#{DcThemesStatic.config.themes_path}", "default", "views") 
                 )
@@ -116,7 +116,7 @@ module DcThemesStatic
         
         def make_modul_publics(modul)
           puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in App public-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{modul.constantize::Engine.config.root}", "/public"), 
                 File.join("#{Rails.root}", 'public')
                 )
@@ -124,7 +124,7 @@ module DcThemesStatic
         
         def make_modul_theme_publics(modul)
           puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-          Strangecms::FileUtilz.mirror_files( 
+          DC::FileUtilz.mirror_files( 
                 File.join("#{modul.constantize::Engine.config.root}", "public"), 
                 File.join("#{DcThemesStatic.config.themes_path}", 'default')
                 )

@@ -22,6 +22,12 @@
   require 'dc/preferences/preference_definition'
   require 'dc/preference_access'
   
+  # => Hooks
+  require 'dc/hook_support/hook'
+  require 'dc/hook_support/hook_listener'
+  require 'dc/hook_support/hook_modifier'
+  
+  
   # => Config-File (DC::Config[])
   require 'dc/configuration/config'
   # => Config-File (DC::Stylez::Config[])
@@ -31,7 +37,7 @@
   # => Load some Helper
   require 'helper/front_base'
   require 'helper/admin_base'
-  require 'helper/system_base'
+  require 'helper/cache_base'
   require 'helper/global_base'
   
   require 'helper/dc_styles_help'
@@ -42,13 +48,14 @@
   require 'dc_core_hooks'
   
   
+  require 'rack/dc_cache'
+  
+  
   # => Load RailTie
   require 'dc_core/version'
   require 'dc_core/railtie'
   
   # look also in dc_core/config/intializers/*.rb
   
-  
-  require 'rack/dc_cache'
   
   

@@ -28,7 +28,7 @@ class CreatePages < ActiveRecord::Migration
       t.boolean       :fowarding_site,   :default => false       # => Seite ist eine Weiterleitung
       t.string        :external_link,   :default => ''          # => Url der weiterleitung wenn Aktiv
       
-      # t.references    :tlayout                                  # => wird noch nicht verwendet
+      t.references    :tlayout                                  # => wird noch nicht verwendet
       
       t.boolean       :in_main_nav,     :default => true       # => Seite im Header Anzeigen ?
       t.boolean       :in_system_nav,   :default => false        # => Seite im Haupt-/Subnavigation Anzeigen ?
@@ -54,7 +54,7 @@ class CreatePages < ActiveRecord::Migration
       t.integer       :last_author_id                            # => Wer hat die Seite zuletzt geändert
       
       
-      # => t.text          :text_content                             # => Uebergangsloesung fuer Inhalt
+      t.text          :text_content                             # => Uebergangsloesung fuer Inhalt
       
       t.timestamps
     end
@@ -66,7 +66,7 @@ class CreatePages < ActiveRecord::Migration
     add_index :pages, :position
     add_index :pages, :parent_site_id
     add_index :pages, :main_site_id
-    # => add_index :pages, :tlayout_id
+    add_index :pages, :tlayout_id
     
     
     create_table :page_rows do |t|

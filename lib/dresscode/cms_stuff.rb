@@ -20,8 +20,8 @@ module Dresscode
     attr_accessor :cache_method
     attr_accessor :varnish_enabled
     attr_accessor :etags_enabled
-    attr_accessor :js_library_ttl
-    attr_accessor :puclics_ttl
+    attr_accessor :library_ttl
+    attr_accessor :statics_ttl
     attr_accessor :production_mode
     attr_accessor :dev_mode_ttl
 
@@ -33,8 +33,8 @@ module Dresscode
       @varnish_enabled  =   false
       @etags_enabled    =   false
       # Cache Times
-      @js_library_ttl   =   3600
-      @puclics_ttl      =   3600
+      @library_ttl   =   3600
+      @statics_ttl      =   3600
       # Dev-Mod & Times
       @production_mode  =   false
       @dev_mode_ttl     =   30

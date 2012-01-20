@@ -157,18 +157,15 @@ module DcStylesHelp
     
     def js_minify(js)
       compressor = YUI::JavaScriptCompressor.new(:optimize => true, :preserve_semicolons => false, :munge => true)
-      # => if DC::Config[:compress_scriptz]
-      # =>   this_js = compressor.compress(js)
-      # => else
-      # =>   this_js = js
-      # => end
-      this_js = compressor.compress(js)
+      if DC::Config[:compress_scriptz]
+        this_js = compressor.compress(js)
+      else
+        this_js = js
+      end
+      # => this_js = compressor.compress(js)
       this_js
     end
     
-    def js_render( path )
-      js_minify( "#{ render( :partial => "dc/pipe/js/#{ path }" ) }" )
-    end
     
   end ### =>  End of InstanceMethods
 
@@ -186,7 +183,6 @@ module DcStylesHelp
     receiver.send :helper_method, 'opacity'
     receiver.send :helper_method, 'css_minify'
     receiver.send :helper_method, 'js_minify'
-    receiver.send :helper_method, 'js_render'
   end
   
 end

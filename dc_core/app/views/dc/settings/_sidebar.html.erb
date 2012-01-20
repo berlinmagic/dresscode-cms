@@ -2,27 +2,20 @@
 
 <div class="side_box">
 	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
-		<%= link_to "Auto", dc_settings_path %>
+		<%= link_to "Setting: (auto-generiert)", dcr_settings_path %>
 	</div>
-	<ul class='sidebar'>
-		<li><%= link_to 'Core', dc_settings_path+ '/core', :class => "#{'aktiv' if @name && @name == 'core'}" %></li>
-		<li><%= link_to 'Core', dc_settings_path+ '/user', :class => "#{'aktiv' if @name && @name == 'user'}" %></li>
-		<li><%= link_to 'Core', dc_settings_path+ '/style', :class => "#{'aktiv' if @name && @name == 'style'}" %></li>
-	</ul>
+	<br/>
+	<%= link_to 'Core', dcr_settings_path+ '/core', :class => "#{'aktiv' if @name && @name == 'core'}" %>
+	<%= link_to 'User', dcr_settings_path+ '/user', :class => "#{'aktiv' if @name && @name == 'user'}" %>
+	<%= link_to 'Stylez', dcr_settings_path+ '/stylez', :class => "#{'aktiv' if @name && @name == 'stylez'}" %>
+	<br/>
+	<%= link_to 'Core - 1', dcr_settings_path+ '/core_one', :class => "#{'aktiv' if @name && @name == 'core_one'}" %>
+	<br/>
+	<% if @name && @name != '' %>
+		<%= link_to "#{ @name.titleize } bearbeiten", dcr_settings_path + "/#{ @name }/edit" %>
+	<% end %>
+	<br/>
 </div>
-
-
-<div class="side_box">
-	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
-		<%= link_to t('dc.prefs'), dc_settings_path %>
-	</div>
-	<ul class='sidebar'>
-		<li><%= link_to 'Account', dc_settings_path+ '/user', :class => "#{'aktiv' if @u_aktiv == 'user'}" %></li>
-		<li><%= link_to 'C-M-S', dc_settings_path('cms'), :class => "#{'aktiv' if @u_aktiv == 'cms'}" %></li>
-		<li><%= link_to 'Mail-Server', dc_settings_path('mail'), :class => "#{'aktiv' if @u_aktiv == 'mail'}" %></li>
-	</ul>
-</div>
-
 
 
 <div class="side_box">
@@ -34,18 +27,6 @@
 	</ul>
 </div>
 
-<div class="side_box">
-	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
-		<a href="#"><%= t('strange_preferences.fine_style_settings') %></a>
-	</div>
-	<ul class='sidebar'>
-		<% if current_user && site_master && ( 12 == 14 ) %>
-			<li><%#= link_to 'Style-Modul', admin_fine_styles_path, :class => ('aktiv' if @aktivio == 'stylez') %></li>
-		<% end %>
-		<li><%= link_to 'Optik', dc_settings_path('optik'), :class => "#{'aktiv' if @u_aktiv == 'optik'}" %></li>
-		<li><%= link_to 'Stylez', dc_settings_path('stylez'), :class => "#{'aktiv' if @u_aktiv == 'stylez'}" %></li>
-	</ul>
-</div>
 
 <%#= help_link_box %>
 

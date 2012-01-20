@@ -51,7 +51,7 @@ module GlobalUser
       unless admin_check
         # => flash.alert = 'Admin - Rechte erforderlich !'
         # => redirect_to root_path 
-        redirect_to '/dc/login'
+        redirect_to "/#{DC::Config[:pretty_namespace].to_s.downcase}/login"
       end
     end
     

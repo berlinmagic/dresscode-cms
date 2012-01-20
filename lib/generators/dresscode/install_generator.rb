@@ -36,10 +36,15 @@ module Dresscode
         generate("dc_editor:install")
         generate("dc_lists:install")
         generate("dc_pages:install")
-        # => generate("dc_styles:install")
-        # => generate("dc_themes:install")
         
-        generate("dc_staticthemes:install")
+        
+        # => generate("dc_staticthemes:install")
+        generate("dc_themes_static:install")
+        
+        if yes?("Dynamic-Themes intallieren? ... experimentell")
+          generate("dc_themes_dynamic:install")
+        end
+        
         
         generate("dc_user:install")
 
@@ -55,15 +60,18 @@ module Dresscode
       
 
       def install_db_sample_data
-        if yes?("fineline - Beispiel-Daten intallieren?")
+        if yes?("dresscode - Beispiel-Daten intallieren?")
           # => load "#{ Rails.root }/db/sample_seeds.rb"
-          append_to_file "#{Rails.root}/db/seeds.rb",  File.read( "#{Rails.root}/db/sample_seeds.rb"  )
+          puts("DC:: Seed sample_data")
+          open("#{Rails.root}/db/seeds.rb", 'a') do |f|
+            f.puts File.read( "#{Rails.root}/db/sample_seeds.rb"  ).to_utf
+          end
         end
       end
       
       
       def install_development_db
-        if yes?("fineline - Development-DB erstellen?")
+        if yes?("dresscode - Development-DB erstellen?")
           puts("INFO: erstelle DB-Migration")
           rake("db:migrate")
           puts("INFO: erstelle DB-Beispieldaten")

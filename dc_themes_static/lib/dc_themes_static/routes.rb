@@ -1,6 +1,6 @@
 module DcThemesStatic
   module Routes
-    def dresscode_themes
+    def dresscode_static_themes
       theme_dir = DcThemesStatic.config.themes_dir
       match "#{theme_dir}/:theme/stylesheets/*asset" => 'dc_themes/assets#stylesheets', :as => :base_theme_stylesheet
       match "#{theme_dir}/:theme/javascripts/*asset" => 'dc_themes/assets#javascripts', :as => :base_theme_javascript

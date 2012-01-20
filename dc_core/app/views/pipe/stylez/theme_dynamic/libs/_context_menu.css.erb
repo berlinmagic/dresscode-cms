@@ -1,0 +1,55 @@
+.context-menu, ul.context-menu { padding: 10px 0; border: solid 1px #777; background: #fff !important; list-style: none; z-index: 9999;
+	-khtml-border-radius: 	 5px;		-webkit-border-radius: 	 5px;
+	-moz-border-radius: 	 5px;		-o-border-radius: 		 5px;
+	-ms-border-radius: 		 5px;		border-radius: 			 5px;
+	margin:0;
+	-o-box-shadow:       0 0 10px 6px #777;
+	-webkit-box-shadow:  0 0 10px 6px #777;
+	-moz-box-shadow:     0 0 10px 6px #777;
+	-ms-box-shadow:      0 0 10px 6px #777;
+	-khtml-box-shadow:   0 0 10px 6px #777;
+	box-shadow:          0 0 10px 6px #777;
+	}
+
+.context-menu li { padding: 0; margin: 0 3px 3px; background: #fff;}
+
+
+.context-menu li a:before {
+   content:"";
+   float:left;
+   width:24px;
+   height:24px;
+   margin:0 13px 0 0;
+   background: url(/images/iconsets/stripe_24x24.png) -24px -1416px no-repeat;
+}
+
+.context-menu li.edit a:before { background-position: -24px -696px;}
+.context-menu li.delete a:before { background-position: -24px -456px;}
+.context-menu li.new_tag a:before { background-position: -24px -2088px;}
+.context-menu li.new_content a:before { background-position: -24px -2112px;}
+
+.context-menu li.edit_classes a:before { background-position: -24px -1680px;}
+
+.context-menu li.edit a:hover:before { background-position: 0 -696px;}
+.context-menu li.delete a:hover:before { background-position: 0 -456px;}
+.context-menu li.new_tag a:hover:before { background-position: 0 -2088px;}
+.context-menu li.new_content a:hover:before { background-position: 0 -2112px;}
+
+.context-menu li.edit_classes a:hover:before { background-position: 0 -1680px;}
+
+.context-menu li.edit { border-bottom: solid 1px #aaa; padding: 0 0 5px; margin: 0 3px 5px; }
+
+
+.context-menu li a { padding: 2px 21px 3px 10px; line-height: 26px; background: #fff; color: #444; text-decoration: none; display: block; }
+.context-menu li a:hover { background: #6db3f2; color: #fff; 
+background: #54a9ff;
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU0YTlmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUzJSIgc3RvcC1jb2xvcj0iIzBjODBmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDZkZjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #54a9ff 0%, #0c80f4 53%, #006df2 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#54a9ff), color-stop(53%,#0c80f4), color-stop(100%,#006df2));
+background: -webkit-linear-gradient(top,  #54a9ff 0%,#0c80f4 53%,#006df2 100%);
+background: -o-linear-gradient(top,  #54a9ff 0%,#0c80f4 53%,#006df2 100%);
+background: -ms-linear-gradient(top,  #54a9ff 0%,#0c80f4 53%,#006df2 100%);
+background: linear-gradient(top,  #54a9ff 0%,#0c80f4 53%,#006df2 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54a9ff', endColorstr='#006df2',GradientType=0 );
+text-shadow: 0 0 3px #000;
+}

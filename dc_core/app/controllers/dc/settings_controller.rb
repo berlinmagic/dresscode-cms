@@ -14,8 +14,11 @@ class Dc::SettingsController < Dc::BaseController
       if @name == 'user'
         @owners = User.where(:group_id => 1)
       end
-      # => render "dc/settings/#{@name}"
-      render "dc/settings/show"
+      if @name == 'core_one'
+        render :template => "dc/settings/core"
+      else
+        render :template => "dc/settings/show"
+      end
     else
       flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
       render :index
@@ -28,9 +31,11 @@ class Dc::SettingsController < Dc::BaseController
   def edit
     @name = params[:name] || params[:id]
     if @setting_names.include?(@name)
-      @u_aktiv = @name
-      # => render :template => "dc/settings/#{@name}_edit"
-      render :template => "dc/settings/edit"
+      if @name == 'core_one'
+        render :template => "dc/settings/core_edit"
+      else
+        render :template => "dc/settings/edit"
+      end
     else
       flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
       render :index
@@ -43,7 +48,7 @@ class Dc::SettingsController < Dc::BaseController
     if @setting_names.include?(@name)
       @u_aktiv = @name
       respond_to do |format|
-        unless @name == 'core'
+        unless (@name == 'core') || (@name == 'core_one')
           if "DC::#{@name.classify}".constantize::Config.set(params[:preferences])
             format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
           else
@@ -68,7 +73,7 @@ class Dc::SettingsController < Dc::BaseController
   def load_strange_setting_names
     # @setting_names = ["cms", "account", "kontakt", "mail", "optik", "user"]
     # => @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
-    @setting_names = ["core", "stylez", "user"]
+    @setting_names = ["core", "stylez", "user", 'core_one']
     @aktivio = 'settings'
   end
   
@@ -101,9 +106,9 @@ class Dc::SettingsController < Dc::BaseController
     @datei = Datei.new( params[:datei] )
     @datei.save
     if !@prefs.blank?
-      "Strangecms::#{@prefs}".constantize::Config.set(@key => @datei.id)
+      "DC::#{@prefs}".constantize::Config.set(@key => @datei.id)
     else
-      Strangecms::Config.set(@key => @datei.id)
+      DC::Config.set(@key => @datei.id)
     end
     redirect_to @back_link
   end

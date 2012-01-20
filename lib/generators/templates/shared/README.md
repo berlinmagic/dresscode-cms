@@ -1,4 +1,4 @@
-# fineline-Theme
+# dresscode-Theme
 <%= class_name %>
 <%= "=" * class_name.size %>
 

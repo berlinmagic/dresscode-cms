@@ -30,7 +30,12 @@ Gem::Specification.new do |s|
   s.add_dependency( 'dc_lists',     '>= 0.0.1' )
   s.add_dependency( 'dc_pages',     '>= 0.0.1' )
 
-  s.add_dependency( 'dc_staticthemes',     '>= 0.0.1' )
+  # => s.add_dependency( 'dc_staticthemes',     '>= 0.0.1' )
+  
+  s.add_dependency( 'dc_themes_static',     '>= 0.0.1' )
+  s.add_dependency( 'dc_themes_dynamic',     '>= 0.0.1' )
+  
+  
 
   s.add_dependency( 'dc_user',      '>= 0.0.1' )
 

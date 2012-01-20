@@ -6,13 +6,15 @@
   
   require "dc/version"
   
-  require "active_support/core_ext"
+  # => require "active_support/core_ext"
   # => require "dresscode/cms_stuff"
   
   
 module Dresscode
   
   class Engine < Rails::Engine
+    
+    
     
   end
   
