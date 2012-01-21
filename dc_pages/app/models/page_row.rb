@@ -9,7 +9,7 @@ class PageRow < ActiveRecord::Base
   end
   
   # =====> S C O P E S <======================================================== #
-  scope :dcid, lambda { |uid| where("cms_ident = ?", uid) }
+  scope :dcid, lambda { |uid| where("dc_uid = ?", uid) }
   
   default_scope :order => "position ASC"
   
@@ -22,14 +22,14 @@ class PageRow < ActiveRecord::Base
   accepts_nested_attributes_for   :page_cells,  :allow_destroy => true
   
   
-  # =====> V A L I D A T I O N <======================================================== #
-  validates_presence_of       :dc_uid
-  validates_uniqueness_of     :dc_uid
-  
-  
-  # =====> F I L T E R <======================================================== #
-  before_validation :generate_unique_identifier
-  
+  # => # =====> V A L I D A T I O N <======================================================== #
+  # => validates_presence_of       :dc_uid
+  # => validates_uniqueness_of     :dc_uid
+  # => 
+  # => 
+  # => # =====> F I L T E R <======================================================== #
+  # => before_validation :generate_unique_identifier
+  after_create :generate_unique_identifier
   
   
 private
@@ -38,7 +38,7 @@ private
     record = true
     while record
       random = "prow_#{Array.new(7){rand(9)}.join}"
-      record = PageRow.by_cmsid( random ).count > 0 ? true : false
+      record = PageRow.dcid( random ).count > 0 ? true : false
     end
     self.dc_uid = random
     self.save

@@ -5,6 +5,7 @@ html{ overflow-y:scroll;}
 <%= hook :site_headline %>
 
 <div id="main_content">
+	<div class="clearfix"></div>
 	<% if 3 == 4 %>
 		<div id="dialog_box"></div>
 		<% flash.each do |name, msg| %>
@@ -28,7 +29,44 @@ html{ overflow-y:scroll;}
 	
 	<%= render 'static/parts/header' %>
 	
-	<%= yield %>
+	<div class="clearfix"></div>
 	
+	<div class="container_48">
+		<div id="the_headline">
+			<h1><%= @page.name.titleize %></h1>
+		</div>
+	</div>
 	
+	<div class="clearfix"></div>
+	
+	<div id="dc_page">
+		<div class="container_48">
+			<div class="fl_box_950">
+				<%= yield %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	
+	<br/>
+	
+	<div id="dc_footer">
+		<div class="container_48">
+			<div class="fl_box_310">
+				FOOTER
+			</div>
+			<div class="fl_box_310">
+				FOOTER
+			</div>
+			<div class="fl_box_310">
+				FOOTER
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<br/>
+	<div class="clearfix"></div>
 </div>

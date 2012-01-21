@@ -4,10 +4,34 @@
     <%= raw( @page.text_content)%>
 </div>
 
+<% if @page.page_rows && @page.page_rows.count > 0 %>
+	<% @page.page_rows.each do |page_row| %>
+		<div class="page_row">
+			<% if page_row.page_cells && page_row.page_cells.count > 0 %>
+				<% page_row.page_cells.each do |page_cell| %>
+					<div class="<%= "cell#{page_cell.cell_type.to_s}" %>">
+						<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
+							<% page_cell.page_contents.each do |page_content| %>
+								<div id="<%= page_content.dc_uid %>" class="page_content dc_editor-region" data-type="editable">
+									<%= raw( page_content.the_content ) %>
+								</div>
+								<div class="clearfix"></div>
+							<% end %>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+<% end %>
+
+
+
 <% content_for :sidebar do %>
 	<h1>Seite bearbeiten</h1>
 	<%= link_to "'#{@page.name}' - Anzeigen", [:dc, @page] %>
-	<%= link_to 'Alle Seiten', dc_pages_path %>
+	<%= link_to 'Alle Seiten', dcr_pages_path %>
 	<%= link_to "Edittor", "/editor" + request.path, :id => "Mercury_edit_link", 
 				:data => { :save_url => mercury_update_dc_page_path( @page ) } %>
 	<br/>

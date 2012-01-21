@@ -31,7 +31,7 @@ class Page < ActiveRecord::Base
   # =====> A S S O Z I A T I O N S <======================================================== #
   has_many :page_rows, :foreign_key => "page_id", :dependent => :destroy
   has_many :page_cells, :through => :page_rows
-  has_many :page_contents, :through => :page_cells
+  # => has_many :page_contents, :through => :page_cells
   
   accepts_nested_attributes_for   :page_rows,  :allow_destroy => true
   

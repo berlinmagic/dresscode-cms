@@ -1,0 +1,11 @@
+<li>
+	<%= link_to page.name.upcase, page.link, :class => "#{'aktiv' if @page && ((@page == page) || (@page.main_site == page))}" %>
+	
+	<% if page.sub_sites && page.sub_sites.aktiv.count > 0 %>
+	<ul class="sub_nav">
+		<% page.sub_sites.aktiv.each do |sub_page| %>
+			<%= render 'static/navigation/page_list', :page => sub_page %>
+		<% end %>
+	</ul>
+	<% end %>
+</li>

@@ -1,0 +1,61 @@
+#main_content { background: #ccc; padding: 5px 0 20px; }
+
+#dc_header { margin: 0; }
+
+#dcLOGO { margin: 5px 0; opacity: .85; display: block; }
+#dcLOGO:hover { opacity: 1.00; }
+
+#dc_header_nav { 
+		float: right; margin: 60px 0 0; background: transparent; <%= all_border_radius( '8px' ) %> 
+		list-style: none; padding: 0; overflow: hidden; <%= box_shadow('2px 2px 1px 0 #000, inset 1px 1px 1px 0 #fff') %>  }
+
+#dc_header_nav li { 
+		float: left; border-right: 1px solid rgba(0,0,0,.8); border-left: 1px solid rgba(0,0,0,.8); }
+
+#dc_header_nav li a { 
+		padding: 7px 20px 6px; display: block; font-weight: bold; color: rgba(255,255,255,.70); text-decoration: none;
+		<%= vertical_gradient( 'rgba(153,0,0,.60)', 'rgba(102,0,0,.60)' ) %> <%#= vertical_gradient( '#990000', '#660000' ) %>}
+
+#dc_header_nav li a.aktiv { <%= vertical_gradient( 'rgba(153,0,0,.80)', 'rgba(102,0,0,.80)' ) %> }
+#dc_header_nav li a:hover { <%= vertical_gradient( '#990000', '#660000' ) %> }
+
+
+#dc_header_nav li:first-child { border-left: 0; }
+#dc_header_nav li:last-child { border-right: 0; }
+
+#dc_page .container_48 { padding: 10px; <%= all_border_radius( '10px' ) %> background: #fff; border: 1px solid #777; 
+		<%= box_shadow('0px -2px 1px 1px #333') %> }
+
+
+#the_headline { height: 120px; display: block; position: relative; }
+
+#the_headline h1 { position: absolute; top: 10px; left: -700px; padding: 20px 50px 20px 700px; background: rgba(0,0,0,.70); color: #fff; 
+		<%= all_border_radius( '5px' ) %> }
+
+
+
+.page_row { margin: 5px -5px; }
+
+.cell1x1, .cell1x2, .cell1x3, .cell1x4, .cell2x3, .cell2x4, .cell3x4 {
+		display:inline; float: left; position: relative; margin-left: 5px; margin-right: 5px; border: 0; }
+
+.fl_box_950 .page_row .cell1x1 { width: 950px; }
+.fl_box_710 .page_row .cell1x1 { width: 710px; }
+.fl_box_950 .page_row .cell1x2, .fl_box_950 .page_row .cell2x4 { width: 470px; }
+.fl_box_710 .page_row .cell1x2, .fl_box_710 .page_row .cell2x4 { width: 350px; }
+.fl_box_950 .page_row .cell1x3 { width: 310px; }
+.fl_box_710 .page_row .cell1x3 { width: 230px; }
+.fl_box_950 .page_row .cell1x4 { width: 230px; }
+.fl_box_710 .page_row .cell1x4 { width: 170px; }
+
+.fl_box_950 .page_row .cell2x3 { width: 630px; }
+.fl_box_710 .page_row .cell2x3 { width: 470px; }
+.fl_box_950 .page_row .cell3x4 { width: 710px; }
+.fl_box_710 .page_row .cell3x4 { width: 530px; }
+
+
+
+
+
+
+

@@ -1,19 +1,14 @@
-<div id="header_navigation">
-	<ul id="dc_header_nav">
+<ul id="dc_header_nav">
 	
 	<%= hook :before_system_navigation %>
 	
-	<% Page.all.each do |seite| %>
-		<li class="fine_header_nav<%= ' nav_aktiv' if @page && ((@page == seite) || (@page.hauptseite == seite)) %>">
-			<%= link_to seite.name.upcase, seite.link, :class => "#{'aktiv' if @seite && ((@seite == seite) || (@seite.main_site == seite))}" %>
-		</li>
+	<% Page.all.each do |page| %>
+		
+		<%= render 'static/navigation/page_list', :page => page %>
+		
 	<% end %>
-	
-
 	
 	<%= hook :after_system_navigation %>
 	
-	
 	<div class="clearfix" id="dc_header_nav_clr"></div>
-	</ul>
-</div>
+</ul>

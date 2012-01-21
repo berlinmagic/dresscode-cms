@@ -19,6 +19,25 @@ home = Page.create!           :name => 'Start',
                               :tlayout_id => 1,
                               :text_content => '<h1>N E U &nbsp;! ! !</h1><p>&nbsp;</p><p>&nbsp;</p><p><strong>Ab jetzt werden &Auml;nderungen an Seiten aufgezeichnet, dass hei&szlig;t man kann jede Vorg&auml;nger-Version wiederherstellen.</strong></p><p>&nbsp;</p><p>&nbsp;</p><p><em>Klingt toll? .. na dann sofort mal Ausprobieren !</em></p><p>&nbsp;</p><ul><li>einfach anmelden unter <a href="/users/sign_in"><u><strong>login</strong></u></a></li><br /><li>Dann im <a href="/admin"><u><strong>Admin-Dashboard</strong></u></a> eine &Auml;nderung ausw&auml;hlen</li><br /><li>oder die betreffende Seite im Admin-Bereich anschauen zB: <a href="/admin/seiten/1"><u><strong>Home</strong></u></a></li><br /></ul><br/><br/><p>Testen Sie unser CMS ... melden Sie sich mit E-Mail:<br/><strong>test_user@2strange.net</strong><br/><br/>und Password:<br/><strong>demotest</strong><br/><br/>beim System an.</p>'
 
+puts 'INFO: ERSTELLE SEITEN-Layout'
+
+home_row1 = PageRow.create!     :page_id => 1, :position => 1
+
+home_cel1 = PageCell.create!    :page_row_id => 1, :cell_type => '1x1', :position => 1
+
+home_con1 = PageContent.create! :page_cell_id => 1, :the_content => 'Abschnitt - 1<br/>bla bla'
+
+
+home_row2 = PageRow.create!     :page_id => 1, :position => 2
+
+home_cel21 = PageCell.create!    :page_row_id => 2, :cell_type => '1x2', :position => 1
+
+home_con21 = PageContent.create! :page_cell_id => 2, :the_content => 'Abschnitt - 2.1<br/>bla bla'
+
+home_cel22 = PageCell.create!    :page_row_id => 2, :cell_type => '1x2', :position => 2
+
+home_con22 = PageContent.create! :page_cell_id => 3, :the_content => 'Abschnitt - 2.2<br/>bla bla'
+
 
 
 

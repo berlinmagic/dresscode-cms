@@ -2,7 +2,7 @@
   require "dresscode"
   require "dc_core"
   
-  require "dc_hook_support"
+  # => require "dc_hook_support" reincluded in core
   
   # => Rails Extensions:
   require "ext/array"             # => pagination for arrays

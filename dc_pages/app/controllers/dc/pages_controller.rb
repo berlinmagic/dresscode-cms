@@ -18,7 +18,7 @@ class Dc::PagesController < Dc::BaseController
   def create
     @page = Page.new(params[:page])
     if @page.save
-      redirect_to( edit_page_path( @page ), :notice => 'Seite wurde erstellt und kann bearbeitet werden.' )
+      redirect_to( edit_dcr_page_path( @page ), :notice => 'Seite wurde erstellt und kann bearbeitet werden.' )
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class Dc::PagesController < Dc::BaseController
   def update
     @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
-      redirect_to( edit_page_path( @page ), :notice => 'Seite wurde geändert und kann nun weiter bearbeitet werden.' )
+      redirect_to( edit_dcr_page_path( @page ), :notice => 'Seite wurde geändert und kann nun weiter bearbeitet werden.' )
     else
       render :action => 'edit'
     end
@@ -41,7 +41,7 @@ class Dc::PagesController < Dc::BaseController
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
-    redirect_to pages_url, :notice => "Successfully destroyed page."
+    redirect_to dcr_pages_url, :notice => "Successfully destroyed page."
   end
   
   def mercury_update
@@ -113,7 +113,7 @@ class Dc::PagesController < Dc::BaseController
   
   def render_seiten_error
     # => render :text => 'What the fuck are you looking for ... Bastard?', :status => :not_found
-    redirect_to(root_path, :flash => { :error => I18n.t('seite_nicht_vorhanden') })
+    redirect_to(dcr_root_path, :flash => { :error => I18n.t('seite_nicht_vorhanden') })
   end
   
   def render_this_site

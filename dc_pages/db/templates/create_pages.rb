@@ -71,6 +71,7 @@ class CreatePages < ActiveRecord::Migration
     
     create_table :page_rows do |t|
       t.string        :dc_uid,              :default => ""
+      t.string        :name                                     # => for anchor
       t.integer       :position                                 # => Sortierung
       
       t.references    :page
@@ -84,6 +85,7 @@ class CreatePages < ActiveRecord::Migration
     create_table :page_cells do |t|
       t.string        :dc_uid,              :default => ""
       t.integer       :position                                 # => Sortierung
+      t.string        :cell_type                                # => Cell Type
       
       t.references    :page_row
       t.timestamps
@@ -96,11 +98,15 @@ class CreatePages < ActiveRecord::Migration
     create_table :page_contents do |t|
       t.string        :dc_uid,              :default => ""
       t.integer       :position                                 # => Sortierung
+      t.text          :the_content
+      
+      t.references    :target, :polymorphic => true
       
       t.references    :page_cell
       t.timestamps
     end
     add_index :page_contents, :dc_uid, :unique => true
+    add_index :page_contents, [:target_type, :target_id]
     add_index :page_contents, :page_cell_id
     add_index :page_contents, :position
     
