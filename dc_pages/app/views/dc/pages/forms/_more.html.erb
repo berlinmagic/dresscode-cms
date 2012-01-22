@@ -1,0 +1,29 @@
+<%= form_for([:dc, @page]) do |f| %>
+	<%= f.error_messages %>
+	
+	<br/>
+	<%= f.check_box :breadcrumps %> <%= f.label :breadcrumps %><br/>
+	<br/>
+	
+	<div class="toggle_check">
+		<%= f.check_box :spread_site %> <%= f.label :spread_site %>
+	</div>
+	<div class="<%= 'hidden' unless @page.spread_site %> toggle_field">
+		<p class="sys_help">Seite existiert nicht! Sie dient lediglich als Ordner für Unterseiten.</p>
+	</div>
+	<br/>
+    
+	<div class="toggle_check">
+		<%= f.check_box :fowarding_site %> <%= f.label :fowarding_site %>
+	</div>
+	<div class="<%= 'hidden' unless @page.fowarding_site %> toggle_field">
+		<%= f.label :external_link, 'Externer Link' %>:<br/>
+		<%= f.text_field :external_link  %><br/>
+	</div>
+	
+	<br/>
+	<%= f.submit ' update! ' %>
+	<br/>
+	<br/>
+<% end %>
+

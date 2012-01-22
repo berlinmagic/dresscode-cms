@@ -1,0 +1,25 @@
+<%= form_for([:dc, @page]) do |f| %>
+	<%= f.error_messages %>
+	<br/>
+	
+	<div class="toggle_check">
+		<%= f.check_box :use_title %> <%= f.label :use_title, 'Abweichender Titel' %>
+	</div>
+	<div class="<%= 'hidden' unless @page.use_title %> toggle_field">
+		<%= f.label :title, 'Titel' %><span class="sys_help system_help_text <%= 'hidden' unless DC::Config[:show_help] %>"> (Fenstername)</span><br />
+		<%= f.text_field :title %>
+	</div>
+	<br/>
+	<%= f.label :meta_keywords %> <span class="sys_help system_help_text <%= 'hidden' unless DC::Config[:show_help] %>">(Suchworte .. weniger ist mehr!)</span><br />
+	<%= f.text_field :meta_keywords, :size => '80' %><br/>
+	<br/>
+	
+	<%= f.label :meta_description %> <span class="sys_help system_help_text <%= 'hidden' unless DC::Config[:show_help] %>">(Beschreibung der Seite, für Google-Trefferliste)</span><br />
+	<%= f.text_area :meta_description, :size => '80x4' %><br/>
+	
+	<br/>
+	<%= f.submit ' update! ' %>
+	<br/>
+	<br/>
+<% end %>
+

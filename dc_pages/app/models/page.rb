@@ -12,16 +12,17 @@ class Page < ActiveRecord::Base
   # =====> C O N S T A N T S <======================================================== #
   HEADLINE_TYPES = %w[name headline none]
   SITE_TYPES = %w[system page module]
+  SITE_TYPE_PARAMS = %w[default system_only protected]
   
   
   # =====> S C O P E S <======================================================== #
-  scope :nav_system,    where("in_system_nav = ? AND is_draft = ? AND deleted_at = ?", true, false, nil)
-  scope :nav_main,      where("in_main_nav = ? AND is_draft = ? AND deleted_at = ?", true, false, nil)
-  scope :nav_sec,       where("in_sec_nav = ? AND is_draft = ? AND deleted_at = ?", true, false, nil)
-  scope :draft,         where("is_draft = ? AND deleted_at = ?", true, nil)
-  scope :aktiv,         where("is_draft = ? AND deleted_at = ?", false, nil)
-  scope :dc,            where("is_draft = ? AND deleted_at = ?", false, nil)
-  scope :deleted,       where("deleted_at != ?", nil)
+  scope :main,          where( :parent_site_id => nil )
+  scope :nav_system,    where( :in_system_nav => true, :is_draft => false, :deleted_at => nil )
+  scope :nav_main,      where( :in_main_nav => true, :is_draft => false, :deleted_at => nil )
+  scope :nav_sec,       where( :in_sec_nav => true, :is_draft => false, :deleted_at => nil )
+  scope :draft,         where( :is_draft => true, :deleted_at => nil )
+  scope :aktiv,         where( :is_draft => false, :deleted_at => nil )
+  scope :deleted,       where( :deleted_at => !nil )
   scope :sitemap,       where("system_seite = ? OR entwurf = ? AND deleted = ?", true, false, false)
   scope :systemsite,    lambda { |name| where("system_name = ? AND deleted = ?", name, false) }
   

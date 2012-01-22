@@ -1,16 +1,40 @@
-<% Page.all.each do |p| %>
-	<%= link_to raw("<strong>#{p.name}</strong>"), dcr_page_path(p), :class => "#{ 'aktiv' if @page && @page == p }" %>
+<%= dc_aside_box( 'Seiten', "#{@page ? 'aktiv' : 'inaktiv'}" ) do %>
+	<% Page.all.each do |p| %>
+		<%= link_to raw("<strong>#{p.name}</strong>"), dcr_page_path(p), :class => "#{ 'aktiv' if @page && @page == p }" %>
+	<% end %>
+	<%= link_to raw('<strong>+</strong> neue Seite'), new_dcr_page_path, :class => 'LightBox' %>
 <% end %>
-
-<br/>
-<br/>
-<br/>
 
 <% if @page %>
-	<%= link_to 'Seite bearbeiten', edit_dcr_page_path(@page) %>
-	<br/>
-	<br/>
-	<br/>
+<%= dc_aside_box( 'Seiten-Einstellungen' ) do %>
+	<%= link_to raw('<strong>+</strong> neuer Abschnitt'), new_dcr_page_page_row_path(@page), :class => 'LightBox' %>
+	
+	<%= link_to "Editor laden", "/editor" + request.path, :id => "Mercury_edit_link", :data => { :save_url => mercury_update_dc_page_path( @page ) } %>
+	
+	<%#= link_to 'Seite bearbeiten', edit_dcr_page_path(@page) %>
+	
+	<%= dc_aside_sub_box( 'Grund-Einstellungen' ) do %>
+		<%= render 'dc/pages/forms/base' %>
+	<% end %>
+	<%= dc_aside_sub_box( 'Erweiterte-Einstellungen' ) do %>
+		<%= render 'dc/pages/forms/more' %>
+	<% end %>
+	<%= dc_aside_sub_box( 'S.E.O.-Einstellungen' ) do %>
+		<%= render 'dc/pages/forms/seo' %>
+	<% end %>
+	<% if site_master %>
+		<%= dc_aside_sub_box( 'ADMIN-Einstellungen' ) do %>
+			<%= render 'dc/pages/forms/master' %>
+		<% end %>
+	<% end %>
 <% end %>
 
-<%= link_to 'neue Seite', new_dcr_page_path, :class => 'LightBox' %>
+<% end %>
+
+
+<%#= link_to 'neue Seite', new_dcr_page_path, :class => 'LightBox' %>
+<% if @page %>
+	<%#= link_to 'neuer Abschnitt', new_dcr_page_page_row_path(@page), :class => 'LightBox' %>
+<% end %>
+<br/>
+<br/>

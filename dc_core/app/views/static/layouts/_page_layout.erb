@@ -1,10 +1,4 @@
-<style>
-html{ overflow-y:scroll;}
-#main_content { padding: 0;}
-</style>
-<%= hook :site_headline %>
-
-<div id="main_content">
+<div id="main_content" class="public">
 	<div class="clearfix"></div>
 	<% if 3 == 4 %>
 		<div id="dialog_box"></div>
@@ -33,7 +27,9 @@ html{ overflow-y:scroll;}
 	
 	<div class="container_48">
 		<div id="the_headline">
-			<h1><%= @page.name.titleize %></h1>
+			<% if @page && @page.the_headline %>
+				<h1><%= @page.the_headline %></h1>
+			<% end %>
 		</div>
 	</div>
 	

@@ -1,0 +1,30 @@
+<div class="LB_Box">
+	<%= form_for([:dcr, @data, @page_content]) do |f| %>
+		<%= f.error_messages %>
+		<% if @data %>
+			<%= f.hidden_field :page_cell_id, :value => @data.id  %>
+		<% end %>
+
+		
+
+		<select id="page_content_content_type" name="page_content[content_type]">
+			<%= hook :page_content_types_form do %>
+			<option value="text" selected="selected">Text</option>
+			<!--
+			<option value="r2c11">R2c11</option>
+			<option value="r3c12">R3c12</option>
+			-->
+			<% end%>
+		</select>
+		
+		<div class="actions">
+			<div class="fl_box_110">
+				&nbsp;
+			</div>
+			<div class="fl_box_210">
+				<%= f.submit 'erstellen' %><%= link_to "zurück", :back, :class => 'big_button' %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+</div>

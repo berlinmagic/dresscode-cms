@@ -1,0 +1,24 @@
+<div class="LB_Box">
+	<%= form_for([:dcr, @data, @page_row]) do |f| %>
+		<%= f.error_messages %>
+		<% this_position =	@page_row.position || 1 %>
+		<% cell_type = 	'r1c1' %>
+		<% if @data %>
+			<% this_position = @data.page_rows.count + 1 %>
+			<%= f.hidden_field :page_id, :value => @data.id  %>
+		<% end %>
+		<%= f.hidden_field :position, :value => this_position  %>
+		
+		<%= f.select :cells_type, options_for_select( PageRow::CELL_TYPES.map { |c| [t("page_row_cell_types.#{c}"), c]}, cell_type)  %>
+		
+		<div class="actions">
+			<div class="fl_box_110">
+				&nbsp;
+			</div>
+			<div class="fl_box_210">
+				<%= f.submit 'erstellen' %><%= link_to "zurück", :back, :class => 'big_button' %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+</div>

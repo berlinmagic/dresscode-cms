@@ -1,0 +1,43 @@
+<%= form_for([:dc, @page]) do |f| %>
+	<%= f.error_messages %>
+
+	<%= f.label :name, "Name:" %><br/>
+	<%= f.text_field :name, :class => 'in_aside' %><br/>
+	<br/>
+	
+	Elternseite:<br/>
+	<select id="page_parent_site_id" name="page[parent_site_id]">
+		<option value=""> - - - </option>
+		<% Page.aktiv.each do |page| %>
+			<% unless page == @page %>
+				<option value="<%= page.id %>"><%= page.name %></option>
+			<% end %>
+		<% end %>
+	</select><br/>
+	<br/>
+	
+	Art der Seitenüberschrift:<br/>
+	<%= f.select :headline_type, options_for_select( Page::HEADLINE_TYPES.map {|c| [c,c]}, @page.headline_type )%><br/>
+	<br/>
+	<div id="headline_field">
+		<%= f.label :headline, 'Überschrift' %>:<br/>
+		<%= f.text_field :headline, :class => 'in_aside' %><br/>
+		<br/>
+	</div>
+	
+	
+	Zeige einen Seitenlink:<br/>
+
+	<%= f.check_box :in_main_nav %> <%= f.label :in_main_nav, 'In Hauptnavigatin' %><br/>
+	<%= f.check_box :in_system_nav %> <%= f.label :in_system_nav, 'In Systemnavigatin' %><br/>
+	<%= f.check_box :in_sec_nav %> <%= f.label :in_sec_nav, 'In Sekundärnavigatin' %><br/>
+
+	<br/>
+	
+	<%= f.check_box :is_draft %> <%= f.label :is_draft, 'Seite ist im Entwurfs-Stadium' %><br/>
+	<br/>
+	
+	<%= f.submit ' update! ' %>
+	<br/>
+	<br/>
+<% end %>

@@ -54,6 +54,20 @@ module StuffHelper
                   &block  )
   end
   
+  def dc_aside_box( headline, cssclass = nil, &block )
+    head = content_tag( 'div', headline.to_s, :class => 'aside_head' )
+    body = content_tag( 'div', :class => 'aside_body', &block )
+    aside = head + body
+    content_tag( 'div', aside, :class => "dc_aside_box #{cssclass}" )
+  end
+  
+  def dc_aside_sub_box( headline, cssclass = nil, &block )
+    head = content_tag( 'div', headline.to_s, :class => 'subside_head' )
+    body = content_tag( 'div', :class => 'subside_body', &block )
+    aside = head + body
+    content_tag( 'div', aside, :class => "dc_aside_sub_box #{cssclass}" )
+  end
+  
   
   def title(page_title, show_title = true)
     content_for(:title) { h("suitUp-2 | #{page_title.to_s}") }

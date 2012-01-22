@@ -42,7 +42,7 @@ class CreatePages < ActiveRecord::Migration
       t.datetime      :deleted_at                               # => Wann gelöscht
       t.boolean       :is_draft,         :default => false      # => Seite ist im Entwurf-Stadium (evtl. nur für den Ersteller sichtbar ?)
       
-      t.boolean       :breadcrumps,     :default => true       # => Breadcrumps auf der Seite anzeigen ? 
+      t.boolean       :breadcrumps,       :default => true       # => Breadcrumps auf der Seite anzeigen ? 
       
       t.integer       :position                                 # => Sortierung
       t.integer       :site_level                                    # => Level der Seite
@@ -98,9 +98,12 @@ class CreatePages < ActiveRecord::Migration
     create_table :page_contents do |t|
       t.string        :dc_uid,              :default => ""
       t.integer       :position                                 # => Sortierung
-      t.text          :the_content
       
-      t.references    :target, :polymorphic => true
+      t.string        :content_type,        :default => "text"  # => which Content
+      
+      t.text          :text_content
+      
+      t.references    :target, :polymorphic => true             # => Modul - Content
       
       t.references    :page_cell
       t.timestamps

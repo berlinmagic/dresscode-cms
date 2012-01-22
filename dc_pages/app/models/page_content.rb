@@ -38,6 +38,11 @@ private
       record = PageContent.dcid( random ).count > 0 ? true : false
     end
     self.dc_uid = random
+    if self.content_type && self.content_type == 'text'
+      unless self.text_content && self.text_content.blank?
+        self.text_content = "<div><strong>leere Textbox</strong></div><div>Bitte nutzen Sie den Editor um Text einzufügen oder zu bearbeiten</div>"
+      end
+    end
     self.save
   end
   

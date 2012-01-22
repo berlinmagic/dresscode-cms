@@ -13,10 +13,12 @@
 						<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
 							<% page_cell.page_contents.each do |page_content| %>
 								<div id="<%= page_content.dc_uid %>" class="page_content dc_editor-region" data-type="editable">
-									<%= raw( page_content.the_content ) %>
+									<%= raw( page_content.text_content ) %>
 								</div>
 								<div class="clearfix"></div>
 							<% end %>
+						<% else %>
+							<%= link_to 'Inhalt wählen', new_dcr_page_cell_page_content_path(page_cell), :class => 'LightBox pc_choose' %>
 						<% end %>
 					</div>
 				<% end %>
@@ -29,13 +31,12 @@
 
 
 <% content_for :sidebar do %>
-	<h1>Seite bearbeiten</h1>
-	<%= link_to "'#{@page.name}' - Anzeigen", [:dc, @page] %>
+	<%= link_to raw("<strong>#{@page.name}</strong> anzeigen"), [:dcr, @page] %>
 	<%= link_to 'Alle Seiten', dcr_pages_path %>
 	<%= link_to "Edittor", "/editor" + request.path, :id => "Mercury_edit_link", 
 				:data => { :save_url => mercury_update_dc_page_path( @page ) } %>
 	<br/>
-	<h3>Info</h3>
+	<h3>Seite bearbeiten</h3>
 	<%= form_for([:dc, @page]) do |f| %>
 		<%= f.error_messages %>
 		
@@ -51,4 +52,8 @@
 		
 		<%= f.submit ' update! ' %>
 	<% end %>
+	<br/>
+	
+	<%= link_to 'neuer Abschnitt', new_dcr_page_page_row_path(@page), :class => 'LightBox' %>
+	
 <% end %>

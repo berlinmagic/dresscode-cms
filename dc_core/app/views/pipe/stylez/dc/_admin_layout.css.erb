@@ -6,22 +6,42 @@
 
 
 /* S I D E B A R */
-#system_sidebar { background: #ccc; display:block; float: left;}
-#system_sidebar #system_side_nav { padding: 5px;}
+#system_sidebar { display:block; float: left; <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> overflow-x: hidden; overflow-y: auto;}
+#system_sidebar #system_side_nav { padding: 0;}
 #system_sidebar #system_side_nav a { 
-	padding: 5px; border: solid 1px #000; display: block; margin: 0 0 5px; 
-	-khtml-border-radius: 	 3px;
-	-webkit-border-radius: 	 3px;
-	-moz-border-radius: 	 3px;
-	-o-border-radius: 		 3px;
-	-ms-border-radius: 		 3px;
-	border-radius: 			 3px;
-	text-decoration: none; font-weight:bold;
+	padding: 5px 20px; border-top: solid 1px #fff; border-bottom: solid 1px #777; display: block; margin: 0; 
+	text-decoration: none; font-weight: normal; <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> color: #333;
+	<%= text_shadow('1px 1px 1px #fff') %>
 	}
 #system_sidebar #system_side_nav a.aktiv{
-	color: red;
+	color: red; <%= vertical_gradient( '#e6e6e6', '#a4a4a4' ) %> <%= text_shadow('1px 1px 1px #fff') %>
 }
-#system_sidebar #system_side_nav a.sub_nav { margin: 0 10px 5px;}
+#system_sidebar #system_side_nav a:hover {
+	<%= vertical_gradient( '#a4a4a4', '#e6e6e6' ) %>
+}
+
+#system_sidebar #system_side_nav a.sub_nav { padding: 5px 20px;}
+
+
+
+.dc_aside_box .aside_head {
+	padding: 10px 20px; border-top: solid 1px #fff; border-bottom: solid 1px #777; display: block; margin: 0; 
+	text-decoration: none; font-weight: bold; <%= vertical_gradient( '#5c8ccd', '#e6e6e6' ) %> color: #666;
+	<%= text_shadow('1px 1px 1px #fff') %> cursor: pointer;
+}
+
+.dc_aside_box.aktiv .aside_head { 
+	<%= vertical_gradient( '#5c8ccd', '#e6e6e6' ) %> color: #000; <%= text_shadow('1px 1px 1px #ccc') %>
+}
+
+
+.dc_aside_box .dc_aside_sub_box .subside_head {
+	padding: 5px 20px; border-top: solid 1px #fff; border-bottom: solid 1px #777; display: block; margin: 0; 
+	text-decoration: none; font-weight: bold; <%= vertical_gradient( '#aaaaaa', '#e6e6e6' ) %> color: #666;
+	<%= text_shadow('1px 1px 1px #fff') %> cursor: pointer;
+}
+
+.dc_aside_box .dc_aside_sub_box .subside_body form { margin: 10px 20px 10px; }
 
 
 /* F O O T E R */

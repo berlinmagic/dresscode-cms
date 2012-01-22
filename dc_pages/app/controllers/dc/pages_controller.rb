@@ -1,7 +1,6 @@
 # encoding: utf-8
 class Dc::PagesController < Dc::BaseController
   
-  before_filter :authorized_admin, :except => [:show_seite, :render_seiten_error, :render_this_site]
   
   def index
     @pages = Page.all
@@ -18,7 +17,7 @@ class Dc::PagesController < Dc::BaseController
   def create
     @page = Page.new(params[:page])
     if @page.save
-      redirect_to( edit_dcr_page_path( @page ), :notice => 'Seite wurde erstellt und kann bearbeitet werden.' )
+      redirect_to( dcr_page_path( @page ), :notice => 'Seite wurde erstellt und kann bearbeitet werden.' )
     else
       render :action => 'new'
     end
@@ -32,7 +31,7 @@ class Dc::PagesController < Dc::BaseController
   def update
     @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
-      redirect_to( edit_dcr_page_path( @page ), :notice => 'Seite wurde geändert und kann nun weiter bearbeitet werden.' )
+      redirect_to( dcr_page_path( @page ), :notice => 'Seite wurde geändert und kann nun weiter bearbeitet werden.' )
     else
       render :action => 'edit'
     end
@@ -46,8 +45,19 @@ class Dc::PagesController < Dc::BaseController
   
   def mercury_update
     page = Page.find(params[:id])
-    page.text_content = params[:content][:page_content][:value]
-    logger.info "Page-#{page.name} => #{params[:content][:page_content][:value]}"
+    params[:content].each do |key, value|
+      if key == 'page_content'
+        page.text_content = value[:value]
+        logger.info "Text-Content::  #{value[:value]}"
+      elsif ( key =~ /pcon_(.*)/ )
+        pcontent = PageContent.dcid(key).first
+        if pcontent
+          pcontent.text_content = value[:value]
+          pcontent.save!
+          logger.info "Content-Cell::  #{value[:value]}"
+        end
+      end
+    end
     if page.save
       logger.info " Page = saved !!!"
     end

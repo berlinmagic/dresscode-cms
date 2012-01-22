@@ -25,18 +25,18 @@ home_row1 = PageRow.create!     :page_id => 1, :position => 1
 
 home_cel1 = PageCell.create!    :page_row_id => 1, :cell_type => '1x1', :position => 1
 
-home_con1 = PageContent.create! :page_cell_id => 1, :the_content => 'Abschnitt - 1<br/>bla bla'
+home_con1 = PageContent.create! :page_cell_id => 1, :text_content => 'Abschnitt - 1<br/>bla bla'
 
 
 home_row2 = PageRow.create!     :page_id => 1, :position => 2
 
 home_cel21 = PageCell.create!    :page_row_id => 2, :cell_type => '1x2', :position => 1
 
-home_con21 = PageContent.create! :page_cell_id => 2, :the_content => 'Abschnitt - 2.1<br/>bla bla'
+home_con21 = PageContent.create! :page_cell_id => 2, :text_content => 'Abschnitt - 2.1<br/>bla bla'
 
 home_cel22 = PageCell.create!    :page_row_id => 2, :cell_type => '1x2', :position => 2
 
-home_con22 = PageContent.create! :page_cell_id => 3, :the_content => 'Abschnitt - 2.2<br/>bla bla'
+home_con22 = PageContent.create! :page_cell_id => 3, :text_content => 'Abschnitt - 2.2<br/>bla bla'
 
 
 

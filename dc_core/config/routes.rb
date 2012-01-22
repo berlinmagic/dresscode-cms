@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     match '/styles/public/:theme.:format' => 'stylez#public'
     match '/styles/dc/libs.:format' => 'stylez#dc_style'
     match '/styles/dynamic/template/tl_:id.:format' => 'stylez#dynamic_template'
-    match '/styles/dynamic/:script.:format' => 'stylez#dynamic_dc_style'
+    match '/styles/dynamic/:style.:format' => 'stylez#dynamic_dc_style'
     
   end
   

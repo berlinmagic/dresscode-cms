@@ -2,6 +2,8 @@
 class PageRow < ActiveRecord::Base
   # PageRows are Rows for the table-like Pagelayout
   
+  CELL_TYPES = %w[r1c1 r2c11 r3c12 r3c111 r4c13 r4c112 r4c1111]
+  
   def initialize(*args)
     super(*args)
     last_page = PageRow.last
@@ -20,6 +22,10 @@ class PageRow < ActiveRecord::Base
   has_many :page_cells, :foreign_key => "page_row_id", :dependent => :destroy
   has_many :page_contents, :through => :page_cells
   accepts_nested_attributes_for   :page_cells,  :allow_destroy => true
+  
+  
+  
+  attr_accessor   :cells_type
   
   
   # => # =====> V A L I D A T I O N <======================================================== #
