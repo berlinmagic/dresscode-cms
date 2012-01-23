@@ -23,3 +23,29 @@
 	
 	rails g dresscode:install
 	
+
+
+
+# ToDo's:
+
+## Pages
+	index
+	row / cell => sorting
+	row / cell / content => edit / delete
+## Users
+	index
+	show
+	invite / new
+	more_actions => password_reset / sign_up / etc.
+## Settings
+	index => readable/usable for important settings
+	show => readable/usable for all settings
+	edit => readable/usable for all settings
+## System
+	icon_helper
+	Config[:styles] ?
+## DataFiles
+	index
+	show
+	new
+	actions => delete / new_attachment / crop if pic
