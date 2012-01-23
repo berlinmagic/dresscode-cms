@@ -1,0 +1,7 @@
+$().ready(function() {
+	
+	<% flash_time = DC::Config[:show_flash_for].to_i * 1000 %>
+	$('div.flash').delay( <%= flash_time %> ).fadeOut(700);
+	
+});
+

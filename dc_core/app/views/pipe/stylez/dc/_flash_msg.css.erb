@@ -1,0 +1,22 @@
+/********	Flash - Messages 	*****************************************************/
+div.flash { 
+	position:fixed; z-index:999;
+	border: 0; 
+	padding: 1% 1%;
+	width:70%;
+	font-weight:normal;
+	<%= all_border_radius( '10px' ) %>
+	color: #444; 
+	background: rgba(0,0,0,.5); 
+	top: 10%;
+	left:14%;
+	
+}
+/*
+#notice { background-color: #e6ffe1; border-color: #66a366; color: #666; }
+#alert { background-color: #f6e0e0; border-color: #d74242; color: #9c0000;}
+*/
+div.flash .in_flash { font-size: 18px; line-height: 24px; padding: 22px 30px 20px 65px; font-weight: bold; 
+	<%= all_border_radius( '3px' ) %>}
+#notice .in_flash { background: #d2fd7b; border: solid 3px #88b921; }
+#alert .in_flash { background: #ff413c; border: solid 3px #e60500;}

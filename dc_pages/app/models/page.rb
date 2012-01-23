@@ -71,7 +71,7 @@ class Page < ActiveRecord::Base
   # =====> V A L I D A T I O N <======================================================== #
   validates_presence_of       :name
   validates_uniqueness_of     :name, :full_slug, :slug, :std_slug, :case_sensitive => false
-  validates_exclusion_of      :name,    :in => %w( admin sitemap seiten users login logout system ), 
+  validates_exclusion_of      :name,    :in => [ 'dc', 'sitemap', DC::Config[:pretty_namespace].to_s.downcase ], 
                                         :message => I18n.t("Keine_standard_Seitennamen_verwenden")
   
   

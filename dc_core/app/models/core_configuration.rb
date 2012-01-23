@@ -49,7 +49,7 @@ class CoreConfiguration < Configuration
   preference :show_sitemap,       :boolean,     :default => true
   preference :show_dashboard,     :boolean,     :default => true
   # View Flash-Messages for x seconds
-  preference :show_flash_for,     :integer,     :default => 3
+  preference :show_flash_for,     :integer,     :default => 7
   # Logo-Pic´s ???
   preference :logo,               :string,      :default => '/images/logo.png'
   preference :admin_logo,         :string,      :default => "/images/backend_logo.png"

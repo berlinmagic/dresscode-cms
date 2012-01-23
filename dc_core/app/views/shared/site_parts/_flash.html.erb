@@ -1,0 +1,6 @@
+<% if flash %>
+	<% flash.each do |name, msg| %>
+		<% inna_notice = content_tag :div, msg, :class => "in_flash" %>
+		<%= content_tag :div, inna_notice, :class => "flash", :id => "#{name}" %>
+	<% end %>
+<% end %>
