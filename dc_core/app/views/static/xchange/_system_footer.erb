@@ -1,6 +1,6 @@
 
 <div class="foot_box">
-	<%= link_to 'Page', dcr_pages_path, 
+	<%= link_to 'Pages', dcr_pages_path, 
 			:class => "foot_box #{'aktiv' if controller.controller_name == 'pages'}",
 			:title => 'Seiten' %>
 	<div class="sub_foot_box">
@@ -8,6 +8,18 @@
 			<%= link_to raw("<strong>#{p.name}</strong>"), [:dcr, p], :class => 'sub_foot' %>
 		<% end %>
 	</div>
+</div>
+
+<div class="foot_box">
+	<%= link_to 'Users', dcr_users_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'users'}",
+			:title => 'Benutzer' %>
+</div>
+
+<div class="foot_box">
+	<%= link_to 'Data', dcr_data_files_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'users'}",
+			:title => 'Dateien' %>
 </div>
 
 <div class="foot_box">

@@ -27,17 +27,15 @@ Rails.application.routes.draw do
                         :sign_up => 'sign_up' }
   
   namespace :dc do
-    resources :user_settings
-    match 'users' => 'user#index'
-    match 'user_settings_update' => 'user_settings#update'
-    match 'user_create' => 'user#create'
+    resources :users
+    # => resources :user_settings
+    # => match 'users' => 'user#index'
+    # => match 'user_settings_update' => 'user_settings#update'
+    # => match 'user_create' => 'user#create'
   end
   
   scope DC::Config[:pretty_namespace].to_s.downcase, :as => 'dcr', :module => "dc" do
-    resources :user_settings
-    match 'users' => 'user#index'
-    match 'user_settings_update' => 'user_settings#update'
-    match 'user_create' => 'user#create'
+    resources :users
   end
   
 end

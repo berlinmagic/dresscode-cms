@@ -9,6 +9,8 @@
 <%= dc_aside_box( 'Seiten-Einstellungen' ) do %>
 	<%= link_to raw('<strong>+</strong> neuer Abschnitt'), new_dcr_page_page_row_path(@page), :class => 'LightBox' %>
 	
+	<%= link_to 'Abschnitte sortieren', '#', :id => 'page_row_sort_toggle', :class => 'off' %>
+	
 	<%= link_to "Editor laden", "/editor" + request.path, :id => "Mercury_edit_link", :data => { :save_url => mercury_update_dc_page_path( @page ) } %>
 	
 	<%#= link_to 'Seite bearbeiten', edit_dcr_page_path(@page) %>

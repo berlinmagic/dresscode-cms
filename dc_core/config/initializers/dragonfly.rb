@@ -32,6 +32,17 @@ require 'dragonfly/rails/images'
 
 app = Dragonfly[:images]
 app.configure_with(:imagemagick)
-app.configure_with(:rails)
+# => app.configure_with(:rails)
+
+app.configure_with(:rails) do |c|
+  c.url_format = '/media/:job/:basename.:format'
+  c.trust_file_extensions = false
+end
+
 
 app.define_macro(ActiveRecord::Base, :image_accessor)
+app.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
+app.analyser.register(Dragonfly::ImageMagick::Analyser)
+
+
+app.register_mime_type(:odt, 'application/vnd.oasis.opendocument.text')

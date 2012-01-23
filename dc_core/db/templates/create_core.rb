@@ -32,6 +32,7 @@ class CreateCore < ActiveRecord::Migration
       t.string        :mimetype                                   # => mime_type ?    bsp: image/jpg
       
       t.string        :file_uid                                   # => Dragonfly
+      t.string        :file_name                                  # => Dragonfly
       t.boolean       :image,             :default => false       # => bild ?
       
       t.integer       :author                                     # => file-autor / uploader

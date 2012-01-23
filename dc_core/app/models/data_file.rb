@@ -12,22 +12,22 @@ class DataFile < ActiveRecord::Base
   validates_presence_of :file
   
   
-  before_save :set_paramatas
+  # => before_save :set_the_field_values
   
   private
 	
-	  def set_paramatas
+	  def set_the_field_values
 	    if self.file
   	    if xy_pic = self.file.name.split('.')
-  	      self.oname = self.file.name
+  	      self.filename = self.file.name
   	      xy_pic.delete(xy_pic.last)
   	      unless self.name && self.name != ''
   	        self.name = xy_pic.last
   	      end
   	    end
-  	    self.mime_type  = self.file.mime_type
-        self.file_type  = self.file.format
-        self.image      = self.file.image?
+  	    # => self.mimetype  = self.file.mime_type if self.file.mime_type
+        # => self.filetype  = self.file.format if self.file.format
+        self.image     = self.file.image?
   	  end
   	end
   

@@ -5,12 +5,13 @@
 <%= raw @page.text_content %>
 <div class="clearfix"></div>
 
+<div id="dc_page_content">
 <% if @page.page_rows && @page.page_rows.count > 0 %>
 	<% @page.page_rows.each do |page_row| %>
-		<div class="page_row">
+		<div class="page_row" id="<%= page_row.dc_uid %>">
 			<% if page_row.page_cells && page_row.page_cells.count > 0 %>
 				<% page_row.page_cells.each do |page_cell| %>
-					<div class="<%= "cell#{page_cell.cell_type.to_s}" %>">
+					<div class="<%= "page_cell cell#{page_cell.cell_type.to_s}" %>" id="<%= page_cell.dc_uid %>">
 						<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
 							<% page_cell.page_contents.each do |page_content| %>
 								<% if (page_content.content_type == 'text') && !page_content.text_content.blank? %>
@@ -33,6 +34,11 @@
 		<div class="clearfix"></div>
 	<% end %>
 <% end %>
+</div>
+<br/>
+<div id="result_area">
+	
+</div>
 
 <% content_for :sidebar do %>
 	<%= render 'dc/pages/sidebar' %>

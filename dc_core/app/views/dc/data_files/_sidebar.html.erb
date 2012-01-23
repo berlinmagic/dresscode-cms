@@ -1,0 +1,10 @@
+<% content_for :sidebar do %>
+
+<%= dc_aside_box( 'Dateien', "aktiv" ) do %>
+	<%= link_to raw('<strong>+</strong> neue Datei'), new_dcr_data_file_path, :class => 'LightBox', :title => 'Datei hochladen' %>
+<% end %>
+
+
+
+
+<% end %>

@@ -1,0 +1,61 @@
+<div class="admin_box">
+	
+
+		
+	<h1 class="icon"><%= t('user') %></h1>
+		
+
+		<div class="box">
+			<table class="mb_table">
+				  <tr>	
+				    <th>Name</th>
+				    <th>Rang</th>
+				    <th>Aktiv</th>
+					<th></th>
+				  </tr>
+				<tbody>
+				<% @users.each do |user| %>
+				  <tr id="<%= dom_id(user)%>">
+				    <td>
+						<a href="<%= dc_user_path(user) %>">
+							<%= t(user.salutation) %>&nbsp;&nbsp;&nbsp;<strong><%= user.first_name+' '+user.last_name %></strong>
+						</a>
+					</td>
+					<td><%= user_rang(user) %></td>
+					<td>
+					<% if user.invitation_sent_at && (user.encrypted_password.nil? || user.encrypted_password == '') %>
+						wurde Eingeladen
+					<% else %>
+						<%= user.confirmed_at ? raw("<strong>Ja</strong> . seit #{user.confirmed_at.strftime('%d.%m.%Y')}") : 'Konto muss Bestätigt werden!' %>
+					<% end %>
+					</td>
+					<td class="actions"><%# strange_admin_show_link user %></td>
+				  </tr>
+				<% end %>
+				</tbody>
+			</table>
+
+		</div>
+		
+		
+		<div class="box">
+			<div class="in_box">
+				<%#= link_to 'neuen Nutzer einladen', new_user_invitation_path, :remote => true, :class => 'big_submit_button' %>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		
+	</div>
+	
+	</div>
+</div>
+
+
+<% content_for :sidebar do %>
+	<div id="sidebar">
+		<ul id="sidebar_navi">
+			<li><%= link_to t('Nutzer einladen'), new_user_invitation_path, :remote => true %></li>
+		</ul>
+		<br class="clear" />
+	</div>
+<% end %>

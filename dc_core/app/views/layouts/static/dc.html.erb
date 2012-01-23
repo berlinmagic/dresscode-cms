@@ -41,8 +41,10 @@
 	<div id="main_content">
 		<div id="dialog_box"></div>
 		<%= render "shared/site_parts/flash", :flash => flash %>
-		<%= content_tag :h1, yield(:title) if show_title? %>
-		<%= yield %>
+		<div id="dc_system_content">
+			<%= content_tag :h1, yield(:title) if show_title? %>
+			<%= yield %>
+		</div>
 	</div>
 	<% end %>
 </div>

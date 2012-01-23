@@ -1,0 +1,35 @@
+<h1>Dateien</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Vorschau</th>
+			<th>Name:</th>
+			<th>filename</th>
+			<th>filetype</th>
+			<th>Bild ?</th>
+			<th> </th>
+			<th>Actions:</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @data_files.each do |data_file| %>
+		<tr>
+			<td>
+				<% if data_file.file %>
+					<%= link_to( image_tag( data_file.file.thumb("120x120>").url() ), dcr_data_file_path( data_file ) ) %>
+				<% else %>
+					<%= link_to( raw( "<h3>#{ data_file.filetype }</h3>" ), dcr_data_file_path( data_file ) ) %>
+				<% end %>
+			</td>
+			<td><%= data_file.name %></td>
+			<td><%= data_file.filename %></td>
+			<td><%= data_file.filetype %></td>
+			<td><%= data_file.image ? 'ja' : 'nein' %></td>
+			<td> </td>
+			<td> ... </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= render 'sidebar' %>
