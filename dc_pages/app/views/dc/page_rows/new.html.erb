@@ -9,7 +9,17 @@
 		<% end %>
 		<%= f.hidden_field :position, :value => this_position  %>
 		
-		<%= f.select :cells_type, options_for_select( PageRow::CELL_TYPES.map { |c| [t("page_row_cell_types.#{c}"), c]}, cell_type)  %>
+		
+		
+		<div class="field">
+			<div class="fl_box_110">
+				Spalten-Anzahl:
+			</div>
+			<div class="fl_box_210">
+				<%= f.select :cells_type, options_for_select( PageRow::CELL_TYPES.map { |c| [t("dc.page_row_cell_types.#{c}"), c]}, cell_type)  %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
 		
 		<div class="actions">
 			<div class="fl_box_110">

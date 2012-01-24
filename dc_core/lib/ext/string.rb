@@ -1,6 +1,7 @@
 # encoding: utf-8
 # => require 'iconv'
 String.class_eval do
+  
   def is_integer?
     begin
       Integer(self.to_s)
@@ -26,6 +27,13 @@ String.class_eval do
   def to_utf
     # => ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', self + ' ')[0..-2]
     self.encode("UTF-8").force_encoding("UTF-8")
+  end
+  
+  def to_go
+    str = "#{self}".strip
+    str = clean_string_de(str)
+    str = str.parameterize('_')
+    str = str.gsub('-', "_")
   end
   
   def to_anker

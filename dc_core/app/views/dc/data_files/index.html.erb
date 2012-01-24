@@ -1,35 +1,23 @@
 <h1>Dateien</h1>
-<table>
-	<thead>
-		<tr>
-			<th>Vorschau</th>
-			<th>Name:</th>
-			<th>filename</th>
-			<th>filetype</th>
-			<th>Bild ?</th>
-			<th> </th>
-			<th>Actions:</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @data_files.each do |data_file| %>
-		<tr>
-			<td>
-				<% if data_file.file %>
-					<%= link_to( image_tag( data_file.file.thumb("120x120>").url() ), dcr_data_file_path( data_file ) ) %>
-				<% else %>
-					<%= link_to( raw( "<h3>#{ data_file.filetype }</h3>" ), dcr_data_file_path( data_file ) ) %>
-				<% end %>
-			</td>
-			<td><%= data_file.name %></td>
-			<td><%= data_file.filename %></td>
-			<td><%= data_file.filetype %></td>
-			<td><%= data_file.image ? 'ja' : 'nein' %></td>
-			<td> </td>
-			<td> ... </td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<hr/>
+<% @data_files.each do |data_file| %>
+	<% if data_file.image %>
+		<% link_class = 'data_file_link' %>
+		<% link_content = "<div class='pic_data_file'>#{ image_tag( data_file.file.thumb("120x120>").url(), :style => "margin-left: #{(130 - data_file.file.thumb("120x120>").width) / 2 }px; margin-top: #{(130 - data_file.file.thumb("120x120>").height) / 2}px;" ) }</div>" %>
+	<% else %>
+		<% link_class = 'data_file_link' %>
+		<% link_content = "<div class='no_pic_data_file'>#{ data_file.file_ext }</div>" %>
+	<% end %>
+	
+	<% link_content += "<p class='data_file_name'>#{ data_file.name.blank? ? ' ... ' : data_file.name  }</p>" %>
+				
+	<%= link_to( raw( link_content ), dcr_data_file_path( data_file ), :class => link_class ) %>
+
+<% end %>
+<div class="clearfix"></div>
+<hr/>
+<div class="clearfix"></div>
+
+
 
 <%= render 'sidebar' %>

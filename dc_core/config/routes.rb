@@ -11,7 +11,15 @@ Rails.application.routes.draw do
         post :update_pref_pic
       end
     end
-    resources :data_files
+    resources :data_files do
+      member do
+        get :original
+      end
+      collection do
+        get :pix_only
+        get :data_only
+      end
+    end
     match '/locale/set' => 'locale#set'
     match '/dynamic_styles.:format' => "pipe#dynamic_style", :to_style => 'seite'
     match '/template_styles/tl_:id.:format' => "pipe#template_style"
@@ -31,7 +39,15 @@ Rails.application.routes.draw do
         post :update_pref_pic
       end
     end
-    resources :data_files
+    resources :data_files do
+      member do
+        get :original
+      end
+      collection do
+        get :pix_only
+        get :data_only
+      end
+    end
     match '/locale/set' => 'locale#set'
     match '/dynamic_styles.:format' => "pipe#dynamic_style", :to_style => 'seite'
     match '/template_styles/tl_:id.:format' => "pipe#template_style"

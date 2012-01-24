@@ -1,0 +1,59 @@
+<div class="LB_Box">
+<%= form_for( [ :dc, @data_file ] ) do |f| %>
+	<%= f.hidden_field :author, :value => current_user.id if current_user %>
+	<%= f.hidden_field :author, :value => current_user.id if current_user %>
+	<%= f.error_messages %>
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :name %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.text_field :name %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :description %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.text_field :description %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :alt %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.text_field :alt %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="field">
+		<div class="fl_box_110">
+			<%= f.label :file %>
+		</div>
+		<div class="fl_box_350">
+			<%= f.file_field :file %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<br/>
+	
+	<div class="actions">
+		<div class="fl_box_110">
+			&nbsp;
+		</div>
+		<div class="fl_box_150">
+			<%= f.submit %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+<% end %>
+</div>

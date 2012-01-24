@@ -2,7 +2,7 @@
 class PageRow < ActiveRecord::Base
   # PageRows are Rows for the table-like Pagelayout
   
-  CELL_TYPES = %w[r1c1 r2c11 r3c12 r3c111 r4c13 r4c112 r4c1111]
+  CELL_TYPES = %w[r1c1 r2c11 r3c12 r4c13 r3c111 r4c112 r4c1111]
   
   def initialize(*args)
     super(*args)

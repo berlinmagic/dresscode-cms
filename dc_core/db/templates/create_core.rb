@@ -27,12 +27,16 @@ class CreateCore < ActiveRecord::Migration
       t.text          :description                                # => description if needed / wanted
       t.text          :alt                                        # => alt-atribute
       
-      t.string        :filename                                   # => original file-name
-      t.string        :filetype                                   # => file-type ? .. bsp: jpg
-      t.string        :mimetype                                   # => mime_type ?    bsp: image/jpg
+      t.string        :original_name                              # => original file-name
+      
       
       t.string        :file_uid                                   # => Dragonfly
       t.string        :file_name                                  # => Dragonfly
+      t.string        :file_mime_type                             # => Dragonfly
+      t.string        :file_ext                                   # => Dragonfly
+      t.string        :file_size                                  # => Dragonfly
+      
+      
       t.boolean       :image,             :default => false       # => bild ?
       
       t.integer       :author                                     # => file-autor / uploader

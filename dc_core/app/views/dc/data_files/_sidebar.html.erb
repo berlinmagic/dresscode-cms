@@ -1,10 +1,26 @@
 <% content_for :sidebar do %>
 
 <%= dc_aside_box( 'Dateien', "aktiv" ) do %>
+	<%= link_to raw('<strong>alle Dateien</strong>'), dcr_data_files_path, :class => "#{controller.action_name == 'index' ? 'aktiv' : ' '}" %>
+	<%= link_to raw('<strong>nur Bilder</strong>'), pix_only_dcr_data_files_path, :class => "#{controller.action_name == 'pix_only' ? 'aktiv' : ' '}" %>
+	<%= link_to raw('<strong>nur Dateien</strong>'), data_only_dcr_data_files_path, :class => "#{controller.action_name == 'data_only' ? 'aktiv' : ' '}" %>
 	<%= link_to raw('<strong>+</strong> neue Datei'), new_dcr_data_file_path, :class => 'LightBox', :title => 'Datei hochladen' %>
 <% end %>
 
-
-
+<% if @data_file %>
+	<%= dc_aside_box( 'Datei Einstellungen', "aktiv" ) do %>
+		
+		<%= dc_aside_sub_box( 'Datei Eigenschaften' ) do %>
+			<%= render 'dc/data_files/side/info' %>
+		<% end %>
+		
+		<%= dc_aside_sub_box( 'Datei bearbeiten' ) do %>
+			<%= render 'dc/data_files/side/form' %>
+		<% end %>
+		
+		<%= link_to("Datei Löschen", [:dc, @data_file], :confirm => "#{@data_file.name} Wirklich löschen?", :method => :delete) %>
+		
+	<% end %>
+<% end %>
 
 <% end %>

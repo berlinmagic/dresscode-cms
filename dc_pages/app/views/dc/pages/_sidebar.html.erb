@@ -7,7 +7,7 @@
 
 <% if @page %>
 <%= dc_aside_box( 'Seiten-Einstellungen' ) do %>
-	<%= link_to raw('<strong>+</strong> neuer Abschnitt'), new_dcr_page_page_row_path(@page), :class => 'LightBox' %>
+	<%= link_to raw('<strong>+</strong> neuer Abschnitt'), new_dcr_page_page_row_path(@page), :class => 'LightBox', :title => 'Abschnitt erstellen' %>
 	
 	<%= link_to 'Abschnitte sortieren', '#', :id => 'page_row_sort_toggle', :class => 'off' %>
 	

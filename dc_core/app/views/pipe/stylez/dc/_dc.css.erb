@@ -1,0 +1,23 @@
+a.data_file_link { text-decoration:none; float: left; <%= all_border_radius('5px') %> margin: 0 5px 20px; display: block; padding: 5px; border: solid 1px transparent; }
+
+a.data_file_link:hover { border: solid 1px #ccc; }
+
+.no_pic_data_file { height: 130px; width: 130px; background: url('/images/data_file_100.png') center center no-repeat;
+ 		<%= all_border_radius('5px') %> text-align: center; line-height: 125px; font-size: 22px; color: #999; font-weight: bold;
+		text-decoration:none; <%= text_shadow('1px 1px 1px #333') %> }
+
+
+
+.pic_data_file {  height: 130px; width: 130px;  }
+
+a.data_file_link .data_file_name { width: 130px; line-height: 22px; text-align: center; margin: 3px 0; font-size: 13px; font-weight: normal; color: #666;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	-o-text-overflow: ellipsis;
+  	-moz-binding: url( 'bindings.xml#ellipsis' );
+  	/* mit "bindings.xml#none" deaktivierbar*/ }
+
+
+a.data_file_pic_box { display: block; padding: 10px; border: solid 1px #ccc; float: left; }
+a.data_file_pic_box:hover { background: #ddd; border: solid 1px #c00; }

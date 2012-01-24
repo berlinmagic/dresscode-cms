@@ -1,0 +1,20 @@
+<table>
+	<tr>
+		<th>Typ</th>
+		<td><%= @data_file.image ? 'Bild' : 'Datei' %> (<%= @data_file.file_ext %>)</td>
+	</tr>
+	<tr>
+		<th>Größe</th>
+		<td><%= number_to_human_size( @data_file.file_size ) %></td>
+	</tr>
+	<% if @data_file.image %>
+	<tr>
+		<th>Bild-Größe</th>
+		<td><strong><%= @data_file.file.width %></strong> x <strong><%= @data_file.file.height %></strong> Pixel</td>
+	</tr>
+	<% end %>
+	<tr>
+		<th>Mime-Typ</th>
+		<td><%= @data_file.file_mime_type %></td>
+	</tr>
+</table>

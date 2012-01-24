@@ -1,40 +1,20 @@
 <div class="LB_Box">
 <%= form_for( [ :dc, @data_file ] ) do |f| %>
-	
+	<%= f.hidden_field :author, :value => current_user.id if current_user %>
+	<%= f.hidden_field :name, :value => @data_file.name %>
 	<%= f.error_messages %>
 	<div class="field">
-		<div class="fl_box_110">
-			<%= f.label :name %>
-		</div>
-		<div class="fl_box_350">
-			<%= f.text_field :name %>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-	
-	<div class="field">
-		<div class="fl_box_110">
-			<%= f.label :description %>
-		</div>
-		<div class="fl_box_350">
-			<%= f.text_field :description %>
+		<div class="470">
+			<h3>
+				Bitte wählen Sie eine Datei von Ihrem Rechner aus, um diese Hochzuladen.
+			</h3>
 		</div>
 		<div class="clearfix"></div>
 	</div>
 	
 	<div class="field">
 		<div class="fl_box_110">
-			<%= f.label :alt %>
-		</div>
-		<div class="fl_box_350">
-			<%= f.text_field :alt %>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-	
-	<div class="field">
-		<div class="fl_box_110">
-			<%= f.label :file %>
+			<%= f.label :file, 'Datei:' %>
 		</div>
 		<div class="fl_box_350">
 			<%= f.file_field :file %>

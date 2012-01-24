@@ -1,0 +1,21 @@
+<%= form_for( [ :dc, @data_file ] ) do |f| %>
+	
+	<%= f.label :name %><br/>
+	<%= f.text_field :name %><br/>
+	<br/>
+	
+	<%= f.label :description, 'Beschreibung' %><br/>
+	<%= f.text_area :description, :rows => 3 %><br/>
+	<br/>
+	
+	<% if @data_file.image %>
+	<%= f.label :alt, 'Alternativ-Text' %><br/>
+	<%= f.text_field :alt %><br/>
+	<br/>
+	<% end %>
+	
+	
+	<%= f.submit %>
+	<div class="clearfix"></div>
+	
+<% end %>
