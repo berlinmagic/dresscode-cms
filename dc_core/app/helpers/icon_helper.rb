@@ -30,5 +30,17 @@ module IconHelper
     end
     raw( "<div class='dresscode-Icon #{ color }' style='background: transparent url(/images/iconsets/stripe_#{size}x#{size2}.png) -#{ color == 'dunkel' ? size2 : 0 }px -#{top}px no-repeat; width: #{size2}px; height: #{size}px; opacity: #{ opac.to_s };'></div>" )
   end
+  
+  def dc_admin_head_icon( icon )
+    dc_icon( :icon => icon, :size => 32, :color => 'hell' )
+  end
+  
+  def dc_footer_icon( icon )
+    dc_icon( :icon => icon, :size => 32, :color => 'hell' )
+  end
+  
+  def dc_subfooter_icon( icon )
+    dc_icon( :icon => icon, :size => 18, :color => 'hell' )
+  end
 
 end

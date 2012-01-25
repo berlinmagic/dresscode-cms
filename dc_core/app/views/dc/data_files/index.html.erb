@@ -1,22 +1,39 @@
-<h1>Dateien</h1>
-<hr/>
-<% @data_files.each do |data_file| %>
-	<% if data_file.image %>
-		<% link_class = 'data_file_link' %>
-		<% link_content = "<div class='pic_data_file'>#{ image_tag( data_file.file.thumb("120x120>").url(), :style => "margin-left: #{(130 - data_file.file.thumb("120x120>").width) / 2 }px; margin-top: #{(130 - data_file.file.thumb("120x120>").height) / 2}px;" ) }</div>" %>
-	<% else %>
-		<% link_class = 'data_file_link' %>
-		<% link_content = "<div class='no_pic_data_file'>#{ data_file.file_ext }</div>" %>
-	<% end %>
+<% content_for :dc_head do %>
 	
-	<% link_content += "<p class='data_file_name'>#{ data_file.name.blank? ? ' ... ' : data_file.name  }</p>" %>
-				
-	<%= link_to( raw( link_content ), dcr_data_file_path( data_file ), :class => link_class ) %>
-
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 49 ) %> dateien</h1>
+	</div>
+	
+	<div class="fl_box_470">
+		
+	</div>
+	
 <% end %>
-<div class="clearfix"></div>
-<hr/>
-<div class="clearfix"></div>
+
+<div class="dc_box">
+	<div class="dc_wbox">
+	
+		<% @data_files.each do |data_file| %>
+			<% if data_file.image %>
+				<% link_class = 'data_file_link' %>
+				<% link_content = "<div class='pic_data_file'>#{ 
+						image_tag( data_file.file.thumb("120x120>").url(), 
+							:style => "margin-left: #{(130 - data_file.file.thumb("120x120>").width) / 2 }px; 
+									   margin-top: #{(130 - data_file.file.thumb("120x120>").height) / 2}px;" ) }</div>" %>
+			<% else %>
+				<% link_class = 'data_file_link' %>
+				<% link_content = "<div class='no_pic_data_file'>#{ data_file.file_ext }</div>" %>
+			<% end %>
+	
+			<% link_content += "<p class='data_file_name'>#{ data_file.name.blank? ? ' ... ' : data_file.name  }</p>" %>
+				
+			<%= link_to( raw( link_content ), dcr_data_file_path( data_file ), :class => link_class ) %>
+
+		<% end %>
+
+		<div class="clearfix"></div>
+	</div>
+</div>
 
 
 

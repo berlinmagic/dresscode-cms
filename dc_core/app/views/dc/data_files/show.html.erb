@@ -1,6 +1,23 @@
 <% data_file = @data_file %>
 
-<h1><%= @data_file.name %></h1>
+<% content_for :dc_head do %>
+	
+	<% if @data_file.image %>
+		<div class="fl_box_470">
+			<h1><%= dc_admin_head_icon( 58 ) %> bild: <%= @data_file.name.downcase %></h1>
+		</div>
+	<% else %>
+		<div class="fl_box_470">
+			<h1><%= dc_admin_head_icon( 61 ) %> datei: <%= @data_file.name.downcase %></h1>
+		</div>
+	<% end %>
+	<div class="fl_box_470">
+		
+	</div>
+	
+	
+<% end %>
+
 
 <% if @data_file.image %>
 	<hr/>

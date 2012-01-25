@@ -1,0 +1,73 @@
+jQuery(function($) {
+	
+	$('#sortable_page_list').nestedSortable({
+		disableNesting: 'no-nest',
+		listType: 'ol',
+		items: 'li',
+		maxLevels: 3,
+		errorClass: 'with_error',
+		update: function(){ $('#send_sorted_list').hide().removeClass('hidden').fadeIn() }
+	});
+	
+	$('#send_sorted_list').click(function(event){
+		event.preventDefault();
+		var page_data = JSON.stringify( $('#sortable_page_list').nestedSortable('toHierarchy', {startDepthCount: 0}) );
+		$.ajax({
+			type: 'post', 
+			data: 'authenticity_token='+AUTH_TOKEN+'&pages='+ page_data, 
+			dataType: 'script',
+			complete: function(request){
+				window.location = "<%= dcr_pages_path %>";
+			},
+			url: "<%= reorder_pages_dc_pages_path %>"
+		});
+	});
+	
+});
+/*
+	$('#send_sorted_list').click(function(e){
+		e.preventDefault();
+		var serialized = $('#sortable_page_list').nestedSortable('serialize');
+		
+		var hiered = JSON.stringify( $('#sortable_page_list').nestedSortable('toHierarchy', {startDepthCount: 0}) );
+		var ohiered = $('#sortable_page_list').nestedSortable('toHierarchy', {startDepthCount: 0});
+		var arraied = JSON.stringify( $('#sortable_page_list').nestedSortable('toArray', {startDepthCount: 0}) );
+		var dhiered = dump(ohiered);
+		var data = { pages: hiered.replace(/"/g,'') };
+		$('#serializeOutput').text(serialized+'\n\n');
+		$('#serializeOutput2').text(hiered+'\n\n');
+		$('#serializeOutput3').text(dhiered+'\n\n');
+		$('#serializeOutput4').text( jQuery.param( hiered.replace(/"/g,'') )  );
+		
+		$.ajax({
+			type: 'post', 
+			data: 'authenticity_token='+AUTH_TOKEN+'&pages='+ hiered, 
+			dataType: 'script',
+			complete: function(request){
+				window.location = "<%= dcr_pages_path %>";
+			},
+			url: "<%= reorder_pages_dc_pages_path %>"
+		});
+	});
+    function dump(arr,level) {
+        var dumped_text = "";
+        if(!level) level = 0;
+        //The padding given at the beginning of the line.
+        var level_padding = "";
+        for(var j=0;j<level+1;j++) level_padding += "";
+        if(typeof(arr) == 'object') { //Array/Hashes/Objects
+            for(var item in arr) {
+                var value = arr[item];
+                if(typeof(value) == 'object') { //If it is an array,
+                    dumped_text += level_padding + "[" + item + "]=";
+                    dumped_text += dump(value,level+1);
+                } else {
+                    dumped_text += level_padding + "[" + item + "] => \"" + value + "\"&";
+                }
+            }
+        } else { //Strings/Chars/Numbers etc.
+            dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+        }
+        return dumped_text;
+    }
+*/	

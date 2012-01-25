@@ -7,6 +7,7 @@
 	<%= render "shared/site_parts/meta" %>
 	<%= render "shared/site_parts/csrf" %>
 	
+	<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 	<%= stylesheet_link_tag    "/pipe/styles/dc/libs" %>
 	
 	<%= piped_js_lib('modernizr206') %>
@@ -39,12 +40,23 @@
 		<%= render 'static/layouts/page_layout' %>
 	<% else %>
 	<div id="main_content" class="dc">
-		<div id="dialog_box"></div>
-		<%= render "shared/site_parts/flash", :flash => flash %>
-		<div class="container_48"><%# id="dc_system_content" %>
-			<%= content_tag :h1, yield(:title) if show_title? %>
-			<%= yield %>
+		
+		<div class="dc_admin_head">
+			<div class="container_48">
+				<%= yield(:dc_head) %>
+				<div class="clearfix"></div>
+			</div>
 		</div>
+		
+		<%= render "shared/site_parts/flash", :flash => flash %>
+		
+		<div class="dc_admin_content">
+			<div class="container_48"><%# id="dc_system_content" %>
+				<%= yield %>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		
 	</div>
 	<% end %>
 </div>

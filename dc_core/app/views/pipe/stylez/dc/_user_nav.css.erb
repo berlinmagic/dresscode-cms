@@ -1,11 +1,9 @@
-#user_foot { float:right; font-size: 12px; width: 250px; text-align:center; padding: 20px 0 0; position: relative; }
+#user_foot { float:right; font-size: 12px; width: 250px; text-align:center; padding: 13px 0 0; position: relative; }
 
 #user_foot .sub_user_foot_box { 
 	position: absolute; bottom: 33px; left:20px; display: block; width: 200px; padding: 10px 0; 
 	<%= vertical_gradient( '#111111', '#333333' ) %> border: solid 1px #666; display: none;
-		-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
-		-moz-border-radius: 	 3px;		-o-border-radius: 		 3px;
-		-ms-border-radius: 		 3px;		border-radius: 			 3px;
+	<%= all_border_radius( '3px' ) %>
 	 }
 #user_foot .sub_user_foot_box a { color: #999; background: transparent; display: block; padding: 3px 20px;
 	text-decoration: none; }

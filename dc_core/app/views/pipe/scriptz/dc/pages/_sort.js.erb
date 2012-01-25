@@ -1,5 +1,31 @@
 $(function() {
 	
+	/* Sort Pages ######################################################## */
+	$('#sortable_page_list').nestedSortable({
+		disableNesting: 'no-nest',
+		listType: 'ol',
+		items: 'li',
+		maxLevels: 3,
+		errorClass: 'with_error',
+		update: function(){ $('#send_sorted_list').hide().removeClass('hidden').fadeIn() }
+	});
+	
+	$('#send_sorted_list').click(function(event){
+		event.preventDefault();
+		var page_data = JSON.stringify( $('#sortable_page_list').nestedSortable('toHierarchy', {startDepthCount: 0}) );
+		$.ajax({
+			type: 'post', 
+			data: 'authenticity_token='+AUTH_TOKEN+'&pages='+ page_data, 
+			dataType: 'script',
+			complete: function(request){
+				window.location = "<%= dcr_pages_path %>";
+			},
+			url: "<%= reorder_pages_dc_pages_path %>"
+		});
+	});
+	
+	
+	/* Sort Page-Content ######################################################## */
 	$('#page_row_sort_toggle.off').live('click', function(event){
 		event.preventDefault();
 		$(this).removeClass('off').addClass('on').html('Sortierung beenden');
@@ -44,7 +70,6 @@ $(function() {
 		});
 		
 	});
-	
 	
 	$('#page_row_sort_toggle.on').live('click', function(event){
 		event.preventDefault();

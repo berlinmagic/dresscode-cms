@@ -1,5 +1,16 @@
 <div class="foot_box">
-	<%= link_to 'Layout', dc_tlayouts_path, 
+	<%= link_to dc_footer_icon( 49 ), dcr_pages_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'pages'}",
+			:title => 'Seiten' %>
+	<div class="sub_foot_box">
+		<% Page.all.each do |p| %>
+			<%= link_to raw("<strong>#{p.name}</strong>&nbsp;&nbsp;&nbsp;(#{p.tlayout.name})"), [:dcr,p], :class => 'sub_foot' %>
+		<% end %>
+	</div>
+</div>
+
+<div class="foot_box">
+	<%= link_to dc_footer_icon( 76 ), dc_tlayouts_path, 
 		:class => "foot_box #{'aktiv' if controller.controller_name == 'tlayouts'}",
 		:title => 'Templates'  %>
 	<div class="sub_foot_box">
@@ -11,7 +22,7 @@
 
 
 <div class="foot_box">
-<%= link_to 'Raster', dc_rasters_path, 
+<%= link_to dc_footer_icon( 80 ), dc_rasters_path, 
 		:class => "foot_box #{'aktiv' if controller.controller_name == 'rasters'}",
 		:title => 'Raster'  %>
 	<div class="sub_foot_box">
@@ -22,32 +33,37 @@
 </div>
 
 <div class="foot_box">
-	<%= link_to 'Tag', dc_tag_lists_path, 
+	<%= link_to dc_footer_icon( 40 ), dc_tag_lists_path, 
 			:class => "foot_box #{'aktiv' if controller.controller_name == 'tag_lists'}",
 			:title => 'Tag´s' %>
 </div>
 
 <div class="foot_box">
-	<%= link_to 'Widget', dc_twidgets_path, 
+	<%= link_to dc_footer_icon( 39 ), dc_twidgets_path, 
 			:class => "foot_box #{'aktiv' if controller.controller_name == 'twidgets'}",
 			:title => 'Template-Widgets' %>
 </div>
 
 <div class="foot_box">
-	<%= link_to 'Page', dc_pages_path, 
-			:class => "foot_box #{'aktiv' if controller.controller_name == 'pages'}",
-			:title => 'Seiten' %>
-	<div class="sub_foot_box">
-		<% Page.all.each do |p| %>
-			<%= link_to raw("<strong>#{p.name}</strong>&nbsp;&nbsp;&nbsp;(#{p.tlayout.name})"), [:dc,p], :class => 'sub_foot' %>
-		<% end %>
-	</div>
+	<%= link_to dc_footer_icon( 42 ), dcr_users_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'users'}",
+			:title => 'Benutzer' %>
 </div>
 
 <div class="foot_box">
-	<%= link_to 'Settings', dc_settings_path, 
+	<%= link_to dc_footer_icon( 61 ), dcr_data_files_path, 
+			:class => "foot_box #{'aktiv' if controller.controller_name == 'data_files'}",
+			:title => 'Dateien' %>
+</div>
+
+<div class="foot_box">
+	<%= link_to dc_footer_icon( 54 ), dc_settings_path, 
 			:class => "foot_box #{'aktiv' if controller.controller_name == 'settings'}",
 			:title => 'settings' %>
+	<div class="sub_foot_box">
+		<%= link_to 'Core - 1', dcr_settings_path+ '/core_one', :class => "sub_foot" %>
+		<%= link_to 'Core - 1 :: edit', dcr_settings_path+ '/core_one/edit', :class => "sub_foot" %>
+	</div>
 </div>
 
 

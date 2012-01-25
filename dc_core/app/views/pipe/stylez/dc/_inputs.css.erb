@@ -10,7 +10,7 @@ input[type="password"].in_aside, input[type="text"].in_aside, input[type="number
 	width: 96%; 
 }
 
-input[type="submit"], a.big_button {
+input[type="submit"], a.big_button, a.big_submit_button {
 	padding: 0 15px; display: inline-block; border: solid 1px #000; margin: 5px 5px 5px 0;
 	<%= all_border_radius( '10px' ) %> <%= box_shadow('1px 1px 1px 0 #666') %> 
 	line-height: 20px; font-size: 13px; font-weight: normal; text-decoration: none;
@@ -21,5 +21,10 @@ input[type="submit"] {
 	<%= vertical_gradient( '#0099cc', '#006699' ) %> color: #fff; <%= text_shadow('1px 1px 1px #000') %>
 }
 a.big_button { 
+	background: #333; color: #666; <%= text_shadow('1px 1px 1px #000') %>
+}
+
+
+a.big_submit_button { 
 	background: #333; color: #666; <%= text_shadow('1px 1px 1px #000') %>
 }

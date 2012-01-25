@@ -3,7 +3,19 @@
 
 #system_content { display:block; float: left; overflow-x: hidden; overflow-y: scroll; }
 
-#system_content #main_content { padding: 10px; position:relative; }
+#system_content #main_content { margin: 0; padding: 0; position:relative; }
+
+
+#system_content #main_content .dc_admin_head { margin: 0; padding: 10px 0; background: #000; <%= box_shadow('0 3px 5px 1px #fff') %> color: #fff;} 
+
+#system_content #main_content .dc_admin_head h1 { 
+	margin: 0; padding:0; line-height: 32px; font-size: 24px; font-family: 'Righteous', cursive; font-weight: normal; }
+
+.dc_admin_content { padding: 30px 0;}
+
+.dc_admin_content .dc_box {padding: 10px; background: rgba(0,0,0,.5); <%= all_border_radius( '10px' ) %> }
+
+.dc_admin_content .dc_box .dc_wbox { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> }
 
 /* #system_content #main_content.dc { background: url('/images/dc_bgs/iceberg.jpg') no-repeat fixed center center; padding: 5px 0 20px; } */
 
@@ -55,8 +67,9 @@
 
 /* F O O T E R */
 #system_footer { margin:0; padding:0; <%= vertical_gradient( '#111111', '#333333' ) %> display:block; }
-#system_footer #system_foot_nav { margin:0; padding:0; color: #fff;}
+#system_footer #system_foot_nav { margin:0; padding: 0 0 0 100px; color: #fff;}
 #system_footer #system_foot_nav div.foot_box { display: inline-block; padding: 6px 5px 0; position:relative;}
+/*
 #system_footer #system_foot_nav a.foot_box, #system_footer #system_foot_nav .foot_box a.in_foot_box
 { 	
 	-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
@@ -66,20 +79,27 @@
 	border: solid 1px #666; vertical-align: top; text-align: center; line-height: 48px; 
 	text-decoration:none; font-weight:bold; font-size: 16px; color: #666; 
 }
+*/
+#system_footer #system_foot_nav a.foot_box, #system_footer #system_foot_nav .foot_box a.in_foot_box {
+	<%= all_border_radius( '3px' ) %> background: #111; display: inline-block; padding: 2px 2px 1px; border: solid 1px #666;
+}
 
 #system_footer #system_foot_nav a.foot_box.aktiv,  #system_footer #system_foot_nav .foot_box a.in_foot_box.aktiv 
 { background: #333; color: #999; }
 
 
 #system_footer #system_foot_nav .foot_box .sub_foot_box { 
-		position: absolute; bottom: 55px; left:4px; display: block; width: 200px; padding: 3px; 
-		background: #f3f2f2; border: solid 1px #ccc; display: none;
-		-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
-		-moz-border-radius: 	 3px;		-o-border-radius: 		 3px;
-		-ms-border-radius: 		 3px;		border-radius: 			 3px;
+		position: absolute; bottom: 42px; left: -50px; display: block; width: 150px; padding: 7px 0; 
+		<%= vertical_gradient( '#111111', '#333333' ) %> 
+		border: solid 1px #666; display: none;
+		<%= all_border_radius( '3px' ) %>
 		 }
 #system_footer #system_foot_nav .foot_box:hover .sub_foot_box { display: block;}
 
 
-#system_footer #system_foot_nav .foot_box .sub_foot_box a { display: block; padding: 10px; color: #333;}
-#system_footer #system_foot_nav .foot_box .sub_foot_box a:hover { background: #fff; color: #360;}
+#system_footer #system_foot_nav .foot_box .sub_foot_box a { color: #999; background: transparent; display: block; padding: 3px 20px;
+	text-decoration: none; }
+#system_footer #system_foot_nav .foot_box .sub_foot_box a:hover { <%= vertical_gradient( '#0099cc', '#006699' ) %> color: #fff; <%= text_shadow('1px 1px 1px #000') %> }
+
+
+

@@ -1,4 +1,15 @@
-
+<% content_for :dc_head do %>
+	
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 49 ) %> core - einstellungen :: bearbeiten</h1>
+	</div>
+	
+	<div class="fl_box_470">
+		
+	</div>
+	
+	
+<% end %>
 		
 <div style="margin: 20px 20%">
 <%= form_tag(dc_setting_path(@name), :method => :put) do -%>
