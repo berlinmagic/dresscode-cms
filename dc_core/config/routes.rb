@@ -25,7 +25,8 @@ Rails.application.routes.draw do
     match '/template_styles/tl_:id.:format' => "pipe#template_style"
     match '/dynamic_script/:script.:format' => "pipe#dynamic_script"
     match '/dynamic_script/lib/:script.:format' => "pipe#dynamic_script_lib"
-    root :to => 'base#dashboard'
+    # => root :to => 'base#dashboard'
+    root :to => 'pages#index'
   end
   
   scope DC::Config[:pretty_namespace].to_s.downcase, :as => 'dcr', :module => "dc" do
@@ -53,7 +54,8 @@ Rails.application.routes.draw do
     match '/template_styles/tl_:id.:format' => "pipe#template_style"
     match '/dynamic_script/:script.:format' => "pipe#dynamic_script"
     match '/dynamic_script/lib/:script.:format' => "pipe#dynamic_script_lib"
-    root :to => 'base#dashboard'
+    # => root :to => 'base#dashboard'
+    root :to => 'pages#index'
   end
   
   namespace :pipe do
