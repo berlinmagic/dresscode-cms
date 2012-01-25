@@ -31,63 +31,60 @@ module Dresscode
       end
 
       def install_core
-        
         generate("dc_core:install")
         generate("dc_editor:install")
         generate("dc_lists:install")
         generate("dc_pages:install")
-        
-        
-        # => generate("dc_staticthemes:install")
         generate("dc_themes_static:install")
-        
-        if yes?("Dynamic-Themes intallieren? ... experimentell")
+        puts("***************************************************************************")
+        puts("ToDo::  ASK for:  Dynamic-Themes intallieren? ... experimentell")
+        puts("***************************************************************************")
+        #if yes?("Dynamic-Themes intallieren? ... experimentell")
           generate("dc_themes_dynamic:install")
-        end
-        
-        
+        #end
         generate("dc_user:install")
-
       end
       
       
       
       def edit_app_config_file
-        # => application "config.asset_host = 'http://example.com'"
         application "config.time_zone = 'Berlin'"
         application "config.i18n.default_locale = :de"
       end
       
 
       def install_db_sample_data
-        if yes?("dresscode - Beispiel-Daten intallieren?")
-          # => load "#{ Rails.root }/db/sample_seeds.rb"
+        puts("***************************************************************************")
+        puts("ToDo::  ASK for:  Beispiel-Daten intallieren?")
+        puts("***************************************************************************")
+        #if yes?("dresscode - Beispiel-Daten intallieren?")
           puts("DC:: Seed sample_data")
           open("#{Rails.root}/db/seeds.rb", 'a') do |f|
             f.puts File.read( "#{Rails.root}/db/sample_seeds.rb"  ).to_utf
           end
-        end
+        #end
       end
       
       
       def install_development_db
-        if yes?("dresscode - Development-DB erstellen?")
+        puts("***************************************************************************")
+        puts("ToDo::  ASK for:  dresscode - Development-DB erstellen?")
+        puts("***************************************************************************")
+        #if yes?("dresscode - Development-DB erstellen?")
           puts("INFO: erstelle DB-Migration")
           rake("db:migrate")
           puts("INFO: erstelle DB-Beispieldaten")
           rake("db:seed")
-        end
+        #end
       end
       
       def migrate_db_prod
         puts("INFO: erstelle production DB-Migration")
-        # => rake("db:migrate RAILS_ENV=production")
         rake("db:migrate", :env => "production")
       end
       
       def seed_db_prod
         puts("INFO: erstelle production DB-Beispieldaten")
-        # => rake("db:seed RAILS_ENV=production")
         rake("db:seed", :env => "production")
       end
       
@@ -105,7 +102,6 @@ module Dresscode
         puts('========================================================================================================')
       end
       
-
     end
   end
 end
