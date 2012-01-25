@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage                =   "http://orangenwerk.com"
   s.description             =   "DressCode-CMS .. by orangenwerk .. may be released in 2012"
   
-  s.files                   =   Dir['app/**/*', 'config/**/*', 'db/**/*', 'features/**/*', 'lib/**/*', 'spec/**/*', 'vendor/**/*']
+  s.files                   =   Dir['app/**/*', 'config/**/*', 'db/**/*', 'lib/**/*', 'public/**/*']
   s.require_path            =   'lib'
   s.requirements            <<  'none'
   
@@ -23,11 +23,12 @@ Gem::Specification.new do |s|
   
   # => Dragonfly to handle Images & Uploads generelly
   s.add_dependency( 'rack-cache',         '~> 1.1' )
-  s.add_dependency( 'dragonfly',          '0.9.5' )
+  s.add_dependency( 'dragonfly',          '0.9.10' )
   
   # => rMagick could be striped out if image_processors get translated to ImageMagick
-  s.add_dependency( 'rmagick',            '~> 2.13.1' )
-  s.add_dependency( 'dragonfly-rmagick',  '~> 0.0.33' )
+  # => s.add_dependency( 'dragonfly',          '0.9.5' )
+  # => s.add_dependency( 'rmagick',            '~> 2.13.1' )
+  # => s.add_dependency( 'dragonfly-rmagick',  '~> 0.0.33' )
   
   # => Cells may be replaced by apotomo / boxes
   s.add_dependency( 'cells',              '~> 3.6.5' ) ## eher in pages ??
