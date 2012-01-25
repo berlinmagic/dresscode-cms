@@ -25,6 +25,7 @@ module GlobalBase
     receiver.send :helper_method,   'themed_path'
     receiver.send :helper_method,   'nice_route'
     receiver.send :helper,          'stuff'
+    receiver.send :helper,          'icon'
   end
   
 end

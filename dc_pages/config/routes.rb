@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   namespace :dc do
     resources :pages do
       resources :page_rows
+      collection do
+        post :reorder_cells
+        post :reorder_rows
+        post :reorder_pages
+      end
       member do
         post :mercury_update
       end
@@ -21,6 +26,11 @@ Rails.application.routes.draw do
   scope DC::Config[:pretty_namespace].to_s.downcase, :as => 'dcr', :module => "dc" do
     resources :pages do
       resources :page_rows
+      collection do
+        post :reorder_cells
+        post :reorder_rows
+        post :reorder_pages
+      end
       member do
         post :mercury_update
       end

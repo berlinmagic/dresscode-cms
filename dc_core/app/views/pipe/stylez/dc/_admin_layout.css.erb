@@ -5,8 +5,13 @@
 
 #system_content #main_content { padding: 10px; position:relative; }
 
+/* #system_content #main_content.dc { background: url('/images/dc_bgs/iceberg.jpg') no-repeat fixed center center; padding: 5px 0 20px; } */
 
-
+#system_content.dc { background: url('/images/dc_bgs/iceberg.jpg') no-repeat fixed center center; 
+		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;}
 
 /* S I D E B A R */
 #system_sidebar { display:block; float: left; <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> overflow-x: hidden; overflow-y: auto;}

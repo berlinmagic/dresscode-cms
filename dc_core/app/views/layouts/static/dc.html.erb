@@ -33,15 +33,15 @@
 .on_off_schalter.aus { background-position: -76px 0px; }
 </style>
 
-<div id="system_content">
+<div id="system_content" class="<%= @page ? 'page' : 'dc' %>">
 	<% if @page %>
 		<%= render "shared/site_parts/flash", :flash => flash %>
 		<%= render 'static/layouts/page_layout' %>
 	<% else %>
-	<div id="main_content">
+	<div id="main_content" class="dc">
 		<div id="dialog_box"></div>
 		<%= render "shared/site_parts/flash", :flash => flash %>
-		<div id="dc_system_content">
+		<div class="container_48"><%# id="dc_system_content" %>
 			<%= content_tag :h1, yield(:title) if show_title? %>
 			<%= yield %>
 		</div>

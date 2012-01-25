@@ -3,7 +3,7 @@ class Dc::PagesController < Dc::BaseController
   
   
   def index
-    @pages = Page.all
+    @pages = Page.main
   end
 
   def show
@@ -65,37 +65,29 @@ class Dc::PagesController < Dc::BaseController
   end
   
   
-  def show_seite
-      if params[:system_name]
-        if Page.where(:system_name => params[:system_name]).count > 0
-          @page = Page.where(:system_name => params[:system_name]).first
-        end
-      elsif params[:id]
-        if Seite.find(params[:id])
-          @page = Seite.find(params[:id])
-        end
-      elsif params[:slug]
-        if Page.find_by_slug(params[:slug]) || Page.find_by_slug('/'+params[:slug]) || Page.find_by_name(params[:slug])
-          @page = Page.find_by_slug(params[:slug]) || Page.find_by_slug('/'+params[:slug]) || Page.find_by_name(params[:slug])
-        end
-      elsif params[:slug1]
-        this_full_slug = "/#{params[:slug1]}#{ '/' + params[:slug2] if params[:slug2] }#{ '/' + params[:slug3] if params[:slug3] }#{ '/' + params[:slug4] if params[:slug4] }"
-        this_name = params[:slug1]
-        this_name = params[:slug2] if params[:slug2]
-        this_name = params[:slug3] if params[:slug3]
-        this_name = params[:slug4] if params[:slug4]
-        this_slug = "/#{this_name}"
-        if Page.find_by_full_slug(this_full_slug) || Page.find_by_slug(this_slug) || Page.find_by_std_slug(this_slug) || Seite.find_by_name(this_name)
-          @page = Page.find_by_full_slug(this_full_slug) || Page.find_by_slug(this_slug) || Page.find_by_std_slug(this_slug) || Page.find_by_name(this_name)
+  def reorder_rows
+  end
+  
+  def reorder_cells
+  end
+  
+  def reorder_pages
+    pages = params[:pages] ? ActiveSupport::JSON.decode( params[:pages] ) : []
+    logger.info " #{ pages.to_yaml } "
+    if pages && pages.kind_of?(Array)
+      pages.each_with_index do |key, index|
+        da_page = Page.find( key['id'] )
+        logger.info "XXX:: #{ index } => #{ key.to_s } .. #{ da_page.name } "
+        da_page.position = index
+        da_page.parent_site_id = nil
+        da_page.save
+        if key['children']
+          order_child_sites( key['children'], key['id'] )
         end
       end
-      if @page
-        @title = @page.title
-        @headline = @page.headline
-        render_this_site
-      else
-        render_seiten_error
-      end
+    end
+    logger.info " #{ ActiveSupport::JSON.decode( params[:pages] ).to_yaml } "
+    render :nothing => true
   end
   
   def show_editable_page
@@ -131,6 +123,21 @@ class Dc::PagesController < Dc::BaseController
       render_seiten_error
     else
       render :layout => themed_path('dc'), :template => 'dc/pages/show'
+    end
+  end
+  
+  def order_child_sites(sites, parent)
+    if sites && sites.kind_of?(Array)
+      sites.each_with_index do |key, index|
+        da_page = Page.find( key['id'] )
+        logger.info "XXX:: #{ parent } #{ index } => #{ key.to_s } .. #{ da_page.name } "
+        da_page.position = index
+        da_page.parent_site_id = parent
+        da_page.save
+        if key['children']
+          order_child_sites( key['children'], key['id'] )
+        end
+      end
     end
   end
   

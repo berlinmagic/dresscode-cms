@@ -2,7 +2,7 @@
 	
 	<%= hook :before_system_navigation %>
 	
-	<% Page.all.each do |page| %>
+	<% Page.aktiv.main.each do |page| %>
 		
 		<%= render 'static/navigation/page_list', :page => page %>
 		
@@ -10,5 +10,4 @@
 	
 	<%= hook :after_system_navigation %>
 	
-	<div class="clearfix" id="dc_header_nav_clr"></div>
 </ul>

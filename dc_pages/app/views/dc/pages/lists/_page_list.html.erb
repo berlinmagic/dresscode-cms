@@ -1,0 +1,26 @@
+<li class="page<%= page.site_level %>" id="<%= dom_id(page) %>">
+	
+	<div class="sortable_page<%#= ' level'+ page.site_level.to_s %>" id="p_<%= page.id %>">
+		<div class="grid_2 icon_field sorter">
+			<%= dc_icon( :icon => 72 ) %>
+		</div>
+		<div class="grid_2 sub_icon_field">
+			<%= dc_icon( :icon => 10 ) %>
+		</div>
+		<div class="grid_16">
+			<strong><%= page.name %></strong>
+		</div>
+		<div class="right_actions">
+			<%= raw the_actions( page ) %>
+		</div>
+		<div class="clearfix"></div>
+	
+	</div>
+	<ol class="nested">
+		<% if page.sub_sites && page.sub_sites.aktiv.count > 0 %>
+			<% page.sub_sites.each do |sub_page| %>
+				<%= render 'dc/pages/lists/page_list', :page => sub_page %>
+			<% end %>
+		<% end %>
+	</ol>
+</li>

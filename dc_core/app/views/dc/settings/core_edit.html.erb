@@ -11,7 +11,7 @@
 		<tr>
 			<th>Seitenname:</th>
 			<td> </td>
-			<th><%= text_field_tag("preferences['site_name']", DC::Config[ :site_name ], :size => 50 )%></th>
+			<th><%= text_field_tag("preferences[site_name]", DC::Config[ :site_name ], :size => 50 )%></th>
 		</tr>
 		<tr>
 			<th>compress_stylez:</th>
@@ -37,7 +37,7 @@
 		<tr>
 			<th>pretty_namespace</th>
 			<td> </td>
-			<th><%= text_field_tag("preferences['pretty_namespace']", DC::Config[ :pretty_namespace ], :size => 50 )%></th>
+			<th><%= text_field_tag("preferences[pretty_namespace]", DC::Config[:pretty_namespace], :size => 50 )%></th>
 		</tr>
 	</table>
 	
@@ -94,6 +94,39 @@
 			<th>pages_ttl</th>
 			<td> </td>
 			<th><%= text_field_tag("preferences[pages_ttl]", DC::Config[ :pages_ttl ], :size => 50 )%></th>
+		</tr>
+		<tr>
+			<th colspan="3">Content freshness:</th>
+		</tr>
+		<tr>
+			<th>scriptz_fresh</th>
+			<td> </td>
+			<th><%= text_field_tag("preferences[scriptz_fresh]", DC::Config[ :scriptz_fresh ], :size => 50 )%></th>
+		</tr>
+		<tr>
+			<th>stylez_fresh</th>
+			<td> </td>
+			<th><%= text_field_tag("preferences[stylez_fresh]", DC::Config[ :stylez_fresh ], :size => 50 )%></th>
+		</tr>
+		<tr>
+			<th>statics_fresh</th>
+			<td> </td>
+			<th><%= text_field_tag("preferences[statics_fresh]", DC::Config[ :statics_fresh ], :size => 50 )%></th>
+		</tr>
+		<tr>
+			<th>library_fresh</th>
+			<td> </td>
+			<th><%= text_field_tag("preferences[library_fresh]", DC::Config[ :library_fresh ], :size => 50 )%></th>
+		</tr>
+		<tr>
+			<th>pages_fresh</th>
+			<td> </td>
+			<th><%= text_field_tag("preferences[pages_fresh]", DC::Config[ :pages_fresh ], :size => 50 )%></th>
+		</tr>
+		<tr>
+			<th>dynamic_fresh</th>
+			<td> </td>
+			<th><%= text_field_tag("preferences[dynamic_fresh]", DC::Config[ :dynamic_fresh ], :size => 50 )%></th>
 		</tr>
 	</table>
 	

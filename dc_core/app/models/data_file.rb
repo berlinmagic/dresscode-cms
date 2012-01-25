@@ -17,7 +17,7 @@ class DataFile < ActiveRecord::Base
   validates_presence_of :file
   
   
-  before_create :set_the_field_values
+  after_create :set_the_field_values
   # => after_save :set_more_field_values
   
   
@@ -47,8 +47,9 @@ private # => # => # => # => # => # => # => # => # => # => #
       
       self.name = the_name
       self.original_name = fn
-      self.file.name = "#{the_fname}.#{ex}"
+      self.file_name = "#{the_fname}.#{ex}"
       self.image = IMAGE_EXTS.include?( ex.to_s.downcase ) ? true : false
+      self.save
   end
   
   def set_more_field_values
