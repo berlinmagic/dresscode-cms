@@ -64,30 +64,43 @@ guest_gruppe = Group.create!(     :name => 'Gast',          :system_stuff => tru
 
 
 
-puts 'INFO: ERSTELLE  USER :1'
+puts 'INFO: ERSTELLE  USER 1'
 
-master = User.create!(
-                              :salutation => 'mr', :first_name =>  'Torsten', :last_name => 'Wetzel',
-                              :nick_name => 'dc_austin',  :dc_id => 'owerk_austin',
-                              :email => 'admin@orangenwerk.com', 
-                              :password => 'dau@mac?!', :password_confirmation => 'dau@mac?!',
-                              :evil_master => true, :site_admin => true, :confirmed_at => Time.now,
-                              :group_id => admin_gruppe.id
-)
+master_admin = User.new(    :salutation => 'mr',
+                            :first_name =>  'Torsten',
+                            :last_name => 'Wetzel',
+                            :nick_name => 'dc_austin',
+                            :dc_id => 'owerk_austin',
+                            :email => 'admin@orangenwerk.com',
+                            :password => 'dau@mac?!',
+                            :password_confirmation => 'dau@mac?!',
+                            :evil_master => true,
+                            :site_admin => true,
+                            :confirmed_at => Time.now,
+                            :group_id => 2                          )
 
+puts 'INFO: confirm  USER 1'
+#master_admin.confirm! 
+master_admin.skip_confirmation!
+master_admin.save
 
 puts 'INFO: ERSTELLE  USER :2'
 
-admin = User.create!(
-                              :salutation => 'mr', :first_name =>  'Marco', :last_name => 'Sebald',
-                              :nick_name => 'dc_marco',  :dc_id => 'owerk_marco',
-                              :email => 'm.sebald@orangenwerk.com', 
-                              :password => 'blackfish1980', :password_confirmation => 'blackfish1980',
-                              :evil_master => false, :site_admin => true, :confirmed_at => Time.now,
-                              :group_id => admin_gruppe.id
-)
+site_admin = User.new(    :salutation => 'mr',
+                          :first_name =>  'Marco',
+                          :last_name => 'Sebald',
+                          :nick_name => 'dc_marco',
+                          :dc_id => 'owerk_marco',
+                          :email => 'm.sebald@orangenwerk.com',
+                          :password => 'blackfish1980',
+                          :password_confirmation => 'blackfish1980',
+                          :evil_master => false,
+                          :site_admin => true,
+                          :confirmed_at => Time.now,
+                          :group_id => 2                              )
 
-
-
+#site_admin.confirm! 
+site_admin.skip_confirmation!
+site_admin.save
    
    

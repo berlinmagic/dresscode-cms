@@ -13,7 +13,7 @@
 						<% pref_type = DC::Config.instance.preference_definitions[key] ? DC::Config.instance.preference_definitions[key].da_type.to_s : 'string' %>
 						<% unless key == 'logo_datei' %>
 							<% if pref_type == 'boolean' %>
-								<%= dc_bool_tag( key ) %>
+								<%= dc_pref_bool_tag( key ) %>
 							<% elsif pref_type == 'string' %>
 								<%= text_field_tag("preferences[#{key}]", DC::Config[ key ], :size => 50 )%>
 							<% elsif pref_type == 'integer' %>
@@ -34,7 +34,7 @@
 					<td>
 						<% pref_type = "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key] ? "DC::#{@name.classify}".constantize::Config.instance.preference_definitions[key].da_type.to_s : 'string' %>
 						<% if pref_type == 'boolean' %>
-							<%= dc_bool_tag( key ) %>
+							<%= dc_pref_bool_tag( key ) %>
 						<% elsif pref_type == 'string' %>
 							<%= text_field_tag("preferences[#{key}]", "DC::#{@name.classify}".constantize::Config[ key ], :size => 50 )%>
 						<% elsif pref_type == 'integer' %>

@@ -86,8 +86,8 @@ module GlobalUser
           rang = 'Master-Admin'
         elsif user.site_admin
           rang = 'Seiten-Admin'
-        elsif user.gruppe
-          rang = user.gruppe.name.to_s
+        elsif user.group
+          rang = user.group.name.to_s
         else
           rang = 'User'
         end

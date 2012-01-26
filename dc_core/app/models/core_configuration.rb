@@ -9,7 +9,7 @@ class CoreConfiguration < Configuration
 # ####################################################################################################
   ### ===   CMS options   ============================================= ###
   preference :site_name,          :string,      :default => 'DressCode-CMS'
-  preference :site_url,           :string,      :default => 'dressedcode-cms.com'
+  preference :site_url,           :string,      :default => 'trendgegner.de'
   # Use Yui-Compressor
   preference :compress_stylez,    :boolean,     :default => false
   preference :compress_scriptz,   :boolean,     :default => false

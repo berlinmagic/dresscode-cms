@@ -37,7 +37,7 @@
 					<%= dc_icon( :icon => 42 ) %>
 				</div>
 				<div class="fl_box_210">
-					<%= user.first_name+' '+user.last_name %>
+					<%= user.first_name.to_s  %>&nbsp;<%= user.last_name.to_s %>
 				</div>
 				<div class="fl_box_230">
 					<%= user.email %>

@@ -7,8 +7,8 @@ class CreateUser < ActiveRecord::Migration
       t.string      :email,                               :default => "", :null => false
       # DressCode
       t.string      :salutation                          # => Anrede
-      t.string      :first_name,                         :default => ""
-      t.string      :last_name,                          :default => ""
+      t.string      :first_name
+      t.string      :last_name
       t.string      :dc_id
       t.string      :nick_name
       t.string      :image_uid
@@ -45,10 +45,10 @@ class CreateUser < ActiveRecord::Migration
       t.datetime    :created_at
       t.datetime    :updated_at
     end
-
     add_index :users, :authentication_token, :unique => true
     add_index :users, :confirmation_token, :unique => true
     add_index :users, :email, :unique => true
+    add_index :users, :group_id
     add_index :users, :invitation_token
     add_index :users, :invited_by_id
     add_index :users, :reset_password_token, :unique => true

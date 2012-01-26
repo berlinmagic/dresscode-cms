@@ -25,13 +25,13 @@ class User < ActiveRecord::Base
   
   # =====>   D R A G O N F L Y   <======================================================== #
   image_accessor      :image
-  validates_property  :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif)
+  # => validates_property  :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif)
   
   
   # Setup accessible (or protected) attributes for your model
-  #attr_accessible     :salutation,      :first_name,              :last_name,       :email,       :nick_name,
-  #                    :password,        :password_confirmation,   :remember_me,     :dc_id,
-  #                    :evil_master,     :site_admin
+  attr_accessible     :salutation,      :first_name,              :last_name,       :email,       :nick_name,
+                      :password,        :password_confirmation,   :remember_me,     :dc_id,
+                      :evil_master,     :site_admin,              :group_id
   #attr_protected      :evil_master,     :site_admin
   
   
