@@ -2,7 +2,7 @@
 	
 	<div id='inviting_form'>
 		
-		<h1 class="icon"><%= finelineIcon(:icon => 42, :color => finestyler('headline_icon_color'), :size => finestyler('headline_icon_size'), :blur => finestyler('headline_icon_blur')) %><%= t('Send_invitation') %></h1>
+		<h1 class="icon"><%#= finelineIcon(:icon => 42, :color => finestyler('headline_icon_color'), :size => finestyler('headline_icon_size'), :blur => finestyler('headline_icon_blur')) %><%= t('Send_invitation') %></h1>
 		
 	<div class="admin_in_box">
 		<div class="box">
@@ -11,26 +11,26 @@
 			</div>
 		</div>
 		
-		<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :remote => true do |f| %>
+		<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name) do |f| %>
 		
 		<div class="box">
 			<div class="in_box white">
 				
 				
-					<%= strange_devise_error_messages! %>
+					<%#= strange_devise_error_messages! %>
 					
 					<table class="login">
 						<tr>
-							<th><%= f.label :anrede, t("anrede") %></th>
-							<td><%= f.select :anrede, User::USER_TYPIES.map { |c| [I18n.t(c), c] }, :include_blank => true %></td>
+							<th><%= f.label :salutation, t("anrede") %></th>
+							<td><%= f.select :salutation, User::USER_TYPIES.map { |c| [I18n.t(c), c] }, :include_blank => true %></td>
 						</tr>
 						<tr>
-							<th><%= f.label :vorname, t("vorname") %></th>
-							<td><%= f.text_field :vorname %></td>
+							<th><%= f.label :first_name, t("first_name") %></th>
+							<td><%= f.text_field :first_name %></td>
 						</tr>
 						<tr>
-							<th><%= f.label :name, t("name") %></th>
-							<td><%= f.text_field :name %></td>
+							<th><%= f.label :last_name, t("last_name") %></th>
+							<td><%= f.text_field :last_name %></td>
 						</tr>
 						<tr>
 							<th><%= f.label :email, t("email") %></th>
@@ -52,8 +52,8 @@
 							<td></td>
 						</tr>
 						<tr>
-							<th><%= f.label :gruppe_id, t('gruppe') %></th>
-							<td><%= f.select :gruppe_id, Gruppe.all.map { |c| [c.name,c.id] } %></td>
+							<th><%= f.label :group_id, t('gruppe') %></th>
+							<td><%= f.select :group_id, Group.all.map { |c| [c.name,c.id] } %></td>
 						</tr>
 						<% end %>
 					</table>

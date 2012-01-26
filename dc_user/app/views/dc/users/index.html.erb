@@ -1,61 +1,68 @@
-<div class="admin_box">
+<% content_for :dc_head do %>
 	
-
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 42 ) %> userverwaltung</h1>
+	</div>
+	
+	<div class="fl_box_470">
 		
-	<h1 class="icon"><%= t('user') %></h1>
-		
+	</div>
+	
+<% end %>
 
-		<div class="box">
-			<table class="mb_table">
-				  <tr>	
-				    <th>Name</th>
-				    <th>Rang</th>
-				    <th>Aktiv</th>
-					<th></th>
-				  </tr>
-				<tbody>
-				<% @users.each do |user| %>
-				  <tr id="<%= dom_id(user)%>">
-				    <td>
-						<a href="<%= dc_user_path(user) %>">
-							<%= t(user.salutation) %>&nbsp;&nbsp;&nbsp;<strong><%= user.first_name+' '+user.last_name %></strong>
-						</a>
-					</td>
-					<td><%= user_rang(user) %></td>
-					<td>
-					<% if user.invitation_sent_at && (user.encrypted_password.nil? || user.encrypted_password == '') %>
-						wurde Eingeladen
-					<% else %>
-						<%= user.confirmed_at ? raw("<strong>Ja</strong> . seit #{user.confirmed_at.strftime('%d.%m.%Y')}") : 'Konto muss Bestätigt werden!' %>
-					<% end %>
-					</td>
-					<td class="actions"><%# strange_admin_show_link user %></td>
-				  </tr>
-				<% end %>
-				</tbody>
-			</table>
 
+<div class="dc_box">
+	<div class="dc_table_head">
+		<div class="grid_2">
+			&nbsp;<%#= dc_icon( :icon => 42 ) %>
 		</div>
 		
+		<div class="fl_box_230">
+			Vorname, Name
+		</div>
+		<div class="fl_box_230">
+			E-Mail
+		</div>
+		<div class="fl_box_110">
+			
+		</div>
 		
-		<div class="box">
-			<div class="in_box">
-				<%#= link_to 'neuen Nutzer einladen', new_user_invitation_path, :remote => true, :class => 'big_submit_button' %>
+		<div class="clearfix"></div>
+	</div>
+	
+	<% @users.each do |user| %>
+		<div class="dc_table_row" id="<%= dom_id(user)%>">
+			<div class="row_head">
+				<div class="grid_2">
+					<%= dc_icon( :icon => 42 ) %>
+				</div>
+				<div class="fl_box_210">
+					<%= user.first_name+' '+user.last_name %>
+				</div>
+				<div class="fl_box_230">
+					<%= user.email %>
+				</div>
+				<div class="fl_box_110">
+					<%= user_rang(user) %>
+				</div>
+				<div class="grid_1">
+					<%= user.confirmed_at ? raw("<div class='active_dot'></div>") : raw("<div class='inactive_dot'></div>") %>
+				</div>
 				<div class="clearfix"></div>
 			</div>
+			
+			<div class="clearfix"></div>
 		</div>
-		
-	</div>
-	
-	</div>
+	<% end %>
 </div>
 
 
+
 <% content_for :sidebar do %>
-	<div id="sidebar">
-		<ul id="sidebar_navi">
-			<li><%= link_to t('Nutzer einladen'), new_user_invitation_path, :remote => true %></li>
-		</ul>
-		<br class="clear" />
-	</div>
+
+	<%= dc_aside_box( 'User', "aktiv" ) do %>
+		<%= link_to raw('Userverwaltung'), dcr_users_path, :class => "#{controller.action_name == 'index' ? 'aktiv' : ' '}" %>
+		<%= link_to raw('User einladen'), new_user_invitation_path  %>
+	<% end %>
+
 <% end %>

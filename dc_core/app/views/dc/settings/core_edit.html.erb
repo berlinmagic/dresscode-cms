@@ -22,28 +22,43 @@
 		<tr>
 			<th>Seitenname:</th>
 			<td> </td>
-			<th><%= text_field_tag("preferences[site_name]", DC::Config[ :site_name ], :size => 50 )%></th>
+			<th>
+				<%#= text_field_tag("preferences[site_name]", DC::Config[ :site_name ], :size => 50 )%>
+				<%= dc_pref_text_field( 'site_name' ) %>
+			</th>
+		</tr>
+		<tr>
+			<th>dc_background</th>
+			<td> </td>
+			<th>
+				<%= dc_pref_select_tag( 'dc_background', CoreConfiguration::DC_BACKGROUNDS.map {|c| [c,c]} ) %>
+			</th>
 		</tr>
 		<tr>
 			<th>compress_stylez:</th>
 			<td> </td>
-			<th><%= dc_bool_tag( 'compress_stylez' ) %></th>
+			<th><%= dc_pref_bool_tag( 'compress_stylez' ) %></th>
 		</tr>
 		<tr>
 			<th>compress_scriptz</th>
 			<td> </td>
-			<th><%= dc_bool_tag( 'compress_scriptz' ) %></th>
+			<th><%= dc_pref_bool_tag( 'compress_scriptz' ) %></th>
 		</tr>
 		<tr>
 			<th>theme</th>
 			<td> </td>
-			<th><%= select_tag 'preferences[theme]', options_for_select(DcThemesStatic.available_theme_names.map {|c| [c,c]}, DC::Config[:theme]) %></th>
+			<th>
+				<%#= select_tag 'preferences[theme]', options_for_select(DcThemesStatic.available_theme_names.map {|c| [c,c]}, DC::Config[:theme]) %>
+				<%= dc_pref_select_tag( 'theme', DcThemesStatic.available_theme_names.map {|c| [c,c]} ) %>
+			</th>
 		</tr>
 		<tr>
 			<th>theme_type</th>
 			<td> </td>
 			<% av_theme_types = ['static','dynamic']%>
-			<th><%= select_tag 'preferences[theme_type]', options_for_select(av_theme_types.map {|c| [c,c]}, DC::Config[:theme_type]) %></th>
+			<th>
+				<%= dc_pref_select_tag( 'theme_type', ['static','dynamic'].map {|c| [c,c]} ) %>
+			</th>
 		</tr>
 		<tr>
 			<th>pretty_namespace</th>
@@ -64,17 +79,17 @@
 		<tr>
 			<th>cache_statics:</th>
 			<td> </td>
-			<th><%= dc_bool_tag( 'cache_statics' ) %></th>
+			<th><%= dc_pref_bool_tag( 'cache_statics' ) %></th>
 		</tr>
 		<tr>
 			<th>etags_enabled:</th>
 			<td> </td>
-			<th><%= dc_bool_tag( 'etags_enabled' ) %></th>
+			<th><%= dc_pref_bool_tag( 'etags_enabled' ) %></th>
 		</tr>
 		<tr>
 			<th>production_mode</th>
 			<td> </td>
-			<th><%= dc_bool_tag( 'production_mode' ) %></th>
+			<th><%= dc_pref_bool_tag( 'production_mode' ) %></th>
 		</tr>
 		<tr>
 			<th>dev_mode_ttl</th>

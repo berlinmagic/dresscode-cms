@@ -17,9 +17,20 @@
 
 .dc_admin_content .dc_box .dc_wbox { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> }
 
+.dc_table_head { background: #000; line-height: 22px; color: #fff; padding: 3px 0 1px;}
+
+.dc_table_row { margin: 5px 0 0; }
+
+.inactive_dot { width: 8px; height: 8px; <%= all_border_radius( '4px' ) %> border: solid 1px #ccc; background: rgba(153,153,153,.70); }
+.active_dot { width: 8px; height: 8px; <%= all_border_radius( '4px' ) %> border: solid 1px #ccc; background: #a0c924; margin: 5px 0 0;}
+
+
+.dc_table_row .row_head { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %>  line-height: 20px; color: #333; padding: 3px 0;}
+
+
 /* #system_content #main_content.dc { background: url('/images/dc_bgs/iceberg.jpg') no-repeat fixed center center; padding: 5px 0 20px; } */
 
-#system_content.dc { background: url('/images/dc_bgs/iceberg.jpg') no-repeat fixed center center; 
+#system_content.dc { background: url('/images/dc_bgs/<%= DC::Config[:dc_background] %>.jpg') no-repeat fixed center center; 
 		-webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

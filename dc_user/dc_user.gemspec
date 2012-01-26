@@ -21,8 +21,11 @@ Gem::Specification.new do |s|
   s.summary                 =   'DressCode - User & Login-Functionality'
   
   
-  s.add_dependency('devise', '= 1.4.2')
-  s.add_dependency('devise_invitable', '= 0.5.4')
+  # => s.add_dependency('devise', '= 1.4.2')
+  # => s.add_dependency('devise_invitable', '= 0.5.4')
+  
+  s.add_dependency('devise', '= 1.5.3')
+  s.add_dependency('devise_invitable', '= 0.6.1')
   
   
 end

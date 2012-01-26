@@ -21,8 +21,11 @@ class CoreConfiguration < Configuration
   preference :theme_type,         :string,      :default => 'static'  # => dynamic | static ... define the theme-engine
   # pretty namespace (use /var/ insted of /dc/)
   preference :pretty_namespace,   :string,      :default => 'cms'
+  preference :dc_background,      :string,      :default => 'grass_blades'
   # Safety / Login-Strategy
   preference :invite_only_site,   :boolean,     :default => 'false'
+  
+  DC_BACKGROUNDS = %w[aqua_blue aqua_blue1 aqua_blue2 aqua_blue3 aurora fall_leaves grass_blades horizon iceberg redwoods rings snowy_hills stripes summer_leaves tahoe water]
   ### =================================================================================== ###
   
   

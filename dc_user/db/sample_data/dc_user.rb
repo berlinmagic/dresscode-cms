@@ -7,7 +7,7 @@ owner = User.create!(
                               :nick_name => 'Seiten_Inhaber',
                               :email => 'test_owner@2strange.net', 
                               :password => 'fineline_owner', :password_confirmation => 'fineline_owner',
-                              :evil_master => false, :site_admin => true, :confirmed_at => Time.now,
+                              :confirmed_at => Time.now,
                               :group_id => the_group.id
 )
 

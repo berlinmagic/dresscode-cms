@@ -34,6 +34,9 @@ private # => # => # => # => # => # => # => # => # => # => #
   
   def set_the_field_values
       fn = self.file_name
+      unless self.file_ext && !self.file_ext.blank?
+        self.file_ext = fn.split('.').last
+      end
       ex = self.file_ext
       nm = self.name
       

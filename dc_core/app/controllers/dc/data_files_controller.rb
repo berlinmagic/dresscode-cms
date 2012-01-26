@@ -44,7 +44,7 @@ class Dc::DataFilesController < Dc::BaseController
   
   def original
     @data_file = DataFile.find( params[:id] )
-    send_file @data_file.file.to_file( @data_file.original_name.to_s )
+    send_file @data_file.file.to_file( "tmp/dc_files/#{@data_file.original_name.to_s}" )
   end
   
   def destroy
