@@ -2,15 +2,18 @@
 class Dc::DataFilesController < Dc::BaseController
   
   def index
+    @view_name = "all_files"
     @data_files = DataFile.all
   end
   
   def pix_only
+    @view_name = "only_pix"
     @data_files = DataFile.pix
     render :template => 'dc/data_files/index'
   end
   
   def data_only
+    @view_name = "only_data"
     @data_files = DataFile.nopix
     render :template => 'dc/data_files/index'
   end

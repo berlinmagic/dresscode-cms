@@ -3,6 +3,7 @@
 #require 'dc_themes_dynamic_modul'
 require 'dc_themes_dynamic/version'
 require 'dc_themes_dynamic/style_class_routes'
+require 'dc_themes_dynamic_hooks'
 
 module DcThemesDynamic
   class Engine < Rails::Engine

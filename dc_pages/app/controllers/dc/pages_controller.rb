@@ -25,7 +25,7 @@ class Dc::PagesController < Dc::BaseController
 
   def edit
     @page = Page.find(params[:id])
-    render :layout => themed_path('dc'), :template => 'dc/pages/edit'
+    render :layout => 'dc', :template => 'dc/pages/edit'
   end
 
   def update
@@ -123,7 +123,7 @@ class Dc::PagesController < Dc::BaseController
     if @page.is_deleted?
       render_seiten_error
     else
-      render :layout => themed_path('dc'), :template => 'dc/pages/show'
+      render :layout => 'dc', :template => 'dc/pages/show'
     end
   end
   

@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Dc::BaseController < ApplicationController
   
-  layout proc { |controller| controller.request.xhr? ? false : themed_path('dc') }
+  layout proc { |controller| controller.request.xhr? ? false : 'dc' }
   
   include GlobalBase
   

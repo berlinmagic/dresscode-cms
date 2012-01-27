@@ -27,7 +27,7 @@ class UserConfiguration < Configuration
   
   preference :maximum_attempts, :integer, :default => '5'
   
-  preference :unlock_in, :integer, :default => '5'
+  preference :unlock_in, :integer, :default => '3'
   preference :unlock_in_period, :string, :default => TIMES[0]
   
   preference :lock_strategy, :string, :default => LOCK_STRATEGY[0]

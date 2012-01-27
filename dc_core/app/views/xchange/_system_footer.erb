@@ -10,6 +10,8 @@
 	</div>
 </div>
 
+<%= hook :dc_system_footer_after_pages %>
+
 <div class="foot_box">
 	<%= link_to dc_footer_icon( 42 ), dcr_users_path, 
 			:class => "foot_box #{'aktiv' if controller.controller_name == 'users'}",

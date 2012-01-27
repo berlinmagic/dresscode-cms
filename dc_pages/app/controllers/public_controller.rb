@@ -26,7 +26,7 @@ class PublicController < BaseController
       if @page.is_deleted?
         render_seiten_error
       else
-        render :layout => themed_path('public'), :template => 'public/page'
+        render :layout => 'public', :template => 'public/page'
       end
     else
       render_seiten_error

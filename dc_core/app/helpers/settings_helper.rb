@@ -21,6 +21,17 @@ module SettingsHelper
     raw( stuff )
   end
   
+  def dc_pref_pwd_field( object, pref='' )
+    if !pref.blank?
+      stuff = password_field_tag( "preferences[#{ object }]", "DC::#{pref}".constantize::Config[ "#{ object }" ] )
+    else
+      stuff = password_field_tag( "preferences[#{ object }]", DC::Config[ "#{ object }" ] )
+    end
+    raw( stuff )
+  end
+  
+  
+  
   def dc_pref_select_tag( object, option, pref='' )
     if !pref.blank?
       stuff = select_tag( "preferences[#{ object }]", options_for_select( option, "DC::#{pref}".constantize::Config["#{ object }"]) )
@@ -37,6 +48,11 @@ module SettingsHelper
   
   def dc_pref_bool_line( object, pref='' )
     da_line = dc_pref_bool_tag( object, pref )
+    dc_pref_line( object, da_line )
+  end
+  
+  def dc_pref_pwd_line( object, pref='' )
+    da_line = dc_pref_pwd_field( object, pref )
     dc_pref_line( object, da_line )
   end
   

@@ -1,66 +1,80 @@
 <% data_file = @data_file %>
-
 <% content_for :dc_head do %>
-	
-	<% if @data_file.image %>
-		<div class="fl_box_470">
-			<h1><%= dc_admin_head_icon( 58 ) %> bild: <%= @data_file.name.downcase %></h1>
-		</div>
-	<% else %>
-		<div class="fl_box_470">
-			<h1><%= dc_admin_head_icon( 61 ) %> datei: <%= @data_file.name.downcase %></h1>
-		</div>
-	<% end %>
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 49 ) %> <%= t("dc.data_files.headline").downcase %></h1>
+	</div>
 	<div class="fl_box_470">
 		
 	</div>
+<% end %>
+
+<div class="dc_box">
 	
-	
-<% end %>
+	<div class="dc_wbox head">
+		<h2><% if @data_file.image %>
+				<%= dc_icon( :icon => 58, :size => 24 ) %> <%= t("dc.data_files.file_types.image").downcase %>
+			<% else %>
+				<%= dc_icon( :icon => 61, :size => 24 ) %> <%= t("dc.data_files.file_types.data").downcase %>
+			<% end %>
+			: <%= @data_file.name.downcase %>
+		</h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
+		
+		<% if @data_file.image %>
+			<hr/>
+			<%= link_to image_tag( @data_file.file.thumb("800x300>").url() ), @data_file.file.thumb("1200x700>").url(), 
+										:class => 'data_file_pic_box LightBox', :title => @data_file.name %>
+			<div class="clearfix"></div>
+			<hr/>
+		<% else %>
+			<hr/>
+			<div class="clearfix"></div>
+			<div class='no_pic_data_file' style="float:left; margin-right: 20px;"><%= data_file.file_ext %></div>
+		<% end %>
+
+		<p><strong><%= @data_file.original_name %></strong> (<%= @data_file.file_name %>)</p>
+		<p>
+			<% if @data_file.image %>
+				<strong><%= @data_file.file.width %></strong> x <strong><%= @data_file.file.height %></strong> Pixel ... 
+			<% end %>
+			<strong>Größe:</strong> <%= number_to_human_size( @data_file.file_size ) %>
+		</p>
+
+		<% if @data_file.image %>
+			<%= link_to 'LightBox', @data_file.file.thumb("1200x700>").url(), :class => 'LightBox', :title => @data_file.name %>
+			&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<% end %>
+
+		<%= link_to 'Download file', data_file.file.url(), :title => data_file.name %>
+		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<% if data_file.original_name && !data_file.original_name.blank? %>
+			<%= link_to 'Download original', original_dc_data_file_path(data_file), :title => data_file.original_name %>
+		<% end %>
+		<div class="clearfix"></div>
+		<hr/>
+
+		<div class="clearfix"></div>
+		<br/>
+		<p><strong>"</strong>
+			<% if @data_file.description && !@data_file.description.blank? %>
+				<%= @data_file.description %>
+			<% else %>
+				keine Beschreibung vorhanden
+			<% end %>
+		<strong>"</strong></p>
+		
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox buttons">
+		
+		<div class="clearfix"></div>
+	</div>
+
+</div>
 
 
-<% if @data_file.image %>
-	<hr/>
-	<%= link_to image_tag( @data_file.file.thumb("800x600>").url() ), @data_file.file.thumb("1200x700>").url(), 
-								:class => 'data_file_pic_box LightBox', :title => @data_file.name %>
-	<div class="clearfix"></div>
-	<hr/>
-<% else %>
-	<hr/>
-	<div class="clearfix"></div>
-	<div class='no_pic_data_file' style="float:left; margin-right: 20px;"><%= data_file.file_ext %></div>
-<% end %>
-
-<p><strong><%= @data_file.original_name %></strong> (<%= @data_file.file_name %>)</p>
-<p>
-	<% if @data_file.image %>
-		<strong><%= @data_file.file.width %></strong> x <strong><%= @data_file.file.height %></strong> Pixel ... 
-	<% end %>
-	<strong>Größe:</strong> <%= number_to_human_size( @data_file.file_size ) %>
-</p>
-
-<% if @data_file.image %>
-	<%= link_to 'LightBox', @data_file.file.thumb("1200x700>").url(), :class => 'LightBox', :title => @data_file.name %>
-	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<% end %>
-
-<%= link_to 'Download file', data_file.file.url(), :title => data_file.name %>
-&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<% if data_file.original_name && !data_file.original_name.blank? %>
-	<%= link_to 'Download original', original_dc_data_file_path(data_file), :title => data_file.original_name %>
-<% end %>
-<div class="clearfix"></div>
-<hr/>
-
-<div class="clearfix"></div>
-<br/>
-<p><strong>"</strong>
-	<% if @data_file.description && !@data_file.description.blank? %>
-		<%= @data_file.description %>
-	<% else %>
-		keine Beschreibung vorhanden
-	<% end %>
-<strong>"</strong></p>
 
 
 <%= render 'sidebar' %>

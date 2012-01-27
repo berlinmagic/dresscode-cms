@@ -16,8 +16,7 @@
 		
 		<p><em>Hier eine kleine Übersicht der momentanen Einstellungen, ändern können Sie diese über das Menü auf der rechten Seite.</em></p>
 		
-		<br/>
-		<p>Seite:</p>
+		<hr/>
 		<% if DC::Config[:site_name] && DC::Config[:site_name] != "DressCode-CMS" && DC::Config[:site_name] != "" %>
 			<%=  dc_pref_line( 'site_name', raw( "<strong>#{ DC::Config[:site_name] }</strong>" ) )  %>
 		<% else %>
@@ -30,8 +29,7 @@
 			<%=  dc_pref_line( 'site_url', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
 		<% end %>
 		
-		<br/>
-		<p>Google</p>
+		<hr/>
 		<% if DC::Config[:analytics_key] && DC::Config[:analytics_key] != "UA-XXXXX-X" && DC::Config[:analytics_key] != "" %>
 			<%=  dc_pref_line( 'analytics_key', raw( "<strong>O.K.</strong>" ) )  %><strong>O.K.</strong>
 		<% else %>
@@ -43,8 +41,7 @@
 			<%=  dc_pref_line( 'g_maps_key', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
 		<% end %>
 		
-		<br/>
-		<p>Social-Einstellungen</p>
+		<hr/>
 		
 		<% if DC::Config[:facebook_app_id] && DC::Config[:facebook_app_id] != "UA-XXXXX-X" && DC::Config[:facebook_app_id] != "" %>
 			<%=  dc_pref_line( 'facebook_app_id', raw( "<strong>#{ DC::Config[:facebook_app_id] }</strong>" ) )  %>
@@ -52,15 +49,14 @@
 			<%=  dc_pref_line( 'facebook_app_id', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
 		<% end %>
 		
-		<br/>
-		<p>Seiten-Besitzer</p>
+		<hr/>
 		<% if DC::Config[:company] && DC::Config[:company] != "Company" && DC::Config[:company] != "" %>
 			<%=  dc_pref_line( 'company', raw( "<strong>#{ DC::Config[:company] }</strong>" ) )  %>
 		<% else %>
 			<%=  dc_pref_line( 'company', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
 		<% end %>
 		
-		<% if DC::Config[:owner_firstname] && DC::Config[:owner_firstname] != "Vorname" && DC::Config[:owner_firstname] != "" %>
+		<% if DC::Config[:owner_firstname] && DC::Config[:owner_firstname] != "Firstname" && DC::Config[:owner_firstname] != "" %>
 			<%=  dc_pref_line( 'owner_firstname', raw( "<strong>#{ DC::Config[:owner_firstname] }</strong>" ) )  %>
 		<% else %>
 			<%=  dc_pref_line( 'owner_firstname', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
@@ -74,10 +70,10 @@
 		
 		
 		<br/>
-		<% if current_user && site_master %>
-			<br/>
 		
-			<p>Performance</p>
+		<% if current_user && site_master %>
+		<hr/>
+			<p><strong>Performance:</strong></p>
 			<%=  dc_pref_line( 'cache_method', DC::Config[:cache_method] )  %>
 			<%=  dc_pref_line( 'etags_enabled', DC::Config[:etags_enabled] )  %>
 			<%=  dc_pref_line( 'compress_stylez', DC::Config[:compress_stylez] )  %>

@@ -3,7 +3,7 @@
 class CoreConfiguration < Configuration
   
   # => Core-Constants
-  
+  CORE_SETS = %w[account site optik api cache meta mailer]
   
   
 # ####################################################################################################
@@ -17,6 +17,7 @@ class CoreConfiguration < Configuration
   preference :make_backups,       :boolean,     :default => true
   preference :show_backups,       :boolean,     :default => false
   # Theme
+  THEME_TYPES = %w[static dynamic]
   preference :theme,              :string,      :default => 'default'
   preference :theme_type,         :string,      :default => 'static'  # => dynamic | static ... define the theme-engine
   # pretty namespace (use /var/ insted of /dc/)
@@ -71,6 +72,8 @@ class CoreConfiguration < Configuration
 # ####################################################################################################
   ### ===   Personalisation   ============================================= ###
   # => Owner-Settings
+  OWNER_TYPES = %w[company private]
+  preference :owner_type,         :string,      :default => 'company'
   preference :owner_name,         :string,      :default => 'Name'
   preference :owner_firstname,    :string,      :default => 'Firstname'
   preference :owner_street,       :string,      :default => 'Street'
@@ -89,6 +92,7 @@ class CoreConfiguration < Configuration
   preference :company_country,    :string,      :default => 'Country'
   preference :company_fon,        :string,      :default => 'Fon'
   preference :company_fax,        :string,      :default => 'Fax'
+  preference :company_mail,       :string,      :default => 'info@company.com'
   preference :tax_number,         :string,      :default => 'XXX'
   preference :law_state,          :string,      :default => 'Deutschland'
   ### =================================================================================== ###
@@ -118,7 +122,7 @@ class CoreConfiguration < Configuration
   
   
 # ####################################################################################################
-  ### ===   Meta-Data   ============================================= ###
+  ### ===   A P I s  ============================================= ###
   # => Google-Api-Key´s
   preference :analytics_key,      :string,      :default => "UA-XXXXX-X"
   preference :g_maps_key,         :string,      :default => "UA-XXXXX-X"
@@ -129,11 +133,12 @@ class CoreConfiguration < Configuration
   
 # ####################################################################################################
   ### ===   Mail-Server   ============================================= ###
-  MAIL_AUTH                 =   ['none', 'plain', 'login', 'cram_md5']
+  MAIL_AUTH                 =   ['none', 'plain', 'login', 'cram_md5']  # => depreacated, but maybe in use!
+  MAIL_AUTH_TYPES           =   ['none', 'plain', 'login', 'cram_md5']
   SECURE_CONNECTION_TYPES   =   ['None','SSL','TLS']
   preference :enable_mail_delivery,   :boolean,   :default => true
   preference :mail_port,              :integer,   :default => 25
-  preference :mail_auth_type,         :string,    :default => MAIL_AUTH[1]
+  preference :mail_auth_type,         :string,    :default => MAIL_AUTH_TYPES[1]
   preference :secure_connection_type, :string,    :default => SECURE_CONNECTION_TYPES[0]
   preference :mail_host,              :string,    :default => 'mail.kundenportal.railshoster.de'
   preference :mail_domain,            :string,    :default => 'orangenwerk.com'

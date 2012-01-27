@@ -98,7 +98,7 @@ class PagesController < BaseController
     if @page.is_deleted?
       render_seiten_error
     else
-      render :layout => themed_path('dc'), :template => 'pages/show'
+      render :layout => 'dc', :template => 'pages/show'
     end
   end
   

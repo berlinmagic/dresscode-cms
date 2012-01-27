@@ -35,7 +35,7 @@
   
   
   # => Load some Helper
-  require 'helper/front_base'
+  require 'helper/meta_help'
   require 'helper/admin_base'
   require 'helper/cache_base'
   require 'helper/global_base'

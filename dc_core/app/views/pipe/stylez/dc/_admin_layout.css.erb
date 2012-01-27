@@ -29,7 +29,7 @@
 
 .dc_preference_line { padding: 5px 0 10px; line-height: 30px; font-size: 15px; }
 
-.dc_preference_line input[type="text"] {
+.dc_preference_line input[type="text"], .dc_preference_line input[type="password"] {
 	padding: 4px 10px; <%= all_border_radius( '3px' ) %> border: none;
 	background: rgba(255,255,255,.70); color: #444;
 	border: inset 1px #ccc;
@@ -124,7 +124,7 @@
 
 
 #system_footer #system_foot_nav .foot_box .sub_foot_box { 
-		position: absolute; bottom: 42px; left: -50px; display: block; width: 150px; padding: 7px 0; 
+		position: absolute; bottom: 42px; left: -70px; display: block; width: 200px; padding: 7px 0; 
 		<%= vertical_gradient( '#111111', '#333333' ) %> 
 		border: solid 1px #666; display: none;
 		<%= all_border_radius( '3px' ) %>

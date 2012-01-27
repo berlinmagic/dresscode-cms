@@ -1,10 +1,12 @@
 class Dc::TlayoutsController < Dc::BaseController
+  
+  
   def index
     @tlayouts = Tlayout.all
-
   end
 
   def show
+    @dc_full_view = true
     @tlayout = Tlayout.find(params[:id])
   end
 
@@ -22,6 +24,7 @@ class Dc::TlayoutsController < Dc::BaseController
   end
 
   def edit
+    # => @dc_full_view = true
     @tlayout = Tlayout.find(params[:id])
   end
 

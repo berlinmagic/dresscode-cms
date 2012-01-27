@@ -9,6 +9,7 @@ class Dc::RastersController < Dc::BaseController
   end
 
   def show
+    @dc_full_view = true
     @raster = Raster.find(params[:id])
   end
 

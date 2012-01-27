@@ -1,5 +1,5 @@
 # encoding: utf-8
-module FrontBase
+module MetaHelp
   module InstanceMethods
     
     # can be used in views as well as controllers.

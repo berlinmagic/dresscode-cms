@@ -9,9 +9,10 @@ class Dc::SettingsController < Dc::BaseController
   
   def show_config
     config = params[:config]
-    @config = ( config.blank? || ( config == 'base' ) ) ? 'core' : config
+    @config = config.blank? ? 'core' : config
     @name = params[:name]
-    render :template => "dc/settings/#{ @config }/#{ @name }"
+    # => render :template => "dc/settings/#{ @config }/#{ @name }"
+    render :template => "dc/settings/show"
   end
   
   def update_config
@@ -35,11 +36,13 @@ class Dc::SettingsController < Dc::BaseController
   end
   
   def render_config
-    redirect_to "/#{ DC::Config[:pretty_namespace] }/settings/#{ @config }/#{ @name }", :notice => I18n.t('dc.preferences.updated_succesfully')
+    # => redirect_to "/#{ DC::Config[:pretty_namespace] }/settings/#{ @config }/#{ @name }", :notice => I18n.t('dc.preferences.updated_succesfully')
+    redirect_to view_dcr_settings_path( @config, @name ), :notice => I18n.t('dc.preferences.updated_succesfully')
   end
   
   def render_config_error
-    redirect_to "/#{ DC::Config[:pretty_namespace] }/settings/#{ @config }/#{ @name }", :notice => I18n.t('dc.preferences.update_error')
+    # => redirect_to "/#{ DC::Config[:pretty_namespace] }/settings/#{ @config }/#{ @name }", :notice => I18n.t('dc.preferences.update_error')
+    redirect_to view_dcr_settings_path( @config, @name ), :notice => I18n.t('dc.preferences.update_error')
   end
   
   
@@ -48,7 +51,7 @@ class Dc::SettingsController < Dc::BaseController
     # => @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
     # => @setting_names = ["core", "stylez", "user", 'core_one', 'cache', 'meta', 'api']
     @config_names = %w[core stylez user]
-    @core_names = %w[site api cache meta]
+    @core_names = %w[account site optik api cache meta mailer]
   end
   
 end

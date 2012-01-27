@@ -1,0 +1,26 @@
+<hr/>
+<%=   dc_pref_bool_line( 'enable_mail_delivery' )   %>
+<hr/>
+<br/>
+<%=   dc_pref_text_line( 'mails_from' )   %>
+<%=   dc_pref_text_line( 'mails_to' )   %>
+<%=   dc_pref_text_line( 'mail_bcc' )   %>
+<hr/>
+<br/>
+<br/>
+<strong>Server:</strong>
+<hr/>
+<%=   dc_pref_text_line( 'mail_port' )   %>
+<%=   dc_pref_select_line( 'mail_auth_type', CoreConfiguration::MAIL_AUTH_TYPES.map {|c| [t("dc.config.mail_auth_types.#{c}"),c]} )   %>
+<%=   dc_pref_select_line( 'secure_connection_type', CoreConfiguration::SECURE_CONNECTION_TYPES.map {|c| [t("dc.config.secure_connection_types.#{c}"),c]} )   %>
+<hr/>
+<%=   dc_pref_text_line( 'mail_host' )   %>
+<%=   dc_pref_text_line( 'mail_domain' )   %>
+<%=   dc_pref_text_line( 'smtp_username' )   %>
+<%=   dc_pref_pwd_line( 'smtp_password' )   %>
+
+
+<br/>
+
+
+<div class="clearfix"></div>

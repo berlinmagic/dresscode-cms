@@ -1,0 +1,16 @@
+<hr/>
+<%=   dc_pref_select_line( 'theme', DcThemesStatic.available_theme_names.map {|c| [c.titleize,c]} )   %>
+<hr/>
+<%=   dc_pref_select_line( 'dc_background', CoreConfiguration::DC_BACKGROUNDS.map {|c| [c.titleize,c]} )   %>
+<hr/>
+<br/>
+<br/>
+<%=   dc_pref_text_line( 'show_flash_for' )   %>
+<hr/>
+<%=   dc_pref_bool_line( 'show_form_text' )   %>
+<hr/>
+<br/>
+<br/>
+<%=   dc_pref_select_line( 'theme_type', CoreConfiguration::THEME_TYPES.map {|c| [t("dc.config.theme_types.#{c}"),c]} )   %>
+<br/>
+<div class="clearfix"></div>
