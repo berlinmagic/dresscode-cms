@@ -17,7 +17,11 @@ class Dc::SettingsController < Dc::BaseController
       if @name == 'core_one'
         render :template => "dc/settings/core"
       else
-        render :template => "dc/settings/show"
+        if (@name == 'core') || (@name == 'user') || (@name == 'stylez')
+          render :template => "dc/settings/show"
+        else
+          render :template => "dc/settings/#{ @name }"
+        end
       end
     else
       flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
@@ -48,7 +52,7 @@ class Dc::SettingsController < Dc::BaseController
     if @setting_names.include?(@name)
       @u_aktiv = @name
       respond_to do |format|
-        unless (@name == 'core') || (@name == 'core_one')
+        if (@name == 'stylez') || (@name == 'user')
           if "DC::#{@name.classify}".constantize::Config.set(params[:preferences])
             format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
           else
@@ -73,8 +77,15 @@ class Dc::SettingsController < Dc::BaseController
   def load_strange_setting_names
     # @setting_names = ["cms", "account", "kontakt", "mail", "optik", "user"]
     # => @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
-    @setting_names = ["core", "stylez", "user", 'core_one']
+    @setting_names = ["core", "stylez", "user", 'core_one', 'cache', 'meta', 'api']
     @aktivio = 'settings'
+  end
+  
+  def show_config
+    config = params[:config]
+    @config = ( config.blank? || ( config == 'base' ) ) ? 'core' : config
+    @name = params[:name]
+    render :template => "dc/settings/#{ @name }"
   end
   
   def new_pref_pic

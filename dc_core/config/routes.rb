@@ -20,7 +20,7 @@ Rails.application.routes.draw do
         get :data_only
       end
     end
-    match '/locale/set' => 'locale#set'
+    # => match '/locale/set' => 'locale#set'
     match '/dynamic_styles.:format' => "pipe#dynamic_style", :to_style => 'seite'
     match '/template_styles/tl_:id.:format' => "pipe#template_style"
     match '/dynamic_script/:script.:format' => "pipe#dynamic_script"
@@ -33,11 +33,12 @@ Rails.application.routes.draw do
     namespace :admin do
       root :to => 'base#dashboard'
     end
-    resources :settings do 
+    resources :settings do
       collection do
         get  :info
         post :new_pref_pic
         post :update_pref_pic
+        match '/:config/:name' => :show_config
       end
     end
     resources :data_files do
@@ -49,7 +50,9 @@ Rails.application.routes.draw do
         get :data_only
       end
     end
-    match '/locale/set' => 'locale#set'
+    # => match '/locale/set' => 'locale#set'
+    # => match '/configuration/:config/:name' => 'settings#show_config'
+    
     match '/dynamic_styles.:format' => "pipe#dynamic_style", :to_style => 'seite'
     match '/template_styles/tl_:id.:format' => "pipe#template_style"
     match '/dynamic_script/:script.:format' => "pipe#dynamic_script"

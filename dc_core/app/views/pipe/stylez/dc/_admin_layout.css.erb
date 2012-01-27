@@ -15,19 +15,41 @@
 
 .dc_admin_content .dc_box {padding: 10px; background: rgba(0,0,0,.5); <%= all_border_radius( '10px' ) %> }
 
-.dc_admin_content .dc_box .dc_wbox { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> }
+.dc_admin_content .dc_box .dc_wbox { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %> display: block; }
+
+.dc_admin_content .dc_box .dc_wbox.head { background: #cccccc; display: block; border-bottom: solid 1px #aaa;}
+
+.dc_admin_content .dc_box .dc_wbox.head h2 { margin: 0; padding: 10px; }
+
+.dc_admin_content .dc_box .dc_wbox.form { padding: 20px 50px; }
+
+.dc_admin_content .dc_box .dc_wbox.buttons { padding: 10px 50px 10px; }
+
+
+
+.dc_preference_line { padding: 5px 0 10px; line-height: 30px; font-size: 15px; }
+
+.dc_preference_line input[type="text"] {
+	padding: 4px 10px; <%= all_border_radius( '3px' ) %> border: none;
+	background: rgba(255,255,255,.70); color: #444;
+	border: inset 1px #ccc;
+	width: 300px; line-height: 20px; font-size: 15px; font-weight: bold;
+}
+.dc_preference_line select { width: 320px !important; padding: 0 25px; line-height: 28px; height: 28px; 
+		<%= vertical_gradient( '#fff', '#ddd' ) %> font-weight: bold; color: #666; }
+
 
 .dc_table_head { background: #000; line-height: 22px; color: #fff; padding: 3px 0 1px;}
 
 .dc_table_row { margin: 5px 0 0; }
 
-
+.dc_table_row .row_head { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %>  line-height: 20px; color: #333; padding: 3px 0;}
 
 .inactive_dot { width: 8px; height: 8px; <%= all_border_radius( '4px' ) %> border: inset 1px #ccc; background: rgba(153,153,153,.70); margin: 5px 0 0; }
 .active_dot { width: 8px; height: 8px; <%= all_border_radius( '4px' ) %> border: inset 1px #ccc; background: #a0c924; margin: 5px 0 0; }
 
 
-.dc_table_row .row_head { <%= vertical_gradient( '#cccccc', '#e6e6e6' ) %>  line-height: 20px; color: #333; padding: 3px 0;}
+
 
 
 /* #system_content #main_content.dc { background: url('/images/dc_bgs/iceberg.jpg') no-repeat fixed center center; padding: 5px 0 20px; } */

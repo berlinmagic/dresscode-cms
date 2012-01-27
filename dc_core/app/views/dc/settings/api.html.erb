@@ -12,23 +12,20 @@
 	<%= hidden_field_tag('name', @name, :size => 50 ) %>
 	
 	<div class="dc_wbox head">
-		<h2><%= DC::Config.instance.class.to_s.gsub(/Configuration/, '') %> - Preferences</h2>
+		<h2><%= DC::Config.instance.class.to_s.gsub(/Configuration/, '') %> - API's</h2>
 		<div class="clearfix"></div>
 	</div>
 	<div class="dc_wbox form">
 		
-		<%=   dc_pref_text_line( 'site_name' )   %>
-		<%=   dc_pref_text_line( 'site_url' )   %>
+		<%=   dc_pref_text_line( 'analytics_key' )   %>
+		<br/>
+		<%=   dc_pref_text_line( 'g_maps_key' )   %>
 		
-		<%=   dc_pref_select_line( 'dc_background', CoreConfiguration::DC_BACKGROUNDS.map {|c| [c,c]} )   %>
 		
-		<%=   dc_pref_text_line( 'show_flash_for' )   %>
+		<br/>
+		<br/>
+		<%=   dc_pref_text_line( 'facebook_app_id' )   %>
 		
-		<%=   dc_pref_select_line( 'theme', DcThemesStatic.available_theme_names.map {|c| [c,c]} )   %>
-		
-		<%=   dc_pref_select_line( 'theme_type', ['static','dynamic'].map {|c| [c,c]} )   %>
-		
-		<%=   dc_pref_text_line( 'pretty_namespace' )   %>
 		
 		<div class="clearfix"></div>
 	</div>

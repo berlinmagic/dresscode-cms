@@ -12,23 +12,25 @@
 	<%= hidden_field_tag('name', @name, :size => 50 ) %>
 	
 	<div class="dc_wbox head">
-		<h2><%= DC::Config.instance.class.to_s.gsub(/Configuration/, '') %> - Preferences</h2>
+		<h2><%= DC::Config.instance.class.to_s.gsub(/Configuration/, '') %> - Meta</h2>
 		<div class="clearfix"></div>
 	</div>
 	<div class="dc_wbox form">
 		
-		<%=   dc_pref_text_line( 'site_name' )   %>
-		<%=   dc_pref_text_line( 'site_url' )   %>
+		<%=   dc_pref_text_line( 'meta_keywords' )   %>
 		
-		<%=   dc_pref_select_line( 'dc_background', CoreConfiguration::DC_BACKGROUNDS.map {|c| [c,c]} )   %>
+		<%=   dc_pref_text_line( 'meta_description' )   %>
 		
-		<%=   dc_pref_text_line( 'show_flash_for' )   %>
+		<%=   dc_pref_text_line( 'meta_author' )   %>
 		
-		<%=   dc_pref_select_line( 'theme', DcThemesStatic.available_theme_names.map {|c| [c,c]} )   %>
+		<%=   dc_pref_text_line( 'meta_app' )   %>
 		
-		<%=   dc_pref_select_line( 'theme_type', ['static','dynamic'].map {|c| [c,c]} )   %>
+		<%=   dc_pref_text_line( 'meta_generator' )   %>
 		
-		<%=   dc_pref_text_line( 'pretty_namespace' )   %>
+		<%=   dc_pref_text_line( 'meta_publisher' )   %>
+		
+		<%=   dc_pref_text_line( 'meta_creator' )   %>
+		
 		
 		<div class="clearfix"></div>
 	</div>

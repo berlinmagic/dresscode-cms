@@ -1,31 +1,30 @@
 <% content_for :sidebar do %>
 
-<div class="side_box">
-	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
-		<%= link_to "Setting: (auto-generiert)", dcr_settings_path %>
-	</div>
-	<br/>
+
+<%= dc_aside_box( 'Einstellungen', 'aktiv' ) do %>
+	<%= link_to 'Site', dcr_settings_path+ '/core_one', :class => "#{'aktiv' if @name && @name == 'core_one'}" %>
+	<%= link_to 'Performance', dcr_settings_path+ '/cache', :class => "#{'aktiv' if @name && @name == 'cache'}" %>
+	<%= link_to 'Seo / Meta', dcr_settings_path+ '/meta', :class => "#{'aktiv' if @name && @name == 'meta'}" %>
+	<%= link_to 'Api-Keys', dcr_settings_path+ '/api', :class => "#{'aktiv' if @name && @name == 'api'}" %>
+<% end %>
+
+<%= dc_aside_box( "Setting: (auto-generiert)", 'inaktiv' ) do %>
 	<%= link_to 'Core', dcr_settings_path+ '/core', :class => "#{'aktiv' if @name && @name == 'core'}" %>
 	<%= link_to 'User', dcr_settings_path+ '/user', :class => "#{'aktiv' if @name && @name == 'user'}" %>
 	<%= link_to 'Stylez', dcr_settings_path+ '/stylez', :class => "#{'aktiv' if @name && @name == 'stylez'}" %>
 	<br/>
-	<%= link_to 'Core - 1', dcr_settings_path+ '/core_one', :class => "#{'aktiv' if @name && @name == 'core_one'}" %>
-	<br/>
 	<% if @name && @name != '' %>
 		<%= link_to "#{ @name.titleize } bearbeiten", dcr_settings_path + "/#{ @name }/edit" %>
 	<% end %>
+<% end %>
+
+<%= dc_aside_box( "Modul-Settings", 'inaktiv' ) do %>
+	<%= hook :admin_settings_sidebar %>
 	<br/>
-</div>
+<% end %>
 
+<br/>
 
-<div class="side_box">
-	<div class="sidebar_head <%= 'aktiv_box' if @header && @u_aktiv != "new" %>">
-		<a href="#"><%= t('strange_preferences.fine_modul_settings') %></a>
-	</div>
-	<ul class='sidebar'>
-		<%= hook :admin_settings_sidebar %>
-	</ul>
-</div>
 
 
 <%#= help_link_box %>
