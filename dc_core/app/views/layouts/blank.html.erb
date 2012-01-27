@@ -18,11 +18,16 @@
 	<%= piped_js_lib('view', 'ujs') %>
 	
 	<%= yield(:head) %>
+	<style>
+		html { overflow-y: scroll; }
+	</style>
 </head>
 <body class="blank_body">
-<div id="blank_content">
+<%# '<div id="blank_content">' %>
+	<div id="login_box">
 		<%= yield %>
-</div>
+	</div>
+<%# '</div>' %>
 <%= render "shared/site_parts/analytics" %>
 <%= render "shared/site_parts/chromeframe" %>
 </body>

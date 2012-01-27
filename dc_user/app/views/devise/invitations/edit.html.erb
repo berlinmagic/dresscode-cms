@@ -1,36 +1,44 @@
-<div class="box">
-	<div class="in_box first">
-		<h1 class="icon"><%= finelineIcon(:icon => 42, :color => finestyler('headline_icon_color'), :size => finestyler('headline_icon_size'), :blur => finestyler('headline_icon_blur')) %><%= t('Set_your_password') %></h1>
+<div class="LB_Box dc_user_form">
+	
+	<h2><%= t('dc.users.invitations.set_your_password') %></h2>
 
-	</div>
+	<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+		<%= devise_error_messages! %>
+		
+		<%= f.hidden_field :invitation_token %>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :salutation, t("dc.users.form.salutation") %><br/><% end %>
+			<%= f.select :salutation, User::USER_TYPIES.map { |c| [I18n.t(c), c] }, :include_blank => t("dc.users.form.salutation") %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :first_name, t('dc.users.form.first_name') %><br /><% end %>
+			<%= f.text_field :first_name, :placeholder => t('dc.users.form.first_name') %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :last_name, t('dc.users.form.last_name') %><br /><% end %>
+			<%= f.text_field :last_name, :placeholder => t('dc.users.form.last_name') %>
+		</div>
+		
+		<div class="lb_field">
+			<%= f.label :password, t('dc.users.form.password') %>
+			<%= f.password_field :password, :placeholder => t('dc.users.form.password') %>
+		</div>
+		<div class="lb_field">
+			<%= f.label :password_confirmation, t('dc.users.form.password_confirmation') %>
+			<%= f.password_field :password_confirmation, :placeholder => t('dc.users.form.password_confirmation') %>
+		</div>
+		
+		<br/>
+		
+		<div class="lb_field action">
+			<%= f.submit t("dc.users.invitations.send_passwort") %>
+			<div class="clearfix"></div>
+		</div>
+		
+	<% end %>
+
 </div>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-<%= f.hidden_field :invitation_token %>
-
-<div class="box">
-	<div class="in_box">
-		<%= strange_devise_error_messages! %>
-			<table class="login">
-				<tr>
-					<th><%= f.label :password, t("password") %></th>
-					<td><%= f.password_field :password %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :password_confirmation, t("password_confirmation") %></th>
-					<td><%= f.password_field :password_confirmation %></td>
-				</tr>
-			</table>
-	</div>
-</div>
-
-<div class="box">
-	<div class="in_box">
-		<%= f.submit t("Set_my_password") %>
-		<div class="big_button_spacer"><%= t('or') %></div>
-		<%= link_to t('back'), :back, :class => 'big_button' %>
-		<div class="clearfix"></div>
-	</div>
-</div>
-
-<% end %>

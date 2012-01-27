@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 
 <div id="login_area">
-	<%= t('hallo_user') %>  
+	<%= t('dc.users.login.hello_user') %>  
 	<% if current_user.vorname %>
 		<%= current_user.vorname %>  <%= current_user.name %> 
 	<% else %>
@@ -9,7 +9,7 @@
 	<% end %>&nbsp;&nbsp;&nbsp;
 </div>
 
-<%= link_to( t('logout'), destroy_user_session_path, :id => "finelineLogout") %>
+<%= link_to( t('dc.users.links.logout'), destroy_user_session_path, :id => "finelineLogout") %>
 
 <% end %>
 

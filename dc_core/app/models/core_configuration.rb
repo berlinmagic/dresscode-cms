@@ -25,6 +25,9 @@ class CoreConfiguration < Configuration
   # Safety / Login-Strategy
   preference :invite_only_site,   :boolean,     :default => 'false'
   
+  
+  preference :show_form_text,     :boolean,     :default => 'false'   # => Show field names in Forms ?
+  
   DC_BACKGROUNDS = %w[aqua_blue aqua_blue1 aqua_blue2 aqua_blue3 aurora fall_leaves grass_blades horizon iceberg redwoods rings snowy_hills stripes summer_leaves tahoe water]
   ### =================================================================================== ###
   

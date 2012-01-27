@@ -1,79 +1,66 @@
-<div class="box">
-	<div class="in_box first">
-		<h1 class="icon"><%= finelineIcon(:icon => 42, :color => finestyler('headline_icon_color'), :size => finestyler('headline_icon_size'), :blur => finestyler('headline_icon_blur')) %><%= t('h_Edit_1') %><%= resource_name.to_s.humanize %><% t("h_Edit_2") %></h1>
+<div class="LB_Box dc_user_form">
+	
+	<h2><%= t("dc.users.account.change_Account") %></h2>
 
-	</div>
-</div>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
-
-<div class="box">
-	<div class="in_box">
-		<%# strange_devise_error_messages! %>
-			<table class="login">
-				<tr>
-					<th><%= f.label :anrede, t("anrede") %></th>
-					<td><%= f.select :anrede, User::USER_TYPIES.map { |c| [I18n.t(c), c] }, :include_blank => true %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :vorname, t("vorname") %></th>
-					<td><%= f.text_field :vorname %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :name, t("name") %></th>
-					<td><%= f.text_field :name %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :bild, t("bild") %></th>
-					<td><%= f.file_field :bild %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :email, t("email") %></th>
-					<td><%= f.text_field :email %></td>
-				</tr>
-				<tr>
-					<th colspan="2"><em><% t("leave_blank_if_you_don_want_to_change_it") %></em></th>
-				</tr>
-				<tr>
-					<th><%= f.label :password_confirmation, t("password_confirmation") %></th>
-					<td><%= f.password_field :password_confirmation %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :current_password, t("current_password") %></th>
-					<td><%= f.password_field :current_password %></td>
-				</tr>
-				<tr>
-					<th colspan="2"><em><% t("we_need_your_current_password_to_confirm_your_changes") %></em></th>
-				</tr>
-			</table>
-	</div>
-</div>
-
-<div class="box">
-	<div class="in_box">
-		<%= f.submit t("Update") %>
-		<div class="big_button_spacer"><%= t('or') %></div>
-		<%= link_to t('back'), :back, :class => 'big_button' %>
-		<div class="clearfix"></div>
-	</div>
-</div>
-
-<% end %>
-
-<div class="box">
-	<div class="in_box">
-		<p><% t("Unhappy") %></p>
-	</div>
-</div>
-
-<div class="box">
-	<div class="in_box">
-		<h3><% t("Cancel_my_account") %>:</h3>
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+		<%= devise_error_messages! %>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :salutation, t("dc.users.form.salutation") %><br/><% end %>
+			<%= f.select :salutation, User::USER_TYPIES.map { |c| [I18n.t(c), c] }, :include_blank => t("dc.users.form.salutation") %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :first_name, t('dc.users.form.first_name') %><br /><% end %>
+			<%= f.text_field :first_name, :placeholder => t('dc.users.form.first_name') %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :last_name, t('dc.users.form.last_name') %><br /><% end %>
+			<%= f.text_field :last_name, :placeholder => t('dc.users.form.last_name') %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :email, t('dc.users.form.email') %><br /><% end %>
+			<%= f.text_field :email, :placeholder => t('dc.users.form.email') %>
+		</div>
+		<div class="lb_field">
+			<%= f.label :image, t('dc.users.form.image') %>
+			<%= f.file_field :image, :placeholder => t('dc.users.form.image') %>
+		</div>
+		
+		<p class="field_help"><%= t("dc.users.account.password_change.leave_blank_if_you_don_want_to_change_it") %></p>
+		<div class="lb_field">
+			<%= f.label :password, t('dc.users.form.new_password') %>
+			<%= f.password_field :password, :placeholder => t('dc.users.form.new_password') %>
+		</div>
+		<div class="lb_field">
+			<%= f.label :password_confirmation, t('dc.users.form.new_password_confirmation') %>
+			<%= f.password_field :password_confirmation, :placeholder => t('dc.users.form.new_password_confirmation') %>
+		</div>
+		<p class="field_help"><%= t("dc.users.account.password_change.we_need_your_current_password_to_confirm_your_changes") %></p>
+		<div class="lb_field">
+			<%= f.label :current_password, t('dc.users.form.current_password') %>
+			<%= f.password_field :current_password, :placeholder => t('dc.users.form.current_password') %>
+		</div>
+		
 		<br/>
-		<p><% t("Unhappy") %></p>
-		<%= link_to t("Cancel_my_account"), registration_path(resource_name), :confirm => t("Are_you_sure"), :method => :delete, :class => 'big_button' %>
-		<div class="big_button_spacer">oder</div>
-		<%= link_to 'zurück', :back, :class => 'big_button' %>
-		<div class="clearfix"></div>
-	</div>
+		
+		<div class="lb_field action">
+			<%= f.submit t("dc.users.account.update") %>
+			<div class="clearfix"></div>
+		</div>
+		
+		<hr/>
+		
+		<div class="lb_field">
+			<h3><% t("dc.users.account.Cancel_my_account") %>:</h3>
+			<br/>
+			<p><% t("dc.users.account.Unhappy") %></p>
+			<%= link_to t("dc.users.account.Cancel_my_account"), registration_path(resource_name), 
+							:confirm => t("dc.users.account.confirm_account_delete"), :method => :delete, :class => 'big_button' %>
+			<%= link_to t('back'), :back, :class => 'big_button' %>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
 </div>

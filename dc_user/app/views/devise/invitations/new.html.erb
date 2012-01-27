@@ -1,18 +1,65 @@
-<h2>Send invitation</h2>
-
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
-
-	<p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
-
-	<p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
+<div class="LB_Box dc_user_form">
 	
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+	<% unless controller.request.xhr? %>
+		<h2><%= t('dc.users.invitations.invite_an_user') %></h2>
+		<br/>
+	<% end %>
+	<p class="help_text"><%= t("dc.users.invitations.invitation_help") %></p>
+	<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+		<%= devise_error_messages! %>
+		
+		<p class="field_help"><%= t("dc.users.invitations.person_to_invite") %></p>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :salutation, t("dc.users.form.salutation") %><br/><% end %>
+			<%= f.select :salutation, User::USER_TYPIES.map { |c| [I18n.t(c), c] }, :include_blank => t("dc.users.form.salutation") %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :first_name, t('dc.users.form.first_name') %><br /><% end %>
+			<%= f.text_field :first_name, :placeholder => t('dc.users.form.first_name') %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :last_name, t('dc.users.form.last_name') %><br /><% end %>
+			<%= f.text_field :last_name, :placeholder => t('dc.users.form.last_name') %>
+		</div>
+		
+		<div class="lb_field">
+			<% if DC::Config[:show_form_text] %><%= f.label :email, t('dc.users.form.email') %><br /><% end %>
+			<%= f.text_field :email, :placeholder => t('dc.users.form.email') %>
+		</div>
+		
+		<br/>
+		
+		<p class="field_help"><%= t("dc.users.invitations.person_rights") %></p>
+		
+		<% if admin_check %>
+			<div class="lb_field">
+				<% if DC::Config[:show_form_text] %><%= f.label :group_id, t('dc.users.form.group') %><br/><% end %>
+				<%= f.select :group_id, Group.all.map { |c| [c.name,c.id] }, :include_blank => t("dc.users.form.group") %>
+			</div>
+		<% end %>
+		<% if current_user && current_user.evil_master %>
+			<div class="lb_field">
+				<%= f.check_box :evil_master %> <%= f.label :evil_master, t('dc.users.form.evil_master') %>
+			</div>
+		<% end %>
+		<% if current_user && current_user.site_admin %>
+			<div class="lb_field">
+				<%= f.check_box :site_admin %> <%= f.label :site_admin, t('dc.users.form.site_admin') %>
+			</div>
+		<% end %>
+		
+		<br/>
+		
+		<div class="lb_field action">
+			<%= f.submit t("dc.users.invitations.send_invitation") %>
+			<div class="clearfix"></div>
+		</div>
+		
+	<% end %>
 
-  <p><%= f.submit "Send an invitation" %></p>
-<% end %>
+	<div class="clearfix"></div>
 
-<%= link_to "Home", after_sign_in_path_for(resource_name) %><br />
+</div>

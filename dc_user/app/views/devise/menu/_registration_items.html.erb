@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <li>
-  <%= link_to( t('Edit_registration'), edit_user_registration_path) %>
+  <%= link_to( t('dc.users.links.edit_registration'), edit_user_registration_path) %>
   </li>
 <% else %>
   <li>
-  <%= link_to( t('Register'), new_user_registration_path)  %>
+  <%= link_to( t('dc.users.links.register'), new_user_registration_path)  %>
   </li>
 <% end %>

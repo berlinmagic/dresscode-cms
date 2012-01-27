@@ -6,6 +6,7 @@ ApplicationController.class_eval do
   include GlobalBase
   
   # => layout proc { |controller| controller.request.xhr? ? false : themed_path('dc') }
+  layout proc { |controller| controller.request.xhr? ? false : 'blank' }
   
   private
   

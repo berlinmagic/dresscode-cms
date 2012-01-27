@@ -6,7 +6,9 @@ class Dc::BaseController < ApplicationController
   include GlobalBase
   
   
-  before_filter :authorized_admin
+  # => before_filter :authorized_admin
+  before_filter :authorized_user
+  
   
   def dashboard
     

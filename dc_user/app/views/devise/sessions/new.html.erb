@@ -1,51 +1,42 @@
-<div id="login_box">
+<div class="LB_Box dc_user_form">
 	
-	<div class="box">
-		<div class="in_box first">
-			<h1 class="icon">DressCode Login</h1>
-		</div>
+	<div class="lb_field action">
+		<%= dc_icon( :icon => 37, :size => 48, :color => 'hell' ) %>
 	</div>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-
-	<div class="box">
-		<div class="in_box">
-			<table class="login">
-				<tr>
-					<th><%= f.label :email, t("email") %></th>
-					<td><%= f.text_field :email, :class => 'w230' %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :password, t("password") %></th>
-					<td><%= f.password_field :password, :class => 'w230' %></td>
-				</tr>
-				<% if devise_mapping.rememberable? -%>
-					<tr>
-						<th></th>
-						<td><%= f.check_box :remember_me %>&nbsp;&nbsp;&nbsp;<%= f.label :remember_me, t("remember_me") %></td>
-					</tr>
-				<% end -%>
-				<tr>
-					<th></th>
-					<td>
-						<%= f.submit t("Sign_in_button") %>
-						<%= link_to t('back'), :back, :class => 'big_button' %>
-						<div class="clearfix"></div>
-					</td>
-				</tr>
-				<tr class="more_set">
-					<th></th>
-					<td><br/>
-						<%= render :partial => "devise/shared/links" %>
-						<div class="clearfix"></div>
-					</td>
-				</tr>
-			</table>
+	
+	<br/>
+	
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		
+		<div class="lb_field login">
+			<%= f.label :email, t('dc.users.login.email') %><br />
+			<%= f.text_field :email, :placeholder => t('dc.users.form.email') %>
 		</div>
+		
+		<div class="lb_field login">
+			<%= f.label :password, t('dc.users.login.password') %><br />
+			<%= f.password_field :password, :placeholder => t('dc.users.form.password') %>
+		</div>
+		
+		
+		<div class="lb_field action">
+			<% if devise_mapping.rememberable? -%>
+				<div><%= f.check_box :remember_me %> <%= f.label :remember_me, t("dc.users.login.remember_me") %></div>
+			<% end -%>
+		</div>
+		
+		<div class="lb_field action">
+			<%= f.submit t("dc.users.login.submit") %>
+			<div class="clearfix"></div>
+		</div>
+		
+	<% end %>
+	<br/>
+	
+	<div class="lb_field action">
+		<%= render :partial => "devise/shared/links" %>
+		<div class="clearfix"></div>
 	</div>
-
-
-<% end %>
-
-
+	
 </div>
+

@@ -1,4 +1,9 @@
 /*   F O R M S   */
+
+::-webkit-input-placeholder  { color:#888; font-weight: bold; }
+input:-moz-placeholder { color:#888; font-weight: bold; }
+
+
 input[type="search"] {}
 input[type="password"], input[type="text"], input[type="number"], textarea { border: solid 1px #664e39;
 	-khtml-border-radius: 	 3px;		-webkit-border-radius: 	 3px;
@@ -11,9 +16,9 @@ input[type="password"].in_aside, input[type="text"].in_aside, input[type="number
 }
 
 input[type="submit"], a.big_button, a.big_submit_button {
-	padding: 0 15px; display: inline-block; border: solid 1px #000; margin: 5px 5px 5px 0;
-	<%= all_border_radius( '10px' ) %> <%= box_shadow('1px 1px 1px 0 #666') %> 
-	line-height: 20px; font-size: 13px; font-weight: normal; text-decoration: none;
+	padding: 7px 20px; display: inline-block; border: solid 1px #000; margin: 5px 5px 5px 0;
+	<%= all_border_radius( '3px' ) %> <%= box_shadow('1px 1px 1px 0 #666') %> 
+	line-height: 20px; font-size: 15px; font-weight: normal; text-decoration: none;
 }
 
 
@@ -28,3 +33,30 @@ a.big_button {
 a.big_submit_button { 
 	background: #333; color: #666; <%= text_shadow('1px 1px 1px #000') %>
 }
+
+.dc_user_form { width: 322px; }
+
+.dc_user_form input[type="password"], .dc_user_form input[type="text"], .dc_user_form input[type="number"], .dc_user_form textarea {
+	<%= all_border_radius( '3px' ) %> border: inset 1px #ccc;
+	padding: 2px 10px; line-height: 20px; width: 300px;
+	background: #fff; color: #444; font-weight: bold;
+}
+
+.dc_user_form select { width: 320px !important; padding: 0 25px; line-height: 26px; height: 26px; 
+		<%= vertical_gradient( '#fff', '#ddd' ) %> font-weight: bold; color: #666; }
+
+.dc_user_form select option { padding: 20px; line-height: 30px;  }
+
+.lb_field { padding: 2px 3px 5px; }
+.lb_field.action { text-align:center; }
+
+.field_help { padding: 2px 3px; margin: 0; color: #666; font-weight: bold; }
+
+.help_text { background: #dee7bf; color: #1a7da6; padding: 20px; margin: -15px -20px 10px; }
+
+
+
+
+
+
+

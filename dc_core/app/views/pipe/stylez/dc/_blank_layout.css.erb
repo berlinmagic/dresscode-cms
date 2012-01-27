@@ -1,27 +1,37 @@
-#blank_content { <%= vertical_gradient( '#111111', '#333333' ) %> }
+/* #blank_content */
+body.blank_body { 
+		background: url('/images/dc_bgs/<%= DC::Config[:dc_background] %>.jpg') no-repeat fixed center center; 
+		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; }
 
-#login_box { position: absolute; top: 50%; left: 50%; margin: -180px 0 0 -200px; min-height: 200px; width: 340px;
+#login_box { position: relative; margin: 10% auto 50px; min-height: 200px; width: 360px;
 	border: solid 1px #000; padding: 10px 30px 20px;
-	background: #333; <%= box_shadow('1px 1px 1px 0 #666') %> 
-	<%= vertical_gradient( '#333333', '#222222' ) %>
+	background: rgba(0,0,0,.50); 
+	color: #fff;
+	<%= box_shadow('1px 1px 1px 0 #666') %> 
+	<%= text_shadow('1px 1px 1px #000') %>
 	<%= all_border_radius( '15px' ) %> }
 
 #login_box h1 { font-size: 24px; font-weight: bold; line-height: 30px; color: #006699; <%= text_shadow('1px 1px 1px #000') %> }
-	
-#login_box table.login { margin: 20px 0 0; color: #666; <%= text_shadow('1px 1px 1px #000') %> }
-
-#login_box table.login th { padding: 5px 10px 5px 0px; }
-#login_box table.login td { padding: 5px 0px 5px 10px; }
+#login_box h2 { font-size: 20px; font-weight: bold; line-height: 30px; color: #006699; <%= text_shadow('1px 1px 1px #000') %> }
 
 
-#login_box table.login input[type="password"], #login_box table.login input[type="text"] {
-	padding: 5px 15px; <%= all_border_radius( '15px' ) %> border: solid 1px #000;
-	<%= text_shadow('1px 1px 1px #000') %>
-	<%= box_shadow('1px 1px 1px 0 #666') %> background: #222; color: #777;
+
+#login_box .lb_field.login input[type="password"], #login_box .lb_field.login input[type="text"] {
+	padding: 10px 20px 10px 40px; <%= all_border_radius( '3px' ) %> border: none;
+	background: rgba(255,255,255,.70); color: #333;
 	width: auto;
 }
 
+#login_box .lb_field.login input[type="text"] { background: rgba(255,255,255,.70) url('/images/icons/login_mail.png') no-repeat 7px 10px; }
+#login_box .lb_field.login input[type="password"] { background: rgba(255,255,255,.70) url('/images/icons/login_pw.png') no-repeat 7px 10px; }
 
 #mehr_user_sets { text-decoration: none; color: #555;}
 #login_help { text-decoration: none; color: #555;}
 #login_help_links { display: none; }
+
+#login_box .lb_field.login { padding: 2px 3px 10px; }
+
+.lb_field.action a { color: #666; }

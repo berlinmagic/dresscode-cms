@@ -56,7 +56,7 @@ private
         random = "#{ self.first_name }-#{Array.new(3){rand(9)}.join}"
         record = User.where( :nick_name => random ).count > 0 ? true : false
       end
-      self.first_name = random
+      self.nick_name = random
     end
     unless !self.dc_id.blank?
       record = true

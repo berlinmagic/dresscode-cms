@@ -69,7 +69,7 @@
 
 
 <div id="user_foot">
-	<% if admin_check %>
+	<% if user_check %>
 		<%= link_to current_user.email, '#', :id => 'user_button' %>
 		<div class="sub_user_foot_box">
 			<%= link_to 'Abmelden', '/dc/logout', :class => 'sub_foot' %>

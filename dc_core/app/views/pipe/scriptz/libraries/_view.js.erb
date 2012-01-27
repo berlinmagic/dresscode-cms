@@ -12,12 +12,12 @@ jQuery(function($) {
 	$('#login_help').live('click', function(){
 		$('#login_help_links').slideToggle();
 	});
-	
+	/*
 	$('#blank_content').css({
 				'width' : (window_width), 
 				'height' : (window_height)
 			});
-	
+	*/
 	$('#system_content').css({
 				'width' : (window_width - cms_sidebar - border_width), 
 				'height' : (window_height - cms_admin - border_height)
@@ -34,12 +34,12 @@ jQuery(function($) {
 	$(window).resize(function() {
 		var this_height = $(this).height() ;
 		var this_width = $(this).width() ;
-		
+		/*
 		$('#blank_content').css({
 				'width' : (this_width), 
 				'height' : (this_height)
 			});
-		
+		*/
 		$('#system_content').css({
 					'width' : (this_width - cms_sidebar - border_width), 
 					'height' : (this_height - cms_admin - border_height)

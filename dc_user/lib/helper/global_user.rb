@@ -20,8 +20,8 @@ module GlobalUser
       if current_user
         return true if current_user.evil_master
         return true if current_user.site_admin
-        return true if current_user.gruppe && current_user.gruppe.system_name && (current_user.gruppe.system_name == 'admin')
-        return true if current_user.gruppe && current_user.gruppe.system_name && (current_user.gruppe.system_name == 'owner')
+        return true if current_user.group && current_user.group.system_name && (current_user.group.system_name == 'admin')
+        return true if current_user.group && current_user.group.system_name && (current_user.group.system_name == 'owner')
       else
         false
       end
@@ -41,7 +41,7 @@ module GlobalUser
       if current_user
         return true if current_user.evil_master
         return true if current_user.site_admin
-        return true if current_user.gruppe && current_user.gruppe.system_name && (current_user.gruppe.system_name == 'owner')
+        return true if current_user.group && current_user.group.system_name && (current_user.group.system_name == 'owner')
       else
         false
       end
@@ -49,7 +49,16 @@ module GlobalUser
     
     def authorized_admin
       unless admin_check
+        flash.alert = I18n.t("dc.users.flash_msg.only_for_users")
         # => flash.alert = 'Admin - Rechte erforderlich !'
+        # => redirect_to root_path 
+        redirect_to "/#{DC::Config[:pretty_namespace].to_s.downcase}/login"
+      end
+    end
+    
+    def authorized_user
+      unless user_check
+        flash.alert = I18n.t("dc.users.flash_msg.only_for_users")
         # => redirect_to root_path 
         redirect_to "/#{DC::Config[:pretty_namespace].to_s.downcase}/login"
       end
@@ -57,7 +66,7 @@ module GlobalUser
     
     def authorized_owner
       unless owner_check
-        flash.alert = 'Nur dem Seiten-Inhaber gestattet!'
+        flash.alert = I18n.t("dc.users.flash_msg.only_for_owner")
         redirect_to root_path 
       end
     end
@@ -83,16 +92,16 @@ module GlobalUser
       user ||= current_user
       if user
         if user.evil_master
-          rang = 'Master-Admin'
+          rang = I18n.t("dc.users.rules.master_admin")
         elsif user.site_admin
-          rang = 'Seiten-Admin'
+          rang = I18n.t("dc.users.rules.site_admin")
         elsif user.group
           rang = user.group.name.to_s
         else
-          rang = 'User'
+          rang = I18n.t("dc.users.rules.user")
         end
       else
-        rang = 'Gast'
+        rang = I18n.t("dc.users.rules.guest")
       end
       return rang
     end

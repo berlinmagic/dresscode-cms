@@ -1,43 +1,35 @@
-<div class="box">
-	<div class="in_box first">
-		<h1 class="icon"><%= finelineIcon(:icon => 42, :color => finestyler('headline_icon_color'), :size => finestyler('headline_icon_size'), :blur => finestyler('headline_icon_blur')) %><%= t('Change_your_password') %></h1>
+<div class="LB_Box dc_user_form">
 
-	</div>
-</div>
+	<h2><%= t('dc.users.account.Change_your_password') %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-<%= f.hidden_field :reset_password_token %>
+	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+		<%= devise_error_messages! %>
+		
+		<%= f.hidden_field :reset_password_token %>
+		
+		<div class="lb_field">
+			<%= f.label :password, t('dc.users.form.new_password') %>
+			<%= f.password_field :password, :placeholder => t('dc.users.form.new_password') %>
+		</div>
+		<div class="lb_field">
+			<%= f.label :password_confirmation, t('dc.users.form.new_password_confirmation') %>
+			<%= f.password_field :password_confirmation, :placeholder => t('dc.users.form.new_password_confirmation') %>
+		</div>
+		
+		<br/>
+		
+		<div class="lb_field action">
+			<%= f.submit t("dc.users.account.send_changed_password") %>
+			<div class="clearfix"></div>
+		</div>
 
-<div class="box">
-	<div class="in_box">
-		<%= strange_devise_error_messages! %>
-			<table class="login">
-				<tr>
-					<th><%= f.label :password, t('password') %></th>
-					<td><%= f.password_field :password %></td>
-				</tr>
-				<tr>
-					<th><%= f.label :password_confirmation, t('password_confirmation') %></th>
-					<td><%= f.password_field :password_confirmation %></td>
-				</tr>
-			</table>
-	</div>
-</div>
-
-<div class="box">
-	<div class="in_box">
-		<%= f.submit t("Change_my_password") %>
-		<div class="big_button_spacer"><%= t('or') %></div>
-		<%= link_to t('back'), :back, :class => 'big_button' %>
-		<div class="clearfix"></div>
-	</div>
-</div>
-
-<% end %>
-
-<div class="box">
-	<div class="in_box">
+		<% end %>
+	
+	<br/>
+	
+	<div class="lb_field action">
 		<%= render :partial => "devise/shared/links" %>
 		<div class="clearfix"></div>
 	</div>
+
 </div>
