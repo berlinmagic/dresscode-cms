@@ -1,6 +1,10 @@
 # encoding: utf-8
 class Dc::PipeController < ApplicationController
   
+  # => ****************************************************************************
+  # => Outdated ... use pipe/style or script controller !!!"
+  # => ****************************************************************************
+  
   include DcStylesHelp
   include CoffeeScript
   

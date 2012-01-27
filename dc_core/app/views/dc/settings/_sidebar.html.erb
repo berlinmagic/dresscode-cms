@@ -1,5 +1,10 @@
 <% content_for :sidebar do %>
 
+<%= dc_aside_box( t("dc.configurations.core"), 'aktiv' ) do %>
+	<% @core_names.each do |set| %>
+	<%= link_to t("dc.configurations.core_sets.#{set}"), view_dcr_settings_path( 'core', set ), :class => "#{'aktiv' if @name && @name == set.to_s}" %>
+	<% end %>
+<% end %>
 
 <%= dc_aside_box( 'Einstellungen', 'aktiv' ) do %>
 	<%= link_to 'Site', dcr_settings_path+ '/core_one', :class => "#{'aktiv' if @name && @name == 'core_one'}" %>

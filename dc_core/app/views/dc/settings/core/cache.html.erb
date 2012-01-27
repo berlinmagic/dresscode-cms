@@ -1,0 +1,60 @@
+<% content_for :dc_head do %>
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 49 ) %> einstellungen</h1>
+	</div>
+	<div class="fl_box_470">
+		
+	</div>
+<% end %>
+
+<div class="dc_box">
+	<%= form_tag change_dc_settings_path( @config, @name ) do -%>
+		<%#= hidden_field_tag('name', @name, :size => 50 ) %>
+	
+	<div class="dc_wbox head">
+		<h2><%= DC::Config.instance.class.to_s.gsub(/Configuration/, '') %> - Performance</h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
+		
+		<%=   dc_pref_bool_line( 'compress_stylez' )   %>
+		<%=   dc_pref_bool_line( 'compress_scriptz' )   %>
+		<br/>
+		<%=   dc_pref_select_line( 'cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [c,c]} )   %>
+		<br/>
+		<%=   dc_pref_bool_line( 'etags_enabled' )   %>
+		<%=   dc_pref_bool_line( 'cache_statics' )   %>
+		<br/>
+		<%=   dc_pref_bool_line( 'production_mode' )   %>
+		<%=   dc_pref_text_line( 'dev_mode_ttl' )   %>
+		<br/>
+		<%=   dc_pref_bool_line( 'varnish_enabled' )   %>
+		<br/>
+		<br/>
+		<%=   dc_pref_text_line( 'stylez_fresh' )   %>
+		<%=   dc_pref_text_line( 'scriptz_fresh' )   %>
+		<%=   dc_pref_text_line( 'statics_fresh' )   %>
+		<%=   dc_pref_text_line( 'library_fresh' )   %>
+		<%=   dc_pref_text_line( 'pages_fresh' )   %>
+		<%=   dc_pref_text_line( 'dynamic_fresh' )   %>
+		<br/>
+		<%=   dc_pref_text_line( 'stylez_ttl' )   %>
+		<%=   dc_pref_text_line( 'scriptz_ttl' )   %>
+		<%=   dc_pref_text_line( 'statics_ttl' )   %>
+		<%=   dc_pref_text_line( 'library_ttl' )   %>
+		<%=   dc_pref_text_line( 'pages_ttl' )   %>
+		<%=   dc_pref_text_line( 'dynamic_ttl' )   %>
+		
+		
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox buttons">
+		<%= submit_tag %>
+		<div class="clearfix"></div>
+	</div>
+	
+	<% end %>
+</div>
+
+
+<%= render 'dc/settings/sidebar' %>

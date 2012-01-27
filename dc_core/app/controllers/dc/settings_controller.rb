@@ -1,127 +1,54 @@
 # encoding: utf-8
 class Dc::SettingsController < Dc::BaseController
   
-  before_filter :load_strange_setting_names
+  before_filter :load_dc_setting_names
 
   def index
     @u_aktiv = 'settings'
-  end
-  
-  def show
-    @name = params[:name] || params[:id]
-    if @setting_names.include?(@name)
-      @u_aktiv = @name
-      if @name == 'user'
-        @owners = User.where(:group_id => 1)
-      end
-      if @name == 'core_one'
-        render :template => "dc/settings/core"
-      else
-        if (@name == 'core') || (@name == 'user') || (@name == 'stylez')
-          render :template => "dc/settings/show"
-        else
-          render :template => "dc/settings/#{ @name }"
-        end
-      end
-    else
-      flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
-      render :index
-    end
-  end
-  
-  def info
-  end
-  
-  def edit
-    @name = params[:name] || params[:id]
-    if @setting_names.include?(@name)
-      if @name == 'core_one'
-        render :template => "dc/settings/core_edit"
-      else
-        render :template => "dc/settings/edit"
-      end
-    else
-      flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
-      render :index
-    end
-  end
-  
-  def update
-    @name = params[:name] || params[:id]
-    @params = params
-    if @setting_names.include?(@name)
-      @u_aktiv = @name
-      respond_to do |format|
-        if (@name == 'stylez') || (@name == 'user')
-          if "DC::#{@name.classify}".constantize::Config.set(params[:preferences])
-            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
-          else
-            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.updated_error') }
-          end
-        else
-          if DC::Config.set(params[:preferences])
-            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.settings_updated') }
-          else
-            format.html { redirect_to "/dc/settings/#{@name}", :notice => I18n.t('strange_preferences.updated_error') }
-          end
-        end
-        
-        
-      end
-    else
-      flash.now[:alert] = I18n.t('strange_preferences.parameter_error')
-      render :index
-    end
-  end
-  
-  def load_strange_setting_names
-    # @setting_names = ["cms", "account", "kontakt", "mail", "optik", "user"]
-    # => @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
-    @setting_names = ["core", "stylez", "user", 'core_one', 'cache', 'meta', 'api']
-    @aktivio = 'settings'
   end
   
   def show_config
     config = params[:config]
     @config = ( config.blank? || ( config == 'base' ) ) ? 'core' : config
     @name = params[:name]
-    render :template => "dc/settings/#{ @name }"
+    render :template => "dc/settings/#{ @config }/#{ @name }"
   end
   
-  def new_pref_pic
-    @prefs     = params[:prefs]
-    @name      = params[:name]
-    @key       = params[:key]
-    @typ       = params[:typ]
-    @back_link = params[:back_link]
-    @modul     = params[:modul]
-    @datei = Datei.new()
-    render :template => 'admin/settings/pref_pic_form'
-  end
-  
-  def edit_pref_pic
-    @prefs     = params[:prefs]
-    @name      = params[:name]
-    @key       = params[:key]
-    @typ       = params[:typ]
-    @back_link = params[:back_link]
-    @modul     = params[:modul]
-    render :template => 'admin/settings/pref_pic_form'
-  end
-  
-  def update_pref_pic
-    @prefs     = params[:prefs]
-    @key       = params[:key]
-    @typ       = params[:typ]
-    @back_link = params[:back_link]
-    @datei = Datei.new( params[:datei] )
-    @datei.save
-    if !@prefs.blank?
-      "DC::#{@prefs}".constantize::Config.set(@key => @datei.id)
+  def update_config
+    @name = params[:name] || params[:id]
+    config = params[:config]
+    @config = ( config.blank? || ( config == 'base' ) ) ? 'core' : config
+    @params = params
+    unless @config == 'core'
+      if "DC::#{@name.classify}".constantize::Config.set(params[:preferences])
+        render_config
+      else
+        render_config_error
+      end
     else
-      DC::Config.set(@key => @datei.id)
+      if DC::Config.set(params[:preferences])
+        render_config
+      else
+        render_config_error
+      end
     end
-    redirect_to @back_link
+  end
+  
+  def render_config
+    redirect_to "/#{ DC::Config[:pretty_namespace] }/settings/#{ @config }/#{ @name }", :notice => I18n.t('dc.preferences.updated_succesfully')
+  end
+  
+  def render_config_error
+    redirect_to "/#{ DC::Config[:pretty_namespace] }/settings/#{ @config }/#{ @name }", :notice => I18n.t('dc.preferences.update_error')
+  end
+  
+  
+  def load_dc_setting_names
+    # => @setting_names = ["cms", "account", "kontakt", "mail", "optik", "user"]
+    # => @setting_names = ["cms", "core", "account", "mail", "optik", "stylez", "user"]
+    # => @setting_names = ["core", "stylez", "user", 'core_one', 'cache', 'meta', 'api']
+    @config_names = %w[core stylez user]
+    @core_names = %w[site api cache meta]
   end
   
 end

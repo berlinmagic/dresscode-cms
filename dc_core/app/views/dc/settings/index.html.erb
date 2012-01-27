@@ -1,153 +1,102 @@
 <% content_for :dc_head do %>
-	
 	<div class="fl_box_470">
 		<h1><%= dc_admin_head_icon( 49 ) %> einstellungen</h1>
 	</div>
-	
 	<div class="fl_box_470">
-		
 	</div>
-	
-	
 <% end %>
 
-
-<div class="admin_box">
-	<h1 class="icon"><%= t('dc.prefs') %></h1>
-
-	<div class="admin_in_box">
+<div class="dc_box">
+	
+	<div class="dc_wbox head">
+		<h2><%= t('dc.preferences.overview') %></h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
 		
+		<p><em>Hier eine kleine Übersicht der momentanen Einstellungen, ändern können Sie diese über das Menü auf der rechten Seite.</em></p>
 		
 		<br/>
-		<br/>
-		cache_method: <%= DC::Config[:cache_method] %>
-		<br/>
-		dev_mode_ttl: <%= DC::Config[:dev_mode_ttl].to_i %>
-		<br/>
-		etags_enabled: <%= DC::Config[:etags_enabled] %>
-		<br/>
-		<br/>
-
-		<div class="work_box">
-			<div class="in_box white" id="settings_in_box">
-				
-				<p><em>Hier eine kleine Übersicht der momentanen Einstellungen, ändern können Sie diese über das Menü auf der rechten Seite.</em></p>
-				<br/>
-				<table class="settings">
-					<tr>
-						<th colspan="2" class="u_kat"><%= t('strange_preferences.site_settings')%></th>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.site_name') %></th>
-						<td>
-							<% if DC::Config[:site_name] && DC::Config[:site_name] != "fineline-CMS" && DC::Config[:site_name] != "" %>
-								<strong><%= DC::Config[:site_name] %></strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.site_url') %></th>
-						<td>
-							<% if DC::Config[:site_url] && DC::Config[:site_url] != "2strange.net" && DC::Config[:site_url] != "" %>
-								<strong><%= DC::Config[:site_url] %></strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="2" class="u_kat"><%= t('strange_preferences.google_settings')%></th>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.analytics_key') %></th>
-						<td>
-							<% if DC::Config[:analytics_key] && DC::Config[:analytics_key] != "UA-XXXXX-X" && DC::Config[:analytics_key] != "" %>
-								<strong>O.K.</strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.g_maps_key') %></th>
-						<td>
-							<% if DC::Config[:g_maps_key] && DC::Config[:g_maps_key] != "UA-XXXXX-X" && DC::Config[:g_maps_key] != "" %>
-								<strong>O.K.</strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="2" class="u_kat">Social-Einstellungen</th>
-					</tr>
-					<tr>
-						<th>FaceBook App-ID</th>
-						<td>
-							<% if DC::Config[:facebook_app_id] && DC::Config[:facebook_app_id] != "UA-XXXXX-X" && DC::Config[:facebook_app_id] != "" %>
-								<strong><%= DC::Config[:facebook_app_id] %></strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="2" class="u_kat"><%= t('strange_preferences.owner_settings')%></th>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.stange_owner_firma') %></th>
-						<td>
-							<% if DC::Config[:stange_owner_firma] && DC::Config[:stange_owner_firma] != "Firma" && DC::Config[:stange_owner_firma] != "" %>
-								<strong><%= DC::Config[:stange_owner_firma] %></strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.stange_owner_name') %></th>
-						<td>
-							<% if DC::Config[:stange_owner_name] && DC::Config[:stange_owner_name] != "Name" && DC::Config[:stange_owner_name] != "" %>
-								<strong><%= DC::Config[:stange_owner_name] %></strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-					<tr>
-						<th><%= t('strange_preferences.stange_owner_vorname') %></th>
-						<td>
-							<% if DC::Config[:stange_owner_vorname] && DC::Config[:stange_owner_vorname] != "Vorname" && DC::Config[:stange_owner_vorname] != "" %>
-								<strong><%= DC::Config[:stange_owner_vorname] %></strong>
-							<% else %>
-								<span class="panic">Achtung, nicht vergeben!</span>
-							<% end %>
-						</td>
-					</tr>
-
-				</table>
-				
-			</div>
-		</div>
-		<div class="box">
-				<div class="trenn_linie"></div>
-		</div>
-		<% if current_user && site_master %>
-		<div class="box">
-			<div class="in_box">
-				<div class="fl_box_350">
-					<%#= link_to ' ! reload Stylez ! ', expire_finestyles_path, :class => 'big_submit_button' %>
-					<%#= link_to ' ! reload Scriptz ! ', expire_finescripts_path, :class => 'big_submit_button' %>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
+		<p>Seite:</p>
+		<% if DC::Config[:site_name] && DC::Config[:site_name] != "DressCode-CMS" && DC::Config[:site_name] != "" %>
+			<%=  dc_pref_line( 'site_name', raw( "<strong>#{ DC::Config[:site_name] }</strong>" ) )  %>
+		<% else %>
+			<%=  dc_pref_line( 'site_name', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
 		<% end %>
 		
+		<% if DC::Config[:site_url] && DC::Config[:site_url] != "trendgegner.de" && DC::Config[:site_url] != "" %>
+			<%=  dc_pref_line( 'site_url', raw( "<strong>#{ DC::Config[:site_url] }</strong>" ) )  %>
+		<% else %>
+			<%=  dc_pref_line( 'site_url', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		
+		<br/>
+		<p>Google</p>
+		<% if DC::Config[:analytics_key] && DC::Config[:analytics_key] != "UA-XXXXX-X" && DC::Config[:analytics_key] != "" %>
+			<%=  dc_pref_line( 'analytics_key', raw( "<strong>O.K.</strong>" ) )  %><strong>O.K.</strong>
+		<% else %>
+			<%=  dc_pref_line( 'analytics_key', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		<% if DC::Config[:g_maps_key] && DC::Config[:g_maps_key] != "UA-XXXXX-X" && DC::Config[:g_maps_key] != "" %>
+			<%=  dc_pref_line( 'g_maps_key', raw( "<strong>O.K.</strong>" ) )  %><strong>O.K.</strong>
+		<% else %>
+			<%=  dc_pref_line( 'g_maps_key', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		
+		<br/>
+		<p>Social-Einstellungen</p>
+		
+		<% if DC::Config[:facebook_app_id] && DC::Config[:facebook_app_id] != "UA-XXXXX-X" && DC::Config[:facebook_app_id] != "" %>
+			<%=  dc_pref_line( 'facebook_app_id', raw( "<strong>#{ DC::Config[:facebook_app_id] }</strong>" ) )  %>
+		<% else %>
+			<%=  dc_pref_line( 'facebook_app_id', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		
+		<br/>
+		<p>Seiten-Besitzer</p>
+		<% if DC::Config[:company] && DC::Config[:company] != "Company" && DC::Config[:company] != "" %>
+			<%=  dc_pref_line( 'company', raw( "<strong>#{ DC::Config[:company] }</strong>" ) )  %>
+		<% else %>
+			<%=  dc_pref_line( 'company', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		
+		<% if DC::Config[:owner_firstname] && DC::Config[:owner_firstname] != "Vorname" && DC::Config[:owner_firstname] != "" %>
+			<%=  dc_pref_line( 'owner_firstname', raw( "<strong>#{ DC::Config[:owner_firstname] }</strong>" ) )  %>
+		<% else %>
+			<%=  dc_pref_line( 'owner_firstname', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		
+		<% if DC::Config[:owner_name] && DC::Config[:owner_name] != "Name" && DC::Config[:owner_name] != "" %>
+			<%=  dc_pref_line( 'owner_name', raw( "<strong>#{ DC::Config[:owner_name] }</strong>" ) )  %>
+		<% else %>
+			<%=  dc_pref_line( 'owner_name', raw( "<span class='panic'>Achtung, nicht vergeben!</span>" ) )  %>
+		<% end %>
+		
+		
+		<br/>
+		<% if current_user && site_master %>
+			<br/>
+		
+			<p>Performance</p>
+			<%=  dc_pref_line( 'cache_method', DC::Config[:cache_method] )  %>
+			<%=  dc_pref_line( 'etags_enabled', DC::Config[:etags_enabled] )  %>
+			<%=  dc_pref_line( 'compress_stylez', DC::Config[:compress_stylez] )  %>
+			<%=  dc_pref_line( 'compress_scriptz', DC::Config[:compress_scriptz] )  %>
+		
+		
+		<% end %>
+		
+		
+		
+		
+		<div class="clearfix"></div>
 	</div>
+	<div class="dc_wbox buttons">
+
+		<div class="clearfix"></div>
+	</div>
+	
+
 </div>
 
 <%= render 'sidebar' %>

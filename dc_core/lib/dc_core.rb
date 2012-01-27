@@ -47,7 +47,10 @@
   require 'dc_core_module'
   require 'dc_core_hooks'
   
+  # => Routes
+  require 'dc_core/routes'
   
+  # => Cache
   require 'rack/dc_cache'
   
   

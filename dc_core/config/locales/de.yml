@@ -191,10 +191,18 @@ de:
           bla: "Bla .."
       prefs: "Einstellungen"
       preferences:
+          overview: "übersicht"
           save: "Einstellungen speichern"
           edit: "Einstellungen bearbeiten"
-          updated: "Einstellungen wurden geändert"
-          error: "Fehler, Einstellungen konnten nicht gespeichert werden!"
+          updated_succesfully: "Einstellungen wurden geändert"
+          update_error: "Fehler, Einstellungen konnten nicht gespeichert werden!"
+      configurations:
+          core: "Grundeinstellungen"
+          core_sets:
+              site: "Seite"
+              cache: "Performance"
+              meta: "S.E.O. / META"
+              api: "API-Keys"
       config:
           site_name: "Seiten-Name"
           site_url: "Seiten-Domain"
