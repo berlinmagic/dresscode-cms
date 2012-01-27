@@ -2,7 +2,9 @@ en:
   devise:
     invitations:
       send_instructions: 'Eine E-Mail mit Anweisungen zur erstellung eines Passworts wurde gesendet.'
+      invitation_token_invalid: 'Der von Ihnen genutzte Link war nicht Korekt!'
       updated: 'Ihr Passwort wurde erfolgreich erstellt. Sie sind jetzt angemeldet.'
+      no_invitations_remaining: "Keine Einladungen vorhanden."
     mailer:
-      invitiation:
+      invitation_instructions:
         subject: 'Einladung'

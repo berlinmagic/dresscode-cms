@@ -1,6 +1,7 @@
 de:
   errors:
     messages:
+      expired: "ist abgelaufen, bitte beantragen Sie einen neuen"
       not_found: "nicht gefunden"
       already_confirmed: "wurde bereits bestätigt"
       not_locked: "war nicht gespert"
@@ -10,6 +11,7 @@ de:
 
   devise:
     failure:
+      already_authenticated: 'Sie sind bereits angemeldet.'
       unauthenticated: 'Sie müssen sich Anmelden oder Registrieren!'
       unconfirmed: 'Sie müssen Ihr Konto bestätigen um fortfahren zu können.'
       locked: 'Ihr Konto ist gesperrt.'
@@ -23,16 +25,28 @@ de:
     passwords:
       send_instructions: 'Sie werden in kürze eine E-Mail erhalten, diese ermöglicht Ihnen ein neues Passwort zu erstellen.'
       updated: 'Ihr Passwort wurde erfolgreich geändert. Sie sind jetzt angemeldet.'
+      updated_not_active: 'Ihr Passwort wurde erfolgreich geändert.'
+      send_paranoid_instructions: "Wenn Ihre E-Mail-Adresse in unserer Datenbank vorhanden ist, erhalten Sie in kürze eine Mail zum Ändern Ihres Passwortes."
     confirmations:
       send_instructions: 'Sie werden in kürze eine E-Mail erhalten, bitte nutzen Sie den enthaltenen Link um Ihr Konto zu aktivieren.'
+      send_paranoid_instructions: 'Wenn Ihre E-Mail-Adresse in unserer Datenbank vorhanden ist, erhalten Sie in kürze eine Mail um Ihren Account zu bestätigen.'
       confirmed: 'Ihr Konto wurde bestätigt. Sie sind jetzt angemeldet.'
     registrations:
       signed_up: 'Sie haben sich erfolgreich registriert. Eine Bestätigungs-Mail wurde an Ihre E-Mail-Adresse gesendet.'
+      inactive_signed_up: 'Sie haben sich erfolgreich registriert. ABER wir konnten Sie nicht anmelden denn Ihr Account ist %{reason}.'
       updated: 'Sie haben Ihr Konto erfolgreich aktualisiert.'
       destroyed: 'Auf Wiedersehen! Ihr Konto wurde gelöscht. .. trotzdem hoffen wir Sie bald wieder zu sehen.'
+      reasons:
+        inactive: 'inaktiv'
+        unconfirmed: 'unbestätigt'
+        locked: 'gesperrt'
     unlocks:
       send_instructions: 'Sie werden in kürze eine E-Mail erhalten, diese ermöglicht Ihnen Ihr Konto zu entsperren.'
       unlocked: 'Ihr Konto wurde erfolgreich entsperrt. Sie sind jetzt angemeldet.'
+      send_paranoid_instructions: 'Wenn Ihre E-Mail-Adresse in unserer Datenbank vorhanden ist, erhalten Sie in kürze Entsperr-Anweisungen.'
+    omniauth_callbacks:
+      success: 'Sie haben sich erfolgreich über %{kind} angemeldet.'
+      failure: 'Wir konnten Sie nicht über %{kind} autorisieren, da "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: 'Benutzerkonto-Bestätigungs Anweisungen'
