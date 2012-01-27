@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # =====> S C O P E S <======================================================== #
   scope :standard, where( :evil_master => false, :site_admin => false )
   scope :no_master, where( :evil_master => false )
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'email ASC'
   
   
   # =====> A S S O Z I A T I O N S <======================================================== #

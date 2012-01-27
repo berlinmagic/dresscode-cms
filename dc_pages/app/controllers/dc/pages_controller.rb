@@ -39,8 +39,9 @@ class Dc::PagesController < Dc::BaseController
 
   def destroy
     @page = Page.find(params[:id])
-    @page.destroy
-    redirect_to dcr_pages_url, :notice => "Successfully destroyed page."
+    @page.deleted_at = Time.now()
+    @page.save
+    redirect_to dcr_pages_url, :notice => "Successfully deleted page."
   end
   
   def mercury_update

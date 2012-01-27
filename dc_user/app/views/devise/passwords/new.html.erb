@@ -1,6 +1,6 @@
 <div class="LB_Box dc_user_form">
 	
-	<h2><%= t('dc.users.account.Forgot_your_password') %></h2>
+	<h2><%= t('dc.users.account.forgot_your_password') %></h2>
 
 	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 		<%= devise_error_messages! %>
@@ -14,7 +14,7 @@
 		<br/>
 		
 		<div class="lb_field action">
-			<%= f.submit t("dc.users.account.Send_me_reset_password_instructions") %>
+			<%= f.submit t("dc.users.account.send_me_reset_password_instructions") %>
 			<div class="clearfix"></div>
 		</div>
 

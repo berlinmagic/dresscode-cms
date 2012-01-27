@@ -34,22 +34,23 @@ de:
               set_your_password: "Bitte geben Sie Ihr gewünschtes Passwort ein"
               send_passwort: "senden"
           account:
-              Sign_up: "Registrierung"
-              send_Sign_up: "senden"
+              sign_up: "Registrierung"
+              send_sign_up: "senden"
               password_change:
                   leave_blank_if_you_don_want_to_change_it: "(Frei lassen, falls Sie Ihr Passwort nicht ändern möchten)"
                   we_need_your_current_password_to_confirm_your_changes: "(Wir benötigen Ihr aktuelles Passwort, um die Änderung zu autorisieren)"
-              change_Account: "Profil bearbeiten"
-              Unhappy: "Unzufrieden?"
-              Cancel_my_account: "Konto Löschen"
+              change_account: "Profil bearbeiten"
+              unhappy: "Unzufrieden?"
+              cancel_my_account: "Konto Löschen"
               confirm_account_delete: "ACHTUNG, wollen Sie wirklich Ihren Account löschen, Sie haben dann keinen Zugang zur Seite mehr?"
-              Forgot_your_password: "Sie haben Ihr Passwort vergessen?"
-              Send_me_reset_password_instructions: "neues Passwort anfordern"
-              Change_your_password: "Passwort ändern"
+              forgot_your_password: "Sie haben Ihr Passwort vergessen?"
+              send_me_reset_password_instructions: "neues Passwort anfordern"
+              change_your_password: "Passwort ändern"
               send_changed_password: "senden"
-              Resend_unlock_instructions: "Entsperr-Anweisungen erneut versenden"
+              resend_unlock_instructions: "Entsperr-Anweisungen erneut versenden"
               resend_x: "erneut senden"
-              Resend_confirmation_instructions: "Bestätigungs-Mail erneut senden"
+              resend_confirmation_instructions: "Bestätigungs-Mail erneut senden"
+              are_you_sure_delete_user: "Sind Sie sicher, dass Sie diesen Nutzer engültig löschen wollen?"
           links:
               sign_in: "Anmelden"
               sign_up: "Konto erstellen"
@@ -69,6 +70,9 @@ de:
               email: "Deine E-Mail"
               password: "Dein Passwort"
               submit: "Einloggen"
+          overview:
+              last_login: "Letzter Login"
+              rights: "Rechte"
           mailer:
               # Invitation
               someone_has_invited_you_to: "Jemand hat Sie zu"
@@ -93,6 +97,9 @@ de:
               only_for_users: "Nur für angemeldete Nutzer!"
               only_for_admin: "Admin - Rechte erforderlich !"
               only_for_owner: "Nur dem Seiten-Inhaber gestattet!"
+              user_succesfully_deleted: "User wurde erfolgreich gelöscht."
+              user_succesfully_updatet: "User-Daten wurden aktualisiert."
+              user_update_error: "Fehler! .. User wurde nicht geändert!"
   back: "Zurück"
 ################################################################################################################
   user_settings:

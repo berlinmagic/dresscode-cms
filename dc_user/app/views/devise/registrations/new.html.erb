@@ -1,6 +1,6 @@
 <div class="LB_Box dc_user_form">
 	
-	<h2><%= t('dc.users.account.Sign_up') %></h2>
+	<h2><%= t('dc.users.account.sign_up') %></h2>
 	<hr/>
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<%= devise_error_messages! %>
@@ -38,7 +38,7 @@
 		<br/>
 		
 		<div class="lb_field action">
-			<%= f.submit t("dc.users.account.send_Sign_up") %>
+			<%= f.submit t("dc.users.account.send_sign_up") %>
 			<div class="clearfix"></div>
 		</div>
 

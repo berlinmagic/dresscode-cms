@@ -17,14 +17,20 @@
 			&nbsp;<%#= dc_icon( :icon => 42 ) %>
 		</div>
 		
-		<div class="fl_box_230">
-			Vorname, Name
+		<div class="fl_box_210">
+			<%= t('dc.users.form.first_name') %>, <%= t('dc.users.form.last_name') %>
 		</div>
 		<div class="fl_box_230">
-			E-Mail
+			<%= t('dc.users.form.email') %>
 		</div>
 		<div class="fl_box_110">
-			
+			<%= t('dc.users.overview.rights') %>
+		</div>
+		<div class="grid_2">
+			&nbsp;
+		</div>
+		<div class="fl_box_110">
+			<%= t('dc.users.overview.last_login') %>
 		</div>
 		
 		<div class="clearfix"></div>
@@ -45,10 +51,24 @@
 				<div class="fl_box_110">
 					<%= user_rang(user) %>
 				</div>
-				<div class="grid_1">
+				<div class="grid_2">
 					<%= (!user.confirmed_at.blank? && !user.encrypted_password.blank?) ? 
 							raw("<div class='active_dot'></div>") : raw("<div class='inactive_dot'></div>") %>
 				</div>
+				<div class="fl_box_110">
+					<%= user.last_sign_in_at ? user.last_sign_in_at.strftime('%d.%m.%Y') : '-'  %>
+				</div>
+				
+				<div class="fl_box_110 rfloat rtext">
+					<% if admin_check %>
+						<%= link_to dc_icon( :icon => 30 ), [:edit, :dc, user], :class => 'LightBox', :title => t("dc.users.account.change_account") %>
+						&nbsp;
+						<%= link_to dc_icon( :icon => 20 ), [:dc, user], :confirm => t('dc.users.account.are_you_sure_delete_user'), :method => :delete %>
+					<% else %>
+						&nbsp;
+					<% end %>
+				</div>
+				
 				<div class="clearfix"></div>
 			</div>
 			

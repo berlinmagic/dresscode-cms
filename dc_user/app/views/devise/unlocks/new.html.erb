@@ -1,6 +1,6 @@
 <div class="LB_Box dc_user_form">
 
-	<h2><%= t('dc.users.account.Resend_unlock_instructions') %></h2>
+	<h2><%= t('dc.users.account.resend_unlock_instructions') %></h2>
 
 	<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
 		<%= devise_error_messages! %>
