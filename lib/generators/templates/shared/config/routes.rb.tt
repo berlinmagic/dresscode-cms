@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  # find your routes in: lib/<%= @strange_file %>/routes
+  
   namespace :dc do
     dresscode_<%= @strange_name %>_routes
   end

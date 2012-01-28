@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'rails/generators'
 
 module Dresscode
@@ -7,11 +8,19 @@ module Dresscode
 
       desc "Creates a new extension gem with the name you specify."
       check_class_collision
-
-      def create_root_files
+      
+      def initial_desc
         @strange_class = "Dc#{ class_name.gsub(/Dc/, '') }"
         @strange_name  = "#{ file_name.gsub(/dc_/, '') }"
         @strange_file  = "dc_#{ @strange_name }"
+        puts("========================================================================================================")
+        puts("-    -    -    -    -    -    -    -   D r e s s C o d e - C M S    -    -    -    -    -    -    -    -")
+        puts("--------------------------------------------------------------------------------------------------------")
+        puts("  .   .   .   .   .   generate Extension with Configuration:  #{ @strange_file }   .   .   .   .   .   ")
+        puts("========================================================================================================")
+      end
+
+      def create_root_files
         empty_directory @strange_file
         template "shared/gitignore.tt", "#{ @strange_file }/.gitignore"
         template "shared/Gemfile.tt", "#{ @strange_file }/Gemfile"
@@ -22,7 +31,7 @@ module Dresscode
 
       def create_config_files
         empty_directory "#{ @strange_file }/config"
-        template "shared/config/routes.rb", "#{ @strange_file }/config/routes.rb"
+        template "shared/config/routes.rb.tt", "#{ @strange_file }/config/routes.rb"
         empty_directory "#{ @strange_file }/config/locales"
         template "shared/config/locales/de.yml", "#{ @strange_file }/config/locales/de.yml"
         template "shared/config/locales/en.yml", "#{ @strange_file }/config/locales/en.yml"
@@ -67,7 +76,13 @@ module Dresscode
       
       def create_config_model_and_views
         template 'module/app/models/gem_configuration.rb.tt', "#{ @strange_file }/app/models/#{ file_name }_configuration.rb"
-        template 'module/app/views/settings/base.html.erb.tt', "#{ @strange_file }/app/views/dc/settings/#{ file_name }/base.html.erb"
+        template 'module/app/views/settings/base.html.erb', "#{ @strange_file }/app/views/dc/settings/#{ file_name }/base.html.erb"
+      end
+      
+      def end_desc
+        puts("========================================================================================================")
+        puts("-    -    -    -    -    -    -    -   #{ @strange_file } ready!    -    -    -    -    -    -    -    -")
+        puts("========================================================================================================")
       end
 
 

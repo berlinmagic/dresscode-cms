@@ -27,6 +27,21 @@
 	
 
 
+## Generators:
+
+	rails g dresscode:install
+install the CMS and mirror all needed files
+	
+	rails g dresscode:theme name
+generates a new theme-gem 'dc_theme_name'
+	
+	rails g dresscode:module name
+generates a new extension-gem 'dc_name'
+	
+	rails g dresscode:module_with_config name
+generates a new extension-gem 'dc_name' with DC::Name::Conig[:files] - Configuration-Files
+
+
 
 # ToDo's:
 

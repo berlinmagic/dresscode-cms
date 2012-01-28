@@ -5,8 +5,8 @@ module <%= @strange_class %>
     def dresscode_<%= @strange_name %>_routes
       # => your backend routes
     end
-	
-	def public_<%= @strange_name %>_routes
+    
+    def public_<%= @strange_name %>_routes
       # => your public routes
     end
     
