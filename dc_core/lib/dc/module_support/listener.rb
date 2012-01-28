@@ -63,17 +63,17 @@ module DC
       
       
       def self.modul_name
-        "#{ self.to_s.gsub(/Modul$/, '') }"
+        "#{ self.to_s.gsub(/Module$/, '') }"
       end
       
       def self.gem_name
-        "#{ self.to_s.gsub(/Modul$/, '').underscore }"
+        "#{ self.to_s.gsub(/Module$/, '').underscore }"
       end
       
       def self.version
         # => if self.to_s.gsub(/Modul$/, '').constantize.respond_to?('VERSION')  const_defined
-        if self.to_s.gsub(/Modul$/, '').constantize.const_defined?('VERSION')  
-          self.to_s.gsub(/Modul$/, '').constantize::VERSION.to_s
+        if self.to_s.gsub(/Module$/, '').constantize.const_defined?('VERSION')  
+          self.to_s.gsub(/Module$/, '').constantize::VERSION.to_s
         else
           DC.version
         end

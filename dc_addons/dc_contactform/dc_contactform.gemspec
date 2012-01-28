@@ -3,22 +3,25 @@ $:.push File.expand_path("../lib", __FILE__)
 require "dc_contactform/version"
 
 Gem::Specification.new do |s|
-  s.name        = "dc_contactform"
-  s.version     = DcContactform::VERSION
-  s.authors     = ["Austin Strange"]
-  s.email       = ["austin@orangenwerk.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.platform                =   Gem::Platform::RUBY
+  s.required_ruby_version   =   '>= 1.8.7'
+  s.version                 =   DcContactform::VERSION
+  s.authors                 =   ["orangenwerk", "2strange", "marcosebald"]
+  s.email                   =   "web@orangenwerk.com"
+  s.homepage                =   "http://orangenwerk.com"
+  s.description             =   "DressCode-CMS .. by orangenwerk .. may be released in 2012"
+  
+  s.name                    =   "dc_contactform"
+  s.rubyforge_project       =   "dc_contactform"
+  s.summary                 =   %q{DressCode-CMS contact-forms}
 
-  s.rubyforge_project = "dc_contactform"
+  
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.files                   =   Dir['app/**/*', 'config/**/*', 'db/**/*', 'features/**/*', 'lib/**/*', 'spec/**/*']
+  s.require_path            =   'lib'
+  s.requirements            <<  'none'
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  # dependencies here
+  
+  
 end

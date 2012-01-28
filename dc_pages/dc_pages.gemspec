@@ -4,7 +4,6 @@ require "dc_pages/version"
 
 Gem::Specification.new do |s|
   s.platform                =   Gem::Platform::RUBY
-  s.required_ruby_version   =   '>= 1.8.7'
   s.version                 =   DcPages.version
   s.authors                 =   ["orangenwerk", "2strange", "marcosebald"]
   s.email                   =   "web@orangenwerk.com"

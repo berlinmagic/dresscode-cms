@@ -1,4 +1,3 @@
-<% title "Layout :: #{@tlayout.name}", false %>
 <%= content_tag(:h2, @tlayout.name) %>
 <p><strong><%= @tlayout.raster.name if @tlayout.raster %></strong></p>
 <p><%= @tlayout.description.blank? ? raw("&nbsp;") : @tlayout.description %></p>

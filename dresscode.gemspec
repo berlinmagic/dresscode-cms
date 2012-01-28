@@ -4,7 +4,7 @@ require "dc/version"
 
 Gem::Specification.new do |s|
   s.platform                =   Gem::Platform::RUBY
-  s.required_ruby_version   =   '>= 1.8.7'
+  s.required_ruby_version   =   '>= 1.9.2'
   s.version                 =   DC.version
   s.authors                 =   ["orangenwerk", "2strange", "marcosebald"]
   s.email                   =   "web@orangenwerk.com"
@@ -22,24 +22,18 @@ Gem::Specification.new do |s|
   
   
   # => Rails-Version chould be the latest !
-  s.add_dependency( 'rails',        '>= 3.0.11' )
+  s.add_dependency( 'rails',                '>= 3.1.3' )
   
   # => Load the DressCode-Gems
-  s.add_dependency( 'dc_core',  '>= 0.0.1' )
-  s.add_dependency( 'dc_editor',    '>= 0.0.1' )
-  s.add_dependency( 'dc_lists',     '>= 0.0.1' )
-  s.add_dependency( 'dc_pages',     '>= 0.0.1' )
-
-  # => s.add_dependency( 'dc_staticthemes',     '>= 0.0.1' )
+  s.add_dependency( 'dc_core',              '>= 0.0.1' )
+  s.add_dependency( 'dc_editor',            '>= 0.0.1' )
+  s.add_dependency( 'dc_lists',             '>= 0.0.1' )
+  s.add_dependency( 'dc_pages',             '>= 0.0.1' )
   
   s.add_dependency( 'dc_themes_static',     '>= 0.0.1' )
-  s.add_dependency( 'dc_themes_dynamic',     '>= 0.0.1' )
+  s.add_dependency( 'dc_themes_dynamic',    '>= 0.0.1' )
   
+  s.add_dependency( 'dc_user',              '>= 0.0.1' )
   
-
-  s.add_dependency( 'dc_user',      '>= 0.0.1' )
-
-  # => s.add_dependency( 'dc_styles',    '>= 0.0.1' )
-  # => s.add_dependency( 'dc_themes',    '>= 0.0.1' )  
   
 end

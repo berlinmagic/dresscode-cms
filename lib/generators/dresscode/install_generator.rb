@@ -45,6 +45,15 @@ module Dresscode
         generate("dc_user:install")
       end
       
+      def install_optional_modules
+        if !!defined?DcContactform
+          puts("***************************************************************************")
+          puts("ToDo::  ASK for:  Contactforms intallieren?")
+          puts("***************************************************************************")
+          generate("dc_contactform:install")
+        end
+      end
+      
       
       
       def edit_app_config_file

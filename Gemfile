@@ -1,5 +1,7 @@
 source "http://rubygems.org"
 
+gem 'dc_contactform', :path => 'dc_addons/dc_contactform'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl'	

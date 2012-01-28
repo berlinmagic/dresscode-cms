@@ -18,6 +18,8 @@
 	
 	gem 'dresscode', :path => '../dresscode_31'
 	
+	gem 'dc_contactform', :path => '../dresscode_31/dc_addons/dc_contactform'
+	
 
 ## Install dresscode
 	
