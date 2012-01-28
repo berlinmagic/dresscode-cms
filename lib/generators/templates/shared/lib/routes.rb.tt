@@ -1,0 +1,20 @@
+# encoding: utf-8
+module <%= @strange_class %>
+  module Routes
+    
+    def dresscode_<%= @strange_name %>_routes
+      # => your backend routes
+    end
+	
+	def public_<%= @strange_name %>_routes
+      # => your public routes
+    end
+    
+  end
+end
+module ActionDispatch::Routing
+  class Mapper #:nodoc:
+    include <%= @strange_class %>::Routes
+  end
+end
+

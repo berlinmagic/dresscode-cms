@@ -1,22 +1,20 @@
   require "rails/all"
   
-  require 'strangecms'
+  require 'dresscode'
   
   require '<%= @strange_file %>/version'
   
+  require '<%= @strange_file %>/routes'
+  
   require '<%= @strange_file %>_hooks'
-  require '<%= @strange_file %>_modul'
-  require '<%= @strange_file %>_theme'
-
-  require 'theme_<%= @strange_name %>_initializer'
+  require '<%= @strange_file %>_module'
+  
+  require '<%= file_name %>/config'
 
 
 module <%= @strange_class %>
   class Engine < Rails::Engine
-
-
     config.autoload_paths += %W(#{config.root}/lib)
-
     def self.activate
 
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -24,8 +22,6 @@ module <%= @strange_class %>
       end
 
     end
-
     config.to_prepare &method(:activate).to_proc
-
   end
 end

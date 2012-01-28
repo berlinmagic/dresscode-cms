@@ -1,0 +1,10 @@
+module DC::Contact
+  class <%= class_name %> < DC::Config
+    class << self
+      def instance
+        return nil unless ActiveRecord::Base.connection.tables.include?('configurations')
+        <%= class_name %>Configuration.find_or_create_by_name("<%= class_name %> configuration")
+      end
+    end
+  end
+end

@@ -6,8 +6,8 @@ site_owner = User.new(    :salutation => 'mr',
                           :last_name => 'Musterman',
                           :nick_name => 'Seiten_Inhaber',
                           :email => 'test_owner@2strange.net',
-                          :password => 'fineline_owner',
-                          :password_confirmation => 'fineline_owner',
+                          :password => 'dresscode',
+                          :password_confirmation => 'dresscode',
                           :confirmed_at => Time.now,
                           :group_id => 1                      )
 

@@ -1,0 +1,13 @@
+Rails.application.routes.draw do
+  
+  namespace :dc do
+    dresscode_<%= @strange_name %>_routes
+  end
+  
+  scope DC::Config[:pretty_namespace].to_s.downcase, :as => 'dcr', :module => "dc" do
+    dresscode_<%= @strange_name %>_routes
+  end
+
+  public_<%= @strange_name %>_routes
+  
+end

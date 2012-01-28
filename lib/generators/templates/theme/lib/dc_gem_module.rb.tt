@@ -1,8 +1,6 @@
 # encoding: utf-8
 class <%= @strange_class %>Modul < DC::ModuleSupport::Listener
 
-  # => install true
-
   theme true
   
   # => core false        		=>  default:  false     ...     Modul ist ein Core-Modul

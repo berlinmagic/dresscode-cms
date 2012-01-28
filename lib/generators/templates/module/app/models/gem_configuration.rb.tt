@@ -1,0 +1,7 @@
+# encoding: utf-8
+class <%= class_name %>Configuration < Configuration
+  
+  preference		:activated,			:boolean,			:default => true
+  
+
+end

@@ -1,4 +1,4 @@
-DcEditor.I18n['en'] =
+DcEditor.I18n['de'] =
   # ## Javascript Strings
 
   # ### Default Configuration
@@ -68,7 +68,7 @@ DcEditor.I18n['en'] =
 
   # ### General
   # Error Messages
-  "DcEditor.PageEditor is unsupported in this client. Supported browsers are Chrome 10+, Firefox 4+, and Safari 5+.": ""
+  "DcEditor.PageEditor is unsupported in this client. Supported browsers are Chrome 10+, Firefox 4+, and Safari 5+.": "Leider wird Ihr Browser nicht unterstützt, der Editor kann nicht genutzt werden. Folgende Browser werden unterstützt: Safari ab Version 5, Firefox ab Version 4 und Chrome ab Version 10."
   "DcEditor.PageEditor can only be instantiated once.": ""
   "Opera isn't a fully supported browser, your results may not be optimal.": ""
   "DcEditor.PageEditor failed to load: %s\n\nPlease try refreshing.": ""

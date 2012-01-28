@@ -6,7 +6,7 @@ module Dragonfly
       include Dragonfly::Configurable 
       configurable_attr :use_filesystem, true 
       def add_tiled_text(temp_object, opts={}) 
-        text        =   opts[:text]       ||  'fineline-CMS'
+        text        =   opts[:text]       ||  'dresscode-CMS'
         color       =   opts[:color]      ||  'f3f2f2'
         opacity     =   opts[:opacity]    ||  42
         font_size   =   opts[:font_size]  ||  18

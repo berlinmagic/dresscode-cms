@@ -1,4 +1,4 @@
-module <%= class_name %>
+module <%= @strange_class %>
 
   VERSION = "0.0.1"
 

@@ -1,12 +1,38 @@
 # encoding: utf-8
 require 'rails/generators/migration'
 
-module <%= class_name %>
+module <%= @strange_class %>
   module Generators
     class InstallGenerator < ::Rails::Generators::Base
       include Rails::Generators::Migration
-      source_root File.expand_path('../templates', __FILE__)
+		
+	  source_root <%= @strange_class %>::Engine.root
       desc "add the migrations"
+      
+      def build_seed_data
+        Dir.glob( File.join(File.expand_path("#{<%= @strange_class %>::Engine.root}/db/system_data", __FILE__), "*.*") ) do |file|
+          puts("<%= @strange_class %>:: Seed system_data")
+          open("#{Rails.root}/db/seeds.rb", 'a') do |f|
+            f.puts File.read( "#{<%= @strange_class %>::Engine.root}/db/system_data/#{File.basename(file.to_s)}"  ).to_utf
+          end
+        end
+      end
+      
+      def build_sample_data
+        Dir.glob( File.join(File.expand_path("#{<%= @strange_class %>::Engine.root}/db/sample_data", __FILE__), "*.*") ) do |file|
+          puts("<%= @strange_class %>:: Seed sample_data")
+          open("#{Rails.root}/db/sample_seeds.rb", 'a') do |f|
+            f.puts File.read( "#{<%= @strange_class %>::Engine.root}/db/sample_data/#{File.basename(file.to_s)}" ).to_utf
+          end
+        end
+      end
+      
+      # => def strange_mirror_assets
+      # =>   source = File.join("#{ <%= @strange_class %>::Engine.root }", 'public')
+      # =>   destination = File.join(Rails.root, 'public')
+      # =>   puts("<%= @strange_class %>:: Spiegle Daten in public-Ordner")
+      # =>   DC::FileUtilz.mirror_files(source, destination)
+      # => end
 
       def self.next_migration_number(path)
         @prev_migration_nr ? @prev_migration_nr += 1 : @prev_migration_nr = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
@@ -14,27 +40,11 @@ module <%= class_name %>
       end
 
       def copy_migrations
-        puts("<%= class_name.gsub(/Strange/, '') %>:: erstelle Migration")
-        Dir.glob( File.join(File.expand_path('../templates', __FILE__), "create*.*") ) do |file|
-          migration_template "#{file}", "db/migrate/#{File.basename(file.to_s)}"
-        end
-        # migrate Updates
-        puts("<%= class_name.gsub(/Strange/, '') %>:: create update Migration-Files")
-        Dir.glob( File.join(File.expand_path('../templates', __FILE__), "update*.*") ) do |file|
+        puts("<%= @strange_class %>:: create Migrations")
+        Dir.glob( File.join(File.expand_path("#{<%= @strange_class %>::Engine.root}/db/templates", __FILE__), "*.*") ) do |file|
           migration_template "#{file}", "db/migrate/#{File.basename(file.to_s)}"
         end
       end
-	
-	# def append_seed
-	# 	puts("Header:: extend DB-Seed-File")
-	# 	Dir.glob( File.join(File.expand_path('../templates', __FILE__), "seed*.*") ) do |file|
-	# 		if File.exist?("db/seeds.rb")
-	# 			append_to_file "db/seeds.rb",  File.read( "#{ file }" )
-	# 		else
-	# 			create_file "db/seeds.rb",  File.read( "#{ file }" )
-	#		end
-	#	end
-	# end
 
     end
   end

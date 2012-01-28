@@ -8,26 +8,25 @@ module Dresscode
       desc "Creates a new theme gem with the name you specify."
       check_class_collision
       
-      
-
       def create_root_files
-        @strange_class = "StrangeTheme#{ class_name }"
-        @strange_name  = "#{ file_name.gsub(/strange_/, '') }"
-        @strange_file  = "strange_theme_#{ @strange_name }"
+        @strange_class = "DcTheme#{ class_name }"
+        @strange_name  = "#{ file_name.gsub(/dc_/, '') }"
+        @strange_file  = "dc_theme_#{ @strange_name }"
         empty_directory "#{ @strange_file }"
-        empty_directory "#{@strange_file}/public"
-        template "Rakefile.tt", "#{@strange_file}/Rakefile"
-        template "README.md", "#{@strange_file}/README.md"
-        template "gitignore.tt", "#{@strange_file}/.gitignore"
-        template "theme.gemspec.tt", "#{@strange_file}/#{@strange_file}.gemspec"
+        
+        template "shared/gitignore.tt", "#{ @strange_file }/.gitignore"
+        template "shared/Gemfile.tt", "#{ @strange_file }/Gemfile"
+        template "shared/Rakefile.tt", "#{ @strange_file }/Rakefile"
+        template "theme/README.md.tt", "#{ @strange_file }/README.md"
+        template "theme/dc_gem.gemspec.tt", "#{ @strange_file }/#{ @strange_file }.gemspec"
       end
 
       def create_config_files
-        empty_directory "#{@strange_file}/config"
-        template "config/routes.rb", "#{@strange_file}/config/routes.rb"
-        empty_directory "#{@strange_file}/config/locales"
-        template "config/locales/de.yml", "#{@strange_file}/config/locales/de.yml"
-        template "config/locales/en.yml", "#{@strange_file}/config/locales/en.yml"
+        empty_directory "#{ @strange_file }/config"
+        # template "shared/config/routes.rb", "#{ @strange_file }/config/routes.rb" # => mostyl don´t needed in Theme
+        empty_directory "#{ @strange_file }/config/locales"
+        template "shared/config/locales/de.yml", "#{ @strange_file }/config/locales/de.yml"
+        template "shared/config/locales/en.yml", "#{ @strange_file }/config/locales/en.yml"
       end
 
       #def install_rake
@@ -35,35 +34,44 @@ module Dresscode
       #end
 
       def create_app_dirs
-        empty_directory "#{@strange_file}/app"
-        empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}"
-        empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}"
-        empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}/views"
-        empty_directory "#{@strange_file}/app/controllers"
-        empty_directory "#{@strange_file}/app/helpers"
-        empty_directory "#{@strange_file}/app/models"
-        empty_directory "#{@strange_file}/app/views"
+        empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}"
+        empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{@strange_name}"
+        empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{@strange_name}/views"
+         # => mostyl don´t needed in Themes:
+        # empty_directory "#{@strange_file}/app"
+        # empty_directory "#{@strange_file}/app/controllers"
+        # empty_directory "#{@strange_file}/app/helpers"
+        # empty_directory "#{@strange_file}/app/models"
+        # empty_directory "#{@strange_file}/app/views"
       end
 
       def create_lib_files
-        empty_directory "#{@strange_file}/lib"
-        template 'lib/theme.rb.tt', "#{@strange_file}/lib/#{@strange_file}.rb"
-        template 'lib/theme_version.rb.tt', "#{@strange_file}/lib/#{@strange_file}/version.rb"
+        empty_directory "#{ @strange_file }/lib"
+        empty_directory "#{ @strange_file }/lib/#{ @strange_file }"
         
-        template 'lib/theme_hooks.rb.tt', "#{@strange_file}/lib/#{@strange_file}_hooks.rb"
-        template 'lib/modul_theme.rb.tt', "#{@strange_file}/lib/#{@strange_file}_theme.rb"
-        template 'lib/theme_modul.rb.tt', "#{@strange_file}/lib/#{@strange_file}_modul.rb"
+        template 'theme/lib/dc_gem.rb.tt', "#{ @strange_file }/lib/#{ @strange_file }.rb"
+        template 'theme/lib/dc_gem_module.rb.tt', "#{ @strange_file }/lib/#{ @strange_file }_module.rb"
         
-        template 'lib/theme__initializer.rb.tt', "#{@strange_file}/lib/theme_#{@strange_name}_initializer.rb"
+        template 'shared/lib/version.rb.tt', "#{ @strange_file }/lib/#{ @strange_file }/version.rb"
+        template 'shared/lib/routes.rb.tt', "#{ @strange_file }/lib/#{ @strange_file }/routes.rb"
+        template 'shared/lib/dc_gem_hooks.rb.tt', "#{ @strange_file }/lib/#{ @strange_file }_hooks.rb"
         
-        # => empty_directory "#{file_name}/lib/generators"
-        # => empty_directory "#{file_name}/lib/generators/#{file_name}"
-        # => template 'lib/install_generator.rb.tt', "#{file_name}/lib/generators/#{file_name}/install_generator.rb"
-        # => template 'lib/update_generator.rb.tt', "#{file_name}/lib/generators/#{file_name}/update_generator.rb"
-        # => empty_directory "#{file_name}/lib/generators/#{file_name}/templates"
-        # => template 'lib/templates/create_modul.rb.tt', "#{file_name}/lib/generators/#{file_name}/templates/create_#{file_name}.rb"
-        # => template 'lib/templates/update_modul.rb.tt', "#{file_name}/lib/generators/#{file_name}/templates/update_#{file_name}.rb"
-        # => template 'lib/templates/seed_modul.rb.tt', "#{file_name}/lib/generators/#{file_name}/templates/seed_#{file_name}.rb"
+        
+        template 'theme/lib/dc_gem_theme.rb.tt', "#{ @strange_file }/lib/#{ @strange_file }_theme.rb"
+        
+        template 'theme/lib/dc_gem_initializer.rb.tt', "#{ @strange_file }/lib/theme_#{ file_name }_initializer.rb"
+        
+         # => mostyl don´t needed in Themes:
+        # => empty_directory "#{ @strange_file }/lib/generators"
+        # => empty_directory "#{ @strange_file}/lib/generators/#{ @strange_file }"
+        # => template 'shared/lib/install_generator.rb.tt', "#{ @strange_file }/lib/generators/#{ @strange_file }/install_generator.rb"
+        # => empty_directory "#{ @strange_file }/db"
+        # => empty_directory "#{ @strange_file }/db/templates"
+        # => empty_directory "#{ @strange_file }/db/system_data"
+        # => empty_directory "#{ @strange_file }/db/sample_data"
+        # => template 'shared/lib/templates/create.rb.tt', "#{ @strange_file }/db/templates/create_#{ @strange_file }.rb"
+        # => template 'shared/lib/templates/seed.rb.tt', "#{ @strange_file }/db/system_data/#{ @strange_file }.rb"
+        # => template 'shared/lib/templates/seed.rb.tt', "#{ @strange_file }/db/sample_data/#{ @strange_file }.rb"
       end
 
 
@@ -72,139 +80,92 @@ module Dresscode
       end
       
       def create_full_theme
-        if yes?("Alle relevanten Dateien in neuen Theme-Ordner spiegeln?")
-          puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeSites::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
-                )
-          puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeSites::Engine.config.root}", "public"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}") 
-                )
-          puts("StrangeCore:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeCore::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
-                )
-          puts("StrangeUser:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeUser::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
-                )
-          DC::ModuleSupport::CmsModule.modules.each do |modul|
-            unless modul.core?
-                copy_modul_data( modul.modul_name )
-            end
-          end
+        puts("############################################################################################################")
+        puts("###   Q U E S T I O N   /   F R A G E    ###################################################################")
+        puts("############################################################################################################")
+        puts("[en] => Mirror all views and statics in Theme? .. not needed, just copy what you need!")
+        puts("[de] => alle views und daten in Theme spiegeln? .. Unnötig, kopieren Sie nur dateien die Sie ändern wollen!")
+        puts("############################################################################################################")
+        if yes?("Mirror all views and data in Theme?   [ y | n ]")
+          
+          mirror_the_full_views( @strange_name )
+          
         end
       end
       
-      def create_full_fineline_theme
-        if yes?("fineline-Theme-Ordner erstellen und alle relevanten Dateien hinein spiegeln?")
-          empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline"
-          empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline/views"
-          puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeSites::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
-                )
-          puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeSites::Engine.config.root}", "public"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline") 
-                )
-          puts("StrangeCore:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeCore::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
-                )
-          puts("StrangeUser:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeUser::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
-                )
-          DC::ModuleSupport::CmsModule.modules.each do |modul|
-            unless modul.core?
-                copy_modul_fineline_data( modul.modul_name )
-            end
-          end
+      def create_full_dresscode_theme
+        puts("############################################################################################################")
+        puts("###   Q U E S T I O N   /   F R A G E    ###################################################################")
+        puts("############################################################################################################")
+        puts("[en] => create 'dresscode' ThemeFolder and Mirror all needed views and statics (images, etc.)?")
+        puts("[de] => 'dresscode' Theme-Ordner erstellen und alle relevanten views and dateien (bilder, etc.) spiegeln?")
+        puts("############################################################################################################")
+        if yes?("create dresscode-Theme-Folder and mirror all data?   [ y | n ]")
+          empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/dresscode"
+          empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/dresscode/views"
+          
+          mirror_the_full_views( 'dresscode' )
+          
         end
       end
       
-      def create_full_default_theme
-        if yes?("Default-Theme-Ordner erstellen und alle relevanten Dateien hinein spiegeln?")
-          empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/default"
-          empty_directory "#{@strange_file}/#{StrangeThemes.config.themes_dir}/default/views"
-          puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeSites::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
-                )
-          puts("StrangeSites:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeSites::Engine.config.root}", "public"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default") 
-                )
-          puts("StrangeCore:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeCore::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
-                )
-          puts("StrangeUser:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{StrangeUser::Engine.config.root}", "app", "views"), 
-                File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
-                )
-          DC::ModuleSupport::CmsModule.modules.each do |modul|
-            unless modul.core?
-                copy_modul_default_data( modul.modul_name )
-            end
-          end
-        end
-      end
+      # => def create_full_default_theme
+      # =>   puts("############################################################################################################")
+      # =>   puts("###   Q U E S T I O N   /   F R A G E    ###################################################################")
+      # =>   puts("############################################################################################################")
+      # =>   puts("[en] => create 'default' ThemeFolder and Mirror all needed views and statics (images, etc.)?")
+      # =>   puts("[de] => 'default' Theme-Ordner erstellen und alle relevanten views and dateien (bilder, etc.) spiegeln?")
+      # =>   puts("############################################################################################################")
+      # =>   if yes?("create default-Theme-Folder and mirror all data?   [ y | n ]")
+      # =>     empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/default"
+      # =>     empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/default/views"
+      # =>     mirror_the_full_views( 'default' )
+      # =>   end
+      # => end
 
-      protected
+    protected
       
-      def copy_modul_data( modul )
-        puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
+      def mirror_the_full_views( da_path )
+          puts("DcCore:: mirror views in ThemeFolder: #{ da_path }/views")
+          DC::FileUtilz.mirror_files( 
+                File.join("#{DcCore::Engine.config.root}", "app", "views"), 
+                File.join("#{ @strange_file }/#{DcThemesStatic.config.themes_dir}/#{ da_path }", "views") 
+                )
+          puts("DcCore:: mirror statics in ThemeFolder: #{ da_path }")
+          DC::FileUtilz.mirror_files( 
+                File.join("#{DcCore::Engine.config.root}", "public"), 
+                File.join("#{ @strange_file }/#{DcThemesStatic.config.themes_dir}/#{ da_path }") 
+                )
+          puts("DcPages:: mirror views in ThemeFolder: #{ da_path }/views")
+          DC::FileUtilz.mirror_files( 
+                File.join("#{DcPages::Engine.config.root}", "app", "views"), 
+                File.join("#{ @strange_file }/#{DcThemesStatic.config.themes_dir}/#{ da_path }", "views") 
+                )
+          puts("DcUser:: mirror views in ThemeFolder: #{ da_path }/views")
+          DC::FileUtilz.mirror_files( 
+                File.join("#{DcUser::Engine.config.root}", "app", "views"), 
+                File.join("#{ @strange_file }/#{DcThemesStatic.config.themes_dir}/#{ da_path }", "views") 
+                )
+          DC::ModuleSupport::CmsModule.modules.each do |modul|
+            unless modul.core?
+                mirror_the_modul_views( modul.modul_name, da_path )
+            end
+          end
+      end
+      
+      def mirror_the_modul_views( modul, da_path )
+        puts("#{modul.gsub(/Dc/, '')}:: mirror views in ThemeFolder: #{ da_path }/views")
         DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
-              File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}", "views") 
+              File.join("#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{ da_path }", "views") 
               )
-        puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
+        puts("#{modul.gsub(/Dc/, '')}:: mirror statics in ThemeFolder: #{ da_path }")
         DC::FileUtilz.mirror_files( 
               File.join("#{modul.constantize::Engine.config.root}", "public"), 
-              File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/#{@strange_name}")
+              File.join("#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{ da_path }")
               )
       end
       
-      def copy_modul_default_data( modul )
-        puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-        DC::FileUtilz.mirror_files( 
-              File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
-              File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default", "views") 
-              )
-        puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-        DC::FileUtilz.mirror_files( 
-              File.join("#{modul.constantize::Engine.config.root}", "public"), 
-              File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/default")
-              )
-      end
-      
-      def copy_modul_fineline_data( modul )
-        puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-        DC::FileUtilz.mirror_files( 
-              File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
-              File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline", "views") 
-              )
-        puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-        DC::FileUtilz.mirror_files( 
-              File.join("#{modul.constantize::Engine.config.root}", "public"), 
-              File.join("#{@strange_file}/#{StrangeThemes.config.themes_dir}/fineline")
-              )
-      end
 
       def current_locale
         I18n.locale.to_s
