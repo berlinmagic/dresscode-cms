@@ -1,6 +1,0 @@
-# encoding: utf-8
-class <%= @strange_class %>Theme < DcThemesStatic::GemedThemes::ThemeListener
-  
-  # => your_theme_stuff
-
-end
