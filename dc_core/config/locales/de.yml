@@ -197,6 +197,9 @@ de:
           file_types:
               image: "Bild"
               data: "Datei"
+          flash:
+              create_success: "Datei wurde erfolgreich erstellt."
+              create_error: "Fehler, Datei konnte nicht erstellt werden!"
       core:
           bla: "Bla .."
       prefs: "Einstellungen"

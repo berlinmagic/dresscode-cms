@@ -32,18 +32,24 @@ module DcCore
     def dresscode_pipe_routes
       
       namespace :pipe do
-        match '/script/library/:script.:format' => "scriptz#library"
-        match '/script/plugin/:script.:format' => "scriptz#plugin"
-        match '/script/public/:theme.:format' => "scriptz#public"
-        match '/script/dc_libs.:format' => "scriptz#dc_js"
-        match '/script/dtheme.:format' => "scriptz#dtheme"
+        # = J A V A S C R I P T S
+        match '/script/library/:script.:format'           => "scriptz#library"
+        match '/script/plugin/:script.:format'            => "scriptz#plugin"
         
-        match '/styles/library/:style.:format' => "scriptz#library"
-        match '/styles/plugin/:style.:format' => "scriptz#plugin"
-        match '/styles/public/:theme.:format' => 'stylez#public'
-        match '/styles/dc/libs.:format' => 'stylez#dc_style'
-        match '/styles/dynamic/template/tl_:id.:format' => 'stylez#dynamic_template'
-        match '/styles/dynamic/:style.:format' => 'stylez#dynamic_dc_style'
+        match '/script/public/:theme.:format'             => "scriptz#public"
+        match '/script/dc_libs.:format'                   => "scriptz#dc_js"
+        
+        match '/script/dtheme.:format'                    => "scriptz#dtheme"
+        
+        # = S T Y L E S H E E T S
+        match '/styles/library/:style.:format'            => "stylez#library"
+        match '/styles/plugin/:style.:format'             => "stylez#plugin"
+        
+        match '/styles/public/:theme.:format'             => 'stylez#public'
+        match '/styles/dc/libs.:format'                   => 'stylez#dc_style'
+        
+        match '/styles/dynamic/template/tl_:id.:format'   => 'stylez#dynamic_template'
+        match '/styles/dynamic/:style.:format'            => 'stylez#dynamic_dc_style'
       end
       
     end

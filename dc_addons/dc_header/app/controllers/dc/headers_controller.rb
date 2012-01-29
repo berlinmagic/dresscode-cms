@@ -46,19 +46,26 @@ class Dc::HeadersController < Dc::BaseController
     @data_file = DataFile.new( :file => params[:file] )
     if @data_file.save
       @attachment = Attachment.create!( :target_type => 'Header', :target_id => @header.id, :data_file_id => @data_file.id )
-      redirect_to( crop_pic_dcr_header_path( @header, @attachment ), :notice => 'Datei wurde erstellt.' )
+      redirect_to( crop_pic_dcr_header_path( @header, @attachment ), :notice => I18n.t("dc.data_files.flash.create_success") )
     else
-      redirect_to( dcr_header_path( @header ), :alert => 'Fehler! .. Datei wurde nicht erstellt!' )
+      redirect_to( dcr_header_path( @header ), :alert => I18n.t("dc.data_files.flash.create_error") )
     end
   end
   
   def crop_pic
     @header = Header.find( params[:id] )
     @attachment = Attachment.find( params[:pic] )
+    @dc_full_view = true
   end
   
   def crop_up
-    redirect_to( dcr_header_path( @header ), :alert => 'Fehler! .. Funktion nicht fertig !' )
+    @header = Header.find( params[:id] )
+    @attachment = Attachment.find( params[:pic] )
+    if @attachment.update_attributes( params[:attachment] )
+      redirect_to( dcr_header_path( @header ), :notice => I18n.t("dc.headers.flash.crop_success") )
+    else
+      redirect_to( dcr_header_path( @header ), :alert => I18n.t("dc.headers.flash.crop_error") )
+    end
   end
   
 end

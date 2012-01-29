@@ -42,7 +42,7 @@ class Pipe::StylezController < ApplicationController
     cache_headers( DC::Config[:library_ttl].to_i )
     respond_with_etag( [@style, DC::Config[:library_fresh]] ) do
       respond_to do |format|
-        format.js { render :template => "pipe/stylez/app/load_lib" }
+        format.css { render :template => "pipe/stylez/app/load_lib" }
       end
     end
   end
@@ -52,7 +52,7 @@ class Pipe::StylezController < ApplicationController
     cache_headers( DC::Config[:library_ttl].to_i )
     respond_with_etag( [@style, DC::Config[:library_fresh]] ) do
       respond_to do |format|
-        format.js { render :template => "pipe/stylez/app/load_plugin" }
+        format.css { render :template => "pipe/stylez/app/load_plugin" }
       end
     end
   end

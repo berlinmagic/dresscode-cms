@@ -54,8 +54,16 @@
 		<div class="dc_wbox form">
 		
 			<div class="fl_box_210">
-				<% if att.data_file.image %>
-					<%= image_tag( att.data_file.file.thumb("200x150>").url() ) %>
+				<% if att.data_file && att.data_file.image %>
+					<% if att.file_cropping %>
+						
+						<%= image_tag( att.data_file.file.thumb(att.file_cropping).thumb("200x150>").url() ) %>
+					
+					<% else %>
+					
+						<%= image_tag( att.data_file.file.thumb("200x150>").url() ) %>
+						
+					<% end %>
 				<% else %>
 					<p>Achtung, kein Bild!</p>
 				<% end %>

@@ -1,31 +1,44 @@
 <%= piped_js_plugins('jcrop') %>
 <%= piped_css_plugins('jcrop') %>
+<% linkstil = "" %>
+<% divstil = "" %>
+<% stdstil = 'display: block; padding: 0; margin: 0; ' %>
 
-<% content_for :dc_head do %>
-	<div class="fl_box_470">
-		<h1><%= dc_admin_head_icon( 49 ) %> <%= t("dc.headers.headline").downcase %></h1>
-	</div>
-	<div class="fl_box_470 rtext">
-		<select id="header_chooser">
-			<% Header.all.each do |head| %>
-				<option value="<%= head.id %>"><%= head.name %></option>
+<% linkstil += "border-top:dashed 1px #999; border-bottom:dashed 1px #999;" %>
+<% divstil += "height: #{ @header.height }px; position:relative; border:0;" %>
+
+
+<div style="<%= linkstil %>">
+	<div class="prev_box" style="<%= divstil %>">
+		<div style="width:<%= @header.width %>px;height:<%= @header.height %>px; overflow:hidden; position:absolute; left: 50%; top: 0; margin-left: -<%= @header.width / 2 %>px;">
+			
+			<% if @attachment && @attachment.data_file && @attachment.data_file.image %>
+					<%= image_tag( @attachment.data_file.file.thumb("#{@header.width}x").url, :id => 'preview' ) %>
+			<% else %>
+					<p>Achtung, kein Bild!</p>
 			<% end %>
-		</select>
+				
+		</div>
 	</div>
-<% end %>
+</div>
 
+
+
+
+<div class="container_48">
+	
+<div class="dc_admin_content">
 <div class="dc_box">
 <%= form_tag crop_up_dc_header_path( @header, @attachment ), :multipart => true do -%>
 
-	<div class="dc_wbox head">
-		<h2><%= t("dc.headers.crop_pic") %></h2>
-		<div class="clearfix"></div>
-	</div>
+	<%= hidden_field_tag 'attachment[file_cropping]' %>
+	<%= hidden_field_tag 'attachment[file_ratio]', ( @header.width.to_f / @header.height.to_f ) %>
+
 	<div class="dc_wbox form">
 		
 		<div class="dc_preference_line">
 			<% if @attachment && @attachment.data_file && @attachment.data_file.image %>
-					<%= image_tag( @attachment.data_file.file.thumb("600x250>").url() ) %>
+					<%= image_tag( @attachment.data_file.file.thumb("830x").url, :id => 'cropbox' ) %>
 			<% else %>
 					<p>Achtung, kein Bild!</p>
 			<% end %>
@@ -34,13 +47,27 @@
 		
 		<div class="dc_preference_line">
 			<div class="fl_box_210">
-				Name:
+				Titel:
 			</div>
 			<div class="fl_box_210">
-				<%= text_field_tag 'attachment[file]' %>
+				<%= text_field_tag 'attachment[title]', @attachment.title %>
 			</div>
 			<div class="clearfix"></div>
 		</div>
+		<div class="clearfix"></div>
+		
+		<div class="dc_preference_line">
+			<div class="fl_box_210">
+				Beschreibung:
+			</div>
+			<div class="fl_box_210">
+				<%= text_area_tag 'attachment[description]', @attachment.description %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		
+		
 	
 		
 		
@@ -54,9 +81,46 @@
 	
 <% end %>
 </div>
+<div class="clearfix"></div>
+</div>
+</div>
 
 
+<% pic_width = @attachment.data_file.file.width %>
+<% pic_height = @attachment.data_file.file.height %>
 
+<script language="Javascript">
+
+function showPreview(coords)
+{
+  var aspect_ratio = <%= pic_width %> / <%= pic_height %>;
+  var scale = <%= 1.0 * pic_width / 830 %>;
+  var crop_str = Math.round(coords.w * scale) + 'x' + Math.round(coords.h * scale) +
+           '+' + Math.round(coords.x * scale) + '+' + Math.round(coords.y * scale);
+  $('#attachment_file_cropping').val(crop_str);
+
+  var rx = <%= @header.width %> / coords.w ;
+  var ry = <%= @header.height %> / coords.h;
+  $('#preview').css({
+    width: Math.round(rx * <%= 830 %>) + 'px',
+    height: Math.round(ry * <%= 830 * pic_height / pic_width %>) + 'px',
+    marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+    marginTop: '-' + Math.round(ry * coords.y) + 'px'
+  });
+}
+
+$(function() {
+  $('#cropbox').Jcrop({
+      onSelect: showPreview,
+      onChange: showPreview,
+      setSelect:   [ 0, 0, 240, 240 ],
+      aspectRatio: <%= @header.width %>/<%= @header.height %>
+    });
+});
+
+</script>
 
 <%= render 'sidebar' %>
+
+
 

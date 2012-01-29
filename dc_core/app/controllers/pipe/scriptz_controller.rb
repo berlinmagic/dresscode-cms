@@ -41,7 +41,7 @@ class Pipe::ScriptzController < ApplicationController
     cache_headers( DC::Config[:library_ttl].to_i )
     respond_with_etag( [@script, DC::Config[:library_fresh]] ) do
       respond_to do |format|
-        format.js { render :template => "pipe/scriptz/app/lib_loader" }
+        format.js { render :template => "pipe/scriptz/app/load_libs" }
       end
     end
   end
@@ -51,7 +51,7 @@ class Pipe::ScriptzController < ApplicationController
     cache_headers( DC::Config[:library_ttl].to_i )
     respond_with_etag( [@script, DC::Config[:library_fresh]] ) do
       respond_to do |format|
-        format.js { render :template => "pipe/scriptz/app/lib_loader" }
+        format.js { render :template => "pipe/scriptz/app/load_plugins" }
       end
     end
   end

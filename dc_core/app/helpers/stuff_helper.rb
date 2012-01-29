@@ -84,10 +84,10 @@ module StuffHelper
   end
   
   def piped_css_lib(*args)
-    raw( javascript_include_tag("/pipe/styles/library/#{ args.join('_') }") )
+    raw( stylesheet_link_tag("/pipe/styles/library/#{ args.join('_') }") )
   end
   def piped_css_plugins(*args)
-    raw( javascript_include_tag("/pipe/styles/plugin/#{ args.join('_') }") )
+    raw( stylesheet_link_tag("/pipe/styles/plugin/#{ args.join('_') }") )
   end
   
   
