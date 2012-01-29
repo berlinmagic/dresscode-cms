@@ -20,6 +20,8 @@
 	
 	gem 'dc_contactform', :path => '../dresscode_31/dc_addons/dc_contactform'
 	
+	gem 'dc_header', :path => '../dresscode_31/dc_addons/dc_header'
+	
 
 ## Generators:
 
