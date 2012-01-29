@@ -1,0 +1,7 @@
+<% if @scripts %>
+	<% @scripts.each do |script| %>
+<%= raw( render("pipe/scriptz/plugins/#{ script }") ) %>
+	<% end %>
+<% else %>
+<%= raw( render("pipe/scriptz/plugins/#{ @script }") ) %>
+<% end %>

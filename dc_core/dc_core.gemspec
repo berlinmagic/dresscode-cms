@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   
   # => Dragonfly to handle Images & Uploads generelly
   s.add_dependency( 'rack-cache',         '~> 1.1' )
-  s.add_dependency( 'dragonfly',          '0.9.10' )
+  s.add_dependency( 'dragonfly',          '~> 0.9.10' )
   
   # => rMagick could be striped out if image_processors get translated to ImageMagick
   # => s.add_dependency( 'dragonfly',          '0.9.5' )
@@ -30,10 +30,10 @@ Gem::Specification.new do |s|
   # => s.add_dependency( 'dragonfly-rmagick',  '~> 0.0.33' )
   
   # => Cells may be replaced by apotomo / boxes
-  s.add_dependency( 'cells',              '~> 3.6.5' ) ## eher in pages ??
+  s.add_dependency( 'cells',              '~> 3.8.0' ) ## maybe moved to pages ?
+  # => s.add_dependency( 'apotomo',              '~> 1.2.2' ) # maybe testet
   
   
-  
-  # => s.add_dependency( 'dc_hook_support',            '~> 0.0.1' ) .. now included again
+  # => s.add_dependency( 'dc_hook_support',            '~> 0.0.1' ) .. included in core again !
   
 end

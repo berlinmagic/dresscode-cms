@@ -79,6 +79,16 @@ module StuffHelper
   def piped_js_lib(*args)
     raw( javascript_include_tag("/pipe/script/library/#{ args.join('_') }") )
   end
+  def piped_js_plugins(*args)
+    raw( javascript_include_tag("/pipe/script/plugin/#{ args.join('_') }") )
+  end
+  
+  def piped_css_lib(*args)
+    raw( javascript_include_tag("/pipe/styles/library/#{ args.join('_') }") )
+  end
+  def piped_css_plugins(*args)
+    raw( javascript_include_tag("/pipe/styles/plugin/#{ args.join('_') }") )
+  end
   
   
   # Render error messages for the given objects. The :message and :header_message options are allowed.

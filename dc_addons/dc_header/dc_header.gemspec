@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.name                    =   "dc_header"
   s.rubyforge_project       =   "dc_header"
 
-  s.files                   =   Dir['app/**/*', 'config/**/*', 'db/**/*', 'lib/**/*']
+  s.files                   =   Dir['app/**/*', 'config/**/*', 'db/**/*', 'lib/**/*', 'public/**/*']
   s.require_path            =   'lib'
   s.requirements            <<  'none'
 

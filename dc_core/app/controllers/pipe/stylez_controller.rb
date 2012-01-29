@@ -11,6 +11,8 @@ class Pipe::StylezController < ApplicationController
   caches_page :library,           :if => :do_page_cache?
   caches_page :dynamic_template,  :if => :do_page_cache?
   caches_page :dynamic_dc_style,  :if => :do_page_cache?
+  caches_page :library,           :if => :do_page_cache?
+  caches_page :plugin,            :if => :do_page_cache?
   
   # Public styles named by theme, so can be cached 
   def public
@@ -35,7 +37,24 @@ class Pipe::StylezController < ApplicationController
   
   # Librarys .. to load and compress single or bundled style (eg. for fallback)
   def library
-    
+    @style = params[:style]
+    @styles = @style.split('_')
+    cache_headers( DC::Config[:library_ttl].to_i )
+    respond_with_etag( [@style, DC::Config[:library_fresh]] ) do
+      respond_to do |format|
+        format.js { render :template => "pipe/stylez/app/load_lib" }
+      end
+    end
+  end
+  def plugin
+    @style = params[:style]
+    @styles = @style.split('_')
+    cache_headers( DC::Config[:library_ttl].to_i )
+    respond_with_etag( [@style, DC::Config[:library_fresh]] ) do
+      respond_to do |format|
+        format.js { render :template => "pipe/stylez/app/load_plugin" }
+      end
+    end
   end
   
   

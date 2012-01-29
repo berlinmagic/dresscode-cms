@@ -23,12 +23,7 @@ module DcCore
           get :data_only
         end
       end
-      # => match '/locale/set' => 'locale#set'
-      # => match '/configuration/:config/:name' => 'settings#show_config'
-      match '/dynamic_styles.:format' => "pipe#dynamic_style", :to_style => 'seite'
-      match '/template_styles/tl_:id.:format' => "pipe#template_style"
-      match '/dynamic_script/:script.:format' => "pipe#dynamic_script"
-      match '/dynamic_script/lib/:script.:format' => "pipe#dynamic_script_lib"
+      
       # => root :to => 'base#dashboard'
       root :to => 'pages#index'
       
@@ -38,10 +33,13 @@ module DcCore
       
       namespace :pipe do
         match '/script/library/:script.:format' => "scriptz#library"
+        match '/script/plugin/:script.:format' => "scriptz#plugin"
         match '/script/public/:theme.:format' => "scriptz#public"
         match '/script/dc_libs.:format' => "scriptz#dc_js"
         match '/script/dtheme.:format' => "scriptz#dtheme"
-    
+        
+        match '/styles/library/:style.:format' => "scriptz#library"
+        match '/styles/plugin/:style.:format' => "scriptz#plugin"
         match '/styles/public/:theme.:format' => 'stylez#public'
         match '/styles/dc/libs.:format' => 'stylez#dc_style'
         match '/styles/dynamic/template/tl_:id.:format' => 'stylez#dynamic_template'

@@ -45,6 +45,16 @@ class Pipe::ScriptzController < ApplicationController
       end
     end
   end
+  def plugin
+    @script = params[:script]
+    @scripts = @script.split('_')
+    cache_headers( DC::Config[:library_ttl].to_i )
+    respond_with_etag( [@script, DC::Config[:library_fresh]] ) do
+      respond_to do |format|
+        format.js { render :template => "pipe/scriptz/app/lib_loader" }
+      end
+    end
+  end
   
   
   # scripts for dynamic-themes:

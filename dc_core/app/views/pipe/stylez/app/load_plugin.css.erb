@@ -1,0 +1,7 @@
+<% if @styles %>
+	<% @styles.each do |style| %>
+<%= raw( render("pipe/stylez/plugins/#{ style }") ) %>
+	<% end %>
+<% else %>
+<%= raw( render("pipe/stylez/plugins/#{ @style }") ) %>
+<% end %>
