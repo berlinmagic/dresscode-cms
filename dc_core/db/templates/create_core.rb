@@ -53,12 +53,22 @@ class CreateCore < ActiveRecord::Migration
     create_table :attachments, :force => true do |t|
       t.references  :target, :polymorphic => true
       t.references  :data_file
+      
+      t.boolean     :primary,              :default => false
+      
+      t.string      :title
+      t.string      :description
+      
+      t.string      :file_cropping
+      t.float       :file_ratio
+      
       t.integer     :position
       t.timestamps
     end
     add_index :attachments, [:target_type, :target_id]
     add_index :attachments, :data_file_id
     add_index :attachments, :position
+    add_index :attachments, :primary
     
   end
 

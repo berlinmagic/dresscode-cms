@@ -39,6 +39,10 @@ module IconHelper
     dc_icon( :icon => icon, :size => 32, :color => 'hell' )
   end
   
+  def dc_sidebar_icon( icon )
+    dc_icon( :icon => icon, :size => 12, :color => 'dunkel' )
+  end
+  
   def dc_subfooter_icon( icon )
     dc_icon( :icon => icon, :size => 18, :color => 'hell' )
   end

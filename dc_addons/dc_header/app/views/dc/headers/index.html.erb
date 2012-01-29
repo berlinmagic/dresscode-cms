@@ -1,0 +1,86 @@
+<% content_for :dc_head do %>
+	
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 69 ) %> <%= t("dc.headers.headline").downcase %></h1>
+	</div>
+	
+	<div class="fl_box_470">
+		
+	</div>
+	
+<% end %>
+
+
+<div class="dc_box">
+	<div class="dc_table_head">
+		
+		<div class="grid_1">
+			&nbsp;
+		</div>
+		
+		<div class="fl_box_110">
+			Name
+		</div>
+		<div class="fl_box_230">
+			Von
+		</div>
+		<div class="fl_box_110">
+			Typ
+		</div>
+		<div class="grid_2">
+			&nbsp;
+		</div>
+		<div class="fl_box_210">
+			Betreff
+		</div>
+		
+		<div class="clearfix"></div>
+	</div>
+	
+	<% @headers.each do |header| %>
+		<div class="dc_table_row" id="<%= dom_id(header)%>">
+			<div class="row_head">
+				
+				<div class="grid_1">
+					&nbsp;
+				</div>
+				
+				<div class="fl_box_110">
+					<%= header.name %>
+				</div>
+				<div class="fl_box_230">
+					&nbsp;
+				</div>
+				<div class="fl_box_110">
+					Kontakt
+				</div>
+				<div class="grid_2">
+					&nbsp;
+				</div>
+				<div class="fl_box_210">
+					&nbsp;
+				</div>
+				
+				<div class="fl_box_110 rfloat rtext">
+					<% if admin_check %>
+						<%= link_to dc_icon( :icon => 29 ), [:dcr, header], :title => 'Header anzeigen' %>
+						<% unless header.system_stuff %>
+							&nbsp;
+							<%= link_to dc_icon( :icon => 20 ), [:dc, header], :confirm => 'Header wirklich endgültig löschen?', :method => :delete %>
+						<% end %>
+					<% else %>
+						&nbsp;
+					<% end %>
+				</div>
+				
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+</div>
+
+<%= render 'sidebar' %>
+
+

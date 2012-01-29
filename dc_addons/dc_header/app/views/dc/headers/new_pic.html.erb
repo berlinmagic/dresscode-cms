@@ -1,0 +1,50 @@
+<% content_for :dc_head do %>
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 49 ) %> <%= t("dc.headers.headline").downcase %></h1>
+	</div>
+	<div class="fl_box_470 rtext">
+		<select id="header_chooser">
+			<% Header.all.each do |head| %>
+				<option value="<%= head.id %>"><%= head.name %></option>
+			<% end %>
+		</select>
+	</div>
+<% end %>
+
+<div class="dc_box">
+<%= form_tag new_pic_up_dc_header_path( @header ), :multipart => true do -%>
+
+	<div class="dc_wbox head">
+		<h2><%= t("dc.headers.new") %></h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
+		
+		<div class="dc_preference_line">
+			<div class="fl_box_210">
+				File:
+			</div>
+			<div class="fl_box_210">
+				<%= file_field_tag :file %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	
+		
+		
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="dc_wbox buttons">
+		<%= submit_tag %>
+		<div class="clearfix"></div>
+	</div>
+	
+<% end %>
+</div>
+
+
+
+
+<%= render 'sidebar' %>
+

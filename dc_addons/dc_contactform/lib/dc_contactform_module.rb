@@ -1,10 +1,18 @@
 # encoding: utf-8
 class DcContactformModule < DC::ModuleSupport::Listener
   
-  core false
+  install true
   
-  install false
+  # => core false        		=>  default:  false     ...     Modul ist ein Core-Modul
+  # => theme false        		=>  default:  false     ...     Modul ist ein Theme
+
+  # => install true        		=>  default:  false     ...     Modul ist installierbar
   
-  update true
+  # => update true        		=>  default:  false     ...     Modul ist updatebar
+
+  # => mirror_views true        =>  default:  false     ...     Spiegle Modul-views-Ordner in App-views-Ordner
+  # => mirror_theme true        =>  default:  false     ...     Spiegle Modul-public-Ordner in Default-Theme
+  # => mirror_public true       =>  default:  true      ...     Spiegle Modul-public-Ordner in App-public-Ordner
+  
   
 end

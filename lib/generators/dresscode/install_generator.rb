@@ -46,11 +46,18 @@ module Dresscode
       end
       
       def install_optional_modules
-        if !!defined?DcContactform
+        # => if !!defined?DcContactform
+        # =>   puts("***************************************************************************")
+        # =>   puts("ToDo::  ASK for:  Contactforms intallieren?")
+        # =>   puts("***************************************************************************")
+        # =>   generate("dc_contactform:install")
+        # => end
+        DC::ModuleSupport::CmsModule.modules.each do |modul|
           puts("***************************************************************************")
-          puts("ToDo::  ASK for:  Contactforms intallieren?")
-          puts("***************************************************************************")
-          generate("dc_contactform:install")
+          puts("dresscode-Module:: #{ modul.modul_name }")
+            unless modul.core? || modul.theme?
+                generate("#{ modul.gem_name }:install") if modul.installable?
+            end
         end
       end
       

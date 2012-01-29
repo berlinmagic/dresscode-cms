@@ -9,8 +9,8 @@ class DcHeaderHooks < HookSupport::HookListener
   # =>   				) '
   # => end
   
-  # => insert_after :dc_system_footer_after_pages do
-  # =>   "= render 'dc/your/partial/path' "
-  # => end
+  insert_after :dc_system_footer_after_pages do
+    "<%= render 'dc/headers/footer' %>"
+  end
   
 end

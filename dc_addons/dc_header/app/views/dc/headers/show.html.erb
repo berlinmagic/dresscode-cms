@@ -1,0 +1,82 @@
+<% content_for :dc_head do %>
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 49 ) %> <%= t("dc.headers.headline").downcase %></h1>
+	</div>
+	<div class="fl_box_470 rtext">
+		<select id="header_chooser">
+			<% Header.all.each do |head| %>
+				<option value="<%= head.id %>"><%= head.name %></option>
+			<% end %>
+		</select>
+	</div>
+<% end %>
+
+<div class="dc_box">
+	
+	<div class="dc_wbox head">
+		<h2><%= @header.name.downcase %></h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
+		
+		<div class="fl_box_210">
+			<%= t("dc.headers.form.name") %>
+		</div>
+		<div class="fl_box_210">
+			<%= @header.name %>
+		</div>
+		<div class="clearfix"></div>
+		
+		<div class="fl_box_210">
+			<%= t("dc.headers.form.header_type") %>
+		</div>
+		<div class="fl_box_210">
+			<%= @header.header_type %>
+		</div>
+		<div class="clearfix"></div>
+		
+		<div class="fl_box_210">
+			<%= t("dc.headers.header_size") %>
+		</div>
+		<div class="fl_box_210">
+			<%= @header.width %>&nbsp;&times;&nbsp;<%= @header.height %>&nbsp;Pixel
+		</div>
+		<div class="clearfix"></div>
+		
+		
+		
+		<div class="clearfix"></div>
+	</div>
+	
+	<% @header.attachments.norm.each do |att| %>
+		
+		<br/>
+		<div class="dc_wbox form">
+		
+			<div class="fl_box_210">
+				<% if att.data_file.image %>
+					<%= image_tag( att.data_file.file.thumb("200x150>").url() ) %>
+				<% else %>
+					<p>Achtung, kein Bild!</p>
+				<% end %>
+			</div>
+			<div class="fl_box_210">
+				<%= att.data_file.file_name %>
+				<br/>
+				<%= link_to 'crop', crop_pic_dcr_header_path( @header, att ) %>
+			</div>
+		
+		
+		
+			<div class="clearfix"></div>
+		</div>
+	
+	<% end %>
+
+</div>
+
+
+
+
+<%= render 'sidebar' %>
+

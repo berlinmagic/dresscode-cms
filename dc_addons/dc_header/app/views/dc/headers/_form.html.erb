@@ -1,0 +1,44 @@
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :name, t("dc.headers.form.name") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.text_field :name %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :header_type, t("dc.headers.form.header_type") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.select :header_type, options_for_select( Header::HEADER_TYPES.map { |c| [c,c] } ) %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :width, t("dc.headers.form.width") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.text_field :width %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :height, t("dc.headers.form.height") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.text_field :height %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	
+</div>
+		

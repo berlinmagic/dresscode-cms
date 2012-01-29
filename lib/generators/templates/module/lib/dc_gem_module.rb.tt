@@ -1,5 +1,5 @@
 # encoding: utf-8
-class <%= @strange_class %>Modul < DC::ModuleSupport::Listener
+class <%= @strange_class %>Module < DC::ModuleSupport::Listener
 
   install true
   

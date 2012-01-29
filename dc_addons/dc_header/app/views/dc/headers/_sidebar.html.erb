@@ -1,0 +1,32 @@
+<% content_for :sidebar do %>
+
+
+<%= dc_aside_box( t("dc.headers.headline"), "aktiv" ) do %>
+
+	<%= link_to dc_sidebar_icon(72)+' '+t("dc.headers.overview"), dcr_headers_path, :class => "#{controller.action_name == 'index' ? 'aktiv' : ' '}" %>
+	
+	<% Header.all.each do |head| %>
+		<%= link_to dc_sidebar_icon(69)+' '+head.name, dcr_header_path(head), :class => "#{'aktiv' if @header && @header == head }" %>
+	<% end %>
+		
+	<%= link_to dc_sidebar_icon(11)+' '+t("dc.headers.new"), new_dcr_header_path, :class => "#{controller.action_name == 'new' ? 'aktiv' : ' '}" %>
+	
+<% end %>
+
+
+<% if @header && controller.action_name != 'new' %>
+	<%= dc_aside_box( t("dc.headers.admin_box"), "aktiv" ) do %>
+		
+		<%= link_to 		dc_sidebar_icon(30)+' '+t("dc.headers.edit"), 
+							[:edit, :dcr, @header], 
+							:class => "#{controller.action_name == 'edit' ? 'aktiv' : ' '}" %>
+		
+		<%= link_to 		dc_sidebar_icon(90)+' '+t("dc.headers.new_header_pic"), 
+							new_pic_dcr_header_path(@header), 
+							:class => "#{controller.action_name == 'xxx' ? 'aktiv' : ' '}" %>
+		
+	<% end %>
+<% end %>
+
+
+<% end %>

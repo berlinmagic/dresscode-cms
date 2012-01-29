@@ -3,7 +3,7 @@
 <%= dc_aside_box( t("dc.configurations.core"), 'aktiv' ) do %>
 	<% @core_names.each do |set| %>
 		<%= link_to(
-						dc_icon( :icon => 54, :color => 'dunkel' ) + ' ' + t("dc.configurations.core_sets.#{set}"), 
+						dc_sidebar_icon( 54 ) + ' ' + t("dc.configurations.core_sets.#{set}"), 
 						view_dcr_settings_path( 'core', set ), 
 						:class => "#{'aktiv' if @name && @name == set.to_s}"
 					) %>

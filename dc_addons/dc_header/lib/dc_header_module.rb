@@ -1,5 +1,5 @@
 # encoding: utf-8
-class DcHeaderModul < DC::ModuleSupport::Listener
+class DcHeaderModule < DC::ModuleSupport::Listener
 
   install true
   

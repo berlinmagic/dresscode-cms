@@ -1,5 +1,24 @@
 # encoding: utf-8
 de:
 # =============================================   d r e s s c o d e - C M S   ============================================================ #
-  
+  dc:
+      headers:
+          headline: "Header"
+          header_size: "Größe"
+          overview: "alle Header"
+          new: "neuen Header erstellen"
+          edit: "Header bearbeiten"
+          crop_pic: "Bilder zuschneiden"
+          new_header_pic: "neues Bild hinzufügen"
+          admin_box: "Header anpassen"
+          form:
+              name: "Name"
+              header_type: "Header-Art"
+              width: "Breite"
+              height: "Höhe"
+          flash:
+              create_success: "Header wurde erfolgreich erstellt."
+              create_error: "Fehler, Header konnte nicht erstellt werden."
+              update_success: "Header wurde erfolgreich aktualisiert."
+              update_error: "Fehler, Header konnte nicht aktualisiert werden."
 # =============================================   d r e s s c o d e - C M S   ============================================================ #
