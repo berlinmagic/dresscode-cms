@@ -47,6 +47,7 @@ module Dresscode
         empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}"
         empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{@strange_name}"
         empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{@strange_name}/views"
+        empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{@strange_name}/cells"
          # => mostyl don´t needed in Themes:
         # empty_directory "#{@strange_file}/app"
         # empty_directory "#{@strange_file}/app/controllers"
@@ -113,25 +114,13 @@ module Dresscode
         if yes?("create dresscode-Theme-Folder and mirror all data?   [ y | n ] :")
           empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/dresscode"
           empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/dresscode/views"
+          empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/dresscode/cells"
           
           mirror_the_full_views( 'dresscode' )
           
         end
       end
       
-      # => def create_full_default_theme
-      # =>   puts("############################################################################################################")
-      # =>   puts("###   Q U E S T I O N   /   F R A G E    ###################################################################")
-      # =>   puts("############################################################################################################")
-      # =>   puts("[en] => create 'default' ThemeFolder and Mirror all needed views and statics (images, etc.)?")
-      # =>   puts("[de] => 'default' Theme-Ordner erstellen und alle relevanten views and dateien (bilder, etc.) spiegeln?")
-      # =>   puts("############################################################################################################")
-      # =>   if yes?("create default-Theme-Folder and mirror all data?   [ y | n ] :")
-      # =>     empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/default"
-      # =>     empty_directory "#{@strange_file}/#{DcThemesStatic.config.themes_dir}/default/views"
-      # =>     mirror_the_full_views( 'default' )
-      # =>   end
-      # => end
       
       def end_desc
         puts("========================================================================================================")
@@ -182,6 +171,13 @@ module Dresscode
           DC::FileUtilz.mirror_files( 
                 File.join("#{modul.constantize::Engine.config.root}", "public"), 
                 File.join("#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{ da_path }")
+                )
+        end
+        if File.exists?( File.join("#{modul.constantize::Engine.config.root}", "app", "cells") )
+          puts("#{modul.gsub(/Dc/, '')}:: mirror cells in ThemeFolder: #{ da_path }/cells")
+          DC::FileUtilz.mirror_files( 
+                File.join("#{modul.constantize::Engine.config.root}", "app", "cells"), 
+                File.join("#{@strange_file}/#{DcThemesStatic.config.themes_dir}/#{ da_path }", "cells")
                 )
         end
       end

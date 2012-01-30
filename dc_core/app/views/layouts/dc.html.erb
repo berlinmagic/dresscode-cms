@@ -26,6 +26,7 @@
 	<%= javascript_include_tag "/pipe/script/dtheme" if go_dynamic %>
 	
 	<%= yield(:head) %>
+	<%= hook :js_stuff if @page %>
 </head>
 <body>
 <% if current_user %>

@@ -1,0 +1,21 @@
+<% if @header && @header.attachments && @header.attachments.count > 1 %>
+
+	<% if @header.header_type == 'slider' %>
+
+			<!-- X X X -->
+		
+	<% elsif @header.header_type == 'fader' %>
+	
+			<%= render_cell :header, :type_fader_js, :page => @page, :header => @header %>
+		
+	<% elsif @header.header_type == 'accordion' %>
+	
+			<%#= render_cell :header, :accordion_js, :page => @page, :header => @header %>
+				
+	<% elsif @header.header_type == 's3_slider' %>
+
+			<!-- X X X -->
+
+	<% end %>
+
+<% end %>

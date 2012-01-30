@@ -13,4 +13,12 @@ class DcHeaderHooks < HookSupport::HookListener
     "<%= render 'dc/headers/footer' %>"
   end
   
+  replace :dc_main_banner do
+    "<%= render_cell :header, :display, :page => @page %>"
+  end
+  
+  insert_after :js_stuff do
+    "<%= render_cell :header, :script, :page => @page %>"
+  end
+  
 end

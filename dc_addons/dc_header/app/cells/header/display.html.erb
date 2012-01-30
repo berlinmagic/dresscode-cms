@@ -1,0 +1,44 @@
+<% if @header %>
+<style type="text/css">
+
+	#dc_header { height: <%= @header.height - 30 %>px; }
+	/* #dc_header .container_48 { height: <%= @header.height - 30 %>px;} */
+
+</style>
+	
+	
+<% if @header.attachments.count > 1 %>
+
+
+	<% if @header.header_type == 'fader' %>
+	
+		<%= render_cell :header, :type_fader, :page => @page, :header => @header %>
+	
+	<% elsif @header.header_type == 'accordion' %>
+
+		<%#= render_cell :header, :accordion, :page => @page, :header => @header %>
+
+	<% end %>
+
+<% elsif @header.attachments.count == 1 %>
+
+<style>
+	#banner_pic_holder { 	position:absolute; 
+							width: <%= @header.width %>px; height: <%= @header.height %>px; 
+							left:50%; margin-left: -<%= (@header.width / 2).to_i %>px; top: 0; 
+							border: 0; text-align:center; display: block; z-index: 0;	}
+</style>
+
+	<div id="banner_pic_holder">
+		<% @header.attachments.each do |slider| %>
+			<% if slider.file_cropping %>
+				<%= image_tag slider.data_file.file.thumb(slider.file_cropping).thumb("#{@header.width}x#{@header.height}").url %>
+			<% else %>
+				<%= image_tag slider.data_file.file.thumb("#{@header.width}x#{@header.height}").url %>
+			<%end%>
+		<% end %>
+	</div>
+
+<% end %>
+
+<% end %>

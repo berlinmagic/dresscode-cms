@@ -1,0 +1,22 @@
+<%= piped_js_plugins('crossslide') %>
+
+<% javatext = '' %>
+<% javatext = "<script type='text/javascript'>
+  $(function() {
+    $('#banner_box').crossSlide({
+		fade: #{@header.changetime},
+		sleep: #{@header.staytime},
+		shuffle: #{@header.sort ? 'false' : 'true'},
+		doubleFade: true
+    }, [ // Bilder
+       " %>
+<% @header.attachments.each do |slider| %>
+	<% if slider.file_cropping %>
+		<% javatext +='{ src: "'+slider.data_file.file.thumb(slider.file_cropping).thumb("#{@header.width}x#{@header.height}").url()+'"}, ' %>
+	<% else %>
+		<% javatext +='{ src: "'+slider.data_file.file.thumb("#{@header.width}x#{@header.height}").url+'"}, ' %>
+	<% end %>
+<% end %>
+<% javatext +=']); });</script>' %>
+
+<%= raw( javatext ) %>

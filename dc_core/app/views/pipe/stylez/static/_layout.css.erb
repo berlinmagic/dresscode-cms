@@ -1,6 +1,6 @@
 #main_content.public { background: #ccc; padding: 5px 0 20px; }
 
-#dc_header { margin: 0; }
+#dc_header { margin: 0; z-index: 1;}
 
 #dcLOGO { margin: 5px 0; opacity: .85; display: block; }
 #dcLOGO:hover { opacity: 1.00; }
@@ -36,9 +36,9 @@
 
 #dc_header_nav li ul.sub_nav li  ul.sub_nav { display: none; }
 
-
+#dc_page { position: relative; z-index: 2; }
 #dc_page .container_48 { padding: 10px; <%= all_border_radius( '10px' ) %> background: #fff; border: 0; 
-		<%= box_shadow('0px -2px 1px 1px #555') %> }
+		<%= box_shadow('0px -2px 1px 1px #555') %> z-index: 3; }
 
 
 #the_headline { height: 120px; display: block; position: relative; }
