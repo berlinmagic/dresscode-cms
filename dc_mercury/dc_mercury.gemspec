@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency('rails',  ">= 3.1.3")
   s.add_dependency('paperclip')
   s.add_dependency('coffee-script')
-  s.add_dependency('dresscode',  ">= 0.0.1")
+  # => s.add_dependency('dresscode',  ">= 0.0.1")
   
 
 end

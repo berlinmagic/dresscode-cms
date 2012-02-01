@@ -1,6 +1,8 @@
 # encoding: utf-8
 class DcMercuryModule < DC::ModuleSupport::Listener
-
+  
+  core true
+  
   install true
   
   # => core false        		=>  default:  false     ...     Modul ist ein Core-Modul

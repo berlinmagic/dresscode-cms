@@ -11,7 +11,7 @@
 						<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
 							<% page_cell.page_contents.each do |page_content| %>
 								<% if (page_content.content_type == 'text') && !page_content.text_content.blank? %>
-									<div id="<%= page_content.dc_uid %>" class="page_content dc_editor-region" data-type="editable">
+									<div id="<%= page_content.dc_uid %>" class="page_content dc_mercury-region" data-type="editable">
 										<%= raw( page_content.text_content ) %>
 									</div>
 								<% else %>

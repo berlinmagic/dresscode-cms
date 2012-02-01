@@ -55,15 +55,24 @@ module DcThemesStatic
     end
     
   private
-  
+    
+    # Search for File in actual Theme-Path
     def asset_path_for(asset_url, asset_prefix, theme='default')
-      File.join(DcThemesStatic.all_theme_hash[theme]['theme'].to_s, asset_prefix, asset_url)
+      if DcThemesStatic.all_theme_hash[theme]
+        File.join(DcThemesStatic.all_theme_hash[theme]['theme'].to_s, asset_prefix, asset_url)
+      elsif DcThemesStatic.all_theme_hash[ DC::Config[:theme] ]
+        File.join(DcThemesStatic.all_theme_hash[ DC::Config[:theme] ]['theme'].to_s, asset_prefix, asset_url)
+      else
+        File.join(theme_path_for('default'), asset_prefix, asset_url)
+      end
     end
     
+    # Search for File in default Theme-Path
     def defaulft_asset_path_for(asset_url, asset_prefix)
       File.join(theme_path_for('default'), asset_prefix, params[:asset])
     end
     
+    # Search for File in App-Path
     def app_asset_path_for(asset_url, asset_prefix)
       File.join(Rails.root, 'public', asset_prefix, params[:asset])
     end
@@ -91,9 +100,9 @@ module DcThemesStatic
       elsif File.exists?(app)
         send_the_theme_file(app, mime_type)
       else
-        logger.info asset + "  .. not found !!!"
-        logger.info default + "  .. not found !!!"
-        logger.info app + "  .. not found !!!"
+        logger.info "#{ asset }  .. not found !!!"
+        logger.info "#{ default }  .. not found !!!"
+        logger.info "#{ app }  .. not found !!!"
         render :text => 'not found', :status => 404
       end
     end
@@ -106,9 +115,9 @@ module DcThemesStatic
       elsif File.exists?(app)
         send_with_instanz_check(app, mime_type.to_s)
       else
-        logger.info asset + "  .. not found !!!"
-        logger.info default + "  .. not found !!!"
-        logger.info app + "  .. not found !!!"
+        logger.info "#{ asset }  .. not found !!!"
+        logger.info "#{ default }  .. not found !!!"
+        logger.info "#{ app }  .. not found !!!"
         render :text => 'not found', :status => 404
       end
     end
@@ -136,6 +145,7 @@ module DcThemesStatic
     
     def send_the_theme_file(file, mime_type)
       ### Sends the file, header will be overiden by DcStaticCache
+      # cache_headers( DC::Config[:library_ttl].to_i )
       respond_with_etag( [ file, params[:theme] ] ) do
         send_file(    file, 
                       :type => mime_type.to_s, 

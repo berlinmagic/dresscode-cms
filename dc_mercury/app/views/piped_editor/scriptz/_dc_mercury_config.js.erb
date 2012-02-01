@@ -420,6 +420,17 @@ window.DcMercury = {
   // place to add or change functionality.
   onload: function() {
     //DcMercury.PageEditor.prototype.iframeSrc = function(url) { return '/testing'; }
+	
+	$(window).bind('dc_mercury:ready', function() {
+		var link = $('#dc_mercury_iframe').contents().find('#Mercury_edit_link');
+		DcMercury.saveURL = link.data('save-url');
+		link.hide();
+	});
+
+	$(window).bind('dc_mercury:saved', function() {
+		window.location = window.location.href.replace(/\/editor\//i, '/');
+	});
+	
   },
 
 };

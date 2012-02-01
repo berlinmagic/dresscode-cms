@@ -374,7 +374,7 @@ Showdown.converter = function() {
      */
     text = text.replace(/(\n\n[ ]{0,3}<!(--[^\r]*?--\s*)+>[ \t]*(?=\n{2,}))/g, hashElement);
 
-    // PHP and ASP-style processor instructions (<?...?> and <%...%>)
+    // PHP and ASP-style processor instructions (<?...?> and <%#...%>)
 
     /*
      text = text.replace(/
