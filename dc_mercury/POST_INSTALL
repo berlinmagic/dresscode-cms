@@ -1,0 +1,15 @@
++============================================================================+
+Congratulations, DcMercury was successfully installed in your app. Documentation
+and other useful info can be found at: https://github.com/jejacks0n/mercury
+
+Here's a post install checklist:
+
+* Setup the database for image processing (ActiveRecord only) by running:
+
+  rake dc_mercury_engine:install:migrations
+  rake db:migrate
+
+* Learn about, and make configuration adjustments in the dc_mercury.js file.
+
+* If installed, check out dc_mercury.html.erb and dc_mercury_overrides.css for more
+  customization info.

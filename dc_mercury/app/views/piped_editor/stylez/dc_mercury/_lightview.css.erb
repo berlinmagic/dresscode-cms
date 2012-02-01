@@ -1,0 +1,151 @@
+/*
+ * Lightview
+ *----------------------------------------------------------------------------*/
+.dc_mercury-lightview-overlay {
+  position: fixed;
+  z-index: 10030;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: none;
+  background: rgba(0, 0, 0, .65);
+}
+.dc_mercury-lightview {
+  position: fixed;
+  z-index: 10040;
+  top: 20px;
+  background: #000;
+  opacity: 0;
+  overflow: hidden;
+  display: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 40px rgba(0, 0, 0, .9);
+  box-shadow: 0 0 40px rgba(0, 0, 0, .9);
+  font: normal normal normal 12px/normal Helvetica, Tahoma, Arial, sans-serif;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #CCC;
+}
+.dc_mercury-lightview.loading {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.dc_mercury-lightview .dc_mercury-lightview-content {
+  padding: 10px 20px 20px;
+}
+.dc_mercury-lightview h1.dc_mercury-lightview-title {
+  margin: 0;
+  padding: 10px 20px 8px;
+  border-bottom: 1px solid #222;
+  color: #FFF;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-size: 10pt;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(100, 100, 100, .5);
+}
+.dc_mercury-lightview h1.dc_mercury-lightview-title a.dc_mercury-lightview-close {
+  float: right;
+  width: 32px;
+  height: 42px;
+  margin: -14px -20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.dc_mercury-lightview .dc_mercury-display-pane-container {
+  overflow: auto;
+  margin: -10px -20px 0;
+  padding: 20px 20px 10px;
+}
+.dc_mercury-lightview .dc_mercury-display-pane-container .dc_mercury-display-pane {
+  float: left;
+}
+.dc_mercury-lightview .dc_mercury-display-controls {
+  padding: 15px 0 0;
+  border-top: 1px solid #333;
+  text-align: right;
+}
+/*
+ * Forms
+ *----------------------------------------------------------------------------*/
+.dc_mercury-lightview form fieldset {
+  background: #111;
+  border: 1px solid #333;
+}
+.dc_mercury-lightview form fieldset.buttons {
+  background: none;
+  border: none;
+}
+.dc_mercury-lightview form select,
+.dc_mercury-lightview form input[type="text"],
+.dc_mercury-lightview form input[type="password"],
+.dc_mercury-lightview form textarea,
+.dc_mercury-lightview form input.text {
+  background: #444;
+  color: #FFF;
+  border: 2px solid #555;
+  -moz-box-shadow: inset 0 0 3px #000000;
+  -webkit-box-shadow: inset 0 0 3px #000000;
+  box-shadow: inset 0 0 3px #000000;
+}
+.dc_mercury-lightview form input[type="button"] {
+  border: 2px solid #555;
+  border-radius: 4px;
+  background: #222;
+  color: #FFF;
+}
+.dc_mercury-lightview hr {
+  border-color: #333;
+}
+/*
+ * Specific Lightviews
+ *----------------------------------------------------------------------------*/
+/* about dc_mercury */
+#dc_mercury_about {
+  width: 300px;
+  min-height: 100px;
+  font-size: 1.1em;
+  background-repeat: no-repeat;
+}
+#dc_mercury_about ul {
+  float: left;
+  list-style: none;
+  padding: 0;
+  margin: 118px 0 0 0;
+  width: 120px;
+  text-align: center;
+}
+#dc_mercury_about p {
+  margin: 0;
+  float: right;
+  width: 175px;
+}
+#dc_mercury_about a {
+  color: #09F;
+}
+#dc_mercury_about a:hover {
+  color: #FFF;
+}
+/* character */
+.dc_mercury-lightview #dc_mercury_character .character {
+  border: 1px solid #444;
+  background: #222;
+}
+.dc_mercury-lightview #dc_mercury_character .character:hover {
+  background: #555;
+  border: 1px solid #CCC;
+}
+/* table */
+.dc_mercury-lightview #dc_mercury_table #table_display {
+  background: #222;
+  border: 1px solid #444;
+  height: 301px;
+}
+.dc_mercury-lightview #dc_mercury_table #table_display td.selected {
+  background: #09F;
+}

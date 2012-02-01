@@ -1,0 +1,17 @@
+/*!
+ * DcMercury Editor is a Coffeescript and jQuery based WYSIWYG editor.  Documentation and other useful information can be
+ * found at https://github.com/jejacks0n/dc_mercury
+ *
+ * This file is intended to provide a standard way to override the CSS that comes default with DcMercury Editor, and
+ * includes an example button style, should you ever need to add new ones yourself.  Read the toolbar configuration in
+ * dc_mercury.js for more on how to add your own buttons to the toolbar.
+ */
+
+/* Disable text sizing in webkit (ipad/iphone etc -- should apply to dc_mercury only) */
+html { -webkit-text-size-adjust: none; }
+
+/* Button example */
+.dc_mercury-primary-toolbar .dc_mercury-inspector-button em,
+.dc_mercury-expander-button[data-button="inspector"] em {
+  background-image: url(/images/dc_mercury/toolbar/primary/inspectorpanel.png);
+}

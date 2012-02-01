@@ -1,0 +1,129 @@
+/*
+ * DcMercury Editor is a CoffeeScript and jQuery based WYSIWYG editor.  Documentation and other useful information can be
+ * found at https://github.com/jejacks0n/dc_mercury
+ *
+ * Supported browsers:
+ *   - Firefox 4+
+ *   - Chrome 10+
+ *   - Safari 5+
+ *
+ * Copyright (c) 2011 Jeremy Jackson
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+<%= raw( render( "piped_editor/scriptz/dc_mercury_config" ) ) %>
+/*
+ * Minimum jQuery requirements are 1.7
+ */
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/jquery17" ) ) %>
+/*
+ * You can include the Rails jQuery ujs script here to get some nicer behaviors in modals, panels and lightviews when
+ * using :remote => true within the contents rendered in them.
+*/
+<%#= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/ujs" ) ) %>
+/*
+ *
+ * If you want to override DcMercury functionality, you can do so in a custom file that binds to the dc_mercury:loaded event,
+ * or do so at the end of the current file (dc_mercury.js).  There's an example that will help you get started.
+*/
+<%#= raw( render( "piped_editor/scriptz/dc_mercury_overrides" ) ) %>
+/*
+ *
+ * Add all requires for the support libraries that integrate nicely with DcMercury Editor.
+ */
+<%#= raw( render( "piped_editor/scriptz/dc_mercury/support/history" ) ) %>
+/*
+ *
+ *  Require all the dependencies:
+ */
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/jqueryui1813c" ) ) %>
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/jqueryadditions" ) ) %>
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/jqueryhtmlClean" ) ) %>
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/liquidmetal" ) ) %>
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dependencies/showdown" ) ) %>
+/*
+ *
+ *
+ * Require DcMercury Editor itself.
+ */
+<%= raw( render( "piped_editor/scriptz/dc_mercury/dc_mercury" ) ) %>
+/*
+ *
+ *
+ *  Require all dc_mercury files
+ */
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/native_extensions") 				}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/page_editor") 					}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/history_buffer") 					}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/table_editor") 					}" ) %>
+
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/dialog") 							}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/palette") 						}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/select") 							}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/panel") 							}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/modal") 							}" ) %>
+
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/lightview") 						}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/statusbar") 						}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/toolbar") 						}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/toolbar.button") 					}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/toolbar.button_group") 			}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/toolbar.expander") 				}" ) %>
+
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/tooltip") 						}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/snippet") 						}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/snippet_toolbar") 				}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/region") 							}" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/uploader") 						}" ) %>
+
+
+<%= raw( "#{ load_da_source_dir("piped_editor/scriptz/dc_mercury/regions") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/regions/editable") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/regions/markupable") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/regions/snippetable") 			}" ) %>
+
+<%= raw( "#{ load_da_source_dir("piped_editor/scriptz/dc_mercury/dialogs") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/dialogs/backcolor") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/dialogs/forecolor") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/dialogs/formatblock") 			}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/dialogs/snippetpanel") 			}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/dialogs/style") 					}" ) %>
+
+<%= raw( "#{ load_da_source_dir("piped_editor/scriptz/dc_mercury/modals") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/modals/htmleditor") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/modals/insertcharacter") 			}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/modals/insertlink") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/modals/insertmedia") 				}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/modals/insertsnippet") 			}" ) %>
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/modals/inserttable") 				}" ) %>
+
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/finalize") 						}" ) %>
+/*
+ *
+ * Require any localizations you wish to support
+ * Example: es.locale, or fr.locale -- regional dialects are in each language file so never en_US for instance.
+ */
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/locales/de.locale") }" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/locales/it.locale") }" ) %>
+<%= raw( "#{ render("piped_editor/scriptz/dc_mercury/locales/es.locale") }" ) %>
+/*
+ *
+ * Add all requires for plugins that extend or change the behavior of DcMercury Editor.
+ */
+<%#= raw( "#{ render("piped_editor/scriptz/dc_mercury/plugins/save_as_xml/plugin") 				}" ) %>
+/*
+ *
+ */
+
+

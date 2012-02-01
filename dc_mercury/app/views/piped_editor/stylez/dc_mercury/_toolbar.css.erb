@@ -1,0 +1,304 @@
+/*
+ * Toolbar
+ *----------------------------------------------------------------------------*/
+.dc_mercury-toolbar-container {
+  user-select: none;
+  position: fixed;
+  z-index: 10010;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #E2E1E2;
+}
+.dc_mercury-toolbar {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background: #DDD;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(198,198,198)), color-stop(1, rgb(226,225,226)));
+  background-image: -moz-linear-gradient(center bottom, rgb(198,198,198) 0%, rgb(226,225,226) 100%);
+  border-bottom: 1px solid #727272;
+  cursor: default;
+}
+.dc_mercury-toolbar-button-container {
+  float: left;
+}
+.dc_mercury-toolbar-expander {
+  position: absolute;
+  display: none;
+  right: 0;
+  border-left: 1px solid #727272;
+}
+.dc_mercury-button,
+.dc_mercury-button-group,
+.dc_mercury-separator,
+.dc_mercury-line-separator {
+  display: block;
+  float: left;
+}
+.dc_mercury-separator,
+.dc_mercury-line-separator {
+  width: 1px;
+  border: 0;
+  margin: 0;
+}
+.dc_mercury-line-separator {
+  width: 1px;
+  background: #727272;
+}
+.dc_mercury-button em {
+  display: block;
+  font-style: normal;
+}
+.dc_mercury-expander {
+  padding: 5px 0;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+.dc_mercury-expander .dc_mercury-expander-button {
+  cursor: default;
+  white-space: nowrap;
+  padding: 0 20px 0 10px;
+}
+.dc_mercury-expander .dc_mercury-expander-button:hover {
+  background: #CCC;
+}
+.dc_mercury-expander .dc_mercury-expander-button em {
+  display: inline-block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.dc_mercury-expander .dc_mercury-expander-button span {
+  display: inline-block;
+  line-height: 20px;
+}
+.disabled .dc_mercury-button,
+.dc_mercury-button.disabled {
+  opacity: 0.33;
+}
+/*
+ * Toolbar: Primary Toolbar
+ *----------------------------------------------------------------------------*/
+.dc_mercury-primary-toolbar {
+  position: relative;
+  height: 58px;
+  overflow: hidden;
+  text-shadow: #EEE 0 1px 0;
+}
+.dc_mercury-primary-toolbar .dc_mercury-button {
+  display: inline-block;
+  height: 58px;
+  margin-bottom: 20px;
+  min-width: 55px;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: Helvetica, Tahoma, Arial, sans-serif;
+}
+.dc_mercury-primary-toolbar .dc_mercury-button.pressed {
+  background-repeat: no-repeat;
+}
+.dc_mercury-primary-toolbar .dc_mercury-button em {
+  margin: 0 -5px;
+  height: 15px;
+  padding-top: 41px;
+  background-repeat: no-repeat;
+  background-position: 50% 7px;
+  font-size: 8.5pt;
+  line-height: 15px;
+  color: #222;
+}
+.dc_mercury-primary-toolbar .dc_mercury-button.active em {
+  background-position: 51% 8px;
+}
+
+.dc_mercury-primary-toolbar .dc_mercury-separator,
+.dc_mercury-primary-toolbar .dc_mercury-line-separator {
+  display: inline-block;
+  width: 1px;
+  height: 50px;
+  margin: 5px 20px 28px;
+}
+.dc_mercury-primary-toolbar .dc_mercury-toolbar-button-container {
+  white-space: nowrap;
+  padding-right: 10px;
+}
+.dc_mercury-primary-toolbar .dc_mercury-toolbar-expander {
+  width: 12px;
+  height: 58px;
+  background-color: rgba(0, 0, 0, .2);
+  background-repeat: no-repeat;
+}
+/*
+ * Toolbar: Editable Region Toolbar
+ *----------------------------------------------------------------------------*/
+.dc_mercury-editable-toolbar {
+  padding: 3px 13px 1px 10px;
+  border-top: 1px solid #E2E1E2;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(198,198,198)), color-stop(1, rgb(210,210,209)));
+  background-image: -moz-linear-gradient(center bottom, rgb(198,198,198) 0%, rgb(210,210,209) 100%);
+}
+.dc_mercury-editable-toolbar:after {
+  content: '\00a0';
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+}
+.dc_mercury-editable-toolbar .dc_mercury-separator,
+.dc_mercury-editable-toolbar .dc_mercury-line-separator {
+  height: 18px;
+  padding: 0;
+  margin: 0 7px 2px;
+}
+.dc_mercury-editable-toolbar .dc_mercury-separator {
+  margin: 0 3px 2px;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button-group {
+  white-space: nowrap;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button-group .dc_mercury-button:first-child {
+  width: 23px;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button {
+  width: 22px;
+  height: 18px;
+  margin: 0 0 2px;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button em {
+  display: none;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button-palette {
+  width: 23px;
+  background-position: 0 -36px;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button-select {
+  width: auto !important;
+  overflow: hidden;
+  padding-left: 6px;
+  background-position: -24px -36px;
+}
+.dc_mercury-editable-toolbar .dc_mercury-button-select em {
+  display: block;
+  padding-right: 15px;
+  background-position: right -36px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-style: normal;
+  font-family: Helvetica, Tahoma, Arial, sans-serif;
+  font-size: 8.5pt;
+  line-height: 19px;
+  color: #222;
+}
+/* default buttons */
+.dc_mercury-editable-toolbar .dc_mercury-bold-button                       { background-position: 0 0 }
+.dc_mercury-editable-toolbar .dc_mercury-bold-button.active                { background-position: 0 -18px }
+.dc_mercury-editable-toolbar .dc_mercury-italic-button                     { background-position: -23px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-italic-button.active              { background-position: -23px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-overline-button                   { background-position: -45px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-overline-button.active            { background-position: -45px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-strikethrough-button              { background-position: -67px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-strikethrough-button.active       { background-position: -67px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-underline-button                  { background-position: -89px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-underline-button.active           { background-position: -89px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-subscript-button                  { background-position: -112px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-subscript-button.active           { background-position: -112px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-superscript-button                { background-position: -135px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-superscript-button.active         { background-position: -135px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-justifyLeft-button                { background-position: -158px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-justifyLeft-button.active         { background-position: -158px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-justifyCenter-button              { background-position: -181px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-justifyCenter-button.active       { background-position: -181px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-justifyRight-button               { background-position: -203px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-justifyRight-button.active        { background-position: -203px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-justifyFull-button                { background-position: -225px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-justifyFull-button.active         { background-position: -225px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-insertUnorderedList-button        { background-position: -248px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-insertUnorderedList-button.active { background-position: -248px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-insertOrderedList-button          { background-position: -271px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-insertOrderedList-button.active   { background-position: -271px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-outdent-button                    { background-position: -294px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-outdent-button.active             { background-position: -294px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-indent-button                     { background-position: -317px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-indent-button.active              { background-position: -317px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-insertRowBefore-button            { background-position: -340px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-insertRowBefore-button.active     { background-position: -340px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-insertRowAfter-button             { background-position: -363px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-insertRowAfter-button.active      { background-position: -363px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-deleteRow-button                  { background-position: -385px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-deleteRow-button.active           { background-position: -385px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-insertColumnBefore-button         { background-position: -407px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-insertColumnBefore-button.active  { background-position: -407px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-insertColumnAfter-button          { background-position: -429px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-insertColumnAfter-button.active   { background-position: -429px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-deleteColumn-button               { background-position: -451px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-deleteColumn-button.active        { background-position: -451px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-increaseColspan-button            { background-position: -474px 0; width: 23px }
+.dc_mercury-editable-toolbar .dc_mercury-increaseColspan-button.active     { background-position: -474px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-decreaseColspan-button            { background-position: -497px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-decreaseColspan-button.active     { background-position: -497px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-increaseRowspan-button            { background-position: -520px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-increaseRowspan-button.active     { background-position: -520px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-decreaseRowspan-button            { background-position: -542px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-decreaseRowspan-button.active     { background-position: -542px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-horizontalRule-button             { background-position: -564px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-horizontalRule-button.active      { background-position: -564px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-removeFormatting-button           { background-position: -588px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-removeFormatting-button.active    { background-position: -588px -18px }
+.dc_mercury-editable-toolbar .dc_mercury-htmlEditor-button                 { background-position: -612px 0 }
+.dc_mercury-editable-toolbar .dc_mercury-htmlEditor-button.active          { background-position: -612px -18px }
+/*
+ * Toolbar: Snippetable Region Toolbar
+ *----------------------------------------------------------------------------*/
+.dc_mercury-snippet-toolbar {
+  position: absolute;
+  top: 100px;
+  left: 15px;
+  border: 1px solid #727272;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+  padding: 3px 7px 1px 7px;
+}
+.dc_mercury-snippet-toolbar:after {
+  content: '\00a0';
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+}
+.dc_mercury-snippet-toolbar .dc_mercury-separator,
+.dc_mercury-snippet-toolbar .dc_mercury-line-separator {
+  height: 18px;
+  padding: 0;
+  margin: 0 7px 2px;
+}
+.dc_mercury-snippet-toolbar .dc_mercury-separator {
+  margin: 0 3px 2px;
+}
+.dc_mercury-snippet-toolbar .dc_mercury-button-group {
+  white-space: nowrap;
+}
+.dc_mercury-snippet-toolbar .dc_mercury-button-group .dc_mercury-button:first-child {
+  width: 23px;
+}
+.dc_mercury-snippet-toolbar .dc_mercury-button {
+  width: 23px;
+  height: 18px;
+  margin: 0 0 2px;
+}
+.dc_mercury-snippet-toolbar .dc_mercury-button em {
+  display: none;
+}
+/* default buttons */
+.dc_mercury-snippet-toolbar .dc_mercury-editSnippet-button                { background-position: -24px 0 }
+.dc_mercury-snippet-toolbar .dc_mercury-editSnippet-button.active         { background-position: -24px -18px }
+.dc_mercury-snippet-toolbar .dc_mercury-removeSnippet-button              { background-position: -48px 0 }
+.dc_mercury-snippet-toolbar .dc_mercury-removeSnippet-button.active       { background-position: -48px -18px }
+.dc_mercury-snippet-toolbar .dc_mercury-dragsnippet-button                { background-position: -72px 0 }
+.dc_mercury-snippet-toolbar .dc_mercury-dragsnippet-button.active         { background-position: -72px -18px }
