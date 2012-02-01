@@ -4,17 +4,8 @@
 	<div class="container_48">
 		
 		<div class="fl_box_310">
-				<% image_pt = theme_image_path(DC::Config[:logo].to_s).blank? ? DC::Config[:logo].to_s : theme_image_path(DC::Config[:logo].to_s)  %>
-				<% if  DC::Config[:use_logo_datei] &&  DC::Config[:logo_datei] && ! DC::Config[:logo_datei].blank? %>
-						<% if Datei.find_by_id( DC::Config[:logo_datei].to_i) %>
-							<%  data = DataFile.find_by_id( DC::Config[:logo_datei].to_i)  %>
-							<%= link_to( image_tag( data.file.thumb("300x120>").url() ), root_url, :id => "dcLOGO" ) %>
-						<% else %>
-							<%= link_to( raw("#{ image_tag( image_pt ) }"), root_url, :id => "dcLOGO" ) %>
-						<% end %>
-				<% else %>
-					<%= link_to( raw("#{ image_tag( image_pt ) }"), root_url, :id => "dcLOGO" ) %>
-				<% end %>
+				<%#= render 'static/parts/cms_logo' %>
+				<%= image_tag( '/images/carollis/logo.png' )%>
 		</div>
 		
 		<div class="fl_box_630">

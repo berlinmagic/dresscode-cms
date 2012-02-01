@@ -10,6 +10,7 @@ module DcHeader
           post :new_pic_up
           get '/crop_pic/:pic' => :crop_pic, :as => 'crop_pic'
           post '/crop_up/:pic' => :crop_up, :as => 'crop_up'
+          delete '/remove/:pic' => :remove_pic, :as => 'remove_pic'
           # => post :blowup
           # => put :cropit
           # => get :select

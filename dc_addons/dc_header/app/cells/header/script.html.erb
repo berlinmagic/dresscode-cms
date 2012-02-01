@@ -2,7 +2,7 @@
 
 	<% if @header.header_type == 'slider' %>
 
-			<!-- X X X -->
+			<%= render_cell :header, :type_slider_js, :page => @page, :header => @header %>
 		
 	<% elsif @header.header_type == 'fader' %>
 	

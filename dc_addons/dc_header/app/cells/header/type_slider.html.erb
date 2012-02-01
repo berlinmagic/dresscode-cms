@@ -1,0 +1,75 @@
+<style>
+
+<% if @header.width > 950 %>
+	<% button_move = ( @header.width - 950 ) / 2 %>
+<% else %>
+	<% button_move = ( 950 - @header.width ) / 2 * -1 %>
+<% end %>
+<% button_top = ( @header.height - 47 ) / 2 %>
+#banner_box {
+	
+	width: <%= @header.width %>px; height: <%= @header.height %>px;
+	left:50%; margin-left: -<%= (@header.width / 2).to_i %>px; top: 0; 
+	margin-right: -<%= (@header.width / 2).to_i %>px;
+	position:absolute; border: 0; text-align:center; z-index: 0;
+
+	}
+	
+	/* ========================================   C O D A - S L I D E R   ======================================================= */
+	/* Most common stuff you'll need to change */
+	.coda-slider-wrapper { padding: 0; position: relative; width: <%= @header.width %>px; margin: 0 auto; z-index: 1;}
+	.coda-slider { background: rgba(0,0,0,.5); padding: 0; border:0; margin:0; }
+	/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
+	.coda-slider-no-js .coda-slider { height: <%= @header.height %>px; overflow: auto !important; padding: 0; border:0; margin:0; }
+	/* Change the width of the entire slider (without dynamic arrows) */
+	.coda-slider, .coda-slider .panel {  height: <%= @header.height %>px; width: <%= @header.width %>px; padding: 0; border:0; margin:0;} 
+	/* Change margin and width of the slider (with dynamic arrows) */
+	.coda-slider-wrapper.arrows .coda-slider, .coda-slider-wrapper.arrows .coda-slider .panel { width: <%= @header.width %>px }
+	.coda-slider-wrapper.arrows .coda-slider { margin: 0 }
+	/* Arrow styling */
+	.coda-nav-left a, .coda-nav-right a { position: absolute; width: 47px; height: 47px; font-size:1px; color:transparent; z-index: 20; }
+	.coda-nav-left a { background: transparent url('/images/plugins/red_button_left.png');  
+				left: <%= button_move.to_i %>px; top: <%= button_top.to_i %>px; }
+	.coda-nav-right a { background: transparent url('/images/plugins/red_button_right.png'); 
+				right: <%= button_move.to_i %>px; top: <%= button_top.to_i %>px; }
+	/* Tab nav */
+	.coda-nav ul li a.current { background: #39c }
+	/* Panel padding */
+	.coda-slider .panel-wrapper { padding:0 }
+	.coda-slider .panel-wrapper img { padding: 0; border:0; margin:0; }
+	/* Preloader */
+	.coda-slider p.loading { padding: 0px; text-align: center }
+	/* Don't change anything below here unless you know what you're doing */
+	/* Tabbed nav */
+	.coda-nav ul { clear: both; display: block; margin: auto; overflow: hidden }
+	.coda-nav ul li { display: inline }
+	.coda-nav ul li a { background: #000; color: #fff; display: block; float: left; margin-right: 1px; padding: 3px 6px; text-decoration: none }
+	/* Miscellaneous */
+	.coda-slider-wrapper { clear: both; overflow: auto }
+	.coda-slider { float: left; overflow: hidden; position: relative }
+	.coda-slider .panel { display: block; float: left; position: relative; z-index:5; }
+	.coda-slider .panel-container { position: relative }
+	.coda-nav-left, .coda-nav-right { float: left }
+	.coda-nav-left a, .coda-nav-right a { display: block; text-align: center; text-decoration: none }
+
+</style>
+
+<div id="banner_box">
+	<div id="coda-nav-left-1" class="coda-nav-left"><a href="#" title="Slide left">&#171;</a></div>
+	
+	<div class="coda-slider-wrapper">
+		<div class="coda-slider preload" id="coda-slider">
+			<% @header.attachments.each do |slider| %><div class="panel">
+				<div class="panel-wrapper">
+					<% if slider.file_cropping %>
+						<%= image_tag slider.data_file.file.thumb(slider.file_cropping).thumb("#{@header.width}x#{@header.height}").url %>
+					<% else %>
+						<%= image_tag slider.data_file.file.thumb("#{@header.width}x#{@header.height}").url %>
+					<% end %>
+				</div>
+			</div><% end %>
+		</div><!-- .coda-slider -->
+	</div><!-- .coda-slider-wrapper -->
+	
+	<div id="coda-nav-right-1" class="coda-nav-right"><a href="#" title="Slide right">&#187;</a></div>
+</div>

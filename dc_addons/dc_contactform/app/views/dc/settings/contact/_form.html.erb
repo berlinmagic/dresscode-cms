@@ -1,1 +1,48 @@
-Contact Settings
+<%= dc_pref_bool_line( 'show_with_labels', 'Contact' ) %>
+
+<hr/>
+
+<%= dc_pref_cf_bool_line( 'mail_subject', 'Contact' ) %>
+<%= dc_pref_text_line( 'default_subject', 'Contact' ) %>
+
+<hr/>
+
+<%= dc_pref_cf_bool_line( 'salutation', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'first_name', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'last_name', 'Contact' ) %>
+
+<hr/>
+
+<%= dc_pref_cf_bool_line( 'company', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'website', 'Contact' ) %>
+
+<hr/>
+
+<%= dc_pref_cf_bool_line( 'street', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'zip', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'city', 'Contact' ) %>
+
+<hr/>
+
+<%= dc_pref_cf_bool_line( 'phone_number', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'fax_number', 'Contact' ) %>
+<%= dc_pref_cf_bool_line( 'mobil_number', 'Contact' ) %>
+
+<hr/>
+
+<%= dc_pref_cf_bool_line( 'field_1', 'Contact' ) %>
+<%= dc_pref_text_line( 'field_1_name', 'Contact' ) %>
+<%= dc_pref_select_line( 'field_1_type', (ContactConfiguration::FIELD_TYPES.map {|c| [t("dc.config.contact.field_types.#{c}"),c]}), 'Contact' ) %>
+
+<hr/>
+<%= dc_pref_cf_bool_line( 'field_2', 'Contact' ) %>
+<%= dc_pref_text_line( 'field_2_name', 'Contact' ) %>
+<%= dc_pref_select_line( 'field_2_type', ContactConfiguration::FIELD_TYPES.map {|c| [t("dc.config.contact.field_types.#{c}"),c]}, 'Contact' ) %>
+
+<hr/>
+<%= dc_pref_cf_bool_line( 'field_3', 'Contact' ) %>
+<%= dc_pref_text_line( 'field_3_name', 'Contact' ) %>
+<%= dc_pref_select_line( 		'field_3_type', 
+								ContactConfiguration::FIELD_TYPES.map {|c| [t("dc.config.contact.field_types.#{c}"),c]}, 
+								'Contact' ) %>
+

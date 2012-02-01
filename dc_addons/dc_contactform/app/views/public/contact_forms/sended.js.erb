@@ -1,0 +1,9 @@
+<% if @success %>
+	$("#contact_form_box").html( "Erfolg!<br/><br/>Danke für Ihre Nachricht!" );
+<% else %>
+	<% if DC::Contact::Config[:show_with_labels] %>
+		$("#contact_form_box").html( "<%= escape_javascript(render 'public/contact_forms/form_with_labels', :contact_form => @contact_form)%>" );
+	<% else %>
+		$("#contact_form_box").html( "<%= escape_javascript(render 'public/contact_forms/form_free', :contact_form => @contact_form)%>" );
+	<% end %>
+<% end %>

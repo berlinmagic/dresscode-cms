@@ -1,0 +1,204 @@
+<% @contact_form ||= ContactForm.new() %>
+
+<%= form_for @contact_form do |f| %>
+
+	<% if DC::Contact::Config[:salutation] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :salutation, t("dc.contact_forms.form.salutation")+"#{'*' if DC::Contact::Config[:salutation_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.select :salutation, ContactForm::SALUTATIONS.map { |c| [t("dc.contact_forms.form.salutations.#{c}"), c] }, :include_blank => true %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:last_name] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :last_name, t("dc.contact_forms.form.last_name")+"#{'*' if DC::Contact::Config[:last_name_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :last_name %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:first_name] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :first_name, t("dc.contact_forms.form.first_name")+"#{'*' if DC::Contact::Config[:first_name_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :first_name %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	
+	<div class="form_line">
+		<div class="name_box">
+			<%= f.label :email, t('dc.contact_forms.form.email')+"*" %>
+		</div>
+		<div class="field_box">
+			<%= f.email_field :email %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<% if DC::Contact::Config[:company] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :company, t("dc.contact_forms.form.company")+"#{'*' if DC::Contact::Config[:company_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :company %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:website] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :website, t("dc.contact_forms.form.website")+"#{'*' if DC::Contact::Config[:website_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :website %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:street] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :street, t("dc.contact_forms.form.street")+"#{'*' if DC::Contact::Config[:street_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :street %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:zip] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :zip, t("dc.contact_forms.form.zip")+"#{'*' if DC::Contact::Config[:zip_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :zip %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:city] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :city, t("dc.contact_forms.form.city")+"#{'*' if DC::Contact::Config[:city_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :city %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:phone_number] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :phone_number, t("dc.contact_forms.form.phone_number")+"#{'*' if DC::Contact::Config[:phone_number_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :phone_number %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:fax_number] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :fax_number, t("dc.contact_forms.form.fax_number")+"#{'*' if DC::Contact::Config[:fax_number_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :fax_number %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:mobil_number] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :mobil_number, t("dc.contact_forms.form.mobil_number")+"#{'*' if DC::Contact::Config[:mobil_number_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :mobil_number %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	
+	<% if DC::Contact::Config[:field_1] %>
+		<%= f.hidden_field :field_1_name, :value => DC::Contact::Config[:field_1_name] %>
+		<%= f.hidden_field :field_1_type, :value => DC::Contact::Config[:field_1_type] %>
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :field_1_value, DC::Contact::Config[:field_1_name]+"#{'*' if DC::Contact::Config[:field_1_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :field_1_value %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:field_2] %>
+		<%= f.hidden_field :field_2_name, :value => DC::Contact::Config[:field_2_name] %>
+		<%= f.hidden_field :field_2_type, :value => DC::Contact::Config[:field_2_type] %>
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :field_2_value, DC::Contact::Config[:field_2_name]+"#{'*' if DC::Contact::Config[:field_2_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :field_2_value %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	<% if DC::Contact::Config[:field_3] %>
+		<%= f.hidden_field :field_3_name, :value => DC::Contact::Config[:field_3_name] %>
+		<%= f.hidden_field :field_3_type, :value => DC::Contact::Config[:field_3_type] %>
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :field_3_value, DC::Contact::Config[:field_3_name]+"#{'*' if DC::Contact::Config[:field_3_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :field_3_value %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+
+	<% if DC::Contact::Config[:mail_subject] %>	
+		<div class="form_line">
+			<div class="name_box">
+				<%= f.label :mail_subject, t("dc.contact_forms.form.mail_subject")+"#{'*' if DC::Contact::Config[:mail_subject_needed]}" %>
+			</div>
+			<div class="field_box">
+				<%= f.text_field :mail_subject %>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	<% end %>
+	
+
+	
+	<div class="form_line">
+		<div class="name_box">
+			&nbsp;
+		</div>
+		<div class="field_box">
+			<%= f.submit t("dc.contact_forms.form.submit") %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+
+
+<% end %>

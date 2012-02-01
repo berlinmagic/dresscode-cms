@@ -69,9 +69,15 @@
 				<% end %>
 			</div>
 			<div class="fl_box_210">
+				<% if @header.ratio && !@header.ratio.blank? %>
+					<% unless att.file_ratio && ( att.file_ratio == @header.ratio ) %>
+						<h3>Achtung, muss neu zugeschnitten werden!</h3>
+					<% end %>
+				<% end %>
 				<%= att.data_file.file_name %>
 				<br/>
 				<%= link_to 'crop', crop_pic_dcr_header_path( @header, att ) %>
+				<%= link_to 'remove', remove_pic_dc_header_path( @header, att ), :confirm => 'Are you sure?', :method => :delete %>
 			</div>
 		
 		

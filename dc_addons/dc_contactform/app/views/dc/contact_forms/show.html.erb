@@ -9,7 +9,7 @@
 
 <div class="dc_box">
 	<div class="dc_wbox head">
-		<h2><%= @contact_form.mail_subject.downcase %></h2>
+		<h2><%= @contact_form.mail_subject.downcase if @contact_form.mail_subject %></h2>
 		<br/>
 		<div class="clearfix"></div>
 		

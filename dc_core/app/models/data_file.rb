@@ -22,12 +22,7 @@ class DataFile < ActiveRecord::Base
   
   
   def generate_default_dc_name
-    record = true
-    while record
-      random = "dcfile_#{Array.new(7){rand(9)}.join}"
-      record = DataFile.where( :name => random ).count > 0 ? true : false
-    end
-    self.name = random
+    self.name = generate_dc_name
   end
   
 private # => # => # => # => # => # => # => # => # => # => #
@@ -50,7 +45,8 @@ private # => # => # => # => # => # => # => # => # => # => #
       
       self.name = the_name
       self.original_name = fn
-      self.file_name = "#{the_fname}.#{ex}"
+      # => self.file_name = "#{the_fname}.#{ex}"
+      self.file_name = "#{ generate_dc_name }.#{ex}"
       self.image = IMAGE_EXTS.include?( ex.to_s.downcase ) ? true : false
       self.save
   end
@@ -59,6 +55,15 @@ private # => # => # => # => # => # => # => # => # => # => #
     if self.file && !DC::Config[:strip_data_file_names]
       self.file.name = self.name.to_s.to_go unless self.name.start_with?('dcfile_')
     end
+  end
+  
+  def generate_dc_name
+    record = true
+    while record
+      random = "dcfile_#{Array.new(7){rand(9)}.join}"
+      record = DataFile.where( :name => random ).count > 0 ? true : false
+    end
+    random
   end
   
 end

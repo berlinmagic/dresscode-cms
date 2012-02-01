@@ -5,6 +5,27 @@ de:
   dc:
       contact_forms:
           headline: "E-Mails"
+          form:
+              submit: "senden"
+              needed: "Pflichtfeld"
+              salutation: "Anrede"
+              choose_salutations: "Ihre Anrede"
+              salutations:
+                  mr: "Herr"
+                  ms: "Frau"
+              last_name: "Nachname"
+              first_name: "Vorname"
+              mail_content: "Ihre Nachricht .."
+              company: "Firma"
+              website: "Ihre Seite"
+              street: "Straße"
+              zip: "Plz."
+              city: "Stadt"
+              phone_number: "Telefon"
+              fax_number: "Fax"
+              mobil_number: "Mobil"
+              mail_subject: "Betreff"
+              email: "E-Mail"
       contact_mailer:
           contact_mail:
               subject: "Konkakt-Mail erhalten"
@@ -16,6 +37,39 @@ de:
           contact: "Kontakt-Formulare"
           contact_sets:
               form: "Formular-Einstellungen"
+      config:
+          contact:
+              show_with_labels: "Feld-Namen anzeigen"
+              salutation: "Anrede"
+              last_name: "Nachname"
+              first_name: "Vorname"
+              mail_content: "Ihre Nachricht .."
+              company: "Firma"
+              website: "Ihre Seite"
+              street: "Straße"
+              zip: "Plz."
+              city: "Stadt"
+              phone_number: "Telefon"
+              fax_number: "Fax"
+              mobil_number: "Mobil"
+              mail_subject: "Betreff"
+              default_subject: "Standard-Betreff"
+              email: "E-Mail"
+              field_1: "freies Feld 1"
+              field_2: "freies Feld 2"
+              field_3: "freies Feld 3"
+              field_1_name: "Feld1-Name"
+              field_2_name: "Feld2-Name"
+              field_3_name: "Feld3-Name"
+              field_1_type: "Feld1-typ"
+              field_2_type: "Feld2-typ"
+              field_3_type: "Feld3-typ"
+              field_types:
+                  text_field: "Text (Wort)"
+                  text_area: "Text (Satz)"
+                  date: "Datum"
+                  datetime: "Datum & Zeit"
+                  time: "Zeit"
 ##############################################################################################################################################
 #  =>  #  =>  #  =>  #  =>  #  =>  #  =>  #  =>  #  =>     D R E S S C O D E     <=  #  <=  #  <=  #  <=  #  <=  #  <=  #  <=  #  <=  #  <=  #
 ##############################################################################################################################################

@@ -1,12 +1,9 @@
 <ul id="dc_header_nav">
 	
 	<%= hook :before_system_navigation %>
-	
-	<% Page.aktiv.main.each do |page| %>
-		
-		<%= render 'static/navigation/page_list', :page => page %>
-		
-	<% end %>
+
+	<%# .. inline to avoid cap between inline-elements .. %>
+	<% Page.aktiv.main.each do |page| %><%= render 'static/navigation/page_list', :page => page %><% end %>
 	
 	<%= hook :after_system_navigation %>
 	

@@ -7,6 +7,12 @@ module DcContactform
       
     end
     
+    def public_contactform_routes
+      
+      resources :contact_forms, :only => :create
+      
+    end
+    
   end
 end
 module ActionDispatch::Routing

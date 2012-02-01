@@ -1,0 +1,9 @@
+<% if DC::Contact::Config[:show_with_labels] %>
+	<div id="contact_form_box">
+		<%= render "public/contact_forms/form_with_label" %>
+	</div>
+<% else %>
+	<div id="contact_form_box">
+		<%= render "public/contact_forms/form_free" %>
+	</div>
+<% end %>

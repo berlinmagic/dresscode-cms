@@ -23,4 +23,6 @@ de:
               update_error: "Fehler, Header konnte nicht aktualisiert werden."
               crop_success: "Bild wurde erfoglreich zugeschnitten."
               crop_error: "Fehler, dass Bild konnte nicht zugeschnitten werden."
+              pic_deleted: "Das Bild wurde erfolgreich entfernt."
+              deleted_success: "Der Header wurde erfolgreich gelöscht."
 # =============================================   d r e s s c o d e - C M S   ============================================================ #

@@ -1,0 +1,14 @@
+<%= piped_js_plugins('codaslider') %>
+
+<script type="text/javascript" charset="utf-8">
+	$().ready(function() {
+		$('#coda-slider').codaSlider({
+			dynamicArrows: false,
+			dynamicTabs: false,
+			crossLinking: false,
+			autoSlide: <%= @header.autoplay ? 'false' : 'true' %>,
+			autoSlideInterval: <%= @header.staytime * 1000 %>,
+			slideEaseDuration: <%= @header.changetime * 1000 %>
+		});
+	});
+</script>

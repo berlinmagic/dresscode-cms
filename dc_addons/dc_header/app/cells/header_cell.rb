@@ -49,13 +49,13 @@ class HeaderCell < Cell::Rails
     render
   end
   
-  def type_accordion(args)
+  def type_slider(args)
     @page = args[:page]
     @header = args[:header]
     render
   end
   
-  def type_accordion_js(args)
+  def type_slider_js(args)
     @page = args[:page]
     @header = args[:header]
     render

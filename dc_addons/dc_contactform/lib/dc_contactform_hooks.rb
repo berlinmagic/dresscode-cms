@@ -13,4 +13,8 @@ class DcContactformHooks < HookSupport::HookListener
     "<%= render 'dc/contact_forms/footer' %>"
   end
   
+  insert_after :public_content_type_if do
+    "<%= render 'public/pages/page_contactforms', :page_content => page_content %>"
+  end
+  
 end

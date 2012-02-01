@@ -9,13 +9,27 @@
 					<div class="<%= "cell#{page_cell.cell_type.to_s}" %>">
 						<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
 							<% page_cell.page_contents.each do |page_content| %>
+								
+								<% @the_content = "" %>
+							
 								<% if (page_content.content_type == 'text') && !page_content.text_content.blank? %>
-									<div id="<%= page_content.dc_uid %>" class="page_content dc_editor-region" data-type="editable">
-										<%= raw( page_content.text_content ) %>
-									</div>
-								<% else %>
-									<br/>
+								
+									<% @the_content = content_tag( 
+															'div', 
+															raw( page_content.text_content ), 
+															:class => "page_content dc_editor-region",
+															:data => {:type => 'editable'} ) %>
+									
 								<% end %>
+									
+								<%= hook :public_content_type_if, :page_content => page_content %>
+									
+								<% if @the_content == "" %>
+									<% @the_content = raw("<br/>") %>
+								<% end %>
+								
+								<%= @the_content %>
+								
 								<div class="clearfix"></div>
 							<% end %>
 						<% else %>

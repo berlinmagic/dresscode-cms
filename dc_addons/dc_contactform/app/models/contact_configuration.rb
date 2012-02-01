@@ -1,6 +1,10 @@
 # encoding: utf-8
 class ContactConfiguration < Configuration
   
+  
+  preference    :show_with_labels,    :boolean,     :default => false
+  
+  
   preference    :salutation,          :boolean,     :default => true
   preference    :salutation_needed,   :boolean,     :default => true
   

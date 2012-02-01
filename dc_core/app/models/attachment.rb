@@ -7,6 +7,7 @@ class Attachment < ActiveRecord::Base
   scope :prime,         where( :primary => true )
   scope :norm,          where( :primary => false )
   
+  default_scope :order => "position ASC"
   
   # =>  Associations:     <============================================================================= #
   belongs_to :data_file

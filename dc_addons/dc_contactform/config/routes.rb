@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     dresscode_contactform_routes
   end
   
+  public_contactform_routes
+  
 end

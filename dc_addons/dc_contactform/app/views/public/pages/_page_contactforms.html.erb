@@ -1,0 +1,6 @@
+<% if (page_content.content_type == 'contactform') %>
+								
+	<%# @the_content = content_tag( 'div', raw( "<h3> Contact - Form </h3>" ) ) %>
+	<% @the_content = render "public/contact_forms/contact_form" %>
+									
+<% end %>

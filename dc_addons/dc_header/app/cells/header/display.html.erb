@@ -17,6 +17,10 @@
 	<% elsif @header.header_type == 'accordion' %>
 
 		<%#= render_cell :header, :accordion, :page => @page, :header => @header %>
+		
+	<% elsif @header.header_type == 'slider' %>
+	
+		<%= render_cell :header, :type_slider, :page => @page, :header => @header %>
 
 	<% end %>
 
@@ -26,6 +30,7 @@
 	#banner_pic_holder { 	position:absolute; 
 							width: <%= @header.width %>px; height: <%= @header.height %>px; 
 							left:50%; margin-left: -<%= (@header.width / 2).to_i %>px; top: 0; 
+							margin-right: -<%= (@header.width / 2).to_i %>px;
 							border: 0; text-align:center; display: block; z-index: 0;	}
 </style>
 

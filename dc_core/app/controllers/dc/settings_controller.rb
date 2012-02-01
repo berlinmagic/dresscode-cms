@@ -21,7 +21,7 @@ class Dc::SettingsController < Dc::BaseController
     @config = ( config.blank? || ( config == 'base' ) ) ? 'core' : config
     @params = params
     unless @config == 'core'
-      if "DC::#{@name.classify}".constantize::Config.set(params[:preferences])
+      if "DC::#{@config.classify}".constantize::Config.set(params[:preferences])
         render_config
       else
         render_config_error
