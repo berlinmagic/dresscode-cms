@@ -4,7 +4,6 @@
   
   require "dc_core"
   
-  # => require "dc_editor"
   require "dc_mercury"
   
   require "dc_lists"

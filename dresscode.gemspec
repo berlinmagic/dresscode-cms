@@ -27,10 +27,10 @@ Gem::Specification.new do |s|
   # => Load the DressCode-Gems
   s.add_dependency( 'dc_core',              '>= 0.0.1' )
   
-  # => s.add_dependency( 'dc_editor',            '>= 0.0.1' )
   s.add_dependency( 'dc_mercury',           '>= 0.0.1' )
   
   s.add_dependency( 'dc_lists',             '>= 0.0.1' )
+  
   s.add_dependency( 'dc_pages',             '>= 0.0.1' )
   
   s.add_dependency( 'dc_themes_static',     '>= 0.0.1' )
