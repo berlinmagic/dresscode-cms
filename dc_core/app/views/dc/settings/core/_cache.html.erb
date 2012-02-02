@@ -3,6 +3,13 @@
 <hr/>
 <%=   dc_pref_select_line( 'cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
 <hr/>
+<%=   dc_pref_select_line( 'editor_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+<%=   dc_pref_select_line( 'style_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+<%=   dc_pref_select_line( 'script_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+<%=   dc_pref_select_line( 'library_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+<%=   dc_pref_select_line( 'page_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+<%=   dc_pref_select_line( 'dynamic_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+<hr/>
 <%=   dc_pref_bool_line( 'etags_enabled' )   %>
 <%=   dc_pref_bool_line( 'cache_statics' )   %>
 <hr/>

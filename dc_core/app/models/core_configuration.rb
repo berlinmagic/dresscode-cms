@@ -154,11 +154,12 @@ class CoreConfiguration < Configuration
   ### ===   Cache options  ============================================= ###
   CACHE_TYPES  =  ['none', 'page_cache', 'header_cache']
   SYSTEM_MODS  =  ['development', 'production']
-  preference :cache_method,       :string,      :default => CACHE_TYPES[0]
+  preference :cache_method,       :string,      :default => CACHE_TYPES[0]  # => maybe depreacated !
   preference :varnish_enabled,    :boolean,     :default => false
   preference :etags_enabled,      :boolean,     :default => false
   preference :cache_statics,      :boolean,     :default => false
   # Cache Times
+  preference :editor_ttl,         :integer,     :default => 31536000 # => 1 jear
   preference :stylez_ttl,         :integer,     :default => 3600 # => 1 our
   preference :scriptz_ttl,        :integer,     :default => 3600 # => 1 our
   preference :statics_ttl,        :integer,     :default => 604800 # => 1 week
@@ -169,12 +170,29 @@ class CoreConfiguration < Configuration
   preference :production_mode,    :boolean,     :default => false
   preference :dev_mode_ttl,       :integer,     :default => 42
   # Freshness - Timestamps
+  preference :editor_fresh,       :string,      :default => 'version: 0.0.1'
   preference :stylez_fresh,       :string,      :default => 'version: 0.0.1'
   preference :scriptz_fresh,      :string,      :default => 'version: 0.0.1'
   preference :statics_fresh,      :string,      :default => 'version: 0.0.1'
   preference :library_fresh,      :string,      :default => 'version: 0.0.1'
   preference :pages_fresh,        :string,      :default => 'version: 0.0.1'
   preference :dynamic_fresh,      :string,      :default => 'version: 0.0.1'
+  
+  ##### new ( 2012/02/02 )
+  # Cache-Methods per Action
+  preference :editor_cache_method,    :string,      :default => CACHE_TYPES[1]
+  preference :style_cache_method,     :string,      :default => CACHE_TYPES[0]
+  preference :script_cache_method,    :string,      :default => CACHE_TYPES[0]
+  preference :library_cache_method,   :string,      :default => CACHE_TYPES[0]
+  preference :page_cache_method,      :string,      :default => CACHE_TYPES[0]
+  preference :dynamic_cache_method,   :string,      :default => CACHE_TYPES[0]
+  # etags per Action
+  preference :editor_etags,           :boolean,     :default => false
+  preference :style_etags,            :boolean,     :default => false
+  preference :script_etags,           :boolean,     :default => false
+  preference :library_etags,          :boolean,     :default => false
+  preference :page_etags,             :boolean,     :default => false
+  preference :dynamic_etags,          :boolean,     :default => false
   ### =================================================================================== ###
   
   
