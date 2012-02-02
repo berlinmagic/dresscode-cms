@@ -5,13 +5,13 @@ class EditorPipeController < ActionController::Base
   include CoffeeScript
   include CacheBase
   
-  caches_page :load_editor_pipe #,  :if => :do_page_cache?
+  caches_page :load_editor_pipe,  :if => :editor_do_page_cache?
   
   
   def load_editor_pipe
     @source = params[ :requested_source ]
-    cache_headers( DC::Config[:library_ttl].to_i )
-    respond_with_etag( [ @source, DC::Config[:library_fresh] ] ) do
+    cache_headers_for( "editor" )
+    respond_with_etag_for( "editor", [ @source, DC::Config[:editor_fresh] ] ) do
       respond_to do |format|
         format.js  { render :layout => 'pipe/script', :template => "piped_editor/scriptz/script" }
         format.css { render :layout => 'pipe/style',  :template => "piped_editor/stylez/style" }

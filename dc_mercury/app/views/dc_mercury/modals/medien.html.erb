@@ -1,21 +1,19 @@
+<style>
+.select_pic { float:left; padding: 5px; margin: 5px; border: solid 1px #ccc; display: block; width: 150px; height: 150px; 
+		background-color: #f3f2f2; 
+		background-repeat: no-repeat;
+		background-position: center center;}
+.select_pic.aktiv { border: solid 1px #c00; background-color: #ccc; }
+</style>
 <form id="dc_mercury_medien" style="width:600px">
 
   <div class="dc_mercury-display-pane-container">
     <div class="dc_mercury-display-pane">
 
 
-<!--
-      <fieldset class="inputs">
-        <legend><span>Images</span></legend>
-        <ol>
-          <li id="media_image_url_input" class="string input optional stringish">
-            <input class="selectable" id="media_image_url" name="media[image_url]" type="text"/>
-          </li>
-        </ol>
-      </fieldset>
--->
 	<fieldset class="inputs" style="padding: 5px 30px;">
 		<p><strong>Box-Breite:</strong> <span id="media_with_opt">unbekannt</span></p>
+		<input class="selectable" id="media_image_url" name="media[image_url]" type="hidden"/>
 	</fieldset>
 
 
@@ -23,7 +21,7 @@
         	<legend><span>Images</span></legend>
 			
 			<% DataFile.pix.each do |pic| %>
-				<div style="float:left; padding: 5px; margin: 5px; border: solid 1px #ccc; display: block; background: #f3f2f2 url('<%= pic.file.thumb('150x150>').url() %>') center center no-repeat; width: 150px; height: 150px" class="select_pic" id="dcf_<%= pic.id %>">
+				<div style="background-image: url('<%= pic.file.thumb('150x150>').url() %>');" class="select_pic" id="dcf_<%= pic.id %>">
 					<%#= image_tag pic.file.thumb('150x150>').url() %>
 					<div style="display:none" class="pic_url"><%= pic.file.thumb('150x150>').url() %></div>
 				</div>
@@ -41,11 +39,6 @@
                 <option value="">None</option>
                 <option value="left">Left</option>
                 <option value="right">Right</option>
-                <option value="top">Top</option>
-                <option value="middle">Middle</option>
-                <option value="bottom">Bottom</option>
-                <option value="absmiddle">Absolute Middle</option>
-                <option value="absbottom">Absolute Bottom</option>
               </select>
             </li>
 
@@ -53,7 +46,7 @@
           <div id="dcf_<%= pic.id %>_urls" class="media-options" style="display:none">
             <li id="media_dcf_<%= pic.id %>_input" class="select input optional">
               <label class="label" for="media_image_url">Bild-Größe</label>
-              <select id="media_image_url" name="media[image_url]">
+              <select id="dcf_<%= pic.id %>_media_url" name="media[dcf_<%= pic.id %>_url]" class="selectable_media_url">
                 <option value="<%= pic.file.thumb('150x150>').url() %>">150 Pixel</option>
                 <option value="<%= pic.file.thumb('200x200>').url() %>">200 Pixel</option>
                 <option value="<%= pic.file.thumb('250x250>').url() %>">250 Pixel</option>

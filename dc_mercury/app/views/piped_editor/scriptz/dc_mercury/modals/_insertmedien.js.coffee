@@ -4,9 +4,12 @@
   # make the inputs work with the radio buttons, and options
   @element.find('.select_pic').on 'click', (event) =>
     element = jQuery(event.target)
+    @element.find(".select_pic.aktiv").removeClass('aktiv')
+    element.addClass('aktiv')
     # @element.find("#media_image_url").val( element.find(".pic_url").html() )
     @element.find(".media-options").hide()
     @element.find("##{element.attr('id')}_urls").show()
+    @element.find("#media_image_url").val( @element.find("##{ element.attr('id') }_media_url").val() )
     @resize(true)
     
 
@@ -18,12 +21,17 @@
     @element.find("##{element.attr('id').replace('media_', '')}").show()
     @resize(true)
 
+  @element.find('.selectable_media_url').on 'change', (event) =>
+    element = jQuery(event.target)
+    @element.find("#media_image_url").val( element.val() )
+
+
 
   # get the selection and initialize its information into the form
   if DcMercury.region && DcMercury.region.selection
     selection = DcMercury.region.selection()
 
-    if selection && selection.commonAncestor
+    if selection && selection.commonAncestor()
       @element.find("#media_with_opt").html( selection.commonAncestor().width() )
 
     # if we're editing an image prefill the information

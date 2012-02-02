@@ -1,36 +1,73 @@
-<%=   dc_pref_bool_line( 'compress_stylez' )   %>
-<%=   dc_pref_bool_line( 'compress_scriptz' )   %>
-<hr/>
-<%=   dc_pref_select_line( 'cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<hr/>
-<%=   dc_pref_select_line( 'editor_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<%=   dc_pref_select_line( 'style_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<%=   dc_pref_select_line( 'script_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<%=   dc_pref_select_line( 'library_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<%=   dc_pref_select_line( 'page_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<%=   dc_pref_select_line( 'dynamic_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
-<hr/>
-<%=   dc_pref_bool_line( 'etags_enabled' )   %>
-<%=   dc_pref_bool_line( 'cache_statics' )   %>
-<hr/>
-<%=   dc_pref_bool_line( 'production_mode' )   %>
-<%=   dc_pref_text_line( 'dev_mode_ttl' )   %>
-<hr/>
-<%=   dc_pref_bool_line( 'varnish_enabled' )   %>
-<hr/>
-<%=   dc_pref_text_line( 'stylez_fresh' )   %>
-<%=   dc_pref_text_line( 'scriptz_fresh' )   %>
-<%=   dc_pref_text_line( 'statics_fresh' )   %>
-<%=   dc_pref_text_line( 'library_fresh' )   %>
-<%=   dc_pref_text_line( 'pages_fresh' )   %>
-<%=   dc_pref_text_line( 'dynamic_fresh' )   %>
-<hr/>
-<%=   dc_pref_text_line( 'stylez_ttl' )   %>
-<%=   dc_pref_text_line( 'scriptz_ttl' )   %>
-<%=   dc_pref_text_line( 'statics_ttl' )   %>
-<%=   dc_pref_text_line( 'library_ttl' )   %>
-<%=   dc_pref_text_line( 'pages_ttl' )   %>
-<%=   dc_pref_text_line( 'dynamic_ttl' )   %>
+<div class="setting_tabs">
+	<ul>
+		<li><a href="#overview">Übersicht</a></li>
+		<li><a href="#methods">Cache Methoden</a></li>
+		<li><a href="#freshness">Frische</a></li>
+		<li><a href="#ttl">Time to Life</a></li>
+		<li><a href="#etags">etags</a></li>
+	</ul>
+	<div id="overview">
+		<br/>
+		<%=   dc_pref_bool_line( 'compress_stylez' )   %>
+		<%=   dc_pref_bool_line( 'compress_scriptz' )   %>
+		<hr/>
+		<%=   dc_pref_select_line( 'cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<hr/>
+		<%=   dc_pref_bool_line( 'cache_statics' )   %>
+		<hr/>
+		<%=   dc_pref_bool_line( 'production_mode' )   %>
+		<hr/>
+		<%=   dc_pref_bool_line( 'varnish_enabled' )   %>
+		<br/>
+	</div>
+	<div id="methods">
+		<br/>
+		<%=   dc_pref_select_line( 'editor_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<%=   dc_pref_select_line( 'stylez_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<%=   dc_pref_select_line( 'scriptz_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<%=   dc_pref_select_line( 'library_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<%=   dc_pref_select_line( 'pages_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<%=   dc_pref_select_line( 'dynamic_cache_method', CoreConfiguration::CACHE_TYPES.map {|c| [t("dc.config.cache_methods.#{c}"),c]} )   %>
+		<br/>
+	</div>
+	<div id="freshness">
+		<br/>
+		<%=   dc_pref_text_line( 'editor_fresh' )   %>
+		<%=   dc_pref_text_line( 'stylez_fresh' )   %>
+		<%=   dc_pref_text_line( 'scriptz_fresh' )   %>
+		<%=   dc_pref_text_line( 'statics_fresh' )   %>
+		<%=   dc_pref_text_line( 'library_fresh' )   %>
+		<%=   dc_pref_text_line( 'pages_fresh' )   %>
+		<%=   dc_pref_text_line( 'dynamic_fresh' )   %>
+		<br/>
+	</div>
+	<div id="ttl">
+		<br/>
+		<%=   dc_pref_text_line( 'dev_mode_ttl' )   %>
+		<hr/>
+		<%=   dc_pref_text_line( 'editor_ttl' )   %>
+		<%=   dc_pref_text_line( 'stylez_ttl' )   %>
+		<%=   dc_pref_text_line( 'scriptz_ttl' )   %>
+		<%=   dc_pref_text_line( 'statics_ttl' )   %>
+		<%=   dc_pref_text_line( 'library_ttl' )   %>
+		<%=   dc_pref_text_line( 'pages_ttl' )   %>
+		<%=   dc_pref_text_line( 'dynamic_ttl' )   %>
+		<br/>
+	</div>
+	<div id="etags">
+		<br/>
+		<%=   dc_pref_bool_line( 'etags_enabled' )   %>
+		<hr/>
+		<%=   dc_pref_bool_line( 'editor_etags' )   %>
+		<%=   dc_pref_bool_line( 'stylez_etags' )   %>
+		<%=   dc_pref_bool_line( 'scriptz_etags' )   %>
+		<%=   dc_pref_bool_line( 'library_etags' )   %>
+		<%=   dc_pref_bool_line( 'pages_etags' )   %>
+		<%=   dc_pref_bool_line( 'dynamic_etags' )   %>
+		<br/>
+	</div>
+	
+</div>
+
 <br/>
 <div class="clearfix"></div>
-

@@ -181,17 +181,17 @@ class CoreConfiguration < Configuration
   ##### new ( 2012/02/02 )
   # Cache-Methods per Action
   preference :editor_cache_method,    :string,      :default => CACHE_TYPES[1]
-  preference :style_cache_method,     :string,      :default => CACHE_TYPES[0]
-  preference :script_cache_method,    :string,      :default => CACHE_TYPES[0]
+  preference :stylez_cache_method,     :string,      :default => CACHE_TYPES[0]
+  preference :scriptz_cache_method,    :string,      :default => CACHE_TYPES[0]
   preference :library_cache_method,   :string,      :default => CACHE_TYPES[0]
-  preference :page_cache_method,      :string,      :default => CACHE_TYPES[0]
+  preference :pages_cache_method,      :string,      :default => CACHE_TYPES[0]
   preference :dynamic_cache_method,   :string,      :default => CACHE_TYPES[0]
   # etags per Action
   preference :editor_etags,           :boolean,     :default => false
-  preference :style_etags,            :boolean,     :default => false
-  preference :script_etags,           :boolean,     :default => false
+  preference :stylez_etags,            :boolean,     :default => false
+  preference :scriptz_etags,           :boolean,     :default => false
   preference :library_etags,          :boolean,     :default => false
-  preference :page_etags,             :boolean,     :default => false
+  preference :pages_etags,             :boolean,     :default => false
   preference :dynamic_etags,          :boolean,     :default => false
   ### =================================================================================== ###
   
