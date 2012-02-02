@@ -64,16 +64,21 @@ window.DcMercury = {
     // `DcMercury.Toolbar.Button.contexts` and `DcMercury.Toolbar.ButtonGroup.contexts`
     toolbars: {
       primary: {
+        sep:                 	' ',
         save:                  ['Save', 'Save this page'],
         preview:               ['Preview', 'Preview this page', { toggle: true, mode: true }],
         sep1:                  ' ',
         undoredo:              {
           undo:                ['Undo', 'Undo your last action'],
+          sep:                 ' ',
           redo:                ['Redo', 'Redo your last action'],
-          sep:                 ' '
+          sep1:                 ' '
           },
         insertLink:            ['Link', 'Insert Link', { modal: '/dc_mercury/modals/link.html', regions: ['editable', 'markupable'] }],
         insertMedia:           ['Media', 'Insert Media (images and videos)', { modal: '/dc_mercury/modals/media.html', regions: ['editable', 'markupable'] }],
+
+		insertMedien:          ['Medien', 'Bilder - Daten', { modal: '/dc_mercury/modals/medien.html', regions: ['editable', 'markupable'] }],
+		
         insertTable:           ['Table', 'Insert Table', { modal: '/dc_mercury/modals/table.html', regions: ['editable', 'markupable'] }],
         insertCharacter:       ['Character', 'Special Characters', { modal: '/dc_mercury/modals/character.html', regions: ['editable', 'markupable'] }],
         snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/dc_mercury/panels/snippets.html' }],
@@ -100,7 +105,7 @@ window.DcMercury = {
         decoration:            {
           bold:                ['Bold', null, { context: true }],
           italic:              ['Italicize', null, { context: true }],
-          overline:            ['Overline', null, { context: true, regions: ['editable'] }],
+          /* overline:            ['Overline', null, { context: true, regions: ['editable'] }], */
           strikethrough:       ['Strikethrough', null, { context: true, regions: ['editable'] }],
           underline:           ['Underline', null, { context: true, regions: ['editable'] }],
           sep:                 '-'
@@ -261,8 +266,9 @@ window.DcMercury = {
     //
     // preferredLocale: If a client doesn't support the locales you've included, this is used as a fallback.
     localization: {
-      enabled: false,
-      preferredLocale: 'swedish_chef-BORK'
+      // enabled: false,
+      enabled: true,
+      preferredLocale: 'de'
       },
 
 

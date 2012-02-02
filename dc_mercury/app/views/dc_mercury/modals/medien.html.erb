@@ -1,0 +1,88 @@
+<form id="dc_mercury_medien" style="width:600px">
+
+  <div class="dc_mercury-display-pane-container">
+    <div class="dc_mercury-display-pane">
+
+
+<!--
+      <fieldset class="inputs">
+        <legend><span>Images</span></legend>
+        <ol>
+          <li id="media_image_url_input" class="string input optional stringish">
+            <input class="selectable" id="media_image_url" name="media[image_url]" type="text"/>
+          </li>
+        </ol>
+      </fieldset>
+-->
+
+	<fieldset class="inputs">
+        <legend><span>Maße</span></legend>
+        <ol>
+          <li id="media_image_opt" class="string input optional stringish">
+            <div id="media_with_opt">Bla</div>
+          </li>
+        </ol>
+      </fieldset>
+
+		<fieldset class="inputs">
+        	<legend><span>Images</span></legend>
+			
+			<% DataFile.pix.each do |pic| %>
+				<div style="float:left; padding: 5px; margin: 5px; border: solid 1px #ccc; display: block; background: #f3f2f2 url('<%= pic.file.thumb('150x150>').url() %>') center center no-repeat; width: 150px; height: 150px" class="select_pic" id="dcf_<%= pic.id %>">
+					<%#= image_tag pic.file.thumb('150x150>').url() %>
+					<div style="display:none" class="pic_url"><%= pic.file.thumb('150x150>').url() %></div>
+				</div>
+			<% end %>
+			<div class="clearfix"></div>
+			
+      </fieldset>
+
+      <fieldset class="inputs">
+        <legend><span>Options</span></legend>
+        <ol>
+            <li id="media_image_alignment_input" class="select input optional">
+              <label class="label" for="media_image_alignment">Alignment</label>
+              <select id="media_image_alignment" name="media[image_alignment]">
+                <option value="">None</option>
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+                <option value="top">Top</option>
+                <option value="middle">Middle</option>
+                <option value="bottom">Bottom</option>
+                <option value="absmiddle">Absolute Middle</option>
+                <option value="absbottom">Absolute Bottom</option>
+              </select>
+            </li>
+        </ol>
+
+		<% DataFile.pix.each do |pic| %>
+          <div id="dcf_<%= pic.id %>_urls" class="media-options" style="display:none">
+            <li id="media_dcf_<%= pic.id %>_input" class="select input optional">
+              <select id="media_image_url" name="media[image_url]">
+                <option value="<%= pic.file.thumb('150x150>').url() %>">150 Pixel</option>
+                <option value="<%= pic.file.thumb('200x200>').url() %>">200 Pixel</option>
+                <option value="<%= pic.file.thumb('250x250>').url() %>">250 Pixel</option>
+                <option value="<%= pic.file.thumb('300x300>').url() %>">300 Pixel</option>
+                <option value="<%= pic.file.thumb('350x350>').url() %>">350 Pixel</option>
+                <option value="<%= pic.file.thumb('400x400>').url() %>">400 Pixel</option>
+                <option value="<%= pic.file.thumb('450x450>').url() %>">450 Pixel</option>
+                <option value="<%= pic.file.thumb('500x500>').url() %>">500 Pixel</option>
+              </select>
+            </li>
+          </div>
+		<% end %>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+  <div class="dc_mercury-display-controls">
+    <fieldset class="buttons">
+      <ol>
+        <li class="commit button"><input class="submit" name="commit" type="submit" value="Insert Media"/></li>
+      </ol>
+    </fieldset>
+  </div>
+
+</form>

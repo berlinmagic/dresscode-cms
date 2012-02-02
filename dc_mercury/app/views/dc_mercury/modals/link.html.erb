@@ -3,11 +3,16 @@
   <div class="dc_mercury-display-pane-container">
     <div class="dc_mercury-display-pane">
 
-      <fieldset class="inputs" id="link_text_container">
+	  <fieldset class="inputs">
+        <legend><span>dresscode-CMS Links</span></legend>
         <ol>
-          <li id="link_text_input" class="string input optional stringish">
-            <label class="label" for="link_text">Link Content</label>
-            <input id="link_text" name="link[text]" type="text"/>
+          <li id="link_cms_url_input" class="string input optional stringish">
+            <label class="label" for="link_cms_url"><input name="link_type" type="radio" value="cms_url" checked="checked"/>Link</label>
+			<select class="selectable" id="link_cms_url" name="link[cms_url]">
+				<% Page.aktiv.main.each do |page| %>
+					<%= render 'dc_mercury/modals/page_link', :page => page %>
+				<% end %>
+			</select>
           </li>
         </ol>
       </fieldset>
@@ -16,7 +21,7 @@
         <legend><span>Standard Links</span></legend>
         <ol>
           <li id="link_external_url_input" class="string input optional stringish">
-            <label class="label" for="link_external_url"><input name="link_type" type="radio" value="external_url" checked="checked"/>URL</label>
+            <label class="label" for="link_external_url"><input name="link_type" type="radio" value="external_url"/>URL</label>
             <input class="selectable" id="link_external_url" name="link[external_url]" type="text"/>
           </li>
         </ol>
@@ -32,6 +37,15 @@
           <li id="link_new_bookmark_input" class="string input optional stringish">
             <label class="label" for="link_new_bookmark"><input name="link_type" type="radio" value="new_bookmark"/>Bookmark</label>
             <input class="selectable" id="link_new_bookmark" name="link[new_bookmark]" type="text"/>
+          </li>
+        </ol>
+      </fieldset>
+
+      <fieldset class="inputs" id="link_text_container">
+        <ol>
+          <li id="link_text_input" class="string input optional stringish">
+            <label class="label" for="link_text">Link Content</label>
+            <input id="link_text" name="link[text]" type="text"/>
           </li>
         </ol>
       </fieldset>

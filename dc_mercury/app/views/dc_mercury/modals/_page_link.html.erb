@@ -1,0 +1,6 @@
+<option value="<%= page.link %>"><%= '> ' * page.site_level %><%= page.name %></option>
+<% if page.sub_sites && page.sub_sites.aktiv.count > 0 %>
+	<% page.sub_sites.aktiv.each do |sub_page| %>
+		<%= render 'dc_mercury/modals/page_link', :page => sub_page %>
+	<% end %>
+<% end %>
