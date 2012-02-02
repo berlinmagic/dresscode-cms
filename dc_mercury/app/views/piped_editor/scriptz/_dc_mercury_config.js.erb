@@ -66,6 +66,7 @@ window.DcMercury = {
       primary: {
         sep:                 	' ',
         save:                  ['Save', 'Save this page'],
+        sep4:                 	' ',
         preview:               ['Preview', 'Preview this page', { toggle: true, mode: true }],
         sep1:                  ' ',
         undoredo:              {
@@ -93,7 +94,7 @@ window.DcMercury = {
         predefined:            {
           style:               ['Style', null, { select: '/dc_mercury/selects/style.html', preload: true }],
           sep1:                ' ',
-          formatblock:         ['Block Format', null, { select: '/dc_mercury/selects/formatblock.html', preload: true }],
+          formatblock:         ['Block Format', null, { select: '/dc_mercury/selects/formatblock.html', context: true, preload: true }],
           sep2:                '-'
           },
         colors:                {
@@ -132,6 +133,7 @@ window.DcMercury = {
           indent:              ['Increase Indentation'],
           sep:                 '-'
           },
+/*
         table:                 {
           _context:            true,
           insertRowBefore:     ['Insert Table Row', 'Insert a table row before the cursor', { regions: ['editable'] }],
@@ -147,6 +149,7 @@ window.DcMercury = {
           decreaseRowspan:     ['Decrease Cell Rows', 'Decrease the cells rowspan and add a new cell'],
           sep2:                '-'
           },
+*/
         rules:                 {
           horizontalRule:      ['Horizontal Rule', 'Insert a horizontal rule'],
           sep1:                '-'

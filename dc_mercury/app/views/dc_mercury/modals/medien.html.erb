@@ -14,15 +14,10 @@
         </ol>
       </fieldset>
 -->
+	<fieldset class="inputs" style="padding: 5px 30px;">
+		<p><strong>Box-Breite:</strong> <span id="media_with_opt">unbekannt</span></p>
+	</fieldset>
 
-	<fieldset class="inputs">
-        <legend><span>Maße</span></legend>
-        <ol>
-          <li id="media_image_opt" class="string input optional stringish">
-            <div id="media_with_opt">Bla</div>
-          </li>
-        </ol>
-      </fieldset>
 
 		<fieldset class="inputs">
         	<legend><span>Images</span></legend>
@@ -53,11 +48,11 @@
                 <option value="absbottom">Absolute Bottom</option>
               </select>
             </li>
-        </ol>
 
 		<% DataFile.pix.each do |pic| %>
           <div id="dcf_<%= pic.id %>_urls" class="media-options" style="display:none">
             <li id="media_dcf_<%= pic.id %>_input" class="select input optional">
+              <label class="label" for="media_image_url">Bild-Größe</label>
               <select id="media_image_url" name="media[image_url]">
                 <option value="<%= pic.file.thumb('150x150>').url() %>">150 Pixel</option>
                 <option value="<%= pic.file.thumb('200x200>').url() %>">200 Pixel</option>
@@ -72,6 +67,7 @@
           </div>
 		<% end %>
 
+        </ol>
       </fieldset>
 
     </div>
