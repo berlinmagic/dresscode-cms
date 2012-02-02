@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   
-  # find your routes in: lib/dc_pic_slider/routes
+  # find your routes in: lib/dc_carte/routes
   
   namespace :dc do
-    dresscode_pic_slider_routes
+    dresscode_carte_routes
   end
   
   scope DC::Config[:pretty_namespace].to_s.downcase, :as => 'dcr', :module => "dc" do
-    dresscode_pic_slider_routes
+    dresscode_carte_routes
   end
 
-  public_pic_slider_routes
+  public_carte_routes
   
 end

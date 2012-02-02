@@ -1,4 +1,4 @@
-module DcPicSlider
+module DcCarte
 
   VERSION = "0.0.1"
 

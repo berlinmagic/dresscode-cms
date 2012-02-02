@@ -1,5 +1,5 @@
 # encoding: utf-8
-class DcPicSliderModul < DC::ModuleSupport::Listener
+class DcCarteModule < DC::ModuleSupport::Listener
 
   install true
   

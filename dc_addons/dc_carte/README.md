@@ -1,6 +1,6 @@
-# dresscode-Extension: PicSlider
+# dresscode-Extension: Carte
 
-## dc_pic_slider
+## dc_carte
 
 Introduction goes here.
 

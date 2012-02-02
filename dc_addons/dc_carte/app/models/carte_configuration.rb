@@ -1,5 +1,5 @@
 # encoding: utf-8
-class PicSliderConfiguration < Configuration
+class CarteConfiguration < Configuration
   
   preference		:activated,			:boolean,			:default => true
   

@@ -2,17 +2,17 @@
   
   require 'dresscode'
   
-  require 'dc_pic_slider/version'
+  require 'dc_carte/version'
   
-  require 'dc_pic_slider/routes'
+  require 'dc_carte/routes'
   
-  require 'dc_pic_slider_hooks'
-  require 'dc_pic_slider_module'
+  require 'dc_carte_hooks'
+  require 'dc_carte_module'
   
-  require 'pic_slider/config'
+  require 'carte/config'
 
 
-module DcPicSlider
+module DcCarte
   class Engine < Rails::Engine
     config.autoload_paths += %W(#{config.root}/lib)
     def self.activate

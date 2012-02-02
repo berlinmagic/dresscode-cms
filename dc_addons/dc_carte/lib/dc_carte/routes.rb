@@ -1,12 +1,12 @@
 # encoding: utf-8
-module DcPicSlider
+module DcCarte
   module Routes
     
-    def dresscode_pic_slider_routes
+    def dresscode_carte_routes
       # => your backend routes
     end
     
-    def public_pic_slider_routes
+    def public_carte_routes
       # => your public routes
     end
     
@@ -14,7 +14,7 @@ module DcPicSlider
 end
 module ActionDispatch::Routing
   class Mapper #:nodoc:
-    include DcPicSlider::Routes
+    include DcCarte::Routes
   end
 end
 
