@@ -29,8 +29,6 @@ Gem::Specification.new do |s|
   
   s.add_dependency( 'dc_mercury',           '>= 0.0.1' )
   
-  s.add_dependency( 'dc_lists',             '>= 0.0.1' )
-  
   s.add_dependency( 'dc_pages',             '>= 0.0.1' )
   
   s.add_dependency( 'dc_themes_static',     '>= 0.0.1' )

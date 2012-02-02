@@ -1,7 +1,6 @@
-# encoding: utf-8
-class CreateDcLists < ActiveRecord::Migration
+class CreateDcTags < ActiveRecord::Migration
   
-  def self.up
+  def up
     
     create_table :tags do |t|
       t.string      :name
@@ -47,12 +46,10 @@ class CreateDcLists < ActiveRecord::Migration
     end
     add_index :categorizes, [:target_type, :target_id]
     add_index :categorizes, :category_id
-
-    
     
   end
 
-  def self.down
+  def down
     remove_index  :tags,            :name
     remove_index  :tags,            :slug
     remove_index  :tags,            :firstletter

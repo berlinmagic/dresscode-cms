@@ -6,10 +6,8 @@
   
   require "dc_mercury"
   
-  require "dc_lists"
   require "dc_pages"
   
-  # => require "dc_staticthemes"
   require "dc_themes_static"
   require "dc_themes_dynamic"
   

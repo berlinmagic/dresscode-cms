@@ -33,10 +33,8 @@ module Dresscode
       def install_core
         generate("dc_core:install")
         
-        # => generate("dc_editor:install")
         generate("dc_mercury:install")
         
-        generate("dc_lists:install")
         generate("dc_pages:install")
         generate("dc_themes_static:install")
         puts("***************************************************************************")
