@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
                       :evil_master,     :site_admin,              :group_id
   #attr_protected      :evil_master,     :site_admin
   
+  attr_accessor       :invite_text_message
+  
   
   # =====> V A L I D A T I O N <======================================================== #
   validates_presence_of    :first_name, :on => :create, :message => I18n.t("Account_first_name_blank")

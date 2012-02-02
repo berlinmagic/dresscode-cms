@@ -6,21 +6,25 @@
 	
 	source 'http://rubygems.org'
 	
-	gem 'rails', '3.1.3'
+	gem 'rails', 			'3.1.3'
 	
 	gem 'sqlite3'
 	
 	gem 'json'
 	
-	gem 'coffee-rails', '~> 3.1.1'
+	gem 'coffee-rails', 	'~> 3.1.1'
 	
 	gem 'jquery-rails'
 	
-	gem 'dresscode', :path => '../dresscode_31'
+	gem 'dresscode', 		:path => '../dresscode_31'
 	
-	gem 'dc_contactform', :path => '../dresscode_31/dc_addons/dc_contactform'
+	gem 'dc_contactform', 	:path => '../dresscode_31/dc_addons/dc_contactform'
 	
-	gem 'dc_header', :path => '../dresscode_31/dc_addons/dc_header'
+	gem 'dc_header', 		:path => '../dresscode_31/dc_addons/dc_header'
+	
+	gem 'dc_tags', 			:path => '../dresscode_31/dc_addons/dc_tags'
+	
+	gem 'dc_carte', 		:path => '../dresscode_31/dc_addons/dc_carte'
 	
 
 ## Generators:

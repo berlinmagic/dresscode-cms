@@ -1,8 +1,9 @@
-<p><%= t('dc.users.login.hello_user') %> <%= @resource.email %>!</p>
+<p><%= t('dc.users.login.hello_user') %> <%= !@resource.first_name.blank? ? @resource.first_name : @resource.email %>!</p>
 
-<p><%= t('dc.users.mailer.someone_has_invited_you_to') %> <%= root_url %> <%= t('dc.users.mailer.you_can_accept_it_through_the_link_below') %></p>
+<p><%= t('dc.users.mailer.someone_has_invited_you_to') %> <%= link_to root_url, accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %> <%= t('dc.users.mailer.you_can_accept_it_through_the_link_below') %></p>
 <br/>
 <p><%= link_to t('dc.users.mailer.accept_invitation'), accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<br/>
 <br/>
 <p><%= t("dc.users.mailer.if_you_don_t_want_to_accept_the_invitation") %><br />
 <%= t("dc.users.mailer.account_won_t_be_created_until_link") %></p>

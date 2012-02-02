@@ -25,6 +25,7 @@ de:
               new_password: "neues Passwort"
               new_password_confirmation: "neues Passwort wiederholen"
               current_password: "aktuelles Passwort"
+              invite_text_message: "Ihre Nachricht"
           invitations:
               invite_an_user: "Neuen Nutzer einladen"
               send_invitation: "Einladung senden"
