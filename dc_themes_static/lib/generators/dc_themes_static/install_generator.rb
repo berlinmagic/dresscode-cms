@@ -89,45 +89,65 @@ module DcThemesStatic
       private
         
         def make_modul_theme(modul)
-          puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
-                File.join("#{DcThemesStatic.config.themes_path}", "default", "views") 
-                )
-          puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{modul.constantize::Engine.config.root}", "public"), 
-                File.join("#{DcThemesStatic.config.themes_path}", 'default')
-                )
-          puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in App public-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{modul.classify.constantize::Engine.config.root}", "/public"), 
-                File.join("#{Rails.root}", 'public')
-                )
+          if File.exists?( File.join("#{modul.constantize::Engine.config.root}", "app", "views") )
+            puts("#{modul}:: mirror views in default-Theme view-Folder")
+            DC::FileUtilz.mirror_files( 
+                  File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
+                  File.join("#{DcThemesStatic.config.themes_path}", "default", "views") 
+                  )
+          else
+            puts("#{modul}:: no views")
+          end
+          if File.exists?( File.join("#{modul.constantize::Engine.config.root}", "public") )
+            puts("#{modul}:: mirror statics in default-Theme public-Folder")
+            DC::FileUtilz.mirror_files( 
+                  File.join("#{modul.constantize::Engine.config.root}", "public"), 
+                  File.join("#{DcThemesStatic.config.themes_path}", 'default')
+                  )
+            puts("#{modul.gsub(/Strange/, '')}:: mirror statics in App public-Ordner")
+            DC::FileUtilz.mirror_files( 
+                  File.join("#{modul.classify.constantize::Engine.config.root}", "/public"), 
+                  File.join("#{Rails.root}", 'public')
+                  )
+          else
+            puts("#{modul}:: no statics")
+          end
         end
         
         def make_modul_views(modul)
-          puts("#{modul.gsub(/Strange/, '')}:: Spiegle views in default-Theme view-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
-                File.join("#{DcThemesStatic.config.themes_path}", "default", "views") 
-                )
+          if File.exists?( File.join("#{modul.constantize::Engine.config.root}", "app", "views") )
+            puts("#{modul}:: mirror views in default-Theme view-Folder")
+            DC::FileUtilz.mirror_files( 
+                  File.join("#{modul.constantize::Engine.config.root}", "app", "views"), 
+                  File.join("#{DcThemesStatic.config.themes_path}", "default", "views") 
+                  )
+          else
+            puts("#{modul}:: no views")
+          end
         end
         
         def make_modul_publics(modul)
-          puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in App public-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{modul.constantize::Engine.config.root}", "/public"), 
-                File.join("#{Rails.root}", 'public')
-                )
+          if File.exists?( File.join("#{modul.constantize::Engine.config.root}", "public") )
+            puts("#{modul}:: mirror statics in App public-Ordner")
+            DC::FileUtilz.mirror_files( 
+                  File.join("#{modul.constantize::Engine.config.root}", "/public"), 
+                  File.join("#{Rails.root}", 'public')
+                  )
+          else
+            puts("#{modul}::  no statics")
+          end
         end
         
         def make_modul_theme_publics(modul)
-          puts("#{modul.gsub(/Strange/, '')}:: Spiegle Daten in default-Theme public-Ordner")
-          DC::FileUtilz.mirror_files( 
-                File.join("#{modul.constantize::Engine.config.root}", "public"), 
-                File.join("#{DcThemesStatic.config.themes_path}", 'default')
-                )
+          if File.exists?( File.join("#{modul.constantize::Engine.config.root}", "public") )
+            puts("#{modul}::  mirror statics in default-Theme public-Folder")
+            DC::FileUtilz.mirror_files( 
+                  File.join("#{modul.constantize::Engine.config.root}", "public"), 
+                  File.join("#{DcThemesStatic.config.themes_path}", 'default')
+                  )
+          else
+            puts("#{modul}::  no statics")
+          end
         end
       
       
