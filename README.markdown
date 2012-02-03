@@ -6,15 +6,11 @@
 	
 	source 'http://rubygems.org'
 	
-	gem 'rails', 			'3.1.3'
-	
-	gem 'sqlite3'
-	
+	gem 'rails', 			'~> 3.1.3'
+	gem 'coffee-rails', 	'~> 3.1.1'
 	gem 'json'
 	
-	gem 'coffee-rails', 	'~> 3.1.1'
-	
-	gem 'jquery-rails'
+	gem 'sqlite3'
 	
 	gem 'dresscode', 		:path => '../dresscode_31'
 	
