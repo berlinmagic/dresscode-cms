@@ -1,0 +1,59 @@
+<% content_for :dc_head do %>
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 47 ) %> speise- und getränkekarten</h1>
+	</div>
+	<div class="fl_box_470">
+	</div>
+<% end %>
+
+
+<div class="dc_box">
+	
+	<div class="dc_wbox head">
+		<h2><%= @carte.name.downcase %></h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
+		
+		<div class="fl_box_210">
+			<%= t("dc.cartes.form.description") %>
+		</div>
+		<div class="fl_box_210">
+			<%= @carte.description %>
+		</div>
+		<div class="clearfix"></div>
+		
+		<div class="fl_box_210">
+			<%= t("dc.cartes.form.carte_type") %>
+		</div>
+		<div class="fl_box_210">
+			<%= t("dc.cartes.form.carte_types.#{@carte.carte_type}") %>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="clearfix"></div>
+	</div>
+	
+	<% @carte.sub_cartes.each do |scarte| %>
+		
+		<br/>
+		<div class="dc_wbox form">
+		
+			<div class="fl_box_210">
+				<%= scarte.name %>
+			</div>
+			<div class="fl_box_210">
+
+			</div>
+		
+		
+		
+			<div class="clearfix"></div>
+		</div>
+	
+	<% end %>
+
+</div>
+
+
+<%= render "dc/cartes/sidebar" %>

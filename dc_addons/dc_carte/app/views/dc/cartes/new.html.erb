@@ -1,0 +1,36 @@
+<% content_for :dc_head do %>
+	<div class="fl_box_470">
+		<h1><%= dc_admin_head_icon( 47 ) %> speisekarten</h1>
+	</div>
+	<div class="fl_box_470">
+	</div>
+<% end %>
+
+
+<div class="dc_box">
+<%= form_for( [ :dc, @carte ] ) do |f| %>
+	<%= f.error_messages %>
+	<div class="dc_wbox head">
+		<h2><%= t("dc.cartes.new") %></h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="dc_wbox form">
+		
+		<%= render "dc/cartes/form", :f => f %>
+		
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="dc_wbox buttons">
+		<%= f.submit %>
+		<div class="clearfix"></div>
+	</div>
+	
+<% end %>
+</div>
+
+
+
+
+<%= render "dc/cartes/sidebar" %>
+

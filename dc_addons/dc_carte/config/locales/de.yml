@@ -1,5 +1,41 @@
 # encoding: utf-8
 de:
 # =============================================   d r e s s c o d e - C M S   ============================================================ #
-  
+  dc:
+      cartes:
+          form:
+              name: "Name"
+              description: "Beschreibung"
+              carte_type: "Karten-Typ"
+              aktiv: "Aktiv?"
+              aktiv_from: "Aktiv von"
+              aktiv_to: "Aktiv bis"
+              carte_types:
+                  dishes: "Speisen"
+                  drinks: "Getränke"
+                  both: "Speisen & Getränke"
+          flash:
+              create_success: "Karte wurde erfolgreich erstellt."
+              create_error: "Fehler, Karte konnte nicht erstellt werden."
+              update_success: "Karte wurde erfolgreich aktualisiert."
+              update_error: "Fehler, Karte konnte nicht aktualisiert werden."
+      carte_entries:
+          form:
+              headline: "Überschrift"
+              sub_head: "Unter-Überschrift"
+              description: "Beschreibung"
+              use_ilike: "iLike einblenden"
+              master_price: "Preis"
+              entry_type: "Eintrag-Typ"
+              entry_types:
+                  dish: "Gericht"
+                  drink: "Getränk"
+                  tip: "Tip / Empfehlung"
+                  headline: "reine Überschrift"
+          flash:
+              create_success: "Eintrag wurde erfolgreich erstellt."
+              create_error: "Fehler, Eintrag konnte nicht erstellt werden."
+              update_success: "Eintrag wurde erfolgreich aktualisiert."
+              update_error: "Fehler, Eintrag konnte nicht aktualisiert werden."
+              deleted_success: "Eintrag wurde gelöscht."
 # =============================================   d r e s s c o d e - C M S   ============================================================ #

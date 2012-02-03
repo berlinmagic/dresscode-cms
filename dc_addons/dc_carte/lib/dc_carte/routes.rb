@@ -3,7 +3,10 @@ module DcCarte
   module Routes
     
     def dresscode_carte_routes
-      # => your backend routes
+      resources :cartes do
+        resources :sub_cartes
+      end
+      resources :carte_entries
     end
     
     def public_carte_routes

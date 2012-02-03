@@ -19,4 +19,16 @@ jQuery(function($) {
 	
 	
 	$('.setting_tabs').tabs();
+	
+	$('.price_field').keyup( function(){
+		var value = $(this).val();
+		$(this).val( value.replace(/\,/i, '.') );
+	});
+
+/*	
+	$('input:text').each(function() {
+	    var value = $(this).val();
+	    $(this).val(value.replace(/\,/i, '.'));
+	});
+*/
 });

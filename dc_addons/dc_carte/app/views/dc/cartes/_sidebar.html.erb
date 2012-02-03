@@ -1,0 +1,33 @@
+<% content_for :sidebar do %>
+
+<% carte_on = controller.controller_name == 'cartes' ? true : false %>
+<% sub_carte_on = controller.controller_name == 'sub_cartes' ? true : false %>
+<% entry_on = controller.controller_name == 'carte_entries' ? true : false %>
+
+	<%= dc_aside_box( 'Ihre Karten', "#{(carte_on || sub_carte_on) ? 'aktiv' : 'inaktiv'}" ) do %>
+		<%= link_to 'alle Karten', dcr_cartes_path, :class => "#{ 'aktiv' if carte_on && (controller.action_name == 'index') }" %>
+		<% Carte.all.each do |carte| %>
+			<%= link_to carte.name, [:dcr, carte], :class => "#{'aktiv' if @carte && @carte == carte}" %>
+			<% if @carte && @carte == carte %>
+				<% carte.sub_cartes.each do |scarte| %>
+					<%= link_to '> ' + scarte.name, [:dcr, carte, scarte], :class => "#{'aktiv' if @sub_carte && @sub_carte == scarte}" %>
+				<% end %>
+				<%= link_to '> + neue Unterkarte', new_dcr_carte_sub_carte_path( @carte ) %>
+			<% end %>
+		<% end %>
+		<%= link_to '+ neue Karte', new_dcr_carte_path, :class => "#{ 'aktiv' if carte_on && (controller.action_name == 'new') }" %>
+	<% end %>
+	
+	
+	<%= dc_aside_box( 'Ihre Einträge', "#{entry_on ? 'aktiv' : 'inaktiv'}" ) do %>
+		<%= link_to 'alle Einträge', dcr_carte_entries_path, :class => "#{ 'aktiv' if entry_on && (controller.action_name == 'index') }" %>
+		<% CarteEntry.all.each do |entry| %>
+			<%= link_to entry.headline, [:dcr, entry], :class => "#{'aktiv' if @carte_entry && @carte_entry == entry}" %>
+		<% end %>
+		<%= link_to 'neuer Eintrag', new_dcr_carte_entry_path, :class => "#{ 'aktiv' if entry_on && (controller.action_name == 'new') }" %>
+	<% end %>
+	
+	<%= controller.action_name %>
+	<%= controller.controller_name %>
+
+<% end %>

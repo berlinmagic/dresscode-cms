@@ -1,0 +1,64 @@
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :name, t("dc.cartes.form.name") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.text_field :name %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :carte_type, t("dc.cartes.form.carte_type") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.select :carte_type, options_for_select( Carte::CARTE_TYPES.map { |c| [t("dc.cartes.form.carte_types.#{ c }"),c] } ) %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :description, t("dc.cartes.form.description") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.text_area :description, :rows => 3 %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :aktiv, t("dc.cartes.form.aktiv") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.check_box :aktiv %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :aktiv_from, t("dc.cartes.form.aktiv_from") %>
+	</div>
+	<div class="fl_box_350 date_select_field">
+		<%= f.date_select :aktiv_from %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :aktiv_to, t("dc.cartes.form.aktiv_to") %>
+	</div>
+	<div class="fl_box_350 date_select_field">
+		<%= f.date_select :aktiv_to %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	
+</div>
+		

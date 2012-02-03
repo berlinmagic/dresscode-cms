@@ -1,0 +1,64 @@
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :headline, t("dc.carte_entries.form.headline") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.text_field :headline %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :sub_head, t("dc.carte_entries.form.sub_head") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.text_field :sub_head %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :entry_type, t("dc.carte_entries.form.entry_type") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.select :entry_type, options_for_select( CarteEntry::ENTRY_TYPES.map { |c| [t("dc.carte_entries.form.entry_types.#{ c }"),c] } ) %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :description, t("dc.carte_entries.form.description") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.text_area :description, :rows => 3 %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :use_ilike, t("dc.carte_entries.form.use_ilike") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.check_box :use_ilike %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :master_price, t("dc.carte_entries.form.master_price") %>
+	</div>
+	<div class="fl_box_350">
+		<%= f.text_field :master_price, :class => 'price_field' %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	
+</div>
+		
