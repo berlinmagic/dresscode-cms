@@ -14,14 +14,18 @@
 	
 	gem 'dresscode', 		:path => '../dresscode_31'
 	
+	gem 'dc_carte', 		:path => '../dresscode_31/dc_addons/dc_carte'
+	
 	gem 'dc_contactform', 	:path => '../dresscode_31/dc_addons/dc_contactform'
 	
 	gem 'dc_header', 		:path => '../dresscode_31/dc_addons/dc_header'
 	
+	gem 'dc_sidebar', 		:path => '../dresscode_31/dc_addons/dc_sidebar'
+	
 	gem 'dc_tags', 			:path => '../dresscode_31/dc_addons/dc_tags'
 	
-	gem 'dc_carte', 		:path => '../dresscode_31/dc_addons/dc_carte'
-	
+
+
 
 ## Generators:
 
