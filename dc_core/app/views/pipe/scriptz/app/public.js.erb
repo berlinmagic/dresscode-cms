@@ -1,6 +1,10 @@
 <%= raw( "#{ render 'pipe/scriptz/plugins/cbox' }" ) %>
 <%= raw( "#{ render 'pipe/scriptz/dc/layout/flash_msg' }" ) %>
 
+
+<%= raw( "#{ hook :public_javascriptz }" ) %>
+
+
 jQuery(function($) {
 	
 	$("a[rel='LightBox']").colorbox();

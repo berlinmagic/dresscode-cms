@@ -1,0 +1,15 @@
+<% content_for :sidebar do %>
+
+
+<%= dc_aside_box( t("dc.sidebars.headline"), "aktiv" ) do %>
+
+	<%= link_to dc_sidebar_icon(72)+' '+t("dc.sidebars.overview"), dcr_sidebars_path, :class => "#{controller.action_name == 'index' ? 'aktiv' : ' '}" %>
+		
+	<%= link_to dc_sidebar_icon(11)+' '+t("dc.sidebars.new"), new_dcr_sidebar_path, :class => "#{controller.action_name == 'new' ? 'aktiv' : ' '}" %>
+	
+<% end %>
+
+
+
+
+<% end %>

@@ -1,6 +1,10 @@
 # encoding: utf-8
 class Sidebar < ActiveRecord::Base
-  # For special incredients in meals and drinks
+  
+  CONTENT_TYPES  = %w(text module function)
+  SIDEBAR_TYPES  = %w(standard)
+  VIEW_TYPES     = %w(aktiv timebased inaktiv)
+  
   
   # =====> A T T R I B U T E S <======================================================== #
   attr_accessible   :name, :headline, :text_content, :content_type, :sidebar_type, :view_type, :view_from, :view_till, :system_stuff, :multi_site, 

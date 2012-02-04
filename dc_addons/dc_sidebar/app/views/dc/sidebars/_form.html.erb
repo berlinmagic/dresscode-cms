@@ -1,0 +1,82 @@
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :name, t("dc.sidebars.form.name") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.text_field :name %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :headline, t("dc.sidebars.form.headline") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.text_field :headline %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :content_type, t("dc.sidebars.form.content_type") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.select :content_type, options_for_select( Sidebar::CONTENT_TYPES.map { |c| [t("dc.sidebars.form.content_types.#{ c }"),c] } ) %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :sidebar_type, t("dc.sidebars.form.sidebar_type") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.select :sidebar_type, options_for_select( Sidebar::SIDEBAR_TYPES.map { |c| [t("dc.sidebars.form.sidebar_types.#{ c }"),c] } ) %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :view_type, t("dc.sidebars.form.view_type") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.select :view_type, options_for_select( Sidebar::VIEW_TYPES.map { |c| [t("dc.sidebars.form.view_types.#{ c }"),c] } ) %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :multi_site, t("dc.sidebars.form.multi_site") %>
+	</div>
+	<div class="fl_box_210">
+		<%= f.check_box :multi_site %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :view_from, t("dc.cartes.form.view_from") %>
+	</div>
+	<div class="fl_box_350 date_select_field">
+		<%= f.date_select :view_from %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="dc_preference_line">
+	<div class="fl_box_210">
+		<%= f.label :view_till, t("dc.cartes.form.view_till") %>
+	</div>
+	<div class="fl_box_350 date_select_field">
+		<%= f.date_select :view_till %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+

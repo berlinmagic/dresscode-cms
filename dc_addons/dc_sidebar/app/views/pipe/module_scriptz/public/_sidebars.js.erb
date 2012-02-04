@@ -1,0 +1,14 @@
+jQuery(function($) {
+	
+	if ($("#public_aside").length > 0){
+
+		var public_sidebar_height = $('#public_aside').height();
+		var public_content_height = $('#public_content_with_aside').height();
+	
+		if ( public_sidebar_height < public_content_height ) {
+			$('#public_aside').height( public_content_height );
+		}
+	
+	}
+	
+});

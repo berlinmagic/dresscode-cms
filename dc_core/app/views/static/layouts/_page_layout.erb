@@ -37,15 +37,17 @@
 	<div class="clearfix"></div>
 	-->
 	
-	<div id="dc_page">
-		<div class="container_48">
-			<div class="fl_box_950">
-				<%= yield %>
+	<%= hook :public_page_view, :page => @page do %>
+		<div id="dc_page">
+			<div class="container_48">
+				<div class="fl_box_950">
+					<%= yield %>
+				</div>
+				<div class="clearfix"></div>
 			</div>
-			<div class="clearfix"></div>
 		</div>
-	</div>
-	<div class="clearfix"></div>
+		<div class="clearfix"></div>
+	<% end %>
 	
 	<br/>
 	

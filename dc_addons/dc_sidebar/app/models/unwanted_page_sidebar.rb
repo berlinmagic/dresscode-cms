@@ -1,6 +1,5 @@
 # encoding: utf-8
 class UnwantedPageSidebar < ActiveRecord::Base
-  # For special incredients in meals and drinks
   
   # =====> A T T R I B U T E S <======================================================== #
   attr_accessible   :page_id, :sidebar_id

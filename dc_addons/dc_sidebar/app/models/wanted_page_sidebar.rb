@@ -1,6 +1,5 @@
 # encoding: utf-8
 class WantedPageSidebar < ActiveRecord::Base
-  # For special incredients in meals and drinks
   
   # =====> A T T R I B U T E S <======================================================== #
   attr_accessible   :position, :side, :page_id, :sidebar_id

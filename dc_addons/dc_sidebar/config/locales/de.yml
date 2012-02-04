@@ -1,5 +1,20 @@
 # encoding: utf-8
 de:
 # =============================================   d r e s s c o d e - C M S   ============================================================ #
-  
+  dc:
+      sidebars:
+          headline: "Sidebars"
+          overview: "Überblick"
+          new: "neuen Erstellen"
+          form:
+              name: "Name"
+              headline: "Überschrift"
+              content_type: "Ihnalt"
+              content_types:
+                  text: "Text"
+                  module: "Modul"
+                  function: "Funktion"
+              sidebar_type: "Stil"
+              sidebar_types:
+                  standard: "Standard"
 # =============================================   d r e s s c o d e - C M S   ============================================================ #

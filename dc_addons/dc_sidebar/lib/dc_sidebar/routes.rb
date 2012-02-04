@@ -3,7 +3,7 @@ module DcSidebar
   module Routes
     
     def dresscode_sidebar_routes
-      # => your backend routes
+      resources :sidebars
     end
     
     def public_sidebar_routes

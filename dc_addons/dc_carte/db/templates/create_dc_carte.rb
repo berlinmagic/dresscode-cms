@@ -16,7 +16,8 @@ class CreateDcCarte < ActiveRecord::Migration
       t.text        :description
       t.integer     :position
       t.string      :carte_type                                                     # => dish's / drink's / both
-      t.boolean     :aktiv,                             :default => true
+      t.boolean     :aktiv,                             :default => true            # => depreacated !
+      t.string      :view_type                                                      # => aktiv / time_based / inaktiv
       t.datetime    :aktiv_from
       t.datetime    :aktiv_to
       t.references  :carte
