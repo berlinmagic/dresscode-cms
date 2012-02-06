@@ -14,11 +14,11 @@ class Sidebar < ActiveRecord::Base
   # =====> A S S O Z I A T I O N S <======================================================== #
   belongs_to :module, :polymorphic => true
   
-  has_many :wanted_page_sidebars, :class_name => "WantedPageSidebar", :foreign_key => "sidebar_id", :dependent => :destroy
-  has_many :on_pages, :through => :wanted_page_sidebars, :class_name => "Page"
+  has_many :wanted_page_sidebars, :class_name => "WantedPageSidebar", :dependent => :destroy
+  has_many :on_pages, :through => :wanted_page_sidebars, :source => :on_page
   
-  has_many :unwanted_page_sidebars, :class_name => "UnwantedPageSidebar", :foreign_key => "sidebar_id", :dependent => :destroy
-  has_many :off_pages, :through => :unwanted_page_sidebars, :class_name => "Page"
+  has_many :unwanted_page_sidebars, :class_name => "UnwantedPageSidebar", :dependent => :destroy
+  has_many :off_pages, :through => :unwanted_page_sidebars, :source => :off_page
   
   has_many :attachments, :class_name => "Attachment", :as => :target
   has_many :data_files, :through => :attachments

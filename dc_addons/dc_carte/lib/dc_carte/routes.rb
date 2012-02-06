@@ -10,7 +10,21 @@ module DcCarte
     end
     
     def public_carte_routes
-      # => your public routes
+      
+      # => if Page.where("system_name = ? AND deleted_at = ?", 'carte', nil).count > 0
+      # =>   resources :public_cartes, :path => Page.where('system_name = ?', 'carte').first.link
+      # => end
+      
+      resources :public_cartes, :path => Page.where('system_name = ?', 'carte').first.link, :only => :index do
+        collection do
+          match '/:carte'                         => 'public_cartes#show_carte'
+          match '/:carte/:sub_carte'              => 'public_cartes#show_carte'
+          match '/:carte/:sub_carte/:carte_entry' => 'public_cartes#show_carte'
+        end
+      end
+      
+      # => match "/*carte_slug" => 'public_cartes#show_carte_page', :constraints => DcCartePass.new
+      
     end
     
   end

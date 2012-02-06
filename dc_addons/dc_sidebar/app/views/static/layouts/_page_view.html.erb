@@ -3,19 +3,13 @@
 		<% if page.use_sidebar && page.use_sidebar != 'none' %>
 			
 			<div id="public_aside" class="<%= page.use_sidebar.to_s %>">
-				Sidebar
-				<hr/>
-				Sidebar
-				<hr/>
-				Sidebar
-				<hr/>
-				Sidebar
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
+				<% page.on_sidebars.each do |side| %>
+					
+					<% if side.content_type != 'text' %>
+						<%= render "public/sidebars/#{side.name}", :sidebar => side %>
+					<% end %>
+					
+				<% end %>
 			</div>
 			<div id="public_content_with_aside">
 				<%= yield %>

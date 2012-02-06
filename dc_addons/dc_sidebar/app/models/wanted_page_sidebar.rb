@@ -5,7 +5,7 @@ class WantedPageSidebar < ActiveRecord::Base
   attr_accessible   :position, :side, :page_id, :sidebar_id
   
   # =====> A S S O Z I A T I O N S <======================================================== #
-  belongs_to :page,     :class_name => "Page",      :foreign_key => "page_id"
-  belongs_to :sidebar,  :class_name => "Sidebar",   :foreign_key => "sidebar_id"
+  belongs_to :on_page,     :class_name => "Page",      :foreign_key => "page_id"
+  belongs_to :on_sidebar,  :class_name => "Sidebar",   :foreign_key => "sidebar_id"
   
 end

@@ -5,7 +5,7 @@ class UnwantedPageSidebar < ActiveRecord::Base
   attr_accessible   :page_id, :sidebar_id
   
   # =====> A S S O Z I A T I O N S <======================================================== #
-  belongs_to :page,     :class_name => "Page",      :foreign_key => "page_id"
-  belongs_to :sidebar,  :class_name => "Sidebar",   :foreign_key => "sidebar_id"
+  belongs_to :off_page,     :class_name => "Page",      :foreign_key => "page_id"
+  belongs_to :off_sidebar,  :class_name => "Sidebar",   :foreign_key => "sidebar_id"
   
 end

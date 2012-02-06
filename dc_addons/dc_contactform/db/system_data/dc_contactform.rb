@@ -3,7 +3,8 @@
 # 
 puts 'INFO: create Contact-Page'
 contact_page = Page.create!   :name => 'Kontakt',
-                              :site_type => 'system', 
+                              :page_type => 'mixed', # => editable and non-editable page-content
+                              :system_page => true,
                               :system_name => 'contact',
                               :use_title => true,
                               :title => 'dresscode Kontakt-Seite',
@@ -14,8 +15,7 @@ contact_page = Page.create!   :name => 'Kontakt',
                               :in_main_nav => true, 
                               :meta_description => 'dresscode CMS - Standard Start-Seite', 
                               :meta_keywords => 'dresscode CMS, orangenwerk',
-                              :tlayout_id => 1,
-                              :text_content => ''
+                              :tlayout_id => 1
 
 puts 'INFO: create Contact-Page layout and content'
 

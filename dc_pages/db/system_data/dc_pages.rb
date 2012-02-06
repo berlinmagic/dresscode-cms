@@ -4,7 +4,8 @@
 
 puts 'INFO: ERSTELLE SEITEN:'
 start_site = Page.create!     :name => 'Start',
-                              :site_type => 'system', 
+                              :page_type => 'page',
+                              :system_page => true,
                               :system_name => 'start',
                               :use_title => true,
                               :title => 'dresscode Startseite',
@@ -17,7 +18,6 @@ start_site = Page.create!     :name => 'Start',
                               :meta_description => 'dresscode CMS - Standard Start-Seite', 
                               :meta_keywords => 'dresscode CMS, orangenwerk',
                               :tlayout_id => 1
-                              # => :text_content => '' # => depreacated !
 
 puts 'INFO: ERSTELLE SEITEN-Layout'
 
@@ -37,20 +37,19 @@ PageContent.create! :page_cell_id => home_cell_t_two.id, :text_content => '<h3>S
 
 
 imprint_site = Page.create!   :name => 'Impressum',
-                              :site_type => 'system', 
+                              :page_type => 'system',
+                              :system_page => true,
                               :system_name => 'impressum',
                               :use_title => true,
                               :title => 'dresscode Impressum',
                               :headline_type => 'headline',
                               :headline => 'Impressum',
-                              :slug => '/',
                               :in_sec_nav => true, 
                               :in_system_nav => true, 
                               :in_main_nav => false, 
                               :meta_description => 'dresscode CMS - Standard Impressum', 
                               :meta_keywords => 'dresscode CMS, orangenwerk',
                               :tlayout_id => 1
-                              # => :text_content => '' # => depreacated !
 
 impressum_row_one = PageRow.create!     :page_id => imprint_site.id, :position => 1
 impressum_cell_o_one = PageCell.create!    :page_row_id => impressum_row_one.id, :cell_type => '1x2', :position => 1

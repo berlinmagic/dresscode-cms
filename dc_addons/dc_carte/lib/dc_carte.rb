@@ -5,6 +5,7 @@
   require 'dc_carte/version'
   
   require 'dc_carte/routes'
+  require 'dc_carte/dc_carte_pass'
   
   require 'dc_carte_hooks'
   require 'dc_carte_module'

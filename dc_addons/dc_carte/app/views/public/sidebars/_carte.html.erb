@@ -1,0 +1,7 @@
+<% Carte.all.each do |carte| %>
+	<h3><%= carte.name%></h3>
+	<% carte.sub_cartes.each do |sub_carte| %>
+		<h4><%= sub_carte.name %></h4>
+	<% end %>
+<% end %>
+	
