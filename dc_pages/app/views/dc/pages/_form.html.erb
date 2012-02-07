@@ -1,7 +1,14 @@
 <div class="LB_Box">
-<%= form_for( nice_route(@page) ) do |f| %>
+<%= form_for( [ :dc, @page ] ) do |f| %>
 	
 	<%= f.error_messages %>
+	
+	
+	<p>
+		Bitte wählen Sie einen Namen, um die neue Seite zu erstellen.<br/>
+		Meiden Sie Namen wie:  admin / dc / cms / users
+	</p>
+	
 	<div class="field">
 		<div class="fl_box_110">
 			<%= f.label :name %>
@@ -11,17 +18,15 @@
 		</div>
 		<div class="clearfix"></div>
 	</div>
-
 	
-	<div class="field">
-		<div class="fl_box_110">
-			<%= f.label :tlayout %>
-		</div>
-		<div class="fl_box_350">
-			<%= f.select :tlayout_id, options_for_select( Tlayout.all.map { |c| [c.name, c.id.to_i] })  %>
-		</div>
-		<div class="clearfix"></div>
-	</div>
+	
+	
+	<%#		For  dynamic-Layouts  only !!!     %>
+	<%#= f.label :tlayout %>
+	<%#= f.select :tlayout_id, options_for_select( Tlayout.all.map { |c| [c.name, c.id.to_i] })  %>
+	
+	<%= f.hidden_field :tlayout_id, :value => Tlayout.first.id %>
+	
 	
 	<br/>
 	

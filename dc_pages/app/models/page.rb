@@ -11,8 +11,7 @@ class Page < ActiveRecord::Base
   
   # =====> C O N S T A N T S <======================================================== #
   HEADLINE_TYPES = %w[name headline none]
-  SITE_TYPES = %w[system page module]
-  SITE_TYPE_PARAMS = %w[default system_only protected]
+  PAGE_TYPES = %w[page module mixed system_only]
   
   
   # =====> S C O P E S <======================================================== #
@@ -23,8 +22,8 @@ class Page < ActiveRecord::Base
   scope :draft,         where( :is_draft => true, :deleted_at => nil )
   scope :aktiv,         where( :is_draft => false, :deleted_at => nil )
   scope :deleted,       where( :deleted_at => !nil )
-  scope :sitemap,       where("system_seite = ? OR entwurf = ? AND deleted = ?", true, false, false)
-  scope :systemsite,    lambda { |name| where("system_name = ? AND deleted = ?", name, false) }
+  scope :sitemap,       where("system_page = ? OR is_draft = ? AND deleted_at = ?", true, false, nil)
+  scope :systemsite,    lambda { |name| where("system_name = ? AND deleted_at = ?", name, false) }
   
   default_scope :order => "position ASC"
   
@@ -51,13 +50,13 @@ class Page < ActiveRecord::Base
   
   # =====> A T T R I B U T E S <======================================================== #
   attr_accessible     :name,  :use_titel, :titel, :headline_type, :headline, :slug,
-                      :site_type, :type_param, :system_name, :modul_type, :modul_id, 
+                      :page_type, :system_name, :system_page,
                       :meta_description, :meta_keywords, 
                       :fowarding_site, :external_link, 
                       :tlayout_id, 
                       :in_main_nav, :in_system_nav, :in_sec_nav, 
                       :protected_stuff, :group, 
-                      :spread_site, :deleted_at, :is_draft, :breadcrumps, 
+                      :spread_site, :deleted_at, :is_draft, :show_breadcrumbs, 
                       :parent_site_id
   
   attr_protected      :full_slug,         :std_slug,
@@ -126,7 +125,7 @@ private
     self.title        =   self.name.titleize          unless  self.use_title
     self.headline     =   self.name.titleize          unless  self.headline_type == 'headline'
     # empty slug ('/') for start-page ... maybe replace with start-option & root_to page with start-option
-    unless ( self.site_type == 'system' ) && self.system_name && ( self.system_name == 'start' )
+    unless self.system_page && self.system_name && ( self.system_name == 'start' )
       self.slug         =   self.name.to_url
     end
     # 'real'-slug ('/start') for start-page ... maybe replace with start-option & root_to page with start-option

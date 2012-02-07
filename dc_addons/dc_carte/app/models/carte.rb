@@ -17,4 +17,16 @@ class Carte < ActiveRecord::Base
   has_many :carte_entries, :through => :carte_sets, :as => :target, :uniq => true
   
   
+  
+  validates_presence_of       :name
+  validates_uniqueness_of     :name, :slug
+  
+  
+  before_validation :generate_safe_slug
+  
+  
+  def generate_safe_slug
+    self.slug = self.name.to_url if self.name
+  end
+  
 end

@@ -18,4 +18,17 @@ class CarteEntry < ActiveRecord::Base
   
   has_and_belongs_to_many :carte_substances, :join_table => "carte_entries_carte_substances"
   
+  
+  
+  validates_presence_of       :headline
+  validates_uniqueness_of     :headline, :slug
+  
+  
+  before_validation :generate_safe_slug
+  
+  
+  def generate_safe_slug
+    self.slug = self.headline.to_url if self.headline
+  end
+  
 end

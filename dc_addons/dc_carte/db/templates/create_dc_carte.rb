@@ -4,6 +4,7 @@ class CreateDcCarte < ActiveRecord::Migration
     
     create_table(:cartes) do |t|
       t.string      :name
+      t.string      :slug
       t.text        :description
       t.string      :carte_type                                                     # => dish's / drink's / both
       t.boolean     :aktiv,                             :default => true
@@ -13,6 +14,7 @@ class CreateDcCarte < ActiveRecord::Migration
     
     create_table(:sub_cartes) do |t|
       t.string      :name
+      t.string      :slug
       t.text        :description
       t.integer     :position
       t.string      :carte_type                                                     # => dish's / drink's / both
@@ -38,6 +40,7 @@ class CreateDcCarte < ActiveRecord::Migration
     create_table(:carte_entries) do |t|
       t.string      :headline
       t.string      :sub_head
+      t.string      :slug
       t.text        :description
       t.integer     :position
       t.string      :entry_type                                                     # => dish / drink / headline / tip

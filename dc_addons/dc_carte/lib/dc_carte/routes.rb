@@ -15,11 +15,17 @@ module DcCarte
       # =>   resources :public_cartes, :path => Page.where('system_name = ?', 'carte').first.link
       # => end
       
-      resources :public_cartes, :path => Page.where('system_name = ?', 'carte').first.link, :only => :index do
-        collection do
-          match '/:carte'                         => 'public_cartes#show_carte'
-          match '/:carte/:sub_carte'              => 'public_cartes#show_carte'
-          match '/:carte/:sub_carte/:carte_entry' => 'public_cartes#show_carte'
+      if Page.table_exists?
+        if Page.where("system_name = ? AND deleted_at = ?", 'carte', nil).count > 0
+          
+          resources :public_cartes, :path => Page.where('system_name = ?', 'carte').first.link, :only => :index do
+            collection do
+              match '/:carte'                         => 'public_cartes#show_carte'
+              match '/:carte/:sub_carte'              => 'public_cartes#show_carte'
+              match '/:carte/:sub_carte/:carte_entry' => 'public_cartes#show_carte'
+            end
+          end
+          
         end
       end
       

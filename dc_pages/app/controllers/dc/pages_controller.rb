@@ -47,10 +47,7 @@ class Dc::PagesController < Dc::BaseController
   def mercury_update
     page = Page.find(params[:id])
     params[:content].each do |key, value|
-      if key == 'page_content'
-        page.text_content = value[:value]
-        logger.info "Text-Content::  #{value[:value]}"
-      elsif ( key =~ /pcon_(.*)/ )
+      if ( key =~ /pcon_(.*)/ )
         pcontent = PageContent.dcid(key).first
         if pcontent
           pcontent.text_content = value[:value]
