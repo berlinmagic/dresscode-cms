@@ -1,7 +1,5 @@
 # encoding: utf-8
 # 
-# 
-# 
 puts 'INFO: create Carte-Page'
 carte_page = Page.create!     :name => 'unser Angebot',
                               :page_type => 'module', # => no editable content
@@ -45,6 +43,7 @@ puts 'INFO: create Carte'
 meal_carte = Carte.create!      :name => 'Speisekarte',
                                 :description => 'Lassen Sie sich verwöhnen, von unseren culinarischen Köstlichkeiten.',
                                 :carte_type => "dishes",
+                                :position => 0,
                                 :aktiv => true
 
 meal_carte_soup = SubCarte.create!      :name => 'Suppen',
@@ -121,6 +120,51 @@ meal_carte.sub_cartes << meal_carte_vorspeise
 meal_carte_vorspeise.carte_entries << vorspeise_one
 meal_carte_vorspeise.carte_entries << vorspeise_two
 meal_carte_vorspeise.carte_entries << vorspeise_three
+
+
+drinks_carte = Carte.create!              :name => 'Getränkekarte',
+                                          :description => 'Lassen Sie sich verwöhnen, von unseren culinarischen Köstlichkeiten.',
+                                          :position => 1,
+                                          :carte_type => "drinks",
+                                          :aktiv => true
+
+drinks_carte_sub_one = SubCarte.create!   :name => 'Kaffee Spezialitäten',
+                                          :description => '..',
+                                          :position => 0,
+                                          :carte_type => drinks_carte.carte_type,
+                                          :view_type => 'aktiv'
+
+drinks_sub_one_first = CarteEntry.create! :headline => 'Kaffee Creme',
+                                          # => :sub_head => "",
+                                          # => :description => "",
+                                          :position => 0,
+                                          :entry_type => 'drink',
+                                          :use_ilike => true,
+                                          :master_price => 1.9
+
+drinks_sub_one_second = CarteEntry.create! :headline => 'Pott Kaffee',
+                                          # => :sub_head => "",
+                                          # => :description => "",
+                                          :position => 1,
+                                          :entry_type => 'drink',
+                                          :use_ilike => true,
+                                          :master_price => 2.5
+
+drinks_sub_one_third = CarteEntry.create! :headline => 'Espresso',
+                                          # => :sub_head => "",
+                                          # => :description => "",
+                                          :position => 2,
+                                          :entry_type => 'drink',
+                                          :use_ilike => true,
+                                          :master_price => 1.8
+
+
+drinks_carte.sub_cartes << drinks_carte_sub_one
+
+drinks_carte_sub_one.carte_entries << drinks_sub_one_first
+drinks_carte_sub_one.carte_entries << drinks_sub_one_second
+drinks_carte_sub_one.carte_entries << drinks_sub_one_third
+
 
 puts 'INFO: finished Carte!'
 
