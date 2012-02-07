@@ -3,13 +3,12 @@
 	<br/>
 	
 	Seiten-Art:<br/>
-	<%= f.select :site_type, options_for_select( Page::SITE_TYPES.map {|c| [c,c]}, @page.site_type )%><br/>
+	<%= f.select :page_type, options_for_select( Page::PAGE_TYPES.map {|c| [c,c]}, @page.page_type )%><br/>
 	<br/>
 	
-	Seiten-Parameter:<br/>
-	<%= f.select :type_param, options_for_select( Page::SITE_TYPE_PARAMS.map {|c| [c,c]}, @page.type_param )%><br/>
+	System-Page?:<br/>
+	<%= f.check_box :system_page %><br/>
 	<br/>
-	
 	
 	
 	System-Name:<br/>
