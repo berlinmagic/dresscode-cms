@@ -1,7 +1,7 @@
 <% Carte.all.each do |carte| %>
-	<h3><%= carte.name%></h3>
+	<h3><%= link_to carte.name, "#{ @page.link }#{ carte.slug }" %></h3>
 	<% carte.sub_cartes.each do |sub_carte| %>
-		<h4><%= sub_carte.name %></h4>
+		<h4><%= link_to sub_carte.name, "#{ @page.link }#{ carte.slug }#{ sub_carte.slug }" %></h4>
 	<% end %>
 <% end %>
 	

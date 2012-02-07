@@ -16,9 +16,9 @@ class PublicCartesController < BaseController
   end
   
   def show_carte
-    @carte = Carte.where( :name => params[:carte] ).first if params[:carte]
-    @sub_carte = SubCarte.where( :name => params[:sub_carte] ).first if params[:sub_carte]
-    @carte_entry = Carte.where( :headline => params[:carte_entry] ).first if params[:carte_entry]
+    @carte = Carte.where( :slug => '/' + params[:carte] ).first if params[:carte]
+    @sub_carte = SubCarte.where( :slug => '/' + params[:sub_carte] ).first if params[:sub_carte]
+    @carte_entry = CarteEntry.where( :slug => '/' + params[:carte_entry] ).first if params[:carte_entry]
     @page = Page.where( :system_name => 'carte' ).first
     render_this_site
   end

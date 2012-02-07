@@ -1,41 +1,50 @@
-<% if @page.page_rows && @page.page_rows.count > 0 %>
-	<% @page.page_rows.each do |page_row| %>
-		<div class="page_row">
-			<% if page_row.page_cells && page_row.page_cells.count > 0 %>
-				<% page_row.page_cells.each do |page_cell| %>
-					<div class="<%= "cell#{page_cell.cell_type.to_s}" %>">
-						<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
-							<% page_cell.page_contents.each do |page_content| %>
+<% if @page && @page.page_type == 'module' %>
+
+	<%= render "public/#{ @page.system_name }" %>
+
+<% else %>
+
+	<% if @page.page_rows && @page.page_rows.count > 0 %>
+		<% @page.page_rows.each do |page_row| %>
+			<div class="page_row">
+				<% if page_row.page_cells && page_row.page_cells.count > 0 %>
+					<% page_row.page_cells.each do |page_cell| %>
+						<div class="<%= "cell#{page_cell.cell_type.to_s}" %>">
+							<% if page_cell.page_contents && page_cell.page_contents.count > 0 %>
+								<% page_cell.page_contents.each do |page_content| %>
 								
-								<% @the_content = "" %>
+									<% @the_content = "" %>
 							
-								<% if (page_content.content_type == 'text') && !page_content.text_content.blank? %>
+									<% if (page_content.content_type == 'text') && !page_content.text_content.blank? %>
 								
-									<% @the_content = content_tag( 
-															'div', 
-															raw( page_content.text_content ), 
-															:class => "page_content dc_mercury-region",
-															:data => {:type => 'editable'} ) %>
+										<% @the_content = content_tag( 
+																'div', 
+																raw( page_content.text_content ), 
+																:class => "page_content dc_mercury-region",
+																:data => {:type => 'editable'} ) %>
 									
+									<% end %>
+									
+									<%= hook :public_content_type_if, :page_content => page_content %>
+									
+									<% if @the_content == "" %>
+										<% @the_content = raw("<br/>") %>
+									<% end %>
+								
+									<%= @the_content %>
+								
+									<div class="clearfix"></div>
 								<% end %>
-									
-								<%= hook :public_content_type_if, :page_content => page_content %>
-									
-								<% if @the_content == "" %>
-									<% @the_content = raw("<br/>") %>
-								<% end %>
-								
-								<%= @the_content %>
-								
-								<div class="clearfix"></div>
+							<% else %>
+								<br/><div class="clearfix"></div>
 							<% end %>
-						<% else %>
-							<br/><div class="clearfix"></div>
-						<% end %>
-					</div>
+						</div>
+					<% end %>
 				<% end %>
-			<% end %>
-			<div class="clearfix"></div>
-		</div>
+				<div class="clearfix"></div>
+			</div>
+		<% end %>
 	<% end %>
+
 <% end %>
+	

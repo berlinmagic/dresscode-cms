@@ -3,14 +3,12 @@
 # 
 # 
 puts 'INFO: create Carte-Page'
-carte_page = Page.create!     :name => 'Speisekarte',
+carte_page = Page.create!     :name => 'unser Angebot',
                               :page_type => 'module', # => no editable content
                               :system_page => true,
                               :system_name => 'carte',
                               :use_title => true,
-                              :title => 'dresscode Speisekarte',
-                              :headline_type => 'headline',
-                              :headline => 'dresscode Speisekarte',
+                              :title => 'unser Angebote',
                               :in_sec_nav => true, 
                               :in_system_nav => false, 
                               :in_main_nav => true, 
@@ -30,6 +28,7 @@ puts 'INFO: finished Carte-Page!'
 
 if !!defined?DcSidebar
   
+  puts 'INFO: create Carte-Sidebar'
   carte_sidebar = Sidebar.create!   :name => 'carte',
                                     :headline => 'Speisekarte',
                                     :content_type => 'module',
@@ -41,6 +40,7 @@ if !!defined?DcSidebar
   
 end
 
+puts 'INFO: create Carte'
 
 meal_carte = Carte.create!      :name => 'Speisekarte',
                                 :description => 'Lassen Sie sich verwöhnen, von unseren culinarischen Köstlichkeiten.',
@@ -83,5 +83,45 @@ meal_carte.sub_cartes << meal_carte_soup
 meal_carte_soup.carte_entries << soup_one
 meal_carte_soup.carte_entries << soup_two
 meal_carte_soup.carte_entries << soup_three
+
+
+meal_carte_vorspeise = SubCarte.create! :name => 'Vorspeisen',
+                                        :description => '..',
+                                        :position => 1,
+                                        :carte_type => meal_carte.carte_type,
+                                        :view_type => 'aktiv'
+
+vorspeise_one = CarteEntry.create!      :headline => 'Auberginenkissen „Carollis“',
+                                        :sub_head => "mundig gefüllt mit Ziegenkäse, dazu Bukett von Gartensalaten und Cherrytomate",
+                                        :description => "",
+                                        :position => 0,
+                                        :entry_type => 'dish',
+                                        :use_ilike => true,
+                                        :master_price => 6.9
+
+vorspeise_two = CarteEntry.create!      :headline => "Gebeizter - Lachs",
+                                        :sub_head => "dazu Kartoffelrösti und Honig – Senfsauce",
+                                        :description => "",
+                                        :position => 1,
+                                        :entry_type => 'dish',
+                                        :use_ilike => true,
+                                        :master_price => 8.5
+
+vorspeise_three = CarteEntry.create!    :headline => "Bardierter Ziegenkäse aus dem Rohr",
+                                        :sub_head => "Ziegenfrischkäse mariniert, eingeschlagen in Räucherlandschinken und Salatbukett",
+                                        :description => "",
+                                        :position => 2,
+                                        :entry_type => 'dish',
+                                        :use_ilike => true,
+                                        :master_price => 7.5
+
+
+meal_carte.sub_cartes << meal_carte_vorspeise
+
+meal_carte_vorspeise.carte_entries << vorspeise_one
+meal_carte_vorspeise.carte_entries << vorspeise_two
+meal_carte_vorspeise.carte_entries << vorspeise_three
+
+puts 'INFO: finished Carte!'
 
 

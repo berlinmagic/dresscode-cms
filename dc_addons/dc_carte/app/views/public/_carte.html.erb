@@ -1,0 +1,11 @@
+<% if @sub_carte %>
+	
+	<% @sub_carte.carte_entries.each_with_index do |entry, index| %>
+		
+		<%= raw('<hr/>') if index > 0 %>
+		<p><strong><%= entry.headline %></strong></p>
+		<p><%= entry.sub_head %></p>
+		
+	<% end %>
+
+<% end %>

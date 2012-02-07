@@ -16,7 +16,7 @@ module DcCarte
       # => end
       
       if Page.table_exists?
-        if Page.where("system_name = ? AND deleted_at = ?", 'carte', nil).count > 0
+        if Page.where("system_name = ?", 'carte').all.count > 0
           
           resources :public_cartes, :path => Page.where('system_name = ?', 'carte').first.link, :only => :index do
             collection do
