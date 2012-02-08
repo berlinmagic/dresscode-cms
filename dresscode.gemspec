@@ -4,7 +4,7 @@ require "dc/version"
 
 Gem::Specification.new do |s|
   s.platform                =   Gem::Platform::RUBY
-  s.required_ruby_version   =   '>= 1.9.2'
+  # => s.required_ruby_version   =   '>= 1.9.2' ... disturbing test-possibility
   s.version                 =   DC.version
   s.authors                 =   ["orangenwerk", "2strange", "marcosebald"]
   s.email                   =   "web@orangenwerk.com"
