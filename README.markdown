@@ -54,4 +54,4 @@ generates a new extension-gem 'dc_name' with DC::Name::Conig[:files] - Configura
 	row / cell / content => edit / delete
 ## System
 	icon_helper
-	Config[:styles] ?
+	Config[:styles] ?!
